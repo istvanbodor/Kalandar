@@ -25,8 +25,25 @@ public class SceneController {
     }
 
     //Események nézetbe lépés
-    public void switchToEvets(ActionEvent event) throws IOException {
+    public void switchToEvents(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("events-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //Login nézetbe lépés
+    public void switchToLogin(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("login-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToRegister(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("register-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
