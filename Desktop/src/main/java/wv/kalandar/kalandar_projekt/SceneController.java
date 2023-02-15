@@ -15,6 +15,7 @@ public class SceneController {
    private Stage stage;
    private Scene scene;
 
+   //Kalendár nézetbe lépés
     public void switchToCalendar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("calendar-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -23,6 +24,7 @@ public class SceneController {
         stage.show();
     }
 
+    //Események nézetbe lépés
     public void switchToEvets(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("events-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

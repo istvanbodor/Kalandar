@@ -14,6 +14,7 @@ public class CalendarApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("calendar-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Kalandár");
+        stage.getIcons().add(new Image("/icon.png"));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
