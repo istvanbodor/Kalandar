@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import RegisterForm from './Form/RegisterForm';
-import LoginForm from './Form/LoginForm';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Login from './Form/Login';
+import Register from './Form/Register';
+import Layout from './Layout/Layout';
 
 function App() {
   return (
     <>
- {/* <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
+           <Route index element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
-    </BrowserRouter> */}
-    <RegisterForm/>
-    {/* <LoginForm/> */}
+    </BrowserRouter>
+
+   
+    {/* <Register/> */}
+    {/* <Login/> */}
     </>
   );
 }

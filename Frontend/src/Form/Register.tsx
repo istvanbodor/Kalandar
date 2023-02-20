@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/esm/Container";
-import { NavLink } from "react-bootstrap";
-import LoginForm from "./LoginForm";
+import { Outlet, NavLink } from "react-router-dom";
+import LoginForm from "./Login";
 
 
 
@@ -49,11 +49,9 @@ const RegisterForm= () => {
         </Form.Group>
 
         <Button variant="primary" type="submit" id="buttonForm">Register</Button>   
-        {
-             //<NavLink to="">Sign In</NavLink> 
-        }
+
         </Form>
-        <NavLink href="/LoginForm" style={{float: "right"}}>Sign In</NavLink> 
+        <NavLink to="/register" style={{float: "right"}}>Login</NavLink> 
     </Container>
 
    

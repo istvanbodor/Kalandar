@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import RegisterForm from './Form/RegisterForm';
+import RegisterForm from './Form/Register';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

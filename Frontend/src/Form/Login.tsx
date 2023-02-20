@@ -5,7 +5,8 @@ import FormData, { User_Data } from "./FormData";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import { NavLink } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+
 
 
 const LoginForm = () => {
@@ -27,13 +28,13 @@ const LoginForm = () => {
    }
     return(
         <>
-        
+       
     <Container className="container" id="LoginForm">
-    <h1>Sign In</h1>
+    <h1>Login</h1>
        <Form>
         <Form.Group className="mb-3">
             <Form.Label className="formText">Username</Form.Label>
-            <Form.Control value={userName} onChange={UserName} type="text" placeholder="Enter username"/>
+            <Form.Control value={userName} onChange={UserName} type="text" placeholder="Enter username" required/>
             {/* <Form.Text className="text-muted">We'll never share your data with anyone else.</Form.Text> */}
         </Form.Group>
 
@@ -43,9 +44,8 @@ const LoginForm = () => {
         </Form.Group>
 
         <Button variant="primary" type="submit" id="buttonForm">Login</Button> 
-        <NavLink  style={{float: "right"}}>Register</NavLink>    
+         
         </Form>
-        
     </Container>
         </>
     )   
