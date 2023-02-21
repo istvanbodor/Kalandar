@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Form.css"
 import FormData, { User_Data } from "./FormData";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import { NavLink } from "react-router-dom";
+import { Container, Form } from "react-bootstrap";
+
 
 
 
@@ -28,7 +26,6 @@ const LoginForm = () => {
    }
     return(
         <>
-       
     <Container className="container" id="LoginForm">
     <h1>Login</h1>
        <Form>
@@ -40,10 +37,10 @@ const LoginForm = () => {
 
         <Form.Group className="mb-3">
             <Form.Label className="formText">Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password" required/>
         </Form.Group>
 
-        <Button variant="primary" type="submit" id="buttonForm">Login</Button> 
+        {/* <Button variant="primary" type="submit" id="buttonForm">Login</Button>  */}
          
         </Form>
     </Container>

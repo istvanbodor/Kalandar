@@ -8,18 +8,17 @@ import Layout from './Layout/Layout';
 function App() {
   return (
     <>
+    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
            <Route index element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="Register" element={<Register />} />
+          <Route path="Login" element={<Login />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
-    </BrowserRouter>
-
-   
+    </BrowserRouter>  
     {/* <Register/> */}
     {/* <Login/> */}
     </>
