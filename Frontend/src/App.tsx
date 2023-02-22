@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Login from './Form/Login';
 import Register from './Form/Register';
-import Layout from './Form/Layout';
+import Layout from './Layout/Layout';
+import NoPage from './Layout/NoPage';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<NoPage />} id="noPage"/> 
         </Route>
       </Routes>
     </BrowserRouter>  
