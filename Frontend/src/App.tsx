@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route,  } from "react-router-dom";
-import Login from './Form/Login';
-import Register from './Form/Register';
-import Layout from './Layout/Layout';
-import NoPage from './Layout/NoPage';
+import Login from './Components/Form/Login';
+import Register from './Components/Form/Register';
+import Layout from './Components/Layout/Layout';
+import NoPage from './Components/Layout/NoPage';
+import MainPage from './Components/Kalandar/MainPage';
+
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Login />} />
+          <Route index element={<MainPage />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NoPage />} id="noPage"/> 
