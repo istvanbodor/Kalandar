@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Form.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Form, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from "react-bootstrap/esm/Container";
-import { Outlet, NavLink } from "react-router-dom";
-import LoginForm from "./Login";
 
 
 
@@ -48,10 +44,11 @@ const RegisterForm= () => {
             <Form.Control type="email" placeholder="example@gmail.com" required/>
         </Form.Group>
 
-        <Button variant="primary" type="submit" id="buttonForm">Register</Button>   
+        <Button variant="primary" type="submit" id="buttonRegister">Register</Button>   
+        <NavLink to="/Login" style={{float: "right"}}>Login</NavLink> 
 
         </Form>
-        <NavLink to="/register" style={{float: "right"}}>Login</NavLink> 
+        
     </Container>
 
    

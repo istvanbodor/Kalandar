@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Login from './Form/Login';
 import Register from './Form/Register';
-import Layout from './Layout/Layout';
+import Layout from './Form/Layout';
 
 function App() {
   return (
@@ -12,9 +12,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-           <Route index element={<Login />} />
-          <Route path="Register" element={<Register />} />
-          <Route path="Login" element={<Login />} />
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>

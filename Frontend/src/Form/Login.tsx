@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Form.css"
-import FormData, { User_Data } from "./FormData";
-import { Container, Form } from "react-bootstrap";
+import { User_Data } from "./FormData";
+import { Container, Form, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -40,8 +41,8 @@ const LoginForm = () => {
             <Form.Control type="password" placeholder="Password" required/>
         </Form.Group>
 
-        {/* <Button variant="primary" type="submit" id="buttonForm">Login</Button>  */}
-         
+         <Button variant="primary" type="submit" id="buttonLogin">Login</Button>  
+        <NavLink to="/register" style={{float: "right"}}>Register</NavLink> 
         </Form>
     </Container>
         </>
