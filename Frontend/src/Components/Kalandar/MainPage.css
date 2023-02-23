@@ -4,5 +4,21 @@ table,td,th{
 }
 td {
     text-align: right;
-    
+    height: 120px;
+    width: 120px;
+}
+
+.buttons{
+    float:right;
+    margin-right: 2px;
+}
+
+.containerMain{
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 110%;
+    background-color: white;
+    padding: 5px;
+    margin-top: 10%;
 }

@@ -1,14 +1,23 @@
 import React from "react";
 import './MainPage.css'
 
+import { Button, Container, Table } from "react-bootstrap";
+import { format } from 'date-fns'
 
-const date = new Date();
+
+
 
 const MainPage = () => {
+
+    
     return(
         <>
-        <h1></h1>
-        <table>
+       <Container className="containerMain">
+        <Button className="buttons">Month</Button>
+        <Button className="buttons">Week</Button>
+        <Button className="buttons">Day</Button>
+        <br /><br />
+        <Table>
             <thead>
                 <tr>
                     <th>Monday</th>
@@ -29,7 +38,8 @@ const MainPage = () => {
                     <td>6</td>
                     <td>7</td>
             </tbody>
-        </table>
+        </Table>
+        </Container>
         </>
     )
 }

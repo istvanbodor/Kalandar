@@ -14,8 +14,8 @@ h1{
 }
 .container{
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: right;
+    margin-right: right;
     width: 50%;
     background-color: white;
     padding: 5px;

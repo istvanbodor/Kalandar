@@ -1,24 +1,26 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
-
+import './Layout.css'
+import { Outlet, Link } from "react-router-dom";
+import { Nav } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Kalandar</NavLink>
-          </li>
-          <li>
-            <NavLink to="/register">Register</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
+      <Nav as="ul" variant="tabs" className="justify-content-end">
+          <Nav.Item as="li">
+           <Nav.Link to="/" className=' mb-3' as={Link}>Kalandar</Nav.Link>
+           </Nav.Item>
+
+           <Nav.Item as="li">
+            <Nav.Link to="/register" as={Link} >Register</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item as="li">
+            <Nav.Link to="/login" as={Link}>Login</Nav.Link>
+            </Nav.Item>
+      </Nav>
+      <Outlet />     
     </>
   )
 };

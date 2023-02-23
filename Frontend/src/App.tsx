@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Login from './Components/Form/Login';
 import Register from './Components/Form/Register';
 import Layout from './Components/Layout/Layout';
-import NoPage from './Components/Layout/NoPage';
+import NoPage from './Components/Kalandar/NoPage';
 import MainPage from './Components/Kalandar/MainPage';
 
 
