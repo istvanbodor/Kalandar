@@ -71,8 +71,8 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="593.0" layoutY="414.0" prefHeight="25.0" prefWidth="277.0" />
-      <Text fill="WHITE" layoutX="676.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+      <TextField layoutX="593.0" layoutY="411.0" prefHeight="25.0" prefWidth="277.0" />
+      <Text fill="WHITE" layoutX="676.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
          <font>
             <Font size="21.0" />
          </font>
