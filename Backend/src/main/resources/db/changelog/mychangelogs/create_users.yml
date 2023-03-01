@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_users
+      author: Istvan
+      changes:
+        - createTable:
+            tableName: USERS
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: text
+              - column:
+                  name: first_name
+                  type: text
+              - column:
+                  name: username
+                  type: text
+              - column:
+                  name: password
+                  type: text
+              - column:
+                  name: email
+                  type: text
+              - column:
+                  name: is_admin
+                  type: boolean

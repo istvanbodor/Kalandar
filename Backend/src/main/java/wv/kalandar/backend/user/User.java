@@ -3,12 +3,13 @@ package wv.kalandar.backend.user;
 import jakarta.persistence.*;
 
 @Entity
-@Table
-public class Users {
+@Table(name = "USERS")
+
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String last_name;
     private String first_name;
     private String username;
@@ -16,7 +17,8 @@ public class Users {
     private String email;
     private boolean isAdmin;
 
-    public Users(String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
+
+    public User(String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.username = username;
@@ -25,10 +27,10 @@ public class Users {
         this.isAdmin = isAdmin;
     }
 
-    public Users() {
+    public User() {
     }
 
-    public Users(long id, String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
+    public User(int id, String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
         this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
@@ -42,7 +44,7 @@ public class Users {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

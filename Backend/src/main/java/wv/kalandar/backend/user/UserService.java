@@ -17,13 +17,13 @@ public class UserService {
     }
 
 
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return usersRepository.findAll();
     }
 
-    public void addNewStudent(Users user) {
+    public void addNewStudent(User user) {
 
-        Optional<Users> userByEmail = usersRepository.findUsersByEmail(user.getEmail());
+        Optional<User> userByEmail = usersRepository.findUsersByEmail(user.getEmail());
         if (userByEmail.isPresent()) {
             throw new IllegalStateException("Email taken");
         }
