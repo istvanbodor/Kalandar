@@ -9,90 +9,97 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String last_name;
-    private String first_name;
-    private String username;
-    private String password;
-    private String email;
-    private boolean isAdmin;
+    @Column(name = "id")
+    private int Id;
+    @Column(name = "last_name")
+    private String LastName;
+    @Column(name = "first_name")
+    private String FirstName;
+    @Column(name = "username")
+    private String Username;
+    @Column(name = "password")
+    private String Password;
+    @Column(name = "email")
+    private String Email;
+    @Column(name = "is_admin")
+    private boolean IsAdmin;
 
 
-    public User(String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.isAdmin = isAdmin;
+    public User(String LastName, String FirstName, String username, String password, String email, boolean isAdmin) {
+        this.LastName = LastName;
+        this.FirstName = FirstName;
+        this.Username = username;
+        this.Password = password;
+        this.Email = email;
+        this.IsAdmin = isAdmin;
     }
 
     public User() {
     }
 
-    public User(int id, String last_name, String first_name, String username, String password, String email, boolean isAdmin) {
-        this.id = id;
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.isAdmin = isAdmin;
+    public User(int id, String LastName, String FirstName, String username, String password, String email, boolean isAdmin) {
+        this.Id = id;
+        this.LastName = LastName;
+        this.FirstName = FirstName;
+        this.Username = username;
+        this.Password = password;
+        this.Email = email;
+        this.IsAdmin = isAdmin;
     }
 
     public long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return LastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String last_name) {
+        this.LastName = last_name;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return FirstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String first_name) {
+        this.FirstName = first_name;
     }
 
     public String getUsername() {
-        return username;
+        return Username;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.Username = username;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.Password = password;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return IsAdmin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        IsAdmin = admin;
     }
 }
