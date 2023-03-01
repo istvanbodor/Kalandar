@@ -19,12 +19,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
             return userService.getUsers();
     }
 
     @PostMapping
-    public void registerNewUser(@RequestBody Users user) {
+    public void registerNewUser(@RequestBody User user) {
         try {
             userService.addNewStudent(user);
         } catch (IllegalStateException e) {
