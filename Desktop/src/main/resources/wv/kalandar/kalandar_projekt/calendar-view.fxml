@@ -510,5 +510,6 @@
             </Button>
          </children>
       </VBox>
+      <Button mnemonicParsing="false" onAction="#editButtonText" text="Button" />
    </children>
 </AnchorPane>

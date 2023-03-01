@@ -21,12 +21,12 @@ public class CalendarApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CalendarApplication.class.getResource("calendar-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
         stage.setTitle("Kalandár");
         stage.getIcons().add(new Image("/icon.png"));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-
         datumGeneralas();
     }
 
@@ -67,16 +67,6 @@ private Parent root;
 
         naptarDatum(firstDay, lastDayOfMonth);
     }
-
-    public void initialize() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("calendar-view.fxml"));
-        root = loader.load();
-
-        SceneController sceneController = loader.getController();
-        sceneController.changeButtonText("13");
-    }
-
     public void naptarDatum(Integer firstDayName, Integer lastDayOfMonth) {
         Integer counter = 1;
         Integer firstDay = firstDayName-1;
