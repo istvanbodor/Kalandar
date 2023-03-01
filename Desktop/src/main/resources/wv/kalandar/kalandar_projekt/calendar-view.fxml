@@ -10,54 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1165.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wv.kalandar.kalandar_projekt.SceneController">
    <children>
-      <VBox prefHeight="700.0" prefWidth="294.0" style="-fx-background-color: #444444;">
-         <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="KALANDÁR" textAlignment="CENTER" wrappingWidth="293.43798828125">
-               <font>
-                  <Font name="System Bold" size="41.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-            </Text>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToCalendar" prefHeight="93.0" prefWidth="321.0" style="-fx-background-color: #666666;" text="Kalendár" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="15.0" top="50.0" />
-               </VBox.margin>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToEvents" prefHeight="93.0" prefWidth="314.0" style="-fx-background-color: #333333;" text="Események" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="93.0" prefWidth="314.0" style="-fx-background-color: #333333;" text="Bejelentkezés" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="240.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-      <VBox layoutX="294.0" prefHeight="100.0" prefWidth="872.0" style="-fx-background-color: #333333;">
-         <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="KALENDÁR" textAlignment="CENTER" wrappingWidth="873.71533203125">
-               <font>
-                  <Font size="31.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="25.0" />
-               </VBox.margin>
-            </Text>
-         </children>
-      </VBox>
       <HBox layoutX="294.0" layoutY="100.0" prefHeight="55.0" prefWidth="874.0" style="-fx-background-color: #222222;">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HÉTFŐ" textAlignment="CENTER" wrappingWidth="123.0">
@@ -124,7 +76,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="2" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -135,7 +87,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -143,7 +95,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -151,7 +103,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -159,7 +111,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -168,7 +128,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -179,7 +139,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -187,7 +147,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -195,7 +155,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -203,7 +163,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -212,7 +180,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -223,7 +191,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -231,7 +199,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -239,7 +207,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -247,7 +215,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -256,7 +232,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -267,7 +243,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #999999;" text="1" textAlignment="CENTER">
@@ -275,7 +251,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -283,7 +259,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -291,7 +267,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -300,7 +284,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -311,7 +295,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -319,7 +303,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -327,7 +311,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -335,7 +319,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -344,7 +336,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -355,7 +347,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -363,7 +355,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -371,7 +363,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -379,7 +371,15 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -388,7 +388,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
@@ -399,7 +399,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -407,7 +407,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -415,7 +415,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
@@ -423,12 +423,92 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="28.0" />
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Barlow Condensed ExtraBold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
          </children>
       </HBox>
+      <HBox layoutX="291.0" layoutY="-1.0" prefHeight="101.0" prefWidth="874.0" style="-fx-background-color: #333333;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="2023 Szeptember" textAlignment="CENTER" wrappingWidth="357.71533203125">
+               <font>
+                  <Font size="31.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+            </Text>
+            <Text fill="WHITE" layoutX="350.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KALENDÁR" textAlignment="CENTER" wrappingWidth="156.71533203125">
+               <font>
+                  <Font size="31.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+            </Text>
+            <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #333333;" text="&lt;" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="200.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Button>
+            <Button layoutX="167.0" layoutY="50.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #333333;" text="&gt;" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox prefHeight="700.0" prefWidth="294.0" style="-fx-background-color: #444444;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="KALANDÁR" textAlignment="CENTER" wrappingWidth="293.43798828125">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Text>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToCalendar" prefHeight="93.0" prefWidth="321.0" style="-fx-background-color: #666666;" text="Kalendár" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToEvents" prefHeight="93.0" prefWidth="314.0" style="-fx-background-color: #333333;" text="Események" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="93.0" prefWidth="314.0" style="-fx-background-color: #333333;" text="Bejelentkezés" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="240.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
