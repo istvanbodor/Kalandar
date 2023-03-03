@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class CalendarApplication extends Application {
     long lastRefreshTime = 0;
@@ -27,30 +28,28 @@ public class CalendarApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        datumGeneralas();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-private Parent root;
     public void datumGeneralas() throws IOException {
 
         Date date = new Date();
-        System.out.println(date);
+//        System.out.println(date);
 
         // Visszaadja a mai dátumot
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        System.out.println(sdf.format(date));
+//        System.out.println(sdf.format(date));
 
         // Visszaadja a jelenlegi évet
         Integer dateYear = Integer.parseInt(sdf.format(date).split("/")[0]);
-        System.out.println(dateYear);
+//        System.out.println(dateYear);
 
         // Visszaadja a jelenlegi hónapot
         Integer dateMonth = Integer.parseInt(sdf.format(date).split("/")[1]);
-        System.out.println(dateMonth);
+//        System.out.println(dateMonth);
 
         // Visszaadja a jelenlegi napot
         Integer dateDay = Integer.parseInt(sdf.format(date).split("/")[2]);
@@ -74,17 +73,16 @@ private Parent root;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 if (j < firstDay){ // Ha a j index kisebb, mint az adott hóna első napja, akkor X-et rak a helyére
-                    System.out.print("x ");
+//                    System.out.print("x ");
                 }
                 else if (counter <= lastDayOfMonth) {
-                    System.out.print(counter + " ");
+//                    System.out.print(counter + " ");
                     counter++;
                     firstDay = 0;
                 }
             }
-            System.out.println("\n");
+//            System.out.println("\n");
         }
-        System.out.println(firstDayName);
+//        System.out.println(firstDayName);
     }
-
 }
