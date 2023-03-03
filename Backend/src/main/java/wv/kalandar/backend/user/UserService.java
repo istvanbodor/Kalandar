@@ -9,25 +9,26 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
 
     public List<User> getUsers() {
-        return usersRepository.findAll();
+        return userRepository.findAll();
     }
 
     public void addNewStudent(User user) {
 
-        Optional<User> userByEmail = usersRepository.findUsersByEmail(user.getEmail());
+        Optional<User> userByEmail = userRepository.findUsersByEmail(user.getEmail());
         if (userByEmail.isPresent()) {
             throw new IllegalStateException("Email taken");
         }
-        usersRepository.save(user);
+
+        userRepository.save(user);
 
     }
 }
