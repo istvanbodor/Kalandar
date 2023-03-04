@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1165.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wv.kalandar.kalandar_projekt.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1165.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wv.kalandar.kalandar_projekt.SceneController">
    <children>
       <HBox layoutX="294.0" layoutY="100.0" prefHeight="55.0" prefWidth="874.0" style="-fx-background-color: #222222;">
          <children>
@@ -74,7 +74,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="2" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -82,7 +82,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_0" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -90,7 +90,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_0" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -98,7 +98,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_0" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -106,7 +106,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_0" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -114,7 +114,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -126,7 +126,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_1" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -134,7 +134,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_1" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -142,7 +142,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_1" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -150,7 +150,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_1" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -158,7 +158,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_1" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -166,7 +166,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_1" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -178,7 +178,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="133.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_2" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -186,7 +186,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_2" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -194,7 +194,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_2" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -202,7 +202,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_2" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -210,7 +210,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_2" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -218,7 +218,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_2" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -230,7 +230,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="256.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_3" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -238,7 +238,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_3" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -246,7 +246,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #999999;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_3" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -254,7 +254,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_3" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -262,7 +262,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_3" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -270,7 +270,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_3" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -282,7 +282,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="379.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_4" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -290,7 +290,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_4" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -298,7 +298,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_4" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -306,7 +306,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_4" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -314,7 +314,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_4" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -322,7 +322,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_4" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -334,7 +334,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="502.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_5" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -342,7 +342,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_5" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -350,7 +350,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_5" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -358,7 +358,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_5" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -366,7 +366,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_5" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -374,7 +374,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_5" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -386,7 +386,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="625.0" layoutY="10.0" prefHeight="528.0" prefWidth="123.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate0_6" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
@@ -394,7 +394,7 @@
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate1_6" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -402,7 +402,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate2_6" layoutX="22.0" layoutY="115.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -410,7 +410,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate3_6" layoutX="22.0" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -418,7 +418,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate4_6" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -426,7 +426,7 @@
                         <Insets top="13.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" style="-fx-background-color: #4d4d4d;" text="1" textAlignment="CENTER">
+                  <Button fx:id="buttonDate5_6" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Barlow Condensed ExtraBold" size="22.0" />
                      </font>
@@ -484,7 +484,7 @@
                   <Insets top="50.0" />
                </VBox.margin>
             </Text>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToCalendar" prefHeight="93.0" prefWidth="321.0" style="-fx-background-color: #666666;" text="Kalendár" textFill="WHITE">
+            <Button fx:id="bttnKalendar" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCalendar" prefHeight="93.0" prefWidth="321.0" style="-fx-background-color: #666666;" text="Kalendár" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -510,5 +510,6 @@
             </Button>
          </children>
       </VBox>
+      <Button mnemonicParsing="false" onAction="#editButtonText" text="Button" />
    </children>
 </AnchorPane>
