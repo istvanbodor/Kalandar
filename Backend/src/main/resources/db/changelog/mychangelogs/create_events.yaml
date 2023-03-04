@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_events
+      author: Istvan
+      changes:
+        - createTable:
+            tableName: EVENTS
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: event
+                  type: text
+              - column:
+                  name: start_time
+                  type: DateTime
+              - column:
+                  name: end_time
+                  type: DateTime
+              - column:
+                  name: is_fullday
+                  type: boolean
+              - column:
+                  name: category
+                  type: text
