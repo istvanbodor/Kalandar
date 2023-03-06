@@ -40,18 +40,7 @@ export class LoginComponent implements OnInit{
     console.warn(this.loginForm.value)
   }
 
-  Submit(){
-      if(this.usernameSubmit === "12345" && this.passwordSubmit === "12345")
-        return true
-      else{
-          return false
-      }
-  }
-  clear(){
-    this.usernameSubmit = "";
-    this.passwordSubmit = "";
-    this.show = true
-  }
+
 
 
 }

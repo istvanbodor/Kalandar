@@ -1,10 +1,10 @@
 <form class="container" [formGroup]="registerForm" (ngSubmit)="registerUser()">
     <h1>{{title}}</h1>
-  <div *ngIf="alert" class=" alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Succes !</strong> Your data has been entered succesfully
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <div *ngIf="alert"  class="alert alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
+    <strong>Succes !</strong> Your registered succesfully
+    <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </button>   
   </div>
     <div class="form-group mb-3">
       <label for="firsNameLabel">First name</label>
@@ -42,7 +42,7 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Remember me</label>
       </div>
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary" >Register</button>
   
       <a routerLink="/login" style="float: right;">Login</a>
     </form>
