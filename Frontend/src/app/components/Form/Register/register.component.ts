@@ -16,9 +16,9 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
    
-    first_name: new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z]+$')]),
-    last_name: new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z]+$')]),
-    username: new FormControl('', [Validators.required,Validators.minLength(5)]),
+    first_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
+    last_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
+    username: new FormControl('', [Validators.required,Validators.minLength(4)]),
     password: new FormControl('', [Validators.required,Validators.minLength(5)]),
     confirmPassword: new FormControl('', [Validators.required,Validators.minLength(5)]),
     email: new FormControl('', [Validators.required,Validators.email])
@@ -62,14 +62,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   
   }
-  registerUser(){
+  userData(){
     console.warn(this.registerForm.value)
-    // this.usersapiservice.saveUsersData(this.registerForm.value).subscribe((data) => {
-    //   console.warn("User data",data)
-   
-    // })
-    this.alert = true
-    this.registerForm.reset({})
+    this.usersapiservice.registerUser(this.registerForm.value).subscribe((data) => {
+      console.warn("User data",data)
+      this.alert = true
+      this.registerForm.reset({})
+    })
+
     
   }
   closeAlert()

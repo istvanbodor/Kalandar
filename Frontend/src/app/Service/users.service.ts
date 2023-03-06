@@ -14,7 +14,7 @@ export class UsersApiService{
     getUsersData(){
         return this.http.get(this.url);
     }
-    saveUsersData(data : any){
+    registerUser(data : any){
         return this.http.post(this.url,data)
     }
     
