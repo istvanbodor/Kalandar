@@ -12,9 +12,10 @@ export class RegisterComponent implements OnInit {
  
 
   title = "Register";
+  alert: boolean = false
 
   registerForm = new FormGroup({
-    
+   
     first_name: new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z]+$')]),
     last_name: new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z]+$')]),
     username: new FormControl('', [Validators.required,Validators.minLength(5)]),
@@ -63,8 +64,16 @@ export class RegisterComponent implements OnInit {
   }
   registerUser(){
     console.warn(this.registerForm.value)
-    this.usersapiservice.saveUsersData(this.registerForm.value).subscribe((data) => {
-      console.warn("User data",data)
-    })
+    // this.usersapiservice.saveUsersData(this.registerForm.value).subscribe((data) => {
+    //   console.warn("User data",data)
+   
+    // })
+    this.alert = true
+    this.registerForm.reset({})
+    
+  }
+  closeAlert()
+  {
+    this.alert = false
   }
 }
