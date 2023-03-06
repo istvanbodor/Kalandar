@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import wv.kalandar.backend.user.User;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/events")
@@ -17,9 +20,8 @@ public class EventController {
     }
 
     @GetMapping
-    String hello() {
-        return "api/events endpoint";
+    public List<Event> getEvents() {
+        return eventService.getEvents();
     }
-
 
 }

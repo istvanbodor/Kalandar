@@ -27,7 +27,7 @@ public class UserService {
         if (userByEmail.isPresent()) {
             throw new IllegalStateException("Email taken");
         }
-
+        user.setAdmin(false);
         userRepository.save(user);
 
     }

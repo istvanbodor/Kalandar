@@ -3,6 +3,8 @@ package wv.kalandar.backend.address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AddressService {
 
@@ -14,4 +16,7 @@ public class AddressService {
     }
 
 
+    public List<Address> getAddresses() {
+        return addressRepository.findAll();
+    }
 }
