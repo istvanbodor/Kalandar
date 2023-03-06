@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create_users
+      id: create_events
       author: Istvan
       changes:
         - createTable:
-            tableName: USERS
+            tableName: EVENTS
             columns:
               - column:
                   name: id
@@ -14,20 +14,17 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: last_name
+                  name: event
                   type: text
               - column:
-                  name: first_name
-                  type: text
+                  name: start_time
+                  type: DateTime
               - column:
-                  name: username
-                  type: text
+                  name: end_time
+                  type: DateTime
               - column:
-                  name: password
-                  type: text
-              - column:
-                  name: email
-                  type: text
-              - column:
-                  name: is_admin
+                  name: is_fullday
                   type: boolean
+              - column:
+                  name: category
+                  type: text
