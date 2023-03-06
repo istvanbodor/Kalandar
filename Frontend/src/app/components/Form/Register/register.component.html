@@ -1,0 +1,44 @@
+<form class="container" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <h1>{{title}}</h1>
+    <div class="form-group mb-3">
+      <label for="firsNameLabel">First name</label>
+      <input type="text" class="form-control" id="firstNameLabel" placeholder="First Name" formControlName="first_name">
+      <span class="errorMessage" *ngIf="first_name && first_name.invalid && first_name.touched">This First name is not valid! asd</span>
+    </div>
+    <div class="form-group mb-3">
+      <label for="lastNameLabel">Last name</label>
+      <input type="text" class="form-control" id="lastNameLabel" placeholder="Last Name" formControlName="last_name">
+      <span class="errorMessage" *ngIf="last_name && last_name.invalid && last_name.touched">This Last name is not valid!</span>
+    </div>
+      <div class="form-group mb-3">
+        <label for="usernameLabel">Username</label>
+        <input type="text" class="form-control" id="usernameLabel" placeholder="Username" formControlName="username">
+        <span class="errorMessage" *ngIf="username && username.invalid && username.touched">This Username is not valid!</span>
+      </div>
+      <div class="form-group mb-3">
+        <label for="passwordLabel">Password</label>
+        <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password">
+        <span class="errorMessage"*ngIf="password && password.invalid && password.touched">This password is not valid!</span>
+        <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
+      </div>
+      <div class="form-group mb-3">
+        <label for="passwordConfirmLabel">Password Confirmation</label>
+        <input type="password" class="form-control" id="passwordConfirmLabel" placeholder="Password Confirmation" formControlName="confirmPassword">
+        <span class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This password is not valid!</span>
+        <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
+      </div>
+      <div class="form-group mb-3">
+        <label for="emailLabel">Email</label>
+        <input type="email" class="form-control" id="emailLabel" placeholder="example@gmail.com" formControlName="email" name="email">
+        <span class="errorMessage" *ngIf="email && email.invalid && email.touched">This email is not valid!</span>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+  
+      <a routerLink="/login" style="float: right;">Login</a>
+    </form>
+
+
