@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from './CustomValidator';
-
+import { UsersApiService } from 'src/app/Service/users.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,11 +9,7 @@ import { CustomValidators } from './CustomValidator';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() {}
-
-  ngOnInit(): void {
-  
-  }
+ 
 
   title = "Register";
 
@@ -28,10 +24,6 @@ export class RegisterComponent implements OnInit {
   },
   [CustomValidators.MatchValidator('password', 'confirmPassword')]
   )
-
-  registerUser(){
-    console.warn(this.registerForm.value)
-  }
 
   get first_name() {
     return this.registerForm.get('first_name')
@@ -62,5 +54,15 @@ export class RegisterComponent implements OnInit {
 
   get email() {
     return this.registerForm.get('email')
+  }
+
+  constructor(private usersapiservice:UsersApiService) {}
+
+  ngOnInit(): void {
+  
+  }
+   registerUser(){
+    // console.warn(this.registerForm.value)
+    this.usersapiservice.saveUsersData(this.registerForm.value)
   }
 }

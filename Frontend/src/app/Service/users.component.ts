@@ -1,6 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { tap } from 'rxjs';
-import { ApiService } from './service';
+import { UsersApiService } from './users.service';
 
 @Component({
   selector: 'app-users',
@@ -12,9 +12,9 @@ export class UsersComponent {
   title = 'apidata';
   users: any;
   users$: any;
-  constructor(private apiservice:ApiService) {}
+  constructor(private usersapiservice:UsersApiService) {}
   
   ngOnInit(): void{
-    this.users$ = this.apiservice.getdata().pipe(tap((user) => this.users = user))
+    this.users$ = this.usersapiservice.getUsersData().pipe(tap((user) => this.users = user))
   }
 }
