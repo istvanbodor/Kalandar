@@ -61,8 +61,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   
   }
-   registerUser(){
-    // console.warn(this.registerForm.value)
-    this.usersapiservice.saveUsersData(this.registerForm.value)
+  registerUser(){
+    console.warn(this.registerForm.value)
+    this.usersapiservice.saveUsersData(this.registerForm.value).subscribe((data) => {
+      console.warn("User data",data)
+    })
   }
 }

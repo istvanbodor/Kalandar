@@ -15,7 +15,7 @@ export class UsersApiService{
         return this.http.get(this.url);
     }
     saveUsersData(data : any){
-        console.warn("service",data)
+        return this.http.post(this.url,data)
     }
     
 
