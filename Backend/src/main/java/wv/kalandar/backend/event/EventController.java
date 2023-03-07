@@ -44,4 +44,15 @@ public class EventController {
         }
     }
 
+    @PutMapping(path = "{eventId}")
+    public void updateEvent(@PathVariable("eventId") Long eventId, @RequestBody Event event) {
+
+        try {
+            eventService.updateEvent(eventId, event);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
 }

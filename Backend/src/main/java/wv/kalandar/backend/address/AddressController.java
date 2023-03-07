@@ -38,4 +38,13 @@ public class AddressController {
         addressService.deleteAddress(addressId);
     }
 
+    @PutMapping(path = "{addressId}")
+    public void updateAddress(@PathVariable("addressId") Long addressId, @RequestBody Address address) {
+        try {
+            addressService.updateAddress(addressId, address);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
