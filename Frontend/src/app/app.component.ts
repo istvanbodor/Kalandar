@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { tap } from 'rxjs';
-import { ApiService } from './Service/service';
 
 @Component({
   selector: 'app-root',

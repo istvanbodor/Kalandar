@@ -1,7 +1,7 @@
 import { Component, OnInit   } from '@angular/core'; 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ApiService } from 'src/app/Service/service';
+import { UsersApiService } from 'src/app/Service/users.service';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +19,9 @@ export class LoginComponent implements OnInit{
   title: string ="Login";
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required,Validators.minLength(5)]),
-    password: new FormControl('',[Validators.required, Validators.minLength(5)])
+    username: new FormControl('', [Validators.required,Validators.minLength(4)]),
+    password: new FormControl('',[Validators.required, Validators.minLength(4)])
   })
-  loginUser(){
-    console.warn(this.loginForm.value)
-  }
 
   get username(){
     return this.loginForm.get('username')
@@ -39,18 +36,11 @@ export class LoginComponent implements OnInit{
   passwordSubmit : string ="";
   show: boolean= false;
 
-  Submit(){
-      if(this.usernameSubmit === "12345" && this.passwordSubmit === "12345")
-        return true
-      else{
-          return false
-      }
+  loginUser(){
+    console.warn(this.loginForm.value)
   }
-  clear(){
-    this.usernameSubmit = "";
-    this.passwordSubmit = "";
-    this.show = true
-  }
+
+
 
 
 }
