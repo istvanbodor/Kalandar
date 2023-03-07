@@ -1,4 +1,4 @@
-<form class="container" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+<form class="container" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <h1>{{title}}</h1>
     <div class="form-group mb-3">
       <label for="usernameLabel">Username</label>
@@ -7,14 +7,10 @@
     </div>
     <div class="form-group mb-3">
       <label for="passwordLabel" >Password</label>
-      <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password">
+      <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password" >
       <strong class="errorMessage" *ngIf="password && password.invalid && password.touched && password.errors">This Password is not valid!</strong>
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="rememberCheck">
-      <label class="form-check-label" for="rememberCheck">Remember me</label>
-    </div>
-    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary" routerLink="/mainpage">Login</button>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
 
     <a routerLink="/register" style="float: right;">Register</a>
   </form>

@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
     first_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
     last_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
     username: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    password: new FormControl('', [Validators.required,Validators.minLength(5)]),
-    confirmPassword: new FormControl('', [Validators.required,Validators.minLength(5)]),
+    password: new FormControl('', [Validators.required,Validators.minLength(4)]),
+    confirmPassword: new FormControl('', [Validators.required,Validators.minLength(4)]),
     email: new FormControl('', [Validators.required,Validators.email])
   },
   [CustomValidators.MatchValidator('password', 'confirmPassword')]
@@ -64,11 +64,13 @@ export class RegisterComponent implements OnInit {
   }
   userData(){
     console.warn(this.registerForm.value)
-    this.usersapiservice.registerUser(this.registerForm.value).subscribe((data) => {
-      console.warn("User data",data)
-      this.alert = true
+    this.alert = true
       this.registerForm.reset({})
-    })
+    // this.usersapiservice.registerUser(this.registerForm.value).subscribe((result) => {
+    //   console.warn("User data",result)
+    //   this.alert = true
+    //   this.registerForm.reset({})
+    // })
 
     
   }

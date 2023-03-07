@@ -1,7 +1,9 @@
 <form class="container" [formGroup]="registerForm" (ngSubmit)="userData()">
     <h1>{{title}}</h1>
   <div *ngIf="alert"  class="alert alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
-    <strong>Succes !</strong> Your registered succesfully
+    <strong>Success !</strong>
+   <br>
+    <span>Congratulations, your account has been successfully created.</span>
     <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
       <strong aria-hidden="true">&times;</strong>
     </button>   
@@ -37,10 +39,6 @@
         <label for="emailLabel">Email</label>
         <input type="email" class="form-control" id="emailLabel" placeholder="example@gmail.com" formControlName="email" name="email">
         <strong class="errorMessage" *ngIf="email && email.invalid && email.touched">This email is not valid!</strong>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Remember me</label>
       </div>
       <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary" >Register</button>
   
