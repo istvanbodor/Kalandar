@@ -70,9 +70,7 @@ export class RegisterComponent implements OnInit {
     //   console.warn("User data",result)
     //   this.alert = true
     //   this.registerForm.reset({})
-    // })
-
-    
+    // }) 
   }
   closeAlert()
   {

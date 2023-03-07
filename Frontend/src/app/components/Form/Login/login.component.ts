@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit{
   }
 
   title: string ="Login";
+  alert: boolean = false;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required,Validators.minLength(4)]),
@@ -33,11 +34,13 @@ export class LoginComponent implements OnInit{
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  
   submitLogin(){
-
-    this.authService.login(this.loginForm.value)
-    this.router.navigate(['/mainpage']);
-
+    if(this.username!.value === 'admin'&& this.password!.value === '1234' && this.loginForm.valid){
+      this.authService.login(this.loginForm.value)
+      this.router.navigate(['/mainpage']);
+    }
+    this.alert = true;
 //bemeneti érték username, password //nem jó mert azt érzékeli hogy nem csak string értéket kaphat
 
     // if(this.loginForm.invalid){
@@ -66,5 +69,11 @@ export class LoginComponent implements OnInit{
     //   }
     // )}
   }
+  
+  closeAlert()
+  {
+     this.alert = false;
+  }
+
 }
 

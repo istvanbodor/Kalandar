@@ -19,7 +19,7 @@ export class UsersApiService{
         return this.http.post(this.url,data)
     }
     login(data : any): Observable<any>{
-    return this.http.post('login',data)
+    return this.http.post(this.url,data)
     }
     // login(username: string, password: string) {
     //     return this.http.post('login', { username, password });
