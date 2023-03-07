@@ -1,8 +1,10 @@
 package wv.kalandar.backend.user;
 
+import net.snowflake.client.jdbc.internal.apache.arrow.flatbuf.Int;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,5 +32,13 @@ public class UserService {
         user.setAdmin(false);
         userRepository.save(user);
 
+    }
+
+    public void deleteUser(Long userId) {
+        boolean userExists = userRepository.existsById(userId);
+        if (!userExists) {
+            throw new IllegalStateException();
+        }
+        userRepository.deleteById(userId);
     }
 }

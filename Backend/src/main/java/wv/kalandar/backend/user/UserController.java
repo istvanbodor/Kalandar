@@ -1,10 +1,12 @@
 package wv.kalandar.backend.user;
 
+import net.snowflake.client.jdbc.internal.apache.arrow.flatbuf.Int;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -27,6 +29,15 @@ public class UserController {
     public void registerNewUser(@RequestBody User user) {
         try {
             userService.addNewStudent(user);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(path = "{userId}")
+    public void deleteUser(@PathVariable("userId") Long userId ) {
+        try {
+            userService.deleteUser(userId);
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }

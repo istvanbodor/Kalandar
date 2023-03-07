@@ -10,7 +10,8 @@ public class Event {
 
     @Id
     @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name="event")
     private String event;
@@ -21,15 +22,15 @@ public class Event {
     private LocalDateTime endTime;
 
     @Column(name = "is_fullday")
-    private Boolean isFullDay;
+    private boolean isFullDay;
     @Column(name = "category")
     private String category;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int Long) {
         this.id = id;
     }
 
@@ -57,11 +58,11 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public Boolean getFullDay() {
+    public boolean getFullDay() {
         return isFullDay;
     }
 
-    public void setFullDay(Boolean fullDay) {
+    public void setFullDay(boolean fullDay) {
         isFullDay = fullDay;
     }
 
@@ -76,7 +77,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String event, LocalDateTime startTime, LocalDateTime endTime, Boolean isFullDay, String category) {
+    public Event(String event, LocalDateTime startTime, LocalDateTime endTime, boolean isFullDay, String category) {
         this.event = event;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -84,7 +85,7 @@ public class Event {
         this.category = category;
     }
 
-    public Event(int id, String event, LocalDateTime startTime, LocalDateTime endTime, Boolean isFullDay, String category) {
+    public Event(Long id, String event, LocalDateTime startTime, LocalDateTime endTime, boolean isFullDay, String category) {
         this.id = id;
         this.event = event;
         this.startTime = startTime;

@@ -1,9 +1,6 @@
 package wv.kalandar.backend.address;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -11,7 +8,8 @@ import jakarta.persistence.Table;
 public class Address {
     @Id
     @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "zip")
     private String zip;
@@ -28,11 +26,11 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -87,7 +85,7 @@ public class Address {
         this.country = country;
     }
 
-    public Address(int id, String zip, String city, String street, String houseNumber, String country) {
+    public Address(Long id, String zip, String city, String street, String houseNumber, String country) {
         this.id = id;
         this.zip = zip;
         this.city = city;
