@@ -1,4 +1,88 @@
 <app-layout></app-layout>
 <p>main-page works!</p>
 
-<div></div>
+<div class="row text-center">
+    <div class="cold-md-4">
+        <div class="btn-group">
+            <div class="btn btn-primary">
+                Previous
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Primary color</th>
+          <th>Secondary + text color</th>
+          <th>Starts at</th>
+          <th>Ends at</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr >
+          <td>
+            <input
+              type="text"
+              class="form-control"
+
+
+            />
+          </td>
+          <td>
+            <input
+              type="color"
+
+
+            />
+          </td>
+          <td>
+            <input
+              type="color"
+
+
+            />
+            <input
+              type="color"
+
+
+            />
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              mwlFlatpickr
+
+ 
+              dateFormat="Y-m-dTH:i"
+              altFormat="F j, Y H:i"
+              placeholder="Not set"
+            />
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              mwlFlatpickr
+
+
+              dateFormat="Y-m-dTH:i"
+              altFormat="F j, Y H:i"
+              placeholder="Not set"
+            />
+          </td>
+          <td>
+            <button class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
