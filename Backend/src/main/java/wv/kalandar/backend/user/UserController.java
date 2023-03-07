@@ -26,10 +26,30 @@ public class UserController {
     @PostMapping
     public void registerNewUser(@RequestBody User user) {
         try {
-            userService.addNewStudent(user);
+            userService.addNewUser(user);
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @DeleteMapping(path = "{userId}")
+    public void deleteUser(@PathVariable("userId") Long userId ) {
+        try {
+            userService.deleteUser(userId);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(path = "{userId}")
+    public void updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
+
+        try {
+            userService.updateUser(userId, user);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 
