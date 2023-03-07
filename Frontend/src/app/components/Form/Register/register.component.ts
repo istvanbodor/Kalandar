@@ -5,7 +5,7 @@ import { UsersApiService } from 'src/app/Service/users.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['../Form.css']
 })
 export class RegisterComponent implements OnInit {
 
