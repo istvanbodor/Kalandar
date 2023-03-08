@@ -1,13 +1,20 @@
 <app-layout></app-layout>
-<h2 style="text-align: right;">{{currentDate | date: 'hh:mm:ss'}}</h2>
+<h2>{{currentDate | date: 'hh:mm:ss'}}</h2>
 
 <div>
-  <button class="daysbtn btn btn-primary">Yesterday</button>
-  <button class="daysbtn btn btn-primary">Today</button>
-  <button class="daysbtn btn btn-primary">Tomorrow</button>
+  <button class="daysbtnLeft btn btn-primary">Yesterday</button>
+  <button class="daysbtnLeft btn btn-primary">Today</button>
+  <button class="daysbtnLeft btn btn-primary">Tomorrow</button>
+
+  <button class="daysbtnRight btn btn-primary">Month</button>
+  <button class="daysbtnRight btn btn-primary">Week</button>
+  <button class="daysbtnRight btn btn-primary">Day</button>
 </div>
 
-<h1 style="text-align: center;">{{currentDate | date}}</h1>
+<h1>{{currentDate | date}}</h1>
+
+
+
 
 <div class="table-responsive">
     <table class="table table-bordered">

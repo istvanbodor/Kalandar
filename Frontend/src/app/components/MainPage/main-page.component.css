@@ -1,7 +1,15 @@
-.daysbtn{
+.daysbtnLeft{
     margin-left: 5px;
 }
 
+.daysbtnRight{
+    float: right;
+    margin-right: 5px;
+}
 h1{
     text-align: center;
+}
+
+h2{
+    text-align: right;
 }
