@@ -6,12 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit{
+  
+  currentDate = new Date();
+  id = 0; 
 
   constructor() {}
 
   ngOnInit(): void {
-    
+    this.id = setInterval((result :number) => {
+      this.currentDate = new Date(); 
+    }, 1000);
   }
-
-  date = new Date();
 }

@@ -1,15 +1,13 @@
 <app-layout></app-layout>
-<p>main-page works!</p>
+<h2 style="text-align: right;">{{currentDate | date: 'hh:mm:ss'}}</h2>
 
-<div class="row text-center">
-    <div class="cold-md-4">
-        <div class="btn-group">
-            <div class="btn btn-primary">
-                Previous
-            </div>
-        </div>
-    </div>
+<div>
+  <button class="daysbtn btn btn-primary">Yesterday</button>
+  <button class="daysbtn btn btn-primary">Today</button>
+  <button class="daysbtn btn btn-primary">Tomorrow</button>
 </div>
+
+<h1 style="text-align: center;">{{currentDate | date}}</h1>
 
 <div class="table-responsive">
     <table class="table table-bordered">
@@ -30,36 +28,26 @@
             <input
               type="text"
               class="form-control"
-
-
             />
           </td>
           <td>
             <input
               type="color"
-
-
             />
           </td>
           <td>
             <input
               type="color"
-
-
             />
             <input
               type="color"
-
-
             />
           </td>
           <td>
             <input
               class="form-control"
               type="text"
-              mwlFlatpickr
-
- 
+              mwlFlatpickr 
               dateFormat="Y-m-dTH:i"
               altFormat="F j, Y H:i"
               placeholder="Not set"
@@ -70,8 +58,6 @@
               class="form-control"
               type="text"
               mwlFlatpickr
-
-
               dateFormat="Y-m-dTH:i"
               altFormat="F j, Y H:i"
               placeholder="Not set"
