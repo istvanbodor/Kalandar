@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -17,4 +18,6 @@ export class MainPageComponent implements OnInit{
       this.currentDate = new Date(); 
     }, 1000);
   }
+
+  
 }

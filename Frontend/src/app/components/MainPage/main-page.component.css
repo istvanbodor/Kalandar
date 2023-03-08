@@ -1,8 +1,8 @@
-.daysbtnLeft{
+.btngroupLeft{
     margin-left: 5px;
 }
 
-.daysbtnRight{
+.btngroupRight{
     float: right;
     margin-right: 5px;
 }
@@ -12,4 +12,8 @@ h1{
 
 h2{
     text-align: right;
+}
+
+.days{
+    height: 150px;
 }

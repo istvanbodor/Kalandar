@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
   userData(){
     console.warn(this.registerForm.value)
     this.alert = true
-      this.registerForm.reset({})
+    this.registerForm.reset({})
     // this.usersapiservice.registerUser(this.registerForm.value).subscribe((result) => {
     //   console.warn("User data",result)
     //   this.alert = true
