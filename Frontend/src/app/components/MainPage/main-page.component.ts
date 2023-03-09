@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours, } from 'date-fns';
+import { CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView, } from 'angular-calendar';
+import { EventColor } from 'calendar-utils';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+const colors: Record <string, EventColor> = {
+    
+}
 
 
 @Component({
@@ -8,10 +16,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit{
   
+  closeResult = '';
   currentDate = new Date();
   id = 0; 
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.id = setInterval((result :number) => {
@@ -19,5 +28,4 @@ export class MainPageComponent implements OnInit{
     }, 1000);
   }
 
-  
 }
