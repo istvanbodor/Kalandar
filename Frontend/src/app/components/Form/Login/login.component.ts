@@ -12,12 +12,14 @@ import { AuthService } from 'src/app/Service/auth.service';
 
 export class LoginComponent implements OnInit{
 
+  title: string ="Login";
+  alert: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
+
   ngOnInit(): void {
     
   }
-
-  title: string ="Login";
-  alert: boolean = false;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required,Validators.minLength(4)]),
@@ -32,11 +34,8 @@ export class LoginComponent implements OnInit{
     return this.loginForm.get('password')
   }
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  
   submitLogin(){
-    if(this.username!.value === 'admin'&& this.password!.value === '1234' && this.loginForm.valid){
+    if(this.username?.value === 'admin'&& this.password?.value === '1234' && this.loginForm.valid){
       this.authService.login(this.loginForm.value)
       this.router.navigate(['/mainpage']);
     }

@@ -12,4 +12,18 @@ export class CustomValidators {
         : null;
     };
   }
+  static IsBiggerDateValidator(start: string, end: string): ValidatorFn{
+    return(control: AbstractControl): ValidationErrors | null => {
+      const startCtrl = control.get(start);
+      const endCtrl = control.get(end);
+
+      if (startCtrl && endCtrl && startCtrl.value && endCtrl.value) {
+        const startDate = new Date(startCtrl.value);
+        const endDate = new Date(endCtrl.value);
+  
+        return startDate < endDate ? null : { badVal: true };
+      }      
+      return null;
+    };
+  }
 }

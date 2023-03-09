@@ -1,41 +1,40 @@
 <div>
   <ng-template #content let-modal >
     <div class="modal-header" >
-      <h4 class="modal-title" id="modal-basic-title">Event update</h4>
+      <h4 class="modal-title" id="eventModal">Create event</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form>
+      <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
         <div class="form-group mb-3">
-          <label for="usernameLabel">Username</label>
+          <label for="usernameLabel">Title</label>
           <input type="text" class="form-control" id="usernameLabel" placeholder="Title" formControlName="title">
-          <strong class="errorMessage">This title is not valid!</strong>
+          <strong class="errorMessage" *ngIf="title && title.invalid && title.touched && title.errors">This title is not valid!</strong>
         </div>
         <div class="mb-3">
           <label for="start_time">Start Time</label>
           <div class="input-group">
-            <input class="form-control"placeholder="yyyy-mm-dd"  ngbDatepicker #start_time="ngbDatepicker" formControlName="start_time"/>   
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="start_time.toggle()" type="button"></button>
-            <strong class="errorMessage">This date is not valid!</strong>
+            <input type="date" class="form-control"placeholder="yyyy-mm-dd"  ngbDatepicker #dp_start="ngbDatepicker" formControlName="start_time"/>   
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp_start.toggle()" type="button"></button>
+            <strong class="errorMessage" *ngIf="start_time && start_time.invalid && start_time.touched && start_time.errors">This date is not valid!</strong>
           </div>
         </div>
           <label for="end_time">End Time</label>
           <div class="input-group mb-3">
-            <input class="form-control"placeholder="yyyy-mm-dd" ngbDatepicker #end_time="ngbDatepicker" formControlName="end_time"/>   
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="end_time.toggle()" type="button"></button>
+            <input type="date" class="form-control"placeholder="yyyy-mm-dd" ngbDatepicker #dp_end="ngbDatepicker" formControlName="end_time"/>   
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp_end.toggle()" type="button"></button>
             <strong class="errorMessage">This date is not valid!</strong>
           </div>
           <div class="input-group mb-3">
             <label for="colorChoose">Event Color</label>
             <input type="color" style="margin-left: 5px;">
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-primary" (click)="modal.close('Save click')">Save</button>
+          </div>
       </form>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Save</button>
-    </div>
   </ng-template>
-
   <button class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
 
