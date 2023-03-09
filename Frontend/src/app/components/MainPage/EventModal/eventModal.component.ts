@@ -3,12 +3,12 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.html',
-  styleUrls: ['./modal.css']
+  selector: 'app-eventModal',
+  templateUrl: './EventModal.component.html',
+  styleUrls: ['./eventModal.component.css']
 })
 
-export class ModalComponent implements OnInit{
+export class EventModalComponent implements OnInit{
   
   closeResult = '';
   

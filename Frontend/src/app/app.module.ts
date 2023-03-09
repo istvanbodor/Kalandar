@@ -11,7 +11,7 @@ import { MainPageComponent } from './components/MainPage/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
 import { YesNoPipe } from './components/CustomPipe/CustomPipe';
-import { ModalComponent } from './components/MainPage/modalComp/modal';
+import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
 
 
 
@@ -23,7 +23,7 @@ import { ModalComponent } from './components/MainPage/modalComp/modal';
     RegisterComponent,
     MainPageComponent,
     UsersComponent,
-    ModalComponent,
+    EventModalComponent,
     YesNoPipe
   ],
   imports: [
