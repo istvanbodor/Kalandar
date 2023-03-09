@@ -17,3 +17,18 @@ h2{
 .days{
     height: 150px;
 }
+
+.container-fluid {   
+    background:rgba(255, 255, 255, 0.1);
+    padding:40px;
+    border-radius: 10px;
+
+}
+
+.box {
+   background-color: white;
+   opacity: 90%;
+   
+}
+
+
