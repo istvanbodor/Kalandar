@@ -21,7 +21,7 @@ export class CustomValidators {
         const startDate = new Date(startCtrl.value);
         const endDate = new Date(endCtrl.value);
   
-        return startDate < endDate ? null : { badVal: true };
+        return startDate > endDate ? null : { badVal: true };
       }      
       return null;
     };

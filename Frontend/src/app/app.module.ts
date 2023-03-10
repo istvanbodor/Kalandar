@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
 import { YesNoPipe } from './components/CustomPipe/CustomPipe';
 import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -34,7 +35,8 @@ import { EventModalComponent } from './components/MainPage/EventModal/eventModal
     NgbAlertModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

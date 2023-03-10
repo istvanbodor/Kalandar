@@ -14,23 +14,33 @@
         <div class="mb-3">
           <label for="start_time">Start Time</label>
           <div class="input-group">
-            <input type="date" class="form-control"placeholder="yyyy-mm-dd"  ngbDatepicker #dp_start="ngbDatepicker" formControlName="start_time"/>   
+            <input type="date" class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #dp_start="ngbDatepicker" formControlName="start_time"/>   
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp_start.toggle()" type="button"></button>
             <strong class="errorMessage" *ngIf="start_time && start_time.invalid && start_time.touched && start_time.errors">This date is not valid!</strong>
+            <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
           </div>
         </div>
           <label for="end_time">End Time</label>
           <div class="input-group mb-3">
-            <input type="date" class="form-control"placeholder="yyyy-mm-dd" ngbDatepicker #dp_end="ngbDatepicker" formControlName="end_time"/>   
+            <input type="date" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp_end="ngbDatepicker" formControlName="end_time"/>   
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp_end.toggle()" type="button"></button>
-            <strong class="errorMessage">This date is not valid!</strong>
+            <strong class="errorMessage" *ngIf="end_time && end_time.invalid && end_time.touched && end_time.errors">This date is not valid!</strong>
+          </div> 
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-primary" id="dropdown1" ngbDropdownToggle>Event types</button>
+          <div ngbDropdownMenu aria-labelledby="dropdown1">
+            <button ngbDropdownItem>Button (enabled)</button>
+            <button ngbDropdownItem>Button (enabled)</button>
+            <button ngbDropdownItem>Button (enabled)</button>
+            <button ngbDropdownItem>Button (enabled)</button>
           </div>
+        </div>
           <div class="input-group mb-3">
             <label for="colorChoose">Event Color</label>
             <input type="color" style="margin-left: 5px;">
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-primary" (click)="modal.close('Save click')">Save</button>
+            <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary" (click)="modal.close('Save click')">Save</button>
           </div>
       </form>
     </div>
