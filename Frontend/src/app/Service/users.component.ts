@@ -8,8 +8,7 @@ import { UsersApiService } from './users.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
-
-  title = 'apidata';
+  
   users: any;
   users$: any;
   constructor(private usersapiservice:UsersApiService) {}
