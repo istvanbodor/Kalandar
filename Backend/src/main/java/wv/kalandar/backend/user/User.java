@@ -2,8 +2,10 @@ package wv.kalandar.backend.user;
 
 import jakarta.persistence.*;
 import net.snowflake.client.jdbc.internal.google.cloud.Identity;
+import wv.kalandar.backend.event.Event;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -26,6 +28,8 @@ public class User {
     private String email;
     @Column(name = "is_admin")
     private boolean isAdmin;
+
+
 
 
     public User(String lastName, String firstName, String username, String password, String email, boolean isAdmin) {

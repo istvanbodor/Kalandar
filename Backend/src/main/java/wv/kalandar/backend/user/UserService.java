@@ -2,9 +2,9 @@ package wv.kalandar.backend.user;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.beans.Transient;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,7 +30,10 @@ public class UserService {
         if (userByEmail.isPresent()) {
             throw new IllegalStateException("Email taken");
         }
+
         user.setAdmin(false);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
     }
@@ -48,6 +51,11 @@ public class UserService {
 
         User repoUser = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException());
+
+
+        if (userRepository.findUsersByEmail(user.getEmail()).isPresent() && (!Objects.equals(user.getEmail(), repoUser.getEmail())) ) {
+            throw new IllegalStateException("Email already in use!");
+        }
 
         if (user.getEmail() != null && user.getEmail().length() > 0
                 && !Objects.equals(user.getEmail(), repoUser.getEmail())) {
@@ -76,11 +84,12 @@ public class UserService {
 
         Boolean admin = user.isAdmin();
 
-        if (admin!=null && user.isAdmin()!= repoUser.isAdmin()){
+        if (admin != null && user.isAdmin() != repoUser.isAdmin()) {
 
             repoUser.setAdmin(user.isAdmin());
 
         }
+
 
         userRepository.save(repoUser);
     }

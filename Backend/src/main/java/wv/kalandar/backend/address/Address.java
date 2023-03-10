@@ -1,6 +1,10 @@
 package wv.kalandar.backend.address;
 
 import jakarta.persistence.*;
+import wv.kalandar.backend.event.Event;
+import wv.kalandar.backend.user.User;
+
+import java.util.List;
 
 
 @Entity
@@ -25,6 +29,8 @@ public class Address {
 
     @Column(name = "country")
     private String country;
+
+
 
     public Long getId() {
         return id;
