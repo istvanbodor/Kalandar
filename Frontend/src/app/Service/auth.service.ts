@@ -14,9 +14,9 @@ export class AuthService {
         this._isLoggedIn$.next(!!token);
     }
 
-   login(data:any): Observable<any>{
+   login(username: string, password: string): Observable<any>{
     return this.usersApiService
-      .login(data).pipe(
+      .login(username, password).pipe(
         tap((response: any) => {
            console.log('token: ',response.token)
            this._isLoggedIn$.next(true)

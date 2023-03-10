@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -18,10 +18,7 @@ export class UsersApiService{
     registerUser(data : any){
         return this.http.post(this.url,data)
     }
-    login(data : any): Observable<any>{
-    return this.http.post(this.url,data)
+    login(username: string,password: string){
+        return this.http.post<any>(this.url, { username, password });
     }
-    // login(username: string, password: string) {
-    //     return this.http.post('login', { username, password });
-    // }
 }

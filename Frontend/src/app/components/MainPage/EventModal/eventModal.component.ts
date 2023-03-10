@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
 
 
@@ -15,6 +15,7 @@ export class EventModalComponent implements OnInit{
   closeResult = '';
   alert: boolean = false;
 
+
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
@@ -23,8 +24,8 @@ export class EventModalComponent implements OnInit{
 
   eventForm = new FormGroup({
     title: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
-    start_time: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]),
-    end_time: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)])
+    start_time: new FormControl('', [Validators.required]),
+    end_time: new FormControl('', [Validators.required])
   },
   [CustomValidators.IsBiggerDateValidator('start_time', 'end_time')]
   )
@@ -43,7 +44,7 @@ export class EventModalComponent implements OnInit{
 
   get dateValueError(){
     return this.eventForm.getError('badVal') &&
-    this.eventForm.get('end_date')?.touched;
+    this.eventForm.get('end_time')?.touched;
   }
 
  submitEvent(){
@@ -54,22 +55,22 @@ export class EventModalComponent implements OnInit{
 
   open(content : any){
     this.modalService.open(content, {ariaLabelledBy: 'eventModal'}).result.then(
-    // (result) => {
-    //   this.closeResult = `closed with: ${result}`;
-    // },
-    // (reason) => {
-    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}` 
-    // }
+    (result) => {
+      console.log(`closed with: ${result}`);
+    },
+    (reason) => {
+      console.log(`Dismissed ${this.getDismissReason(reason)}`);  
+    }
     );
   }
 
-  // private getDismissReason(reason: any): string {
-  //   if(reason === ModalDismissReasons.ESC) {
-  //       return 'by pressing ESC';
-  //   }else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return'by clicking on a backdrop';
-  //   }else {
-  //     return `with: ${reason}`
-  //   }
-  // }
+  private getDismissReason(reason: any): string {
+    if(reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+    }else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return'by clicking on a backdrop';
+    }else {
+      return `with: ${reason}`
+    }
+  }
 }
