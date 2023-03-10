@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/events")
+@CrossOrigin
 public class EventController {
 
     public final EventService eventService;
@@ -23,6 +24,11 @@ public class EventController {
     @GetMapping
     public List<Event> getEvents() {
         return eventService.getEvents();
+    }
+
+    @GetMapping(path = "/user/{userId}")
+    public List<Event> getEventOfUser(@PathVariable("userId") Long userId) {
+        return eventService.getEventOfUser(userId);
     }
 
     @PostMapping

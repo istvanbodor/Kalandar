@@ -28,3 +28,9 @@ databaseChangeLog:
               - column:
                   name: category
                   type: text
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: address_id
+                  type: bigint

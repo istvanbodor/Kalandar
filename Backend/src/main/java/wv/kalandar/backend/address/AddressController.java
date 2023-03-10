@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/address")
+@CrossOrigin
 public class AddressController {
 
     public final AddressService addressService;
