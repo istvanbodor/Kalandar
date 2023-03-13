@@ -1,6 +1,11 @@
 package wv.kalandar.backend.user;
 
 import jakarta.persistence.*;
+import net.snowflake.client.jdbc.internal.google.cloud.Identity;
+import wv.kalandar.backend.event.Event;
+
+import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -9,7 +14,8 @@ public class User {
 
     @Id
     @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "first_name")
@@ -24,6 +30,8 @@ public class User {
     private boolean isAdmin;
 
 
+
+
     public User(String lastName, String firstName, String username, String password, String email, boolean isAdmin) {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -36,7 +44,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String lastName, String firstName, String username, String password, String email, boolean isAdmin) {
+    public User(Long id, String lastName, String firstName, String username, String password, String email, boolean isAdmin) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -46,11 +54,11 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
