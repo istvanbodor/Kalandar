@@ -47,23 +47,23 @@ export class LoginComponent implements OnInit{
   }
     this.alert = true;
 
-  // if(this.loginForm.invalid){
-  //   alert = true;
-  // } else {
-  //   const username = this.loginForm.get('username')?.value;
-  //   const password = this.loginForm.get('password')?.value;
+  if(this.loginForm.invalid){
+    this.alert = true;
+  } else {
+    const username = this.loginForm.get('username')?.value;
+    const password = this.loginForm.get('password')?.value;
     
-  //   if (username && password) {
-  //     this.authService
-  //       .login(username, password)
-  //       .subscribe((result) => {
-  //         console.log(result)
-  //         this.router.navigate(['/mainpage']);
-  //       });
-  //   } else {
-  //     alert = true;
-  //   }
-  // }
+    if (username && password) {
+      this.usersApiService
+        .login(username, password)
+        .subscribe((result) => {
+          console.log(result)
+          this.router.navigate(['/mainpage']);
+        });
+    } else {
+      this.alert = true;
+    }
+  }
 }
   
   closeAlert()

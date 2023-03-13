@@ -13,6 +13,7 @@ import { UsersComponent } from './Service/users.component';
 import { YesNoPipe } from './components/CustomPipe/CustomPipe';
 import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarComponent } from './components/MainPage/CalendarForm/calendar.component';
 
 
 
@@ -25,6 +26,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
     MainPageComponent,
     UsersComponent,
     EventModalComponent,
+    CalendarComponent,
     YesNoPipe
   ],
   imports: [

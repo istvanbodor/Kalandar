@@ -1,18 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours, } from 'date-fns';
-import { CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView, } from 'angular-calendar';
-import { EventColor } from 'calendar-utils';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-const colors: Record <string, EventColor> = {
-    
-}
-
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit{
   
