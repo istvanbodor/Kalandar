@@ -1,4 +1,4 @@
-  @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .calendar-week-header{
       font-size: 17;
       font-weight: bold;
@@ -49,16 +49,21 @@ h2{
   text-align: right;
 }
 
-.days{
-  height: 100px;
+.cell{
+  height: 30px;
   margin-left: auto;
   margin-right: auto;
 }
+
 
 .container-fluid {   
   background:rgba(255, 255, 255, 0.1);
   padding:40px;
   border-radius: 10px;
+}
+
+.monthTextColor{
+  color: gray;
 }
 
 
@@ -76,14 +81,17 @@ h2{
 }
 
 $min-width: 320px;
-$number-of-days: 7;
-$column-width: percentage(1/$number-of-days);
+$number-of-columns: 8;
+$column-width: percentage(1/$number-of-columns);
 
 .container {
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 8%;
   padding-bottom: 1em;
+}
+
+.firstCell{
+  max-width: 5%;
 }
 
 .row:before {
@@ -117,7 +125,6 @@ $column-width: percentage(1/$number-of-days);
   
   .grid-cell {
     display: inline-block;
-  
     min-height: 1px;
     padding: 0;
     position: relative;
