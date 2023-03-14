@@ -8,9 +8,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping(path = "/api/address")
 @CrossOrigin
+@RequestMapping(path = "/api/address")
 public class AddressController {
 
     public final AddressService addressService;

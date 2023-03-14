@@ -1,6 +1,10 @@
 package wv.kalandar.backend.user;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.snowflake.client.jdbc.internal.google.cloud.Identity;
 import wv.kalandar.backend.event.Event;
 
@@ -9,7 +13,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "USERS")
-
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -33,19 +40,6 @@ public class User {
 
 
     public User(String lastName, String firstName, String username, String password, String email, boolean isAdmin) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.isAdmin = isAdmin;
-    }
-
-    public User() {
-    }
-
-    public User(Long id, String lastName, String firstName, String username, String password, String email, boolean isAdmin) {
-        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
