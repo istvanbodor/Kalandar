@@ -13,8 +13,9 @@ import { UsersComponent } from './Service/users.component';
 import { YesNoPipe } from './components/CustomPipe/CustomPipe';
 import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarComponent } from './components/MainPage/CalendarMonth/calendar.component';
+import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
+import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendarDay.component';
 
 
 
@@ -27,8 +28,9 @@ import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calend
     MainPageComponent,
     UsersComponent,
     EventModalComponent,
-    CalendarComponent,
+    CalendarMonthComponent,
     CalendarWeekComponent,
+    CalendarDayComponent,
     YesNoPipe
   ],
   imports: [
