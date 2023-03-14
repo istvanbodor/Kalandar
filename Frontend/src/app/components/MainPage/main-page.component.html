@@ -2,99 +2,20 @@
 <h2>{{currentDate | date: 'hh:mm:ss'}}</h2>
 
 <div>
-  <button class="btngroupLeft btn btn-primary">Yesterday</button>
-  <button class="btngroupLeft btn btn-primary">Today</button>
-  <button class="btngroupLeft btn btn-primary">Tomorrow</button>
+  <button class="btngroupLeft btn btn-primary col">Yesterday</button>
+  <button class="btngroupLeft btn btn-primary col">Today</button>
+  <button class="btngroupLeft btn btn-primary col">Tomorrow</button>
 
-  <button class="btngroupRight btn btn-primary">Month</button>
-  <button class="btngroupRight btn btn-primary">Week</button>
-  <button class="btngroupRight btn btn-primary">Day</button>
+  <button class="btngroupRight btn btn-primary col">Month</button>
+  <button class="btngroupRight btn btn-primary col">Week</button>
+  <button class="btngroupRight btn btn-primary col">Day</button>
 </div>
 
 <h1>{{currentDate | date}}</h1>
+<app-eventModal></app-eventModal>
 
-<div class="container-fluid">
-  <div class="row" style="text-align: center; font-weight: bold;">
-    <div class="col-xs col-sm col-md col-lg border">Monday</div>
-    <div class="col-xs col-sm col-md col-lg border">Tuesday</div>
-    <div class="col-xs col-sm col-md col-lg border">Wednesday</div>
-    <div class="col-xs col-sm col-md col-lg border">Thursday</div>
-    <div class="col-xs col-sm col-md col-lg border">Friday</div>
-    <div class="col-xs col-sm col-md col-lg border">Saturday</div>
-    <div class="col-xs col-sm col-md col-lg border">Sunday</div>
-  </div>
-  <div class="row days">
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-    <div class="col-xs col-sm col-md col-lg border"></div>
-  </div>
- 
-</div>
 
-<div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Primary color</th>
-          <th>Secondary + text color</th>
-          <th>Starts at</th>
-          <th>Ends at</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr >
-          <td>
-            <input
-              type="text"
-              class="form-control"
-            />
-          </td>
-          <td>
-            <input
-              type="color"
-            />
-          </td>
-          <td>
-            <input
-              type="color"
-            />
-            <input
-              type="color"
-            />
-          </td>
-          <td>
-            <input
-              class="form-control"
-              type="text"
-              mwlFlatpickr 
-              dateFormat="Y-m-dTH:i"
-              altFormat="F j, Y H:i"
-              placeholder="Not set"
-            />
-          </td>
-          <td>
-            <input
-              class="form-control"
-              type="text"
-              mwlFlatpickr
-              dateFormat="Y-m-dTH:i"
-              altFormat="F j, Y H:i"
-              placeholder="Not set"
-            />
-          </td>
-          <td>
-            <button class="btn btn-danger">
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<app-calendar-month></app-calendar-month> 
+<!-- <app-calendar-week></app-calendar-week>
+<app-calendar-day></app-calendar-day> -->
+

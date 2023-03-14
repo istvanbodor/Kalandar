@@ -11,6 +11,12 @@ import { MainPageComponent } from './components/MainPage/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
 import { YesNoPipe } from './components/CustomPipe/CustomPipe';
+import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
+import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
+import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendarDay.component';
+
 
 
 @NgModule({
@@ -21,6 +27,10 @@ import { YesNoPipe } from './components/CustomPipe/CustomPipe';
     RegisterComponent,
     MainPageComponent,
     UsersComponent,
+    EventModalComponent,
+    CalendarMonthComponent,
+    CalendarWeekComponent,
+    CalendarDayComponent,
     YesNoPipe
   ],
   imports: [
@@ -31,7 +41,8 @@ import { YesNoPipe } from './components/CustomPipe/CustomPipe';
     NgbAlertModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
