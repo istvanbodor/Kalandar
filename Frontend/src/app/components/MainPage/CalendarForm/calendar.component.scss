@@ -1,3 +1,38 @@
+  @media screen and (max-width: 1024px) {
+    .calendar-week-header{
+      font-size: 17;
+      font-weight: bold;
+    }
+    
+    }
+    
+    @media screen and (max-width: 950px) {
+      .calendar-week-header{
+        font-size: 15px;
+        font-weight: bold;
+      }
+    
+    }
+    
+    
+    @media screen and (max-width: 650px) {
+      .calendar-week-header{
+        font-size: 12px;
+        font-weight: bold;
+      }
+    
+    
+    }
+    
+    @media screen and (max-width: 480px) {
+      .calendar-week-header{
+        font-size: 8px;
+        font-weight: bold;
+      }
+    
+    }
+  
+
 .btngroupLeft{
   margin-left: 5px;
 }
