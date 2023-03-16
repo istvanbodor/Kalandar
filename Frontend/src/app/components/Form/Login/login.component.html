@@ -1,7 +1,6 @@
-
 <form class="container" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <h1>{{title}}</h1>
-  <img class="img-fluid" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image" id="kalandarImage">
+  <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
   <div *ngIf="alert"  class="alert alert alert-danger alert-dismissible fade show" role="alert" style="text-align: center;">
     <strong>Invaid username or password</strong>
     <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
@@ -20,7 +19,7 @@
     </div>
     <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
 
-    <span style="float: right;">Dont have an account yet?<a routerLink="/register" > Register</a></span>
+    <span class="formTexts">Dont have an account yet?<a routerLink="/register"> Register</a></span>
   </form>
 
 
