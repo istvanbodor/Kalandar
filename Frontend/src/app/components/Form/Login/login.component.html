@@ -1,5 +1,6 @@
-<img class="img-fluid" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image" id="kalandarImage">
-
+<div id="kalandar">
+  <img class="img-fluid" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image" id="kalandarImage">
+</div>
 <form class="container" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <h1>{{title}}</h1>
   <div *ngIf="alert"  class="alert alert alert-danger alert-dismissible fade show" role="alert" style="text-align: center;">
@@ -9,9 +10,9 @@
     </button>   
     </div>
     <div class="form-group mb-3">
-      <label for="usernameLabel">Username</label>
-      <input type="text" class="form-control" id="usernameLabel" placeholder="Username" formControlName="username">
-      <strong class="errorMessage" *ngIf="username && username.invalid && username.touched && username.errors">This Username is not valid!</strong>
+      <label for="EmailLabel">Email</label>
+      <input type="email" class="form-control" id="EmailLabel" placeholder="Username" formControlName="email">
+      <strong class="errorMessage" *ngIf="email && email.invalid && email.touched && email.errors">This Username is not valid!</strong>
     </div>
     <div class="form-group mb-3">
       <label for="passwordLabel" >Password</label>

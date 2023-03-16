@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit{
   }
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required,Validators.minLength(4)]),
+    email: new FormControl('', [Validators.required,Validators.minLength(4),Validators.email]),
     password: new FormControl('',[Validators.required, Validators.minLength(4)])
   })
 
-  get username(){
-    return this.loginForm.get('username')
+  get email(){
+    return this.loginForm.get('email')
   }
 
   get password(){
@@ -36,34 +36,27 @@ export class LoginComponent implements OnInit{
   }
 
   submitLogin(){
-    if(this.username?.value === 'admin'&& this.password?.value === '1234' && this.loginForm.valid){
-      const username = this.loginForm.get('username')?.value;
-      const password = this.loginForm.get('password')?.value;
-    
-    if (username && password) {
-      this.authService.login(username, password)
-      this.router.navigate(['/mainpage']);
-    }
-  }
-    this.alert = true;
+
+  console.warn(this.loginForm.value)
 
   if(this.loginForm.invalid){
     this.alert = true;
   } else {
-    const username = this.loginForm.get('username')?.value;
+    const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
     
-    if (username && password) {
+    if (email && password) {
       this.usersApiService
-        .login(username, password)
+        .login(email, password)
         .subscribe((result) => {
           console.log(result)
           this.router.navigate(['/mainpage']);
         });
-    } else {
+    } else{
       this.alert = true;
     }
-  }
+  }   
+  
 }
   
   closeAlert()
