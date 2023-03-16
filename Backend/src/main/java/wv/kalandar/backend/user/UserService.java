@@ -31,7 +31,7 @@ public class UserService {
             throw new IllegalStateException("Email taken");
         }
 
-        user.setAdmin(false);
+        user.setRole(Role.USER);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -82,13 +82,6 @@ public class UserService {
             repoUser.setPassword(user.getPassword());
         }
 
-        Boolean admin = user.isAdmin();
-
-        if (admin != null && user.isAdmin() != repoUser.isAdmin()) {
-
-            repoUser.setAdmin(user.isAdmin());
-
-        }
 
 
         userRepository.save(repoUser);

@@ -29,5 +29,5 @@ databaseChangeLog:
                   name: email
                   type: text
               - column:
-                  name: is_admin
-                  type: boolean
+                  name: role
+                  type: text
