@@ -10,7 +10,7 @@ export class AuthService {
     isLoggedIn$ = this._isLoggedIn$.asObservable();
 
     constructor(private usersApiService: UsersApiService) {
-        const token = localStorage.getItem('token_auth')
+        const token = localStorage.getItem('auth_token')
         this._isLoggedIn$.next(!!token);
     }
 
@@ -18,9 +18,9 @@ export class AuthService {
     return this.usersApiService
       .login(email, password).pipe(
         tap((response: any) => {
-           console.log('token: ',response.token)
+           console.log('auth_token: ',response.token)
            this._isLoggedIn$.next(true)
-           localStorage.setItem('token_auth', response.token)
+           localStorage.setItem('auth_token', response.token)
         })
       )
       

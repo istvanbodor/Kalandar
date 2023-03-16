@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required,Validators.minLength(4),Validators.email]),
+    email: new FormControl('', [Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required, Validators.minLength(4)])
   })
 
@@ -46,17 +46,15 @@ export class LoginComponent implements OnInit{
     const password = this.loginForm.get('password')?.value;
     
     if (email && password) {
-      this.usersApiService
+      this.authService
         .login(email, password)
         .subscribe((result) => {
           console.log(result)
           this.router.navigate(['/mainpage']);
         });
-    } else{
-      this.alert = true;
     }
-  }   
-  
+  }
+     
 }
   
   closeAlert()
