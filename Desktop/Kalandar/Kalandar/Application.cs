@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Kalandar
 {
-    public partial class Form1 : Form
+    public partial class Application : Form
     {
-        public Form1()
+        public Application()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
