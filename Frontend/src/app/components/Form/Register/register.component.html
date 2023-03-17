@@ -1,5 +1,6 @@
 <form class="container" [formGroup]="registerForm" (ngSubmit)="userData()" style="margin-top: 40px;">
     <h1>{{title}}</h1>
+    <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
   <div *ngIf="alert"  class="alert alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
     <strong>Success !</strong>
    <br>
@@ -10,13 +11,13 @@
   </div>
     <div class="form-group mb-3">
       <label for="firsNameLabel">First name</label>
-      <input type="text" class="form-control" id="firstNameLabel" placeholder="First Name" formControlName="first_name">
-      <strong class="errorMessage" *ngIf="first_name && first_name.invalid && first_name.touched">This First name is not valid!</strong>
+      <input type="text" class="form-control" id="firstNameLabel" placeholder="First Name" formControlName="firstName">
+      <strong class="errorMessage" *ngIf="firstName && firstName.invalid && firstName.touched">This First name is not valid!</strong>
     </div>
     <div class="form-group mb-3">
       <label for="lastNameLabel">Last name</label>
-      <input type="text" class="form-control" id="lastNameLabel" placeholder="Last Name" formControlName="last_name">
-      <strong class="errorMessage" *ngIf="last_name && last_name.invalid && last_name.touched">This Last name is not valid!</strong>
+      <input type="text" class="form-control" id="lastNameLabel" placeholder="Last Name" formControlName="lastName">
+      <strong class="errorMessage" *ngIf="lastName && lastName.invalid && lastName.touched">This Last name is not valid!</strong>
     </div>
       <div class="form-group mb-3">
         <label for="usernameLabel">Username</label>
@@ -39,10 +40,12 @@
         <label for="emailLabel">Email</label>
         <input type="email" class="form-control" id="emailLabel" placeholder="example@gmail.com" formControlName="email" name="email">
         <strong class="errorMessage" *ngIf="email && email.invalid && email.touched">This email is not valid!</strong>
+
+        
       </div>
       <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary" >Register</button>
   
-      <span style="float: right;">Already have an account?<a routerLink="/login" > Login</a></span>
+      <span class="formTexts">Already have an account?<a routerLink="/login"> Login</a></span>
     </form>
 
 

@@ -10,17 +10,17 @@ export class AuthService {
     isLoggedIn$ = this._isLoggedIn$.asObservable();
 
     constructor(private usersApiService: UsersApiService) {
-        const token = localStorage.getItem('token_auth')
+        const token = localStorage.getItem('auth_token')
         this._isLoggedIn$.next(!!token);
     }
 
-   login(username: string, password: string): Observable<any>{
+   login(email: string, password: string): Observable<any>{
     return this.usersApiService
-      .login(username, password).pipe(
+      .login(email, password).pipe(
         tap((response: any) => {
-           console.log('token: ',response.token)
+           console.log('auth_token: ',response.token)
            this._isLoggedIn$.next(true)
-           localStorage.setItem('token_auth', response.token)
+           localStorage.setItem('auth_token', response.token)
         })
       )
       

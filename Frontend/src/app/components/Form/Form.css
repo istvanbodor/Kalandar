@@ -1,8 +1,52 @@
+@media screen and (max-width: 694px) {
+    .formTexts{
+      font-size: 12px;
+    }
+    
+    }
+    
+    @media screen and (max-width: 565px) {
+        .formTexts{
+        font-size: 10px;
+      }
+    
+    }
+    
+    
+    @media screen and (max-width: 499px) {
+        .formTexts{
+        font-size: 8px;
+      }
+    
+    
+    }
+    
+    @media screen and (max-width: 431px) {
+      .formTexts{
+        font-size: 5px;
+      }
+    
+    }
+
+    @media screen and (max-width: 333px) {
+        .formTexts{
+          font-size: 3px;
+        }
+      
+      }
+
+
+  
+    .formTexts{
+        float: right;
+    }
+
 .container{
     background-color: white;
     border-radius: 10px;
     padding: 10px;
     width: 50%;
+    margin-top: 10%;
     margin-bottom: 5px;
     
 }
@@ -14,7 +58,7 @@ a{
 
 h1{
     text-align: center;
-    background-color: rgb(198, 194, 194);
+    background-color: rgba(57, 51, 51, 0.1);
     border-radius: 10px;
     margin: 5px;
     padding-bottom: 10px;
@@ -29,13 +73,21 @@ label{
     color: red;
 }
 
-#kalandarImage{
+.kalandarImage{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 15%;
-    padding-top: 10%;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+
+#kalandarCntainer{
+    background:rgba(57, 51, 51, 0.1);
+    margin-top:40px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 10px;
 }
 
 

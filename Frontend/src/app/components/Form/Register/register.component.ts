@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   title = "Register";
   alert: boolean = false;
 
+
   constructor(private usersapiservice:UsersApiService) {}
 
   ngOnInit(): void {
@@ -19,22 +20,23 @@ export class RegisterComponent implements OnInit {
   }
 
   registerForm = new FormGroup({
-    first_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
-    last_name: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
+    firstName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
+    lastName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
     username: new FormControl('', [Validators.required,Validators.minLength(4)]),
     password: new FormControl('', [Validators.required,Validators.minLength(4)]),
     confirmPassword: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    email: new FormControl('', [Validators.required,Validators.email])
+    email: new FormControl('', [Validators.required,Validators.email]),
+
   },
   [CustomValidators.MatchValidator('password', 'confirmPassword')]
   )
 
-  get first_name() {
-    return this.registerForm.get('first_name')
+  get firstName() {
+    return this.registerForm.get('firstName')
   }
 
-  get last_name() {
-    return this.registerForm.get('last_name')
+  get lastName() {
+    return this.registerForm.get('lastName')
   }
 
   get username() {
@@ -60,15 +62,14 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email')
   }
 
+
   userData(){
     console.warn(this.registerForm.value)
-    this.alert = true
-    this.registerForm.reset({})
-    // this.usersapiservice.registerUser(this.registerForm.value).subscribe((result) => {
-    //   console.warn("User data",result)
-    //   this.alert = true
-    //   this.registerForm.reset({})
-    // }) 
+    this.usersapiservice.registerUser(this.registerForm.value).subscribe((result) => {
+      console.warn("User data",result)
+      this.alert = true
+      this.registerForm.reset({})
+    }) 
   }
   closeAlert()
   {

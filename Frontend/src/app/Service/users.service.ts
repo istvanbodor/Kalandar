@@ -16,10 +16,10 @@ export class UsersApiService{
         return this.http.get(this.url+`api/user`);
     }
     registerUser(data : any){
-        return this.http.post(this.url+`register`,data)
+        return this.http.post(this.url+`api/auth/register`,data)
     }
-    login(username: string,password: string){
-        return this.http.post<any>(this.url+`login`, { username, password });
+    login(email: string,password: string){
+        return this.http.post<any>(this.url+`api/auth/authenticate`, { email, password });
     }
     delete(id:number) {
         return this.http.delete(this.url +`users/${id}`);
