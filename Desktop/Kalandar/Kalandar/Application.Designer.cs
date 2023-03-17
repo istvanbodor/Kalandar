@@ -50,12 +50,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlCalendar = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pctrNextMonth = new System.Windows.Forms.PictureBox();
+            this.pctrPrevMonth = new System.Windows.Forms.PictureBox();
             this.pnlLeftMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrNextMonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrPrevMonth)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLeftMenu
@@ -312,16 +314,27 @@
             this.pnlCalendar.Size = new System.Drawing.Size(886, 673);
             this.pnlCalendar.TabIndex = 3;
             // 
-            // pictureBox2
+            // pctrNextMonth
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1144, 801);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(54, 45);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pctrNextMonth.Image = ((System.Drawing.Image)(resources.GetObject("pctrNextMonth.Image")));
+            this.pctrNextMonth.Location = new System.Drawing.Point(1144, 801);
+            this.pctrNextMonth.Name = "pctrNextMonth";
+            this.pctrNextMonth.Size = new System.Drawing.Size(54, 45);
+            this.pctrNextMonth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctrNextMonth.TabIndex = 4;
+            this.pctrNextMonth.TabStop = false;
+            this.pctrNextMonth.Click += new System.EventHandler(this.pctrNextMonth_Click);
+            // 
+            // pctrPrevMonth
+            // 
+            this.pctrPrevMonth.Image = ((System.Drawing.Image)(resources.GetObject("pctrPrevMonth.Image")));
+            this.pctrPrevMonth.Location = new System.Drawing.Point(1089, 801);
+            this.pctrPrevMonth.Name = "pctrPrevMonth";
+            this.pctrPrevMonth.Size = new System.Drawing.Size(54, 45);
+            this.pctrPrevMonth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctrPrevMonth.TabIndex = 5;
+            this.pctrPrevMonth.TabStop = false;
+            this.pctrPrevMonth.Click += new System.EventHandler(this.pctrPrevMonth_Click);
             // 
             // Application
             // 
@@ -329,7 +342,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(1209, 849);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pctrPrevMonth);
+            this.Controls.Add(this.pctrNextMonth);
             this.Controls.Add(this.pnlCalendar);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
@@ -345,7 +359,8 @@
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrNextMonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrPrevMonth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,6 +388,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel pnlCalendar;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pctrNextMonth;
+        private System.Windows.Forms.PictureBox pctrPrevMonth;
     }
 }
