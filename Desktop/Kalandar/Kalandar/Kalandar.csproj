@@ -52,6 +52,18 @@
     <Compile Include="Application.Designer.cs">
       <DependentUpon>Application.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalendarDateBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarDateBlank.Designer.cs">
+      <DependentUpon>CalendarDateBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarDayNumberUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarDayNumberUserControl.Designer.cs">
+      <DependentUpon>CalendarDayNumberUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +80,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Application.resx">
       <DependentUpon>Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarDateBlank.resx">
+      <DependentUpon>CalendarDateBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarDayNumberUserControl.resx">
+      <DependentUpon>CalendarDayNumberUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
