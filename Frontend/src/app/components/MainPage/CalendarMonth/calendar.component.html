@@ -1,3 +1,19 @@
+<h2>{{today | date: 'hh:mm:ss'}}</h2>
+
+<div>
+  <button class="btngroupLeft btn btn-primary col" (click)="dayBefore()">Yesterday</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="dayNow()">Today</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="nextDay()">Tomorrow</button>
+
+  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/month">Month</button>
+  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/week">Week</button>
+  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/day">Day</button>
+</div>
+
+<h1>{{today | date}}</h1>
+
+<app-eventModal></app-eventModal>
+
 <div class="container-fluid"> 
 	<div class="container">
 		<div class="grid-calendar">
@@ -10,8 +26,8 @@
 				<div class="col-xs-1 grid-cell">Saturday</div>
 				<div class="col-xs-1 grid-cell">Sunday</div>
 			</div>
-				<div class="row days calendar-week" *ngFor="let date of dates$">
-				<div class="col-xs-1 grid-cell">{{date[0]}}</div>
+				<div class="row days calendar-week" >
+				<div class="col-xs-1 grid-cell"><span style="float: right;"></span></div>
 				<div class="col-xs-1 grid-cell">dasdsa</div>
 				<div class="col-xs-1 grid-cell"></div>
 				<div class="col-xs-1 grid-cell"></div>

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit{
         .subscribe({
           next:(result) => {
             console.log(result)
-            this.router.navigate(['/mainpage']);
+            this.router.navigate(['/calendar/month']);
           },
           error:(err : HttpErrorResponse) => {
             this.alert = true;
