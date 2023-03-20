@@ -34,12 +34,12 @@
             this.lblLoginText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLoginEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLoginPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -102,7 +102,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtLoginEmail);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 183);
             this.panel1.Name = "panel1";
@@ -117,18 +117,19 @@
             this.panel2.Size = new System.Drawing.Size(429, 1);
             this.panel2.TabIndex = 4;
             // 
-            // textBox1
+            // txtLoginEmail
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox1.Location = new System.Drawing.Point(88, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 24);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "USERNAME";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLoginEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtLoginEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLoginEmail.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoginEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLoginEmail.Location = new System.Drawing.Point(88, 60);
+            this.txtLoginEmail.Name = "txtLoginEmail";
+            this.txtLoginEmail.Size = new System.Drawing.Size(429, 24);
+            this.txtLoginEmail.TabIndex = 3;
+            this.txtLoginEmail.Text = "EMAIL";
+            this.txtLoginEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLoginEmail.Click += new System.EventHandler(this.txtLoginUsername_Click);
             // 
             // label1
             // 
@@ -136,11 +137,11 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(236, 29);
+            this.label1.Location = new System.Drawing.Point(262, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 28);
+            this.label1.Size = new System.Drawing.Size(80, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "USERNAME";
+            this.label1.Text = "EMAIL";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -156,7 +157,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txtLoginPassword);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(3, 284);
             this.panel3.Name = "panel3";
@@ -171,18 +172,19 @@
             this.panel4.Size = new System.Drawing.Size(429, 1);
             this.panel4.TabIndex = 4;
             // 
-            // textBox2
+            // txtLoginPassword
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox2.Location = new System.Drawing.Point(82, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(429, 24);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "PASSWORD";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLoginPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtLoginPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLoginPassword.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoginPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLoginPassword.Location = new System.Drawing.Point(82, 60);
+            this.txtLoginPassword.Name = "txtLoginPassword";
+            this.txtLoginPassword.Size = new System.Drawing.Size(429, 24);
+            this.txtLoginPassword.TabIndex = 3;
+            this.txtLoginPassword.Text = "PASSWORD";
+            this.txtLoginPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLoginPassword.Click += new System.EventHandler(this.txtLoginPassword_Click);
             // 
             // label2
             // 
@@ -322,12 +324,12 @@
         private System.Windows.Forms.Label lblLoginText;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLoginEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLoginPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
