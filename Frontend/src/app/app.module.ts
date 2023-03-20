@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/Form/Login/login.component';
 import { NgbModule,NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { LayoutComponent } from './components/Layout/layout.component';
+import { LayoutComponent } from './components/Link_layout/layout.component';
 import { RegisterComponent } from './components/Form/Register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './components/MainPage/main-page.component';

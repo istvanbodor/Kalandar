@@ -10,9 +10,9 @@
 				<div class="col-xs-1 grid-cell">Saturday</div>
 				<div class="col-xs-1 grid-cell">Sunday</div>
 			</div>
-				<div class="row days calendar-week">
-				<div class="col-xs-1 grid-cell"></div>
-				<div class="col-xs-1 grid-cell"></div>
+				<div class="row days calendar-week" *ngFor="let date of dates$">
+				<div class="col-xs-1 grid-cell">{{date[0]}}</div>
+				<div class="col-xs-1 grid-cell">dasdsa</div>
 				<div class="col-xs-1 grid-cell"></div>
 				<div class="col-xs-1 grid-cell"></div>
 				<div class="col-xs-1 grid-cell"></div>
