@@ -16,8 +16,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
 import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendarDay.component';
-
-
+import { EventsComponent } from './components/Events/events.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,8 @@ import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendar
     CalendarMonthComponent,
     CalendarWeekComponent,
     CalendarDayComponent,
-    YesNoPipe
+    YesNoPipe,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
