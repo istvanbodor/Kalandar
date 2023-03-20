@@ -64,6 +64,13 @@
     <Compile Include="CalendarDayNumberUserControl.Designer.cs">
       <DependentUpon>CalendarDayNumberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateClass.cs" />
+    <Compile Include="EventsBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EventsBlank.Designer.cs">
+      <DependentUpon>EventsBlank.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +85,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserEventsForm.Designer.cs">
+      <DependentUpon>UserEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersUserControl.Designer.cs">
+      <DependentUpon>UsersUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Application.resx">
       <DependentUpon>Application.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CalendarDayNumberUserControl.resx">
       <DependentUpon>CalendarDayNumberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventsBlank.resx">
+      <DependentUpon>EventsBlank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -102,6 +124,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserEventsForm.resx">
+      <DependentUpon>UserEventsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersUserControl.resx">
+      <DependentUpon>UsersUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

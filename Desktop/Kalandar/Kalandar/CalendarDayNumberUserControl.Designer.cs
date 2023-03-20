@@ -54,6 +54,7 @@
             this.btnDay.TabIndex = 1;
             this.btnDay.Text = "1";
             this.btnDay.UseVisualStyleBackColor = false;
+            this.btnDay.Click += new System.EventHandler(this.btnDay_Click);
             // 
             // CalendarDayNumberUserControl
             // 

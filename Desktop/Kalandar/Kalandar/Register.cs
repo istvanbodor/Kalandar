@@ -28,5 +28,25 @@ namespace Kalandar
             Form loginForm = new Login();
             loginForm.ShowDialog();
         }
+
+        private void txtRegisterEmail_Click(object sender, EventArgs e)
+        {
+            txtRegisterEmail.SelectAll();
+        }
+
+        private void txtRegisterUsername_Click(object sender, EventArgs e)
+        {
+            txtRegisterUsername.SelectAll();
+        }
+
+        private void txtRegisterPassword_Click(object sender, EventArgs e)
+        {
+            txtRegisterPassword.SelectAll();
+        }
+
+        private void txtRegisterPasswordRepeat_Click(object sender, EventArgs e)
+        {
+            txtRegisterPasswordRepeat.SelectAll();
+        }
     }
 }

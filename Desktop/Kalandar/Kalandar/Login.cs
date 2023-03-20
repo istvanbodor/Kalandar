@@ -35,5 +35,15 @@ namespace Kalandar
             Form applicationForm = new Application();
             applicationForm.ShowDialog();
         }
+
+        private void txtLoginUsername_Click(object sender, EventArgs e)
+        {
+            txtLoginEmail.SelectAll();
+        }
+
+        private void txtLoginPassword_Click(object sender, EventArgs e)
+        {
+            txtLoginPassword.SelectAll();
+        }
     }
 }

@@ -32,5 +32,11 @@ namespace Kalandar
             }
             
         }
+
+        private void btnDay_Click(object sender, EventArgs e)
+        {
+            Form eventForm = new UserEventsForm();
+            eventForm.Show();
+        }
     }
 }
