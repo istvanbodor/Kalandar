@@ -18,9 +18,12 @@ export class CalendarMonthComponent implements OnInit{
   lastDay: Date = new Date(new Date().setDate(31));
   startDate: Object = new Date(this.currentYear, this.currentMonth, 1);
   endDate: Object =  new Date(this.currentYear, this.currentMonth, 31);
-  dates$ = [];
+
+  items = []
   id= 0;
-    constructor() {}
+    constructor() {
+        
+    }
 
     ngOnInit(): void {
       this.id = setInterval((result :number) => {
@@ -42,11 +45,12 @@ export class CalendarMonthComponent implements OnInit{
 
   Days() {
     let days: any = []
-    let day = 1;
+    let day = 0;
     for (let index = 1; index <= 31; index++) {
       day++
-      days.append(day)
+      days.push(day)
     }
     return days
   }
+
 }
