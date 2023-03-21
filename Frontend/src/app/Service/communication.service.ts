@@ -12,4 +12,6 @@ export class CommunicationService {
   public toggleBackground(toggle: boolean) {
       this.toggleBackgroundEventEmitter.emit(toggle);
   }
+
+  
 }
