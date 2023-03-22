@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import wv.kalandar.backend.user.Role;
 
 @Configuration
 @EnableWebSecurity
@@ -30,8 +31,9 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/address/**").authenticated()
+                .requestMatchers("/api/events/**").authenticated()
                 .requestMatchers("/api/user/**").authenticated()
-                .requestMatchers("api/event/**").authenticated()
+                .requestMatchers("/api/admin/**").hasAuthority(Role.ADMIN.name())
                 .anyRequest()
                 .permitAll()
                 .and()

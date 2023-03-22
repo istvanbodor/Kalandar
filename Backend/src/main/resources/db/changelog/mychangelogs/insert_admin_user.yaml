@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      author: Istvan
+      id: 1.0
+      changes:
+        - insert:
+            tableName: users
+            columns:
+            - column:
+                name: id
+                value: "1"
+            - column:
+                name: last_name
+                value: "admin"
+            - column:
+                name: first_name
+                value: "admin"
+            - column:
+                name: username
+                value: "admin"
+            - column:
+                name: password
+                value: "$2a$10$zhFYoOz4pynvuN2LSWZoOumlUZNodnEOVR146MpK8wVpdgVexmmBm"
+            - column:
+                name: email
+                value: "admin"
+            - column:
+                name: role
+                value: "ADMIN"

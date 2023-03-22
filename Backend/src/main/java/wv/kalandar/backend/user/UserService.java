@@ -1,40 +1,54 @@
 package wv.kalandar.backend.user;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class UserService {
 
+    public static final Set<Role> EDITABLE_ROLES = EnumSet.of(Role.USER, Role.ADMIN);
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
-    public List<User> getUsers() {
-        return userRepository.findAll();
-    }
 
-    public void addNewUser(User user) {
+    public List<UserResponseDto> getUsers() {
 
-        Optional<User> userByEmail = userRepository.findUsersByEmail(user.getEmail());
-        if (userByEmail.isPresent()) {
-            throw new IllegalStateException("Email taken");
+        List<User> list = userRepository.findAll();
+        List<UserResponseDto> responseDtoList = new ArrayList<UserResponseDto>();
+
+        for (User item : list) {
+            UserResponseDto user = UserResponseDto.builder()
+                    .id(item.getId())
+                    .email(item.getEmail())
+                    .lastName(item.getLastName())
+                    .firstName(item.getFirstName())
+                    .role(item.getRole())
+                    .username(item.getUsername())
+                    .build();
+            responseDtoList.add(user);
         }
 
-        user.setRole(Role.USER);
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        if (log.isTraceEnabled()) {
+            log.trace("getUsers: {}", list.stream().map(User::getUsername).collect(Collectors.joining(", ")));
+        }
+        return responseDtoList;
 
     }
 
@@ -44,16 +58,26 @@ public class UserService {
             throw new IllegalStateException();
         }
         userRepository.deleteById(userId);
+        log.info("User deleted: {}", userId);
+        if (log.isDebugEnabled()) {
+
+        }
     }
 
     @Transactional
-    public void updateUser(Long userId, User user) {
+    public void updateUserRole(Long userId) {
 
         User repoUser = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException());
 
+        if (repoUser.getRole()==Role.ADMIN) {
+            repoUser.setRole(Role.USER);
+        }
+        else {
+            repoUser.setRole(Role.ADMIN);
+        }
 
-        if (userRepository.findUsersByEmail(user.getEmail()).isPresent() && (!Objects.equals(user.getEmail(), repoUser.getEmail())) ) {
+       /* if (userRepository.findUsersByEmail(user.getEmail()).isPresent() && (!Objects.equals(user.getEmail(), repoUser.getEmail()))) {
             throw new IllegalStateException("Email already in use!");
         }
 
@@ -79,11 +103,36 @@ public class UserService {
 
         if (user.getPassword() != null && user.getPassword().length() > 0
                 && !Objects.equals(user.getPassword(), repoUser.getPassword())) {
-            repoUser.setPassword(user.getPassword());
-        }
+            repoUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
+        }*/
 
+    }
 
-        userRepository.save(repoUser);
+    public UserResponseDto getUserProfile() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = userRepository.findUsersByEmail(currentPrincipalName).get();
+        return UserResponseDto.builder()
+                .username(user.getUsername())
+                .role(user.getRole())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .id(user.getId())
+                .build();
+
+    }
+
+    @Transactional
+    public void updateUserPassword(PasswordDto password) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = userRepository.findUsersByEmail(currentPrincipalName).get();
+
+        user.setPassword(passwordEncoder.encode(password.getPassword()));
     }
 }

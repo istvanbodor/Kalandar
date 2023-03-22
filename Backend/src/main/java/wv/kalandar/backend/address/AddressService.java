@@ -1,3 +1,4 @@
+/*
 package wv.kalandar.backend.address;
 
 import jakarta.transaction.Transactional;
@@ -84,3 +85,4 @@ public class AddressService {
         addressRepository.save(repoAddress);
     }
 }
+*/

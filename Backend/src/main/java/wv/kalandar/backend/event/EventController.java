@@ -3,6 +3,7 @@ package wv.kalandar.backend.event;
 import net.snowflake.client.jdbc.internal.apache.arrow.flatbuf.Int;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import wv.kalandar.backend.user.User;
@@ -22,12 +23,12 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> getEvents() {
+    public List<EventResponseDto> getEvents() {
         return eventService.getEvents();
     }
 
     @GetMapping(path = "/user/{userId}")
-    public List<Event> getEventOfUser(@PathVariable("userId") Long userId) {
+    public List<EventResponseDto> getEventOfUser(@PathVariable("userId") Long userId) {
         return eventService.getEventOfUser(userId);
     }
 
