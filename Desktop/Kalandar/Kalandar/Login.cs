@@ -32,8 +32,18 @@ namespace Kalandar
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form applicationForm = new Application();
+            Form applicationForm = new Kalandar();
             applicationForm.ShowDialog();
+        }
+
+        private void txtLoginUsername_Click(object sender, EventArgs e)
+        {
+            txtLoginEmail.SelectAll();
+        }
+
+        private void txtLoginPassword_Click(object sender, EventArgs e)
+        {
+            txtLoginPassword.SelectAll();
         }
     }
 }

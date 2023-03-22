@@ -34,27 +34,27 @@
             this.lblLoginText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRegisterUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRegisterPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.btnLoginNow = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtRegisterPasswordRepeat = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtRegisterEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,7 +112,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtRegisterUsername);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 268);
             this.panel1.Name = "panel1";
@@ -127,18 +127,19 @@
             this.panel2.Size = new System.Drawing.Size(429, 1);
             this.panel2.TabIndex = 4;
             // 
-            // textBox1
+            // txtRegisterUsername
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox1.Location = new System.Drawing.Point(88, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 24);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "USERNAME";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtRegisterUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRegisterUsername.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegisterUsername.ForeColor = System.Drawing.Color.DimGray;
+            this.txtRegisterUsername.Location = new System.Drawing.Point(88, 60);
+            this.txtRegisterUsername.Name = "txtRegisterUsername";
+            this.txtRegisterUsername.Size = new System.Drawing.Size(429, 24);
+            this.txtRegisterUsername.TabIndex = 3;
+            this.txtRegisterUsername.Text = "USERNAME";
+            this.txtRegisterUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterUsername.Click += new System.EventHandler(this.txtRegisterUsername_Click);
             // 
             // label1
             // 
@@ -166,7 +167,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txtRegisterPassword);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(3, 369);
             this.panel3.Name = "panel3";
@@ -181,18 +182,19 @@
             this.panel4.Size = new System.Drawing.Size(429, 1);
             this.panel4.TabIndex = 4;
             // 
-            // textBox2
+            // txtRegisterPassword
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox2.Location = new System.Drawing.Point(82, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(429, 24);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "PASSWORD";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtRegisterPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRegisterPassword.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegisterPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtRegisterPassword.Location = new System.Drawing.Point(82, 60);
+            this.txtRegisterPassword.Name = "txtRegisterPassword";
+            this.txtRegisterPassword.Size = new System.Drawing.Size(429, 24);
+            this.txtRegisterPassword.TabIndex = 3;
+            this.txtRegisterPassword.Text = "PASSWORD";
+            this.txtRegisterPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterPassword.Click += new System.EventHandler(this.txtRegisterPassword_Click);
             // 
             // label2
             // 
@@ -200,7 +202,7 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(229, 29);
+            this.label2.Location = new System.Drawing.Point(227, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 28);
             this.label2.TabIndex = 2;
@@ -227,21 +229,22 @@
             this.label3.Text = "Incorrect username/password!";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(88, 631);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(429, 50);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "REGISTER";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.btnRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(88, 631);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(429, 50);
+            this.btnRegister.TabIndex = 7;
+            this.btnRegister.Text = "REGISTER";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // panel6
             // 
@@ -283,7 +286,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Controls.Add(this.textBox3);
+            this.panel7.Controls.Add(this.txtRegisterPasswordRepeat);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Location = new System.Drawing.Point(3, 470);
             this.panel7.Name = "panel7";
@@ -298,18 +301,19 @@
             this.panel8.Size = new System.Drawing.Size(429, 1);
             this.panel8.TabIndex = 4;
             // 
-            // textBox3
+            // txtRegisterPasswordRepeat
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox3.Location = new System.Drawing.Point(82, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(429, 24);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "REPEAT PASSWORD";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterPasswordRepeat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtRegisterPasswordRepeat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRegisterPasswordRepeat.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegisterPasswordRepeat.ForeColor = System.Drawing.Color.DimGray;
+            this.txtRegisterPasswordRepeat.Location = new System.Drawing.Point(82, 60);
+            this.txtRegisterPasswordRepeat.Name = "txtRegisterPasswordRepeat";
+            this.txtRegisterPasswordRepeat.Size = new System.Drawing.Size(429, 24);
+            this.txtRegisterPasswordRepeat.TabIndex = 3;
+            this.txtRegisterPasswordRepeat.Text = "REPEAT PASSWORD";
+            this.txtRegisterPasswordRepeat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterPasswordRepeat.Click += new System.EventHandler(this.txtRegisterPasswordRepeat_Click);
             // 
             // label5
             // 
@@ -317,7 +321,7 @@
             this.label5.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(186, 29);
+            this.label5.Location = new System.Drawing.Point(183, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(228, 28);
             this.label5.TabIndex = 2;
@@ -330,7 +334,7 @@
             this.pnlRegister.Controls.Add(this.panel7);
             this.pnlRegister.Controls.Add(this.btnLoginNow);
             this.pnlRegister.Controls.Add(this.panel6);
-            this.pnlRegister.Controls.Add(this.button1);
+            this.pnlRegister.Controls.Add(this.btnRegister);
             this.pnlRegister.Controls.Add(this.panel5);
             this.pnlRegister.Controls.Add(this.panel3);
             this.pnlRegister.Controls.Add(this.pictureBox1);
@@ -345,7 +349,7 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Controls.Add(this.textBox4);
+            this.panel9.Controls.Add(this.txtRegisterEmail);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Location = new System.Drawing.Point(0, 171);
             this.panel9.Name = "panel9";
@@ -360,18 +364,19 @@
             this.panel10.Size = new System.Drawing.Size(429, 1);
             this.panel10.TabIndex = 4;
             // 
-            // textBox4
+            // txtRegisterEmail
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox4.Location = new System.Drawing.Point(88, 60);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(429, 24);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "EMAIL";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtRegisterEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRegisterEmail.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegisterEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.txtRegisterEmail.Location = new System.Drawing.Point(88, 60);
+            this.txtRegisterEmail.Name = "txtRegisterEmail";
+            this.txtRegisterEmail.Size = new System.Drawing.Size(429, 24);
+            this.txtRegisterEmail.TabIndex = 3;
+            this.txtRegisterEmail.Text = "EMAIL";
+            this.txtRegisterEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterEmail.Click += new System.EventHandler(this.txtRegisterEmail_Click);
             // 
             // label6
             // 
@@ -426,27 +431,27 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRegisterUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRegisterPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLoginNow;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtRegisterPasswordRepeat;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlRegister;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtRegisterEmail;
         private System.Windows.Forms.Label label6;
     }
 }

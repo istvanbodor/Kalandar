@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Kalandar
 {
-    public partial class Application : Form
+    public partial class CalendarDateBlank : UserControl
     {
-        public Application()
+        public CalendarDateBlank()
         {
             InitializeComponent();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.Exit();
         }
     }
 }

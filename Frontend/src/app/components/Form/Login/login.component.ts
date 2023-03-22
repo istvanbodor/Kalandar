@@ -1,4 +1,5 @@
-import { Component, OnInit   } from '@angular/core'; 
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit   } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit{
   constructor(private authService: AuthService, private router: Router, private usersApiService: UsersApiService) {}
 
   ngOnInit(): void {
-    
+
   }
 
   loginForm = new FormGroup({
@@ -44,23 +45,30 @@ export class LoginComponent implements OnInit{
   } else {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
-    
+
     if (email && password) {
       this.authService
         .login(email, password)
-        .subscribe((result) => {
-          console.log(result)
-          this.router.navigate(['/mainpage']);
+        .subscribe({
+          next:(result) => {
+            console.log(result)
+            this.router.navigate(['/calendar/month']);
+          },
+          error:(err : HttpErrorResponse) => {
+            this.alert = true;
+            console.log('http login error -> ', err);
+          }
         });
     }
   }
-     
 }
-  
+
   closeAlert()
   {
      this.alert = false;
   }
+
+
 
 }
 

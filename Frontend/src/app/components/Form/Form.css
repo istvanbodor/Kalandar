@@ -23,14 +23,14 @@
     
     @media screen and (max-width: 431px) {
       .formTexts{
-        font-size: 5px;
+        font-size: 7px;
       }
     
     }
 
     @media screen and (max-width: 333px) {
         .formTexts{
-          font-size: 3px;
+          font-size: 4px;
         }
       
       }

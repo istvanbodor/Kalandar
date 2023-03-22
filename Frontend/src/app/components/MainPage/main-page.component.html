@@ -1,21 +1,21 @@
-
-<h2>{{currentDate | date: 'hh:mm:ss'}}</h2>
+<h2>{{today | date: 'hh:mm:ss'}}</h2>
 
 <div>
-  <button class="btngroupLeft btn btn-primary col">Yesterday</button>
-  <button class="btngroupLeft btn btn-primary col">Today</button>
-  <button class="btngroupLeft btn btn-primary col">Tomorrow</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="dayBefore()">Yesterday</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="dayNow()">Today</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="nextDay()">Tomorrow</button>
 
   <button class="btngroupRight btn btn-primary col">Month</button>
   <button class="btngroupRight btn btn-primary col">Week</button>
   <button class="btngroupRight btn btn-primary col">Day</button>
 </div>
 
-<h1>{{currentDate | date}}</h1>
+<h1>{{today | date}}</h1>
+
 <app-eventModal></app-eventModal>
 
 
-<app-calendar-month></app-calendar-month> 
+<!-- <app-calendar-month></app-calendar-month>  -->
 <!-- <app-calendar-week></app-calendar-week>
 <app-calendar-day></app-calendar-day> -->
 
