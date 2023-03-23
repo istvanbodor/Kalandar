@@ -1,5 +1,7 @@
+<div [ngClass]="isNightMode ? 'night-mode' : 'day-mode'">  
 <app-layout></app-layout>
 <!-- *ngIf="authService.isLoggedIn$ | async" -->
 <router-outlet></router-outlet>
+</div>
 
 

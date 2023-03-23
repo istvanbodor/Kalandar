@@ -17,6 +17,8 @@ import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/cale
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
 import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendarDay.component';
 import { EventsComponent } from './components/Events/events.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { EventsComponent } from './components/Events/events.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    MatSlideToggleModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
