@@ -10,6 +10,8 @@ import { getDay } from 'date-fns';
 export class CalendarMonthComponent implements OnInit{
 
 
+  
+
   today: Date = new Date();
   currentYear: number = this.today.getFullYear();
   currentMonth: number = this.today.getMonth(); 
@@ -19,10 +21,13 @@ export class CalendarMonthComponent implements OnInit{
   startDate: Object = new Date(this.currentYear, this.currentMonth, 1);
   endDate: Object =  new Date(this.currentYear, this.currentMonth, 31);
 
-  items = []
+
   id= 0;
-    constructor() {
-        
+
+
+
+  constructor() {
+     
     }
 
     ngOnInit(): void {
@@ -30,6 +35,8 @@ export class CalendarMonthComponent implements OnInit{
         this.today = new Date(); 
       }, 1000);
     }
+
+
 
     nextDay() {
       return this.today.setDate(this.today.getDate() + 1)
@@ -42,15 +49,32 @@ export class CalendarMonthComponent implements OnInit{
     dayNow(){
       return this.today
     }
+    
+   
+    days(){
+      const Days = []
+      
+      const numDays = new Date(this.currentYear,this.currentMonth + 1, 0).getDate();
+      for(let day = 1; day <= numDays; day++) {
+        const date = new Date(this.currentYear, this.currentMonth, day);
+        const dayOfMonth = date.getDate();
+        Days.push([dayOfMonth])
+      }
 
-  Days() {
-    let days: any = []
-    let day = 0;
-    for (let index = 1; index <= 31; index++) {
-      day++
-      days.push(day)
+      return Days
+
+    //   const weeks = [];
+    //   let week = [];
+    //   for (let i = 0; i < Days.length; i++) {
+    //     week.push(Days[i]);
+    //     if (i % 7 === 6) {
+    //       weeks.push(week);
+    //       week = [];
+    //     }
+    //   }
+    //   if (week.length > 0) {
+    //     weeks.push(week);
+    //   }
+    //   return weeks
     }
-    return days
-  }
-
 }
