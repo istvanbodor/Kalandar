@@ -154,7 +154,7 @@
             this.btnEvents.TabIndex = 6;
             this.btnEvents.Text = "EVENTS";
             this.btnEvents.UseVisualStyleBackColor = false;
-            this.btnEvents.Click += new System.EventHandler(this.btnEsemenyek_Click);
+            this.btnEvents.Click += new System.EventHandler(this.btnEvents_Click);
             // 
             // panel2
             // 
