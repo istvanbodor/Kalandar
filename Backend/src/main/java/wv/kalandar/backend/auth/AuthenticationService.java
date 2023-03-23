@@ -23,7 +23,13 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public void register(RegisterRequest request) {
+
+        if (repository.findUsersByEmail(request.getEmail()).isPresent())
+        {
+            throw new IllegalStateException();
+        }
+
         User user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -33,8 +39,7 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
         repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {

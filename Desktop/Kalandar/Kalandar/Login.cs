@@ -32,7 +32,7 @@ namespace Kalandar
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form applicationForm = new Application();
+            Form applicationForm = new Kalandar();
             applicationForm.ShowDialog();
         }
 

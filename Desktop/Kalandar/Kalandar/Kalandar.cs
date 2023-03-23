@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
@@ -12,19 +13,28 @@ using System.Windows.Forms;
 
 namespace Kalandar
 {
-    public partial class Application : Form
+    public partial class Kalandar : Form
     {
-        public DateTime currentTime { get; set; }
-        public int year = 10;
-        public int month { get; set; }
-        public int day { get; set; }
-        public Application()
+        private DateClass selectedDate = new DateClass();
+
+        public int GetYear
+        {
+            get { return Convert.ToInt32(selectedDate.Year); }
+        }
+        public int GetMonth
+        {
+            get { return Convert.ToInt32(selectedDate.Month); }
+        }
+        public int GetDay
+        {
+            get { return Convert.ToInt32(selectedDate.Day); }
+        }
+        
+
+
+        public Kalandar()
         {
             InitializeComponent();
-            currentTime = DateTime.Now;
-            year = currentTime.Year;
-            month = currentTime.Month;
-            day = currentTime.Day;
             generateCalendar();
             editDateText();
         }
@@ -37,9 +47,9 @@ namespace Kalandar
         private void generateCalendar()
         {
 
-            DateTime firstDayOfMonth = new DateTime(year, month, 1);
+            DateTime firstDayOfMonth = new DateTime(selectedDate.Year, selectedDate.Month, 1);
 
-            int days = DateTime.DaysInMonth(year, month);
+            int days = DateTime.DaysInMonth(selectedDate.Year, selectedDate.Month);
 
             int dayOfTheWeek = Convert.ToInt32(firstDayOfMonth.DayOfWeek.ToString("d")) - 1;
 
@@ -58,9 +68,11 @@ namespace Kalandar
 
             for (int i = 1; i <= days; i++)
             {
-                CalendarDayNumberUserControl ucDayNumber = new CalendarDayNumberUserControl();
-                if(i == day && year == currentTime.Year && month == currentTime.Month)
+                CalendarDayNumberUserControl ucDayNumber = new CalendarDayNumberUserControl(new DateTime(GetYear, GetMonth, i));
+                
+                if(i == GetDay && GetMonth == selectedDate.CurrentMonth && GetYear == selectedDate.CurrentYear)
                 {
+                    
                     ucDayNumber.days(i, true);
                     pnlCalendar.Controls.Add(ucDayNumber);
                 }
@@ -70,12 +82,16 @@ namespace Kalandar
                     pnlCalendar.Controls.Add(ucDayNumber);
                 }
             }
+            Trace.WriteLine(GetDay);
+            Trace.WriteLine(GetMonth);
+            Trace.WriteLine(selectedDate.CurrentMonth + " asd");
         }
+
 
         private void editDateText()
         {
-            DateTime date = new DateTime(year, month, 1);
-            lblTopBar.Text = String.Format("{0}. {1}", year, date.ToString("MMMM"));
+            DateTime date = new DateTime(selectedDate.Year, selectedDate.Month, 1);
+            lblTopBar.Text = String.Format("{0}", date.ToString("MMMM, yyyy"));
         }
 
         private void generateEvents()
@@ -101,12 +117,12 @@ namespace Kalandar
         private void pctrNextMonth_Click(object sender, EventArgs e)
         {
             pnlCalendar.Controls.Clear();
-            month++;
+            selectedDate = new DateClass(GetYear, GetMonth + 1, GetDay);
 
-            if(month==13)
+            if (GetMonth == 13)
             {
-                month = 1;
-                year++;
+                selectedDate.Month = 1;
+                selectedDate.Year++;
             }
 
             editDateText();
@@ -116,12 +132,12 @@ namespace Kalandar
         private void pctrPrevMonth_Click(object sender, EventArgs e)
         {
             pnlCalendar.Controls.Clear();
-            month--;
+            selectedDate = new DateClass(GetYear, GetMonth - 1, GetDay);
 
-            if (month == 0)
+            if (GetMonth == 0)
             {
-                month = 12;
-                year--;
+                selectedDate.Month = 12;
+                selectedDate.Year--;
             }
 
             editDateText();
@@ -139,6 +155,7 @@ namespace Kalandar
             pnlWeekdays.Hide();
             generateEvents();
             lblTopBar.Text = "Események";
+            pnlHeader.Hide();
             
 
         }
@@ -154,19 +171,28 @@ namespace Kalandar
             generateCalendar();
             pnlWeekdays.Show();
             editDateText();
-            
+            pnlHeader.Show();
+
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            pnlWeekdays.Hide();
+            pnlHeader.Show();
             btnCalendar.BackColor = Color.FromArgb(60, 60, 60);
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
             btnUsers.BackColor = Color.FromArgb(181, 130, 64);
             pnlCalendar.Controls.Clear();
             pctrNextMonth.Hide();
             pctrPrevMonth.Hide();
-            pnlWeekdays.Hide();
             generateUsers();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
         }
     }
 }

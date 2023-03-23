@@ -62,9 +62,9 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(168, 67);
+            this.label1.Location = new System.Drawing.Point(174, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(653, 83);
+            this.label1.Size = new System.Drawing.Size(647, 83);
             this.label1.TabIndex = 2;
             this.label1.Text = resources.GetString("label1.Text");
             // 

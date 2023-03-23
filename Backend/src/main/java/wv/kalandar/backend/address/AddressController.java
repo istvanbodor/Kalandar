@@ -1,3 +1,4 @@
+/*
 package wv.kalandar.backend.address;
 
 import net.snowflake.client.jdbc.internal.apache.arrow.flatbuf.Int;
@@ -50,3 +51,4 @@ public class AddressController {
     }
 
 }
+*/

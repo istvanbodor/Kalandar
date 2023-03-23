@@ -12,31 +12,26 @@ namespace Kalandar
 {
     public partial class UserEventsForm : Form
     {
-        DateTime currentTime;
-        int year;
-        int month;
-        int day;
-
+        private DateClass selectedDate = new DateClass();
         public UserEventsForm()
         {
             InitializeComponent();
-            
-            currentTime = DateTime.Now;
-            year = currentTime.Year;
-            month = currentTime.Month;
-            day = currentTime.Day;
-            editDateText();
-
         }
-
-        private void editDateText()
+        public string DateText
         {
-            DateTime date = new DateTime(year, month, day);
-            lblDate.Text = String.Format("{0}. {1}.", year, date.ToString("yyyy/MMMM/dd", new System.Globalization.CultureInfo("hu-HU")));
+            get
+            {
+                return this.lblDate.Text;
+            }
+            set
+            {
+                this.lblDate.Text = value;
+            }
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        
     }
 }
