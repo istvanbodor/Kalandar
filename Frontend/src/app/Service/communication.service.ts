@@ -13,5 +13,7 @@ export class CommunicationService {
       this.toggleBackgroundEventEmitter.emit(toggle);
   }
 
+
+
   
 }
