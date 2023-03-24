@@ -1,6 +1,7 @@
 package wv.kalandar.backend.event;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 import wv.kalandar.backend.address.Address;
 import wv.kalandar.backend.user.User;
 

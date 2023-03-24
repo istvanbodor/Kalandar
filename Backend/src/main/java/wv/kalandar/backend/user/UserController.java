@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/user")
+@RequestMapping(path = "/api/")
 @CrossOrigin
 public class UserController {
 
@@ -19,21 +19,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public List<User> getUsers() {
+    @GetMapping(path = "/admin/users")
+    public List<UserResponseDto> getUsers() {
             return userService.getUsers();
     }
 
-    @PostMapping
-    public void registerNewUser(@RequestBody User user) {
-        try {
-            userService.addNewUser(user);
-        } catch (IllegalStateException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-    }
 
-    @DeleteMapping(path = "{userId}")
+    @DeleteMapping(path = "/admin/user/{userId}")
     public void deleteUser(@PathVariable("userId") Long userId ) {
         try {
             userService.deleteUser(userId);
@@ -42,16 +34,31 @@ public class UserController {
         }
     }
 
-    @PutMapping(path = "{userId}")
-    public void updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
+    @PutMapping(path = "/admin/role/user/{userId}")
+    public void updateUser(@PathVariable("userId") Long userId) {
 
         try {
-            userService.updateUser(userId, user);
+            userService.updateUserRole(userId);
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
     }
 
+    @GetMapping(path = "/user/profile")
+    public UserResponseDto getUserProfile() {
 
+       return userService.getUserProfile();
+    }
+
+    @PutMapping(path = "/user/password")
+    public void updateUser(@RequestBody() PasswordDto password) {
+
+        try {
+            userService.updateUserPassword(password);
+        } catch (IllegalStateException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+    }
 }
