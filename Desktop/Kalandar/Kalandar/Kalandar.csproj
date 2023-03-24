@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="Kalandar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +90,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TokenClass.cs" />
     <Compile Include="UserEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>

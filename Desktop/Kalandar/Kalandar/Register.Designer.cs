@@ -388,6 +388,7 @@
             this.txtRegisterFirstName.TabIndex = 3;
             this.txtRegisterFirstName.Text = "FIRST NAME";
             this.txtRegisterFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterFirstName.Click += new System.EventHandler(this.txtRegisterFirstName_Click);
             // 
             // label8
             // 
@@ -432,6 +433,7 @@
             this.txtRegisterLastName.TabIndex = 3;
             this.txtRegisterLastName.Text = "LAST NAME";
             this.txtRegisterLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegisterLastName.Click += new System.EventHandler(this.txtRegisterLastName_Click);
             // 
             // label7
             // 

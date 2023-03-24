@@ -34,7 +34,15 @@ namespace Kalandar
             Login loginForm = new Login();
             loginForm.ShowDialog();
         }
+        private void txtRegisterFirstName_Click(object sender, EventArgs e)
+        {
+            txtRegisterFirstName.SelectAll();
+        }
+        private void txtRegisterLastName_Click(object sender, EventArgs e)
+        {
+            txtRegisterLastName.SelectAll();
 
+        }
         private void txtRegisterEmail_Click(object sender, EventArgs e)
         {
             txtRegisterEmail.SelectAll();
@@ -54,6 +62,8 @@ namespace Kalandar
         {
             txtRegisterPasswordRepeat.SelectAll();
         }
+
+        
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -146,5 +156,7 @@ namespace Kalandar
                 return true;
             }
         }
+
+        
     }
 }
