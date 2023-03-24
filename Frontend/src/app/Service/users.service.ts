@@ -35,5 +35,5 @@ export class UsersApiService{
     }
     delete(id:number) {
         return this.http.delete(this.url +`users/${id}`);
-    }   
+    }
 }

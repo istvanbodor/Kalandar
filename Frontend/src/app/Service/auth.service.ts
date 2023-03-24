@@ -32,7 +32,6 @@ export class AuthService {
 
   
    getUsersData(){
-
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
         'Content-Type': 'application/json',
@@ -41,15 +40,26 @@ export class AuthService {
 
     const requestOptions = { headers: headers };
     return this.http.get(this.url+`api/admin/users`, requestOptions);
-}
+    }
 
    loggedIn(){
       return !!localStorage.getItem('token')
-   }
+    }
 
    logout(){
     localStorage.removeItem('token')
     this._router.navigate(['/login'])
     }
+
+    registerEvent(data: any){
+      const auth_token = localStorage.getItem('token')
+      const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+
+      const requestOptions = { headers: headers };
+      return this.http.post<any>(this.url + `api/events`, data, requestOptions)
+    }   
 
 }

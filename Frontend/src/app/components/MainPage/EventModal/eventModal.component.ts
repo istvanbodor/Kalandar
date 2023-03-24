@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
 
 
@@ -14,44 +15,46 @@ export class EventModalComponent implements OnInit{
   
   closeResult = '';
   alert: boolean = false;
+  datePlaceholder: string = "yyyy-mm-dd";
 
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private authService: AuthService) {}
 
   ngOnInit(): void {
 
   }
 
+  post = new Date()
+
   eventForm = new FormGroup({
-    title: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
-    start_time: new FormControl('', [Validators.required]),
-    end_time: new FormControl('', [Validators.required])
+    event: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
+    startTime: new FormControl(''),
+    endTime: new FormControl('')
+    // fullDay: new FormControl('', Validators.required)
   },
-  [CustomValidators.IsBiggerDateValidator('start_time', 'end_time')]
+  [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')]
   )
 
-  get title(){
-    return this.eventForm.get('title')
+  get event(){
+    return this.eventForm.get('event')
   }
 
-  get start_time(){
-    return this.eventForm.get('start_time')
+  get startTime(){
+    return this.eventForm.get('startTime')
   }
 
-  get end_time(){
-    return this.eventForm.get('end_time')
+  get endTime(){
+    return this.eventForm.get('endTime')
   }
+
+  // get fullDay(){
+  //   return this.eventForm.get('fullDay')
+  // }
 
   get dateValueError(){
     return this.eventForm.getError('badVal') &&
-    this.eventForm.get('end_time')?.touched;
+    this.eventForm.get('endTime')?.touched;
   }
-
- submitEvent(){
-  console.log(this.eventForm.value)
-  this.alert = true;
-  this.eventForm.reset({})
- }
 
   open(content : any){
     this.modalService.open(content, {ariaLabelledBy: 'eventModal'}).result.then(
@@ -73,4 +76,19 @@ export class EventModalComponent implements OnInit{
       return `with: ${reason}`
     }
   }
+
+  submitEvent(){
+  console.log(this.eventForm.value)
+  this.authService.registerEvent(this.eventForm.value)
+  .subscribe((result) => {
+    console.warn("Event data =>",result)
+    this.alert = true;
+    this.eventForm.reset({})
+  })
+ }
+
+ closeAlert(){
+  this.alert = false
+  }
+
 }
