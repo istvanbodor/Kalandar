@@ -4,13 +4,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col"><span>ID</span> </th>
                 <th scope="col">Last_Name</th>
                 <th scope="col">First_Name</th>
                 <th scope="col">Username</th>
-                <th scope="col">Password</th>
                 <th scope="col">Email</th>
-                <th scope="col">Is_Admin</th>
+                <th scope="col">Role</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +18,6 @@
                 <td>{{item.firstName}}</td>
                 <td>{{item.lastName}}</td>
                 <td>{{item.username}}</td>
-                <td>{{item.password}}</td>
                 <td>{{item.email}}</td>
                 <td>{{item.admin | yesNo}}</td>
             </tr>

@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { tap } from 'rxjs';
+import { AuthService } from './auth.service';
 import { UsersApiService } from './users.service';
 
 @Component({
@@ -11,9 +12,9 @@ export class UsersComponent {
   
   users: any;
   users$: any;
-  constructor(private usersapiservice:UsersApiService) {}
+  constructor(private authService:AuthService) {}
   
   ngOnInit(): void{
-    this.users$ = this.usersapiservice.getUsersData().pipe(tap((user) => this.users = user))
+    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user))
   }
 }
