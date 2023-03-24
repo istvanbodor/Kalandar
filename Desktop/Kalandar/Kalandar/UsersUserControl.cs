@@ -20,6 +20,7 @@ namespace Kalandar
             InitializeComponent();
         }
 
+        private string token = TokenClass.userToken;
         public string IdText
         {
             get
@@ -74,16 +75,17 @@ namespace Kalandar
             {
                 try
                 {
-                    var endpoint = new Uri("http://localhost:8080/api/admin/users");
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    var endpoint = new Uri("http://localhost:8080/api/admin/user");
                     var response = client.DeleteAsync(endpoint + $"/{this.lblId.Text}").Result;
+                    Trace.WriteLine("userID = " + this.lblId.Text);
                     response.EnsureSuccessStatusCode();
+                    this.Hide();
                 }
                 catch(HttpRequestException error)
                 {
                     Trace.Write(error.Message);
                 }
-                
-
             }
         }
     }

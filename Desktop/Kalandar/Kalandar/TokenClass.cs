@@ -8,6 +8,7 @@ namespace Kalandar
 {
     internal class TokenClass
     {
+        public static string userToken { get; set; }
         public string token { get; set; }
     }
 }

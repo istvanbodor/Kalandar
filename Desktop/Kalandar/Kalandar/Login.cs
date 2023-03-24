@@ -14,11 +14,13 @@ using System.Windows.Forms;
 
 namespace Kalandar
 {
+    
     public partial class Login : Form
     {
         public Login()
         {
             InitializeComponent();
+
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -35,10 +37,6 @@ namespace Kalandar
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //Form applicationForm = new Kalandar();
-            //applicationForm.ShowDialog();
-
             using (var client = new HttpClient())
             {
                 try
@@ -75,11 +73,19 @@ namespace Kalandar
                     //}
  
                     Trace.WriteLine("Bearer " + token);
+                    TokenClass.userToken = token;
+                    Trace.WriteLine("LoginToken = " + TokenClass.userToken);
+                    this.Hide();
+                    Form applicationForm = new Kalandar();
+                    applicationForm.ShowDialog();
+
                 }
                 catch (HttpRequestException error)
                 {
                     //lblError.ForeColor = Color.LightCoral;
                     //lblError.Text = "User with this email already exists!";
+                    lblLoginText.Text = error.Message;
+                    
                     Trace.Write(error.Message);
                 }
             }
