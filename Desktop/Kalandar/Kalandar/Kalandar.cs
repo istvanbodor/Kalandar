@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,10 +8,14 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Kalandar
 {
@@ -29,14 +35,18 @@ namespace Kalandar
         {
             get { return Convert.ToInt32(selectedDate.Day); }
         }
-        
 
+        private string token = TokenClass.userToken;
+
+        
 
         public Kalandar()
         {
             InitializeComponent();
             generateCalendar();
             editDateText();
+            Trace.WriteLine($"KalandarToken = {token}");
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -82,9 +92,6 @@ namespace Kalandar
                     pnlCalendar.Controls.Add(ucDayNumber);
                 }
             }
-            Trace.WriteLine(GetDay);
-            Trace.WriteLine(GetMonth);
-            Trace.WriteLine(selectedDate.CurrentMonth + " asd");
         }
 
 
@@ -107,10 +114,33 @@ namespace Kalandar
         private void generateUsers()
         {
 
-            for (int i = 0; i < 15; i++)
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    UsersUserControl usersUC = new UsersUserControl();
+                
+            //    pnlCalendar.Controls.Add(usersUC);
+            //}
+
+            NewUser user = new NewUser();
+            using (var client = new HttpClient())
             {
-                UsersUserControl usersUC = new UsersUserControl();
-                pnlCalendar.Controls.Add(usersUC);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var endpoint = new Uri("http://localhost:8080/api/admin/users");
+                var result = client.GetAsync(endpoint).Result;
+                var json = result.Content.ReadAsStringAsync().Result;
+
+                List<NewUser> desdata = JsonConvert.DeserializeObject<List<NewUser>>(json);
+                if (desdata != null)
+                {
+                    foreach (var data in desdata)
+                    {
+                        UsersUserControl usersUC = new UsersUserControl();
+                        usersUC.IdText = Convert.ToString(data.id);
+                        usersUC.EmailText = data.email;
+                        usersUC.NameText = data.username;
+                        pnlCalendar.Controls.Add(usersUC);
+                    }
+                }
             }
         }
 
@@ -144,19 +174,19 @@ namespace Kalandar
             generateCalendar();
         }
 
-        private void btnEsemenyek_Click(object sender, EventArgs e)
+        private void btnEvents_Click(object sender, EventArgs e)
         {
             btnCalendar.BackColor = Color.FromArgb(60, 60, 60);
             btnEvents.BackColor = Color.FromArgb(181, 130, 64);
             btnUsers.BackColor = Color.FromArgb(60, 60, 60);
             pnlCalendar.Controls.Clear();
-            pctrNextMonth.Hide();
-            pctrPrevMonth.Hide();
-            pnlWeekdays.Hide();
+            pctrNextMonth.Visible = false;
+            pctrPrevMonth.Visible = false;
+            pnlWeekdays.Visible = false;
             generateEvents();
-            lblTopBar.Text = "Események";
-            pnlHeader.Hide();
-            
+            lblTopBar.Text = "Events";
+            pnlHeader.Visible = false;
+
 
         }
         
@@ -166,26 +196,30 @@ namespace Kalandar
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
             btnUsers.BackColor = Color.FromArgb(60, 60, 60);
             pnlCalendar.Controls.Clear();
-            pctrNextMonth.Show();
-            pctrPrevMonth.Show();
+            pctrNextMonth.Visible = true;
+            pctrPrevMonth.Visible = true;
             generateCalendar();
-            pnlWeekdays.Show();
+            pnlWeekdays.Visible = true;
             editDateText();
-            pnlHeader.Show();
+            pnlHeader.Visible = true;
 
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            pnlWeekdays.Hide();
-            pnlHeader.Show();
+
+            lblTopBar.Text = "Users";
+            pnlWeekdays.Visible = true;
+            pnlHeader.Visible = true;
             btnCalendar.BackColor = Color.FromArgb(60, 60, 60);
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
             btnUsers.BackColor = Color.FromArgb(181, 130, 64);
             pnlCalendar.Controls.Clear();
-            pctrNextMonth.Hide();
-            pctrPrevMonth.Hide();
+            pctrNextMonth.Visible = false;
+            pctrPrevMonth.Visible = false;
             generateUsers();
+            
+            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
