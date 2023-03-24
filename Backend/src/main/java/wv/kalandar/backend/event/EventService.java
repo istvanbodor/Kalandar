@@ -3,6 +3,8 @@ package wv.kalandar.backend.event;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import wv.kalandar.backend.address.Address;
@@ -42,6 +44,14 @@ public class EventService {
 
     @Transactional
     public void addNewEvent(Event event) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = userRepository.findUsersByEmail(currentPrincipalName).get();
+
+
+
         Optional<Event> checkIfEventExists = this.eventRepsoitory.findEventByEventAndStartTime(
                 event.getEvent(), event.getStartTime()
         );
@@ -51,14 +61,6 @@ public class EventService {
         }
 
 
-        try {
-            if (!userRepository.existsById(event.getUser().getId())) {
-                throw new IllegalStateException();
-            }
-        } catch (HttpServerErrorException.InternalServerError e) {
-            throw new IllegalStateException();
-        }
-
         if  (event.getAddress() != null) {
             Optional<Address> savedAddress = findSameAddress(event.getAddress());
             event.setAddress(savedAddress.orElseGet(() -> addressRepository.save(event.getAddress())));
@@ -66,7 +68,7 @@ public class EventService {
         } else {
             // log
         }
-
+        event.setUser(user);
 
         eventRepsoitory.save(event);
     }
