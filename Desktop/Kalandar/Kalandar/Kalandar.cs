@@ -35,14 +35,18 @@ namespace Kalandar
         {
             get { return Convert.ToInt32(selectedDate.Day); }
         }
-        
 
+        private string token = TokenClass.userToken;
+
+        
 
         public Kalandar()
         {
             InitializeComponent();
             generateCalendar();
             editDateText();
+            Trace.WriteLine($"KalandarToken = {token}");
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -120,7 +124,8 @@ namespace Kalandar
             NewUser user = new NewUser();
             using (var client = new HttpClient())
             {
-                var endpoint = new Uri("https://retoolapi.dev/uf57Fk/data");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var endpoint = new Uri("http://localhost:8080/api/admin/users");
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 

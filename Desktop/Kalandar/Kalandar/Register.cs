@@ -106,7 +106,7 @@ namespace Kalandar
                         lblError.ForeColor = Color.LightCoral;
                         lblError.Text = "User with this email already exists!";
                         Trace.Write(error.Message);
-                    }
+                    };
                 }
             }
 
