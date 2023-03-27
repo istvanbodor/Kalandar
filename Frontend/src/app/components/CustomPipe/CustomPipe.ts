@@ -1,10 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: "yesNo"
+  name: "IsAdmin"
 })
-export class YesNoPipe implements PipeTransform {
-  transform(value: any, ...args: any[]): any {
-    return value ? "Yes" : "No";
+export class IsAdminPipe implements PipeTransform {
+  transform(value: String, ...args: String[]): String {
+    return value === "ADMIN" ? "Admin" : "User";
   }
 }

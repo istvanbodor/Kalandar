@@ -1,21 +1,22 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { BehaviorSubject, Observable, tap } from "rxjs";
+import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
 import { UsersApiService } from "./users.service";
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    private url= "http://localhost:8080/"
+    private url= "http://localhost:4200/"
 
     private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
     isLoggedIn$ = this._isLoggedIn$.asObservable();
-    authToken = localStorage.getItem('token');
+    auth_token = localStorage.getItem('token')
 
-    constructor(private usersApiService: UsersApiService,private _router: Router) {
-        const token = localStorage.getItem('token')
-        this._isLoggedIn$.next(!!token);
+    constructor(private usersApiService: UsersApiService,private _router: Router, private http: HttpClient) {
+        const auth_token = localStorage.getItem('token')
+        this._isLoggedIn$.next(!!auth_token);
     }
 
    login(email: string, password: string): Observable<any>{
@@ -29,13 +30,36 @@ export class AuthService {
       )  
    }
 
+  
+   getUsersData(){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+
+    const requestOptions = { headers: headers };
+    return this.http.get(this.url+`api/admin/users`, requestOptions);
+    }
+
    loggedIn(){
       return !!localStorage.getItem('token')
-   }
+    }
 
    logout(){
     localStorage.removeItem('token')
     this._router.navigate(['/login'])
     }
+
+    registerEvent(data: any){
+      const auth_token = localStorage.getItem('token')
+      const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+
+      const requestOptions = { headers: headers };
+      return this.http.post<any>(this.url + `api/events`, data, requestOptions)
+    }   
 
 }
