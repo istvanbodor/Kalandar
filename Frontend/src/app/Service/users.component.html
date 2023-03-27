@@ -10,6 +10,7 @@
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
+                <th scope="col">Delete Users</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +21,7 @@
                 <td>{{item.username}}</td>
                 <td>{{item.email}}</td>
                 <td>{{item.role | IsAdmin}}</td>
-                <td><button class="btn btn-danger" (click)="deleteEvent()">Delete</button></td>
+                <td><button class="btn btn-danger" *ngIf="item.role === 'USER'" (click)="DeleteEvent(item.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>

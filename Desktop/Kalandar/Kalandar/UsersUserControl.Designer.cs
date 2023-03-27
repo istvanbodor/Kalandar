@@ -36,12 +36,12 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
             this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnGiveRights = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblId
@@ -112,77 +112,77 @@
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "ROLAND ARNOLD HOÓS";
             // 
-            // lblName
+            // lblFirstName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblName.Location = new System.Drawing.Point(187, 22);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(134, 13);
-            this.lblName.TabIndex = 8;
-            this.lblName.Text = "ROLAND ARNOLD HOÓS";
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblFirstName.Location = new System.Drawing.Point(187, 22);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(134, 13);
+            this.lblFirstName.TabIndex = 8;
+            this.lblFirstName.Text = "ROLAND ARNOLD HOÓS";
             // 
-            // label4
+            // lblUsername
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(459, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "ROLAND ARNOLD HOÓS";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblUsername.Location = new System.Drawing.Point(459, 22);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(134, 13);
+            this.lblUsername.TabIndex = 10;
+            this.lblUsername.Text = "ROLAND ARNOLD HOÓS";
             // 
-            // lblPassword
+            // lblLastName
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPassword.Location = new System.Drawing.Point(323, 22);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(134, 13);
-            this.lblPassword.TabIndex = 9;
-            this.lblPassword.Text = "ROLAND ARNOLD HOÓS";
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblLastName.Location = new System.Drawing.Point(323, 22);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(134, 13);
+            this.lblLastName.TabIndex = 9;
+            this.lblLastName.Text = "ROLAND ARNOLD HOÓS";
             // 
-            // label6
+            // lblRole
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(736, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "ROLAND ARNOLD HOÓS";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(595, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "ROLAND ARNOLD HOÓS";
+            this.lblRole.AutoSize = true;
+            this.lblRole.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblRole.Location = new System.Drawing.Point(595, 22);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(134, 13);
+            this.lblRole.TabIndex = 11;
+            this.lblRole.Text = "ROLAND ARNOLD HOÓS";
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(766, 17);
+            this.btnDeleteUser.Location = new System.Drawing.Point(832, 17);
             this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteUser.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteUser.TabIndex = 13;
             this.btnDeleteUser.Text = "DELETE";
             this.btnDeleteUser.UseVisualStyleBackColor = true;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // btnGiveRights
+            // 
+            this.btnGiveRights.Location = new System.Drawing.Point(736, 17);
+            this.btnGiveRights.Name = "btnGiveRights";
+            this.btnGiveRights.Size = new System.Drawing.Size(90, 23);
+            this.btnGiveRights.TabIndex = 14;
+            this.btnGiveRights.Text = "GIVE RIGHTS";
+            this.btnGiveRights.UseVisualStyleBackColor = true;
+            this.btnGiveRights.Click += new System.EventHandler(this.btnGiveRights_Click);
             // 
             // UsersUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Controls.Add(this.btnGiveRights);
             this.Controls.Add(this.btnDeleteUser);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblRole);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.lblLastName);
+            this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -208,11 +208,11 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnGiveRights;
     }
 }

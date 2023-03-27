@@ -44,24 +44,24 @@
             this.lblTopBar = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pnlWeekdays = new System.Windows.Forms.Panel();
             this.lblSunday = new System.Windows.Forms.Label();
-            this.lblSaturday = new System.Windows.Forms.Label();
-            this.lblFriday = new System.Windows.Forms.Label();
             this.lblThursday = new System.Windows.Forms.Label();
-            this.lblWednesday = new System.Windows.Forms.Label();
-            this.lblTuesday = new System.Windows.Forms.Label();
+            this.lblSaturday = new System.Windows.Forms.Label();
             this.lblMonday = new System.Windows.Forms.Label();
+            this.lblFriday = new System.Windows.Forms.Label();
+            this.lblTuesday = new System.Windows.Forms.Label();
+            this.lblWednesday = new System.Windows.Forms.Label();
             this.pnlCalendar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlCalendarLayout = new System.Windows.Forms.Panel();
-            this.pnlWeekdays = new System.Windows.Forms.Panel();
             this.pnlLeftMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrNextMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctrPrevMonth)).BeginInit();
             this.pnlHeader.SuspendLayout();
-            this.pnlCalendarLayout.SuspendLayout();
             this.pnlWeekdays.SuspendLayout();
+            this.pnlCalendarLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLeftMenu
@@ -138,6 +138,7 @@
             this.btnProfile.TabIndex = 7;
             this.btnProfile.Text = "PROFILE";
             this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnEvents
             // 
@@ -264,6 +265,20 @@
             this.pnlHeader.Size = new System.Drawing.Size(886, 66);
             this.pnlHeader.TabIndex = 2;
             // 
+            // pnlWeekdays
+            // 
+            this.pnlWeekdays.Controls.Add(this.lblSunday);
+            this.pnlWeekdays.Controls.Add(this.lblThursday);
+            this.pnlWeekdays.Controls.Add(this.lblSaturday);
+            this.pnlWeekdays.Controls.Add(this.lblMonday);
+            this.pnlWeekdays.Controls.Add(this.lblFriday);
+            this.pnlWeekdays.Controls.Add(this.lblTuesday);
+            this.pnlWeekdays.Controls.Add(this.lblWednesday);
+            this.pnlWeekdays.Location = new System.Drawing.Point(2, 3);
+            this.pnlWeekdays.Name = "pnlWeekdays";
+            this.pnlWeekdays.Size = new System.Drawing.Size(883, 63);
+            this.pnlWeekdays.TabIndex = 7;
+            // 
             // lblSunday
             // 
             this.lblSunday.AutoSize = true;
@@ -274,28 +289,6 @@
             this.lblSunday.Size = new System.Drawing.Size(83, 20);
             this.lblSunday.TabIndex = 6;
             this.lblSunday.Text = "SUNDAY";
-            // 
-            // lblSaturday
-            // 
-            this.lblSaturday.AutoSize = true;
-            this.lblSaturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaturday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblSaturday.Location = new System.Drawing.Point(635, 22);
-            this.lblSaturday.Name = "lblSaturday";
-            this.lblSaturday.Size = new System.Drawing.Size(106, 20);
-            this.lblSaturday.TabIndex = 5;
-            this.lblSaturday.Text = "SATURDAY";
-            // 
-            // lblFriday
-            // 
-            this.lblFriday.AutoSize = true;
-            this.lblFriday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFriday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblFriday.Location = new System.Drawing.Point(527, 22);
-            this.lblFriday.Name = "lblFriday";
-            this.lblFriday.Size = new System.Drawing.Size(76, 20);
-            this.lblFriday.TabIndex = 4;
-            this.lblFriday.Text = "FRIDAY";
             // 
             // lblThursday
             // 
@@ -308,16 +301,38 @@
             this.lblThursday.TabIndex = 3;
             this.lblThursday.Text = "THURSDAY";
             // 
-            // lblWednesday
+            // lblSaturday
             // 
-            this.lblWednesday.AutoSize = true;
-            this.lblWednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWednesday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblWednesday.Location = new System.Drawing.Point(250, 22);
-            this.lblWednesday.Name = "lblWednesday";
-            this.lblWednesday.Size = new System.Drawing.Size(123, 20);
-            this.lblWednesday.TabIndex = 2;
-            this.lblWednesday.Text = "WEDNESDAY";
+            this.lblSaturday.AutoSize = true;
+            this.lblSaturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaturday.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblSaturday.Location = new System.Drawing.Point(635, 22);
+            this.lblSaturday.Name = "lblSaturday";
+            this.lblSaturday.Size = new System.Drawing.Size(106, 20);
+            this.lblSaturday.TabIndex = 5;
+            this.lblSaturday.Text = "SATURDAY";
+            // 
+            // lblMonday
+            // 
+            this.lblMonday.AutoSize = true;
+            this.lblMonday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonday.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblMonday.Location = new System.Drawing.Point(20, 22);
+            this.lblMonday.Name = "lblMonday";
+            this.lblMonday.Size = new System.Drawing.Size(85, 20);
+            this.lblMonday.TabIndex = 0;
+            this.lblMonday.Text = "MONDAY";
+            // 
+            // lblFriday
+            // 
+            this.lblFriday.AutoSize = true;
+            this.lblFriday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFriday.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblFriday.Location = new System.Drawing.Point(527, 22);
+            this.lblFriday.Name = "lblFriday";
+            this.lblFriday.Size = new System.Drawing.Size(76, 20);
+            this.lblFriday.TabIndex = 4;
+            this.lblFriday.Text = "FRIDAY";
             // 
             // lblTuesday
             // 
@@ -330,16 +345,16 @@
             this.lblTuesday.TabIndex = 1;
             this.lblTuesday.Text = "TUESDAY";
             // 
-            // lblMonday
+            // lblWednesday
             // 
-            this.lblMonday.AutoSize = true;
-            this.lblMonday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblMonday.Location = new System.Drawing.Point(20, 22);
-            this.lblMonday.Name = "lblMonday";
-            this.lblMonday.Size = new System.Drawing.Size(85, 20);
-            this.lblMonday.TabIndex = 0;
-            this.lblMonday.Text = "MONDAY";
+            this.lblWednesday.AutoSize = true;
+            this.lblWednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWednesday.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblWednesday.Location = new System.Drawing.Point(250, 22);
+            this.lblWednesday.Name = "lblWednesday";
+            this.lblWednesday.Size = new System.Drawing.Size(123, 20);
+            this.lblWednesday.TabIndex = 2;
+            this.lblWednesday.Text = "WEDNESDAY";
             // 
             // pnlCalendar
             // 
@@ -359,21 +374,7 @@
             this.pnlCalendarLayout.Size = new System.Drawing.Size(886, 801);
             this.pnlCalendarLayout.TabIndex = 6;
             // 
-            // pnlWeekdays
-            // 
-            this.pnlWeekdays.Controls.Add(this.lblSunday);
-            this.pnlWeekdays.Controls.Add(this.lblThursday);
-            this.pnlWeekdays.Controls.Add(this.lblSaturday);
-            this.pnlWeekdays.Controls.Add(this.lblMonday);
-            this.pnlWeekdays.Controls.Add(this.lblFriday);
-            this.pnlWeekdays.Controls.Add(this.lblTuesday);
-            this.pnlWeekdays.Controls.Add(this.lblWednesday);
-            this.pnlWeekdays.Location = new System.Drawing.Point(2, 3);
-            this.pnlWeekdays.Name = "pnlWeekdays";
-            this.pnlWeekdays.Size = new System.Drawing.Size(883, 63);
-            this.pnlWeekdays.TabIndex = 7;
-            // 
-            // Application
+            // Kalandar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +386,7 @@
             this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Application";
+            this.Name = "Kalandar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kalandár";
             this.pnlLeftMenu.ResumeLayout(false);
@@ -394,9 +395,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctrNextMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctrPrevMonth)).EndInit();
             this.pnlHeader.ResumeLayout(false);
-            this.pnlCalendarLayout.ResumeLayout(false);
             this.pnlWeekdays.ResumeLayout(false);
             this.pnlWeekdays.PerformLayout();
+            this.pnlCalendarLayout.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

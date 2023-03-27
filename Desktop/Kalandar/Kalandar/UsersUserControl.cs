@@ -20,7 +20,7 @@ namespace Kalandar
             InitializeComponent();
         }
 
-        private string token = TokenClass.userToken;
+        private string token = CurrentUser.userToken;
         public string IdText
         {
             get
@@ -45,27 +45,51 @@ namespace Kalandar
             }
         }
 
-        public string NameText
+        public string UsernameText
         {
             get
             {
-                return this.lblName.Text;
+                return this.lblUsername.Text;
             }
             set
             {
-                this.lblName.Text = value;
+                this.lblUsername.Text = value;
             }
         }
 
-        public string PasswordText
+        public string FirstNameText
         {
             get
             {
-                return this.lblPassword.Text;
+                return this.lblFirstName.Text;
             }
             set
             {
-                this.lblPassword.Text = value;
+                this.lblFirstName.Text = value;
+            }
+        }
+
+        public string LastNameText
+        {
+            get
+            {
+                return this.lblLastName.Text;
+            }
+            set
+            {
+                this.lblLastName.Text = value;
+            }
+        }
+
+        public string RoleText
+        {
+            get
+            {
+                return this.lblRole.Text;
+            }
+            set
+            {
+                this.lblRole.Text = value;
             }
         }
 
@@ -83,6 +107,25 @@ namespace Kalandar
                     this.Hide();
                 }
                 catch(HttpRequestException error)
+                {
+                    Trace.Write(error.Message);
+                }
+            }
+        }
+
+        private void btnGiveRights_Click(object sender, EventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    var endpoint = new Uri("http://localhost:8080/api/admin/role/user/");
+                    var response = client.PutAsJsonAsync(endpoint + $"{this.lblId.Text}", "").Result;
+                    Trace.WriteLine("userIDAdminRights = " + this.lblId.Text);
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (HttpRequestException error)
                 {
                     Trace.Write(error.Message);
                 }

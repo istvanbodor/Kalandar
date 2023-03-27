@@ -33,7 +33,4 @@ export class UsersApiService{
     login(email: string,password: string){
         return this.http.post<any>(this.url+`api/auth/login`, { email, password });
     }
-    delete(id:number) {
-        return this.http.delete(this.url +`users/${id}`);
-    }
 }
