@@ -81,6 +81,12 @@
       <DependentUpon>EventsBlank.cs</DependentUpon>
     </Compile>
     <Compile Include="NewUser.cs" />
+    <Compile Include="ProfileUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProfileUserControl.Designer.cs">
+      <DependentUpon>ProfileUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EventsBlank.resx">
       <DependentUpon>EventsBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileUserControl.resx">
+      <DependentUpon>ProfileUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

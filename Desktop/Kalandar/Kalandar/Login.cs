@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,6 @@ namespace Kalandar
             InitializeComponent();
 
         }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -52,42 +52,53 @@ namespace Kalandar
                     var result = client.PostAsync(endpoint, payload).Result.Content.ReadAsStringAsync().Result;
                     var json = result;
                     var token = JsonConvert.DeserializeObject<CurrentUser>(json).token;
-
-                    //foreach(var item in json2)
-                    //{
-                    //    Trace.WriteLine("json2 " + item.token);
-                    //}
                     
-                    //result.EnsureSuccessStatusCode();
-                    //lblError.ForeColor = Color.Green;
-                    //lblError.Text = "Account has been created!";
-
-                    //List<string> token = JsonConvert.DeserializeObject <List<string>>(result);
-
-                    //if (token != null)
-                    //{
-                    //    foreach (var data in token)
-                    //    {
-                    //        Trace.WriteLine(token);
-                    //    }
-                    //}
- 
-                    Trace.WriteLine("Bearer " + token);
                     CurrentUser.userToken = token;
-                    Trace.WriteLine("LoginToken = " + CurrentUser.userToken);
-                    this.Hide();
-                    Form applicationForm = new Kalandar();
-                    applicationForm.ShowDialog();
+                    
 
                 }
                 catch (HttpRequestException error)
                 {
-                    //lblError.ForeColor = Color.LightCoral;
-                    //lblError.Text = "User with this email already exists!";
                     lblLoginText.Text = error.Message;
                     
                     Trace.Write(error.Message);
                 }
+                
+                try
+                {
+                    string token = CurrentUser.userToken;
+
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    var endpoint = new Uri("http://localhost:8080/api/user/profile");
+                    var result = client.GetAsync(endpoint).Result;
+                    var json = result.Content.ReadAsStringAsync().Result;
+                    CurrentUser user = JsonConvert.DeserializeObject<CurrentUser>(json);
+
+                    UserData.id = user.id;
+                    UserData.email = user.email;
+                    UserData.firstName = user.firstName;
+                    UserData.lastName = user.lastName;
+                    UserData.username = user.username;
+                    UserData.role = user.role;
+                    
+                    if (token != null)
+                    {
+                        this.Hide();
+                        Form applicationForm = new Kalandar();
+                        applicationForm.ShowDialog();
+                    }
+                    else
+                    {
+                        Trace.Write("Error");
+                    }
+                    
+                }
+                catch (HttpRequestException error)
+                {
+                    Trace.Write(error.Message);
+                }
+
+                
             }
         }
 
