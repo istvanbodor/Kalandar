@@ -10,7 +10,5 @@ namespace Kalandar
     {
         public static string userToken { get; set; }
         public string token { get; set; }
-
-        public string 
     }
 }

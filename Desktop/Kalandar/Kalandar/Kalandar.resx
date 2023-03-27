@@ -1901,7 +1901,7 @@
   <data name="pctrNextMonth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAqc9JREFUeF7s3Vuot+t633W7krikVQxaUzF0ZxrBLcSqUBG1mipiLSooFNQToYq4
+        DQAACw0B7QfALAAAqc9JREFUeF7s3Vuot+t633W7krikVQxaUzF0ZxrBLcSqUBG1mipiLSooFNQToYq4
         64F6oEJVkOKBpdAqopWWClpBEdqcSA+0qKW2iJUEpbQpwdgKNW5ipWmNK95jZc6Vufm99xxjvNf9f57r
         f30OPic/SDLnwZgv9/XN+4w/66d+6qcAAAAAAAAAYLw4AgAAAAAAAMA0cQQAAAAAAACAaeIIAAAAAAAA
         ANPEEQAAAAAAAACmiSMAAAAAAAAATBNHAAAAAAAAAJgmjgAAAAAAAAAwTRwBAAAAAAAAYJo4AgAAAAAA
@@ -2632,7 +2632,7 @@
   <data name="pctrPrevMonth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAqUlJREFUeF7s3Vuo7u1633VjkyU0adNatLZRoREbEcUdlqqJBhrQ1mKLNm4wxRNB
+        DQAACw0B7QfALAAAqUlJREFUeF7s3Vuo7u1633VjkyU0adNatLZRoREbEcUdlqqJBhrQ1mKLNm4wxRNB
         o4gnBRGt1lBxU9zkQFE8EUEPhB60sVShlBatB3VHaWtb0FI31UChMZS0SdbKivfz5n3fvJvf/M8xx7ju
         536u5/ocfE5+B8laMEcm9/XN+M+/6Kd/+qcBAAAAAAAAYLw4AgAAAAAAAMA0cQQAAAAAAACAaeIIAAAA
         AAAAANPEEQAAAAAAAACmiSMAAAAAAAAATBNHAAAAAAAAAJgmjgAAAAAAAAAwTRwBAAAAAAAAYJo4AgAA
