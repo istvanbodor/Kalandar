@@ -19,7 +19,8 @@
                 <td>{{item.lastName}}</td>
                 <td>{{item.username}}</td>
                 <td>{{item.email}}</td>
-                <td>{{item.admin | yesNo}}</td>
+                <td>{{item.role | IsAdmin}}</td>
+                <td><button class="btn btn-danger" (click)="deleteEvent()">Delete</button></td>
             </tr>
         </tbody>
     </table>

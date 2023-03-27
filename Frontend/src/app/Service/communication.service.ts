@@ -12,4 +12,10 @@ export class CommunicationService {
   public toggleBackground(toggle: boolean) {
       this.toggleBackgroundEventEmitter.emit(toggle);
   }
+
+  public deleteEventEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public delete(click: boolean) {
+    this.deleteEventEmitter.emit(click)
+  }
 }

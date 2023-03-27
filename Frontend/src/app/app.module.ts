@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './components/MainPage/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
-import { YesNoPipe } from './components/CustomPipe/CustomPipe';
+import { IsAdminPipe } from './components/CustomPipe/CustomPipe';
 import { EventModalComponent } from './components/MainPage/EventModal/eventModal.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
@@ -19,6 +19,13 @@ import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendar
 import { EventsComponent } from './components/Events/events.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalendarMonthComponent,
     CalendarWeekComponent,
     CalendarDayComponent,
-    YesNoPipe,
+    IsAdminPipe,
     EventsComponent
   ],
   imports: [
@@ -46,7 +53,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgbDropdownModule,
     MatSlideToggleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

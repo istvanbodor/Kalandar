@@ -12,18 +12,23 @@
           <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not valid!</strong>
         </div>
         <div class="mb-3">
-          <label for="start_time">Start Time</label>
-            <input type="date" class="form-control" [placeholder]="datePlaceholder" formControlName="startTime"/>   
-          </div>
+          <input type="datetime-local" class="form-control" formControlName="startTime"> 
+      </div>
           <!-- <strong class="errorMessage" *ngIf="startTime && startTime.invalid && startTime.touched && startTime.errors">This date is not valid!</strong> -->
 
-          <div>
-            <label for="start_time">End Time</label>
-              <input type="date" class="form-control" [placeholder]="datePlaceholder"  formControlName="endTime"/>   
+          <div class="mb-3">
+            <!-- <mat-dialog-content class=".mat-dialog-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-dialog-content> -->
             </div>
           <!-- <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This date is not valid!</strong> -->
           <!-- <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong> -->
-
           <div class="input-group mb-3">
             <label for="colorChoose">Event Color</label>
             <input type="color" style="margin-left: 5px;">
@@ -37,7 +42,9 @@
   <button  class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
 
-<pre>{{ closeResult }}</pre> 
+
+
+<pre>{{ closeResult }}</pre>
 
 
 <!-- <div ngbDropdown class="d-inline-block">
@@ -49,3 +56,5 @@
     <button ngbDropdownItem>Button (enabled)</button>
   </div>
 </div> -->
+
+

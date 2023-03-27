@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
-
-
 @Component({
   selector: 'app-eventModal',
   templateUrl: './EventModal.component.html',
@@ -12,24 +10,26 @@ import { CustomValidators } from '../../CustomValidators/CustomValidator';
 })
 
 export class EventModalComponent implements OnInit{
-  
+
   closeResult = '';
   alert: boolean = false;
-  datePlaceholder: string = "yyyy-mm-dd";
+
+  date: string;
 
 
-  constructor(private modalService: NgbModal, private authService: AuthService) {}
+  constructor(private modalService: NgbModal, private authService: AuthService) {
+    this.date = new Date().toISOString().slice(0, 16);
+  }
 
   ngOnInit(): void {
 
   }
 
-  post = new Date()
 
   eventForm = new FormGroup({
-    event: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
+    event: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     startTime: new FormControl(''),
-    endTime: new FormControl('')
+    // endTime: new FormControl('')
     // fullDay: new FormControl('', Validators.required)
   },
   [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')]
@@ -62,7 +62,7 @@ export class EventModalComponent implements OnInit{
       console.log(`closed with: ${result}`);
     },
     (reason) => {
-      console.log(`Dismissed ${this.getDismissReason(reason)}`);  
+      console.log(`Dismissed ${this.getDismissReason(reason)}`);
     }
     );
   }

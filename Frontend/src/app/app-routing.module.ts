@@ -9,7 +9,7 @@ import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calend
 import { MainPageComponent } from './components/MainPage/main-page.component';
 import { UsersComponent } from './Service/users.component';
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: CalendarMonthComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'calendar/month', component: CalendarMonthComponent},
