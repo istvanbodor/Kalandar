@@ -36,7 +36,7 @@ namespace Kalandar
             get { return Convert.ToInt32(selectedDate.Day); }
         }
 
-        private string token = TokenClass.userToken;
+        private string token = CurrentUser.userToken;
 
         
 
@@ -137,7 +137,10 @@ namespace Kalandar
                         UsersUserControl usersUC = new UsersUserControl();
                         usersUC.IdText = Convert.ToString(data.id);
                         usersUC.EmailText = data.email;
-                        usersUC.NameText = data.username;
+                        usersUC.FirstNameText = data.firstName;
+                        usersUC.LastNameText = data.lastName;
+                        usersUC.UsernameText = data.username;
+                        usersUC.RoleText = data.role;
                         pnlCalendar.Controls.Add(usersUC);
                     }
                 }
