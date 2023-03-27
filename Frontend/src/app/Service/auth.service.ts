@@ -7,29 +7,26 @@ import { UsersApiService } from "./users.service";
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements OnInit, OnDestroy {
+export class AuthService {
   private url = "http://localhost:4200/"
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   auth_token = localStorage.getItem('token')
+  expired = false;
 
-  private isTokenExpired(token: string) {
-    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-    console.log(expiry)
+  private isTokenExpired(auth_token: string) {
+    const expiry = (JSON.parse(atob(auth_token.split('.')[1]))).exp;
     return expiry * 1000 > Date.now();
-
-
   }
 
-  ngOnInit(): void {
+  tokenExpired() {
+    let logged = true
     if (this.isTokenExpired('token')) {
-      this._router.navigate(['/login'])
+      logged = false
+      return this._router.navigate(['/login'])
     }
-  }
-
-  ngOnDestroy(): void {
-
+    return logged
   }
 
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
@@ -99,7 +96,7 @@ export class AuthService implements OnInit, OnDestroy {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/admin/role/user/${id}`,{}, requestOptions)
+    return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
   }
 
 

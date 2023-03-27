@@ -28,9 +28,14 @@ export class EventModalComponent implements OnInit{
 
   eventForm = new FormGroup({
     event: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    startTime: new FormControl(''),
-    // endTime: new FormControl('')
-    // fullDay: new FormControl('', Validators.required)
+    startTime: new FormControl('',Validators.required),
+    endTime: new FormControl(''),
+    fullDay: new FormControl(''),
+    category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+    // address: new FormGroup({
+    //   city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+    // }),
+    
   },
   [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')]
   )
@@ -47,13 +52,17 @@ export class EventModalComponent implements OnInit{
     return this.eventForm.get('endTime')
   }
 
-  // get fullDay(){
-  //   return this.eventForm.get('fullDay')
-  // }
+  get fullDay(){
+    return this.eventForm.get('fullDay')
+  }
 
   get dateValueError(){
     return this.eventForm.getError('badVal') &&
     this.eventForm.get('endTime')?.touched;
+  }
+
+  get category() {
+    return this.eventForm.getError('category')
   }
 
   open(content : any){

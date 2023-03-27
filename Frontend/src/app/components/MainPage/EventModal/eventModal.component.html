@@ -1,45 +1,57 @@
 <div>
   <ng-template #content let-modal $modal-lg: 80px !default;>
-    <div class="modal-header" >
+    <div class="modal-header">
       <h4 class="modal-title" id="eventModal">Create event</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
       <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
-        <div class="form-group mb-3">
-          <label for="titleLabel">Event Name</label>
-          <input type="text" class="form-control" id="titleLabel" placeholder="Title" formControlName="event">
-          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not valid!</strong>
+        <div class="form-group mb-3" style="float: right;">
+          <label>Fullday: </label>
+          <input type="checkbox" class="form-check-input" formControlName="fullDay" style="margin-left: 5px;">
         </div>
         <div class="mb-3">
-          <input type="datetime-local" class="form-control" formControlName="startTime"> 
-      </div>
-          <!-- <strong class="errorMessage" *ngIf="startTime && startTime.invalid && startTime.touched && startTime.errors">This date is not valid!</strong> -->
-
-          <div class="mb-3">
-            <!-- <mat-dialog-content class=".mat-dialog-container">
-              <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </mat-dialog-content> -->
-            </div>
-          <!-- <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This date is not valid!</strong> -->
-          <!-- <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong> -->
-          <div class="input-group mb-3">
-            <label for="colorChoose">Event Color</label>
-            <input type="color" style="margin-left: 5px;">
-          </div>
-          <button [disabled]="eventForm.invalid"  type="submit" class="btn btn-outline-primary" (click)="modal.close('Save click')" style="float: right; margin-bottom: 5px;">Save</button>
+          <label for="titleLabel">Event Name</label>
+          <input type="text" class="form-control" id="titleLabel" placeholder="Title" formControlName="event">
+          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not
+            valid!</strong>
+        </div>
+        <div class="mb-3">
+          <label>Start time</label>
+          <input type="datetime-local" class="form-control" formControlName="startTime">
+          <strong class="errorMessage"
+            *ngIf="startTime && startTime.invalid && startTime.touched && startTime.errors">This date is not
+            valid!</strong>
+        </div>
+        <div class="mb-3">
+          <label>End time</label>
+          <input type="datetime-local" class="form-control" formControlName="endTime">
+          <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This date
+            is not valid!</strong>
+          <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
+        </div>
+        <div class="mb-3">
+          <label>Category</label>
+          <input type="text" class="form-control" formControlName="category">
+          <strong class="errorMessage" *ngIf="category&& category.invalid && category.touched && category.errors">This category
+            is not valid!</strong>
+        </div>
+        <!-- <div class="mb-3">
+        <label>Address</label>
+        <input type="text" class="form-control" formControlName="address">
+      </div> -->
+        <!-- <div class="input-group mb-3">
+          <label for="colorChoose">Event Color</label>
+          <input type="color" style="margin-left: 5px;">
+        </div> -->
+        <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary"
+          (click)="modal.close('Save click')" style="float: right; margin-bottom: 5px;">Save</button>
       </form>
       <div class="modal-footer">
       </div>
     </div>
   </ng-template>
-  <button  class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
+  <button class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
 
 
@@ -56,5 +68,3 @@
     <button ngbDropdownItem>Button (enabled)</button>
   </div>
 </div> -->
-
-
