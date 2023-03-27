@@ -31,9 +31,19 @@
           <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
         </div>
         <div class="mb-3">
-          <label>Category</label>
+          <label>Categories</label>
+          <select class="form-control" formControlName="category">
+            <option></option>
+            <option value="Sport">Sport</option>
+            <option value="Gorceries">Gorceries</option>
+            <option value="Hobby">Hobby</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Custom category</label>
           <input type="text" class="form-control" formControlName="category">
-          <strong class="errorMessage" *ngIf="category&& category.invalid && category.touched && category.errors">This category
+          <strong class="errorMessage" *ngIf="category&& category.invalid && category.touched && category.errors">This
+            category
             is not valid!</strong>
         </div>
         <!-- <div class="mb-3">
