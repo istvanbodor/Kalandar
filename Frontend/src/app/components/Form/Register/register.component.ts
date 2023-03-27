@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   alert: boolean = false;
 
 
-  constructor(private usersapiservice:UsersApiService) {}
+  constructor(private userApiService:UsersApiService) {}
 
   ngOnInit(): void {
   
@@ -65,14 +65,15 @@ export class RegisterComponent implements OnInit {
 
   userData(){
     console.warn(this.registerForm.value)
-    this.usersapiservice.registerUser(this.registerForm.value).subscribe((result) => {
+    this.userApiService.registerUser(this.registerForm.value)
+    .subscribe((result) => {
       console.warn("User data",result)
       this.alert = true
       this.registerForm.reset({})
     }) 
   }
-  closeAlert()
-  {
+  
+  closeAlert(){
     this.alert = false
   }
 }
