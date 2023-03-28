@@ -296,5 +296,12 @@ namespace Kalandar
             pctrPrevMonth.Visible = false;
             generateUserProfile();
         }
+
+        private void btnAddEvent_Click(object sender, EventArgs e)
+        {
+            AddEventForm addEventForm = new AddEventForm();
+
+            addEventForm.Show();
+        }
     }
 }
