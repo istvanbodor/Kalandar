@@ -18,30 +18,34 @@ export class UsersComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user))
+    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user ))
   }
 
-  DeleteEvent(id: string) {
+  DeleteUser(id: string) {
     this.authService.deleteEvent(id)
-    .subscribe ({next:() => {
-      this.users$ = this.authService.getUsersData().pipe(tap((user) => {
-        this.users = user;  
-      }));
-    },
-   error: (error) => {
-      console.log('Error! =>', error)
-    }});
+      .subscribe({
+        next: () => {
+          this.users$ = this.authService.getUsersData().pipe(tap((user) => {
+            this.users = user;
+          }));
+        },
+        error: (error) => {
+          console.log('Error! =>', error)
+        }
+      });
   }
 
   ChangeRole(id: string) {
     this.authService.changeRole(id)
-    .subscribe({next:() => {
-      this.users$ = this.authService.getUsersData().pipe(tap((user) => {
-        this.users = user         
-      }));
-    },
-   error: (error) => {
-      console.log('Error! =>', error)
-    }});
+      .subscribe({
+        next: () => {
+          this.users$ = this.authService.getUsersData().pipe(tap((user) => {
+            this.users = user
+          }));
+        },
+        error: (error) => {
+          console.log('Error! =>', error)
+        }
+      });
   }
 }

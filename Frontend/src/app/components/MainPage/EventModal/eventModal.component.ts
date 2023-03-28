@@ -37,10 +37,10 @@ export class EventModalComponent implements OnInit{
       country: new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z]+$')]),
       zip: new FormControl('',[Validators.required,Validators.maxLength(4),Validators.pattern('^[0-9]*$')]),
       street: new FormControl('',[Validators.required]),
-      houseNumber: new FormControl('',[Validators.required])
+      houseNumber: new FormControl('',[Validators.required]),
     }),
-    user: new FormGroup({
-      id: new FormControl('')
+    user:  new FormGroup({
+      id: new FormControl(this.authService.getUserId())
     })
   },
   [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
@@ -115,11 +115,14 @@ export class EventModalComponent implements OnInit{
   submitEvent(){
   console.log(this.eventForm.value)
   this.authService.registerEvent(this.eventForm.value)
-  .subscribe((result) => {
+ .subscribe({
+  next:(result) => {
     console.warn("Event data =>",result)
     this.alert = true;
     this.eventForm.reset({})
-  })
+  },
+  error: (error) => console.log('Error =>' ,error)
+})
  }
 
  closeAlert(){

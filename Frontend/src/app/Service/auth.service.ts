@@ -41,8 +41,13 @@ export class AuthService {
           console.log('token: ', response.token)
           this._isLoggedIn$.next(true)
           localStorage.setItem('token', response.token)
+          localStorage.setItem('id', response.id);
         })
       )
+  }
+
+  getUserId() {
+    return localStorage.getItem('id');
   }
 
 
@@ -63,6 +68,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token')
+    localStorage.removeItem('id')
     this._router.navigate(['/login'])
   }
 
@@ -77,7 +83,7 @@ export class AuthService {
     return this.http.post<any>(this.url + `api/events`, data, requestOptions)
   }
 
-  deleteEvent(id: any) {
+  deleteEvent(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -98,7 +104,5 @@ export class AuthService {
     const requestOptions = { headers: headers };
     return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
   }
-
-
 
 }

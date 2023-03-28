@@ -23,7 +23,7 @@
                 <td>{{item.email}}</td>
                 <td>{{item.role | IsAdmin}}</td>
                 <td><button class="btn btn-danger" *ngIf="item.role === 'USER'"
-                        (click)="DeleteEvent(item.id)">Delete</button></td>
+                        (click)="DeleteUser(item.id)">Delete</button></td>
                 <td><button class="btn btn-success"
                     *ngIf="item.role === 'USER' || item.role === 'ADMIN'"
                         (click)="ChangeRole(item.id)">Change</button></td>

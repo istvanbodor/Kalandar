@@ -15,21 +15,10 @@ export class UsersApiService{
 
     }
 
-    // getUsersData(){
-    //     return this.http.get(this.url+`api/user`);
-
-    // const headers = new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${token}`
-    //   });
-        
-    //     // const token = this.authService.authToken
-    //     // return this.http.get(this.url+`api/user`, {headers: {Authorization: `Bearer ${token}`}});
-    // }
-
     registerUser(data : any){
         return this.http.post(this.url+`api/auth/register`,data)
     }
+    
     login(email: string,password: string){
         return this.http.post<any>(this.url+`api/auth/login`, { email, password });
     }
