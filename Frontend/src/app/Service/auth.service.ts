@@ -62,6 +62,17 @@ export class AuthService {
     return this.http.get(this.url + `api/admin/users`, requestOptions);
   }
 
+  getProfile() {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers }
+    return this.http.get(this.url + `api/user/profile`, requestOptions)
+  }
+
   loggedIn() {
     return !!localStorage.getItem('token')
   }

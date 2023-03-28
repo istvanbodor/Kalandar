@@ -7,6 +7,7 @@ import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendar
 import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
 import { MainPageComponent } from './components/MainPage/main-page.component';
+import { ProfileComponent } from './components/Profile/profile.component';
 import { UsersComponent } from './Service/users.component';
 const routes: Routes = [
   {path: '', component: CalendarMonthComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'calendar/week', component: CalendarWeekComponent},
   {path: 'calendar/day', component: CalendarDayComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'events', component: EventsComponent}
+  {path: 'events', component: EventsComponent},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

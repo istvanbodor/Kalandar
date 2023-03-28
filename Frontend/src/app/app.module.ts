@@ -24,6 +24,7 @@ import {MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ProfileComponent } from './components/Profile/profile.component';
 
 
 
@@ -41,7 +42,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CalendarWeekComponent,
     CalendarDayComponent,
     IsAdminPipe,
-    EventsComponent
+    EventsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
