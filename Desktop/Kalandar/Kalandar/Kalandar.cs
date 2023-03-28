@@ -22,6 +22,7 @@ namespace Kalandar
     public partial class Kalandar : Form
     {
         private DateClass selectedDate = new DateClass();
+        private string baseURL = APIConnectDetails.baseURL;
 
         public int GetYear
         {
@@ -111,11 +112,30 @@ namespace Kalandar
 
         private void generateEvents()
         {
-
-            for (int i = 0; i < 15; i++)
+            using (var client = new HttpClient())
             {
-                EventsBlank eventsBlank = new EventsBlank();
-                pnlCalendar.Controls.Add(eventsBlank);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var endpoint = new Uri(baseURL + "api/events");
+                var result = client.GetAsync(endpoint).Result;
+                var json = result.Content.ReadAsStringAsync().Result;
+
+                List<EventClass> events = JsonConvert.DeserializeObject<List<EventClass>>(json);
+                Trace.WriteLine(json);
+                Trace.WriteLine(events);
+                if (events != null)
+                {
+                    foreach (var data in events)
+                    {
+                        EventsBlank eventsUC = new EventsBlank();
+                        eventsUC.TitleText = data.Event;
+                        eventsUC.DateText = data.StartTime + " - " + data.EndTime;
+                        eventsUC.IsFullDayText = Convert.ToString(data.FullDay);
+                        eventsUC.OrganisedByText = "Organised by: " + data.Username;
+                        eventsUC.AddressCountryText = data.AddressId;
+                        eventsUC.CategoryText = data.Category;
+                        pnlCalendar.Controls.Add(eventsUC);
+                    }
+                }
             }
         }
 
@@ -124,7 +144,7 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri("http://localhost:8080/api/admin/users");
+                var endpoint = new Uri(baseURL + "api/admin/users");
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 
@@ -153,7 +173,7 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri("http://localhost:8080/api/user/profile");
+                var endpoint = new Uri(baseURL + "api/user/profile");
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
                 CurrentUser user = JsonConvert.DeserializeObject<CurrentUser>(json);

@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIConnectDetails.cs" />
+    <Compile Include="EventClass.cs" />
     <Compile Include="Kalandar.cs">
       <SubType>Form</SubType>
     </Compile>

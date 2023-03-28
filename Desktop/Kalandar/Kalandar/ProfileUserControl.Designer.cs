@@ -70,7 +70,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(886, 32);
+            this.label1.Size = new System.Drawing.Size(880, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "WELCOME";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -82,7 +82,7 @@
             this.lblUsername.ForeColor = System.Drawing.Color.White;
             this.lblUsername.Location = new System.Drawing.Point(0, 32);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(886, 36);
+            this.lblUsername.Size = new System.Drawing.Size(880, 36);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "incrediblylongusernamexDDDD";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -319,6 +319,7 @@
             this.txtPassword.TabIndex = 22;
             this.txtPassword.Text = "NEW PASSWORD";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // txtPasswordAgain
             // 
@@ -332,6 +333,7 @@
             this.txtPasswordAgain.TabIndex = 23;
             this.txtPasswordAgain.Text = "NEW PASSWORD AGAIN";
             this.txtPasswordAgain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPasswordAgain.Click += new System.EventHandler(this.txtPasswordAgain_Click);
             // 
             // panel8
             // 
@@ -410,7 +412,7 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.label1);
             this.Name = "ProfileUserControl";
-            this.Size = new System.Drawing.Size(886, 735);
+            this.Size = new System.Drawing.Size(880, 730);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel9.ResumeLayout(false);

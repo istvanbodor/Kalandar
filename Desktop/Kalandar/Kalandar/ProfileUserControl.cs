@@ -16,6 +16,7 @@ namespace Kalandar
 {
     public partial class ProfileUserControl : UserControl
     {
+        private string baseURL = APIConnectDetails.baseURL;
         public ProfileUserControl()
         {
             InitializeComponent();
@@ -89,7 +90,7 @@ namespace Kalandar
                     try
                     {
                         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.userToken);
-                        var endpoint = new Uri("http://localhost:8080/api/user/password");
+                        var endpoint = new Uri(baseURL + "api/user/password");
                         NewUser user = new NewUser
                         {
                             password = txtPassword.Text
@@ -99,7 +100,6 @@ namespace Kalandar
                         var payload = new StringContent(editUserJson, Encoding.UTF8, "application/json");
                         var response = client.PutAsync(endpoint, payload).Result;
                         response.EnsureSuccessStatusCode();
-                        //Trace.WriteLine((int)response.StatusCode);
                         lblPasswordChangeError.ForeColor = Color.Green;
                         lblPasswordChangeError.Text = "Password has been changed!";
                         Trace.WriteLine("poggies");
@@ -113,5 +113,17 @@ namespace Kalandar
                 }
             }
         }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            txtPassword.SelectAll();
+        }
+
+        private void txtPasswordAgain_Click(object sender, EventArgs e)
+        {
+            txtPasswordAgain.SelectAll();
+        }
+
+        
     }
 }

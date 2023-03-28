@@ -358,6 +358,7 @@
             // 
             // pnlCalendar
             // 
+            this.pnlCalendar.AutoScroll = true;
             this.pnlCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.pnlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCalendar.Location = new System.Drawing.Point(0, 66);

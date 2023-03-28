@@ -154,7 +154,7 @@
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(832, 17);
+            this.btnDeleteUser.Location = new System.Drawing.Point(823, 17);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(37, 23);
             this.btnDeleteUser.TabIndex = 13;
@@ -164,9 +164,9 @@
             // 
             // btnGiveRights
             // 
-            this.btnGiveRights.Location = new System.Drawing.Point(736, 17);
+            this.btnGiveRights.Location = new System.Drawing.Point(735, 17);
             this.btnGiveRights.Name = "btnGiveRights";
-            this.btnGiveRights.Size = new System.Drawing.Size(90, 23);
+            this.btnGiveRights.Size = new System.Drawing.Size(85, 23);
             this.btnGiveRights.TabIndex = 14;
             this.btnGiveRights.Text = "GIVE RIGHTS";
             this.btnGiveRights.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblId);
             this.Name = "UsersUserControl";
-            this.Size = new System.Drawing.Size(877, 59);
+            this.Size = new System.Drawing.Size(863, 59);
             this.ResumeLayout(false);
             this.PerformLayout();
 

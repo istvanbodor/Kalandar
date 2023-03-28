@@ -19,6 +19,7 @@ namespace Kalandar
 {
     public partial class Register : Form
     {
+        private string baseURL = APIConnectDetails.baseURL;
         public Register()
         {
             InitializeComponent();
@@ -64,9 +65,6 @@ namespace Kalandar
         {
             txtRegisterPasswordRepeat.SelectAll();
         }
-
-        
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
 
@@ -85,7 +83,7 @@ namespace Kalandar
                 {
                     try
                     {
-                        var endpoint = new Uri("http://localhost:8080/api/auth/register");
+                        var endpoint = new Uri(baseURL + "api/auth/register");
                         var newUser = new NewUser()
                         {
                             firstName = txtRegisterFirstName.Text,

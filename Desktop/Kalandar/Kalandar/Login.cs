@@ -18,6 +18,7 @@ namespace Kalandar
     
     public partial class Login : Form
     {
+        private string baseURL = APIConnectDetails.baseURL;
         public Login()
         {
             InitializeComponent();
@@ -53,7 +54,7 @@ namespace Kalandar
                 {
                     try
                     {
-                        var endpoint = new Uri("http://localhost:8080/api/auth/login");
+                        var endpoint = new Uri(baseURL + "api/auth/login");
                         var loginUser = new NewUser()
                         {
                             email = txtLoginEmail.Text,
@@ -81,7 +82,7 @@ namespace Kalandar
                         string token = CurrentUser.userToken;
 
                         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                        var endpoint = new Uri("http://localhost:8080/api/user/profile");
+                        var endpoint = new Uri(baseURL + "api/user/profile");
                         var result = client.GetAsync(endpoint).Result;
                         var json = result.Content.ReadAsStringAsync().Result;
 
