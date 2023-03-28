@@ -11,8 +11,8 @@
           <input type="checkbox" class="form-check-input" formControlName="fullDay" style="margin-left: 5px;">
         </div>
         <div class="mb-3">
-          <label for="titleLabel">Event Name</label>
-          <input type="text" class="form-control" id="titleLabel" placeholder="Title" formControlName="event">
+          <label for="eventNameLabel">Event Name</label>
+          <input type="text" class="form-control" id="eventNameLabel" placeholder="Event name" formControlName="event">
           <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not
             valid!</strong>
         </div>
@@ -35,25 +35,56 @@
           <select class="form-control" formControlName="category">
             <option></option>
             <option value="Sport">Sport</option>
-            <option value="Gorceries">Gorceries</option>
+            <option value="Groceries">Groceries</option>
             <option value="Hobby">Hobby</option>
           </select>
         </div>
-        <div class="mb-3">
-          <label>Custom category</label>
-          <input type="text" class="form-control" formControlName="category">
-          <strong class="errorMessage" *ngIf="category&& category.invalid && category.touched && category.errors">This
-            category
-            is not valid!</strong>
+        <div class="mb-3" formGroupName="address">
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Address
+              </mat-panel-title>
+              <mat-panel-description>
+                Please add the address for the event
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="mb-3">
+              <label>City: </label>
+              <input type="text" class="form-control" formControlName="city">
+              <strong class="errorMessage" *ngIf="city && city.invalid && city.touched && city.errors">This city name
+                is not valid!</strong>
+            </div>
+            <div class="mb-3">
+              <label>Country: </label>
+              <input type="text" class="form-control" formControlName="country">
+              <strong class="errorMessage" *ngIf="country && country.invalid && country.touched && country.errors">This
+                country name
+                is not valid!</strong>
+            </div>
+            <div class="mb-3">
+              <label>Zip: </label>
+              <input type="text" class="form-control" formControlName="zip">
+              <strong class="errorMessage" *ngIf="zip && zip.invalid && zip.touched && zip.errors">This
+                zip
+                is not valid!</strong>
+            </div>
+            <div class="mb-3">
+              <label>street: </label>
+              <input type="text" class="form-control" formControlName="street">
+              <strong class="errorMessage" *ngIf="street && street.invalid && street.touched && street.errors">This
+                street name
+                is not valid!</strong>
+            </div>
+            <div class="mb-3">
+              <label>House number: </label>
+              <input type="text" class="form-control" formControlName="houseNumber">
+              <strong class="errorMessage" *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
+                house number
+                is not valid!</strong>
+            </div>
+          </mat-expansion-panel>
         </div>
-        <!-- <div class="mb-3">
-        <label>Address</label>
-        <input type="text" class="form-control" formControlName="address">
-      </div> -->
-        <!-- <div class="input-group mb-3">
-          <label for="colorChoose">Event Color</label>
-          <input type="color" style="margin-left: 5px;">
-        </div> -->
         <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary"
           (click)="modal.close('Save click')" style="float: right; margin-bottom: 5px;">Save</button>
       </form>
@@ -64,17 +95,4 @@
   <button class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
 
-
-
 <pre>{{ closeResult }}</pre>
-
-
-<!-- <div ngbDropdown class="d-inline-block">
-  <button type="button" class="btn btn-primary" id="dropdown1" ngbDropdownToggle>Event types</button>
-  <div ngbDropdownMenu aria-labelledby="dropdown1">
-    <button ngbDropdownItem>Button (enabled)</button>
-    <button ngbDropdownItem>Button (enabled)</button>
-    <button ngbDropdownItem>Button (enabled)</button>
-    <button ngbDropdownItem>Button (enabled)</button>
-  </div>
-</div> -->

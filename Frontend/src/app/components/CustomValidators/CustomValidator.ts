@@ -26,4 +26,11 @@ export class CustomValidators {
       return null;
     };
   }
-}
+
+  // static IsCustomCategoryEmpty(firstValue: string, secondValue: string) {
+  //     if (secondValue.length > 0 && firstValue !== null) {
+  //       return {validator: true}
+  //     }
+  //     return  {validator: false}
+  //   }
+  }

@@ -31,12 +31,19 @@ export class EventModalComponent implements OnInit{
     startTime: new FormControl('',Validators.required),
     endTime: new FormControl(''),
     fullDay: new FormControl(''),
-    category: new FormControl('', [ Validators.pattern('[a-zA-Z]+$')]),
-    // address: new FormGroup({
-    //   city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    // }),
+    category: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
+    address: new FormGroup({
+      city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      country: new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z]+$')]),
+      zip: new FormControl('',[Validators.required,Validators.maxLength(4),Validators.pattern('^[0-9]*$')]),
+      street: new FormControl('',[Validators.required]),
+      houseNumber: new FormControl('',[Validators.required])
+    }),
+    user: new FormGroup({
+      id: new FormControl('')
+    })
   },
-  [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')]
+  [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
   )
 
   get event(){
@@ -62,6 +69,26 @@ export class EventModalComponent implements OnInit{
 
   get category() {
     return this.eventForm.get('category')
+  }
+
+  get city(){
+    return this.eventForm.get('city')
+  }
+
+  get country(){
+    return this.eventForm.get('country')
+  }
+
+  get zip(){
+    return this.eventForm.get('zip')
+  }
+
+  get street(){
+    return this.eventForm.get('street')
+  }
+
+  get houseNumber(){
+    return this.eventForm.get('houseNumber')
   }
 
   open(content : any){
