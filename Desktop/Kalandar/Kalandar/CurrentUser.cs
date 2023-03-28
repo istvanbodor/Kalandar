@@ -8,19 +8,7 @@ namespace Kalandar
 {
     internal class CurrentUser
     {
+        public static string userToken { get; set; }
         public string token { get; set; }
-        public string username { get; set; }
-
-        public string UserToken
-        {
-            get
-            {
-                return this.token;
-            }
-            set
-            {
-                this.token = value;
-            }
-        }
     }
 }

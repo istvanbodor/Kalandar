@@ -51,7 +51,7 @@ namespace Kalandar
                     var payload = new StringContent(newPostJson, Encoding.UTF8, "application/json");
                     var result = client.PostAsync(endpoint, payload).Result.Content.ReadAsStringAsync().Result;
                     var json = result;
-                    var token = JsonConvert.DeserializeObject<TokenClass>(json).token;
+                    var token = JsonConvert.DeserializeObject<CurrentUser>(json).token;
 
                     //foreach(var item in json2)
                     //{
@@ -73,8 +73,8 @@ namespace Kalandar
                     //}
  
                     Trace.WriteLine("Bearer " + token);
-                    TokenClass.userToken = token;
-                    Trace.WriteLine("LoginToken = " + TokenClass.userToken);
+                    CurrentUser.userToken = token;
+                    Trace.WriteLine("LoginToken = " + CurrentUser.userToken);
                     this.Hide();
                     Form applicationForm = new Kalandar();
                     applicationForm.ShowDialog();

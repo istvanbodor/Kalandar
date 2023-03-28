@@ -39,6 +39,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public String getRealUsername()
+    {
+        return this.username;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

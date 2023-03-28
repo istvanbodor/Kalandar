@@ -40,7 +40,7 @@ public class UserService {
                     .lastName(item.getLastName())
                     .firstName(item.getFirstName())
                     .role(item.getRole())
-                    .username(item.getUsername())
+                    .username(item.getRealUsername())
                     .build();
             responseDtoList.add(user);
         }
@@ -116,7 +116,7 @@ public class UserService {
 
         User user = userRepository.findUsersByEmail(currentPrincipalName).get();
         return UserResponseDto.builder()
-                .username(user.getUsername())
+                .username(user.getRealUsername())
                 .role(user.getRole())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
