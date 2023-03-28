@@ -53,7 +53,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPasswordAgain = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -320,18 +320,18 @@
             this.txtPassword.Text = "NEW PASSWORD";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // txtPasswordAgain
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox1.Location = new System.Drawing.Point(515, 303);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 24);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.Text = "NEW PASSWORD AGAIN";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPasswordAgain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtPasswordAgain.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPasswordAgain.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPasswordAgain.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPasswordAgain.Location = new System.Drawing.Point(515, 303);
+            this.txtPasswordAgain.Name = "txtPasswordAgain";
+            this.txtPasswordAgain.Size = new System.Drawing.Size(315, 24);
+            this.txtPasswordAgain.TabIndex = 23;
+            this.txtPasswordAgain.Text = "NEW PASSWORD AGAIN";
+            this.txtPasswordAgain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel8
             // 
@@ -374,7 +374,6 @@
             this.lblPasswordChangeError.Name = "lblPasswordChangeError";
             this.lblPasswordChangeError.Size = new System.Drawing.Size(315, 31);
             this.lblPasswordChangeError.TabIndex = 0;
-            this.lblPasswordChangeError.Text = "Passwords does not match!";
             this.lblPasswordChangeError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProfileUserControl
@@ -385,7 +384,7 @@
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPasswordAgain);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label5);
@@ -446,7 +445,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPasswordAgain;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Panel panel9;

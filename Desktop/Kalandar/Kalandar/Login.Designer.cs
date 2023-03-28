@@ -42,7 +42,7 @@
             this.txtLoginPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblLoginError = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -201,23 +201,23 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.lblLoginError);
             this.panel5.Location = new System.Drawing.Point(88, 452);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(429, 31);
             this.panel5.TabIndex = 6;
             // 
-            // label3
+            // lblLoginError
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.LightCoral;
-            this.label3.Location = new System.Drawing.Point(105, 1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Incorrect username/password!";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLoginError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLoginError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginError.ForeColor = System.Drawing.Color.LightCoral;
+            this.lblLoginError.Location = new System.Drawing.Point(0, 0);
+            this.lblLoginError.Name = "lblLoginError";
+            this.lblLoginError.Size = new System.Drawing.Size(429, 31);
+            this.lblLoginError.TabIndex = 0;
+            this.lblLoginError.Text = "Incorrect username/password!";
+            this.lblLoginError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnLogin
             // 
@@ -310,7 +310,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
@@ -332,7 +331,7 @@
         private System.Windows.Forms.TextBox txtLoginPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLoginError;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;

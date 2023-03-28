@@ -71,26 +71,45 @@ namespace Kalandar
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
+            lblPasswordChangeError.Text = "";
+            lblPasswordChangeError.ForeColor = Color.LightCoral;
+
             using (var client = new HttpClient())
             {
-                try
+                if (txtPassword.Text == "" || txtPasswordAgain.Text == "")
                 {
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.userToken);
-                    var endpoint = new Uri("http://localhost:8080/api/user/password");
-                    NewUser user = new NewUser
-                    {
-                        password = "buba"
-                    };
-
-                    var editUserJson = JsonConvert.SerializeObject(user, Formatting.Indented);
-                    var payload = new StringContent(editUserJson, Encoding.UTF8, "application/json");
-                    var response = client.PutAsync(endpoint, payload).Result;
-                    response.EnsureSuccessStatusCode();
-                    Trace.WriteLine("poggies");
+                    lblPasswordChangeError.Text = "Passwords can not be empty!";
                 }
-                catch (HttpRequestException error)
+                else if (txtPassword.Text != txtPasswordAgain.Text)
                 {
-                    Trace.Write(error.Message);
+                    lblPasswordChangeError.Text = "Passwords does not match!";
+                }
+                else 
+                {
+                    try
+                    {
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.userToken);
+                        var endpoint = new Uri("http://localhost:8080/api/user/password");
+                        NewUser user = new NewUser
+                        {
+                            password = txtPassword.Text
+                        };
+
+                        var editUserJson = JsonConvert.SerializeObject(user, Formatting.Indented);
+                        var payload = new StringContent(editUserJson, Encoding.UTF8, "application/json");
+                        var response = client.PutAsync(endpoint, payload).Result;
+                        response.EnsureSuccessStatusCode();
+                        //Trace.WriteLine((int)response.StatusCode);
+                        lblPasswordChangeError.ForeColor = Color.Green;
+                        lblPasswordChangeError.Text = "Password has been changed!";
+                        Trace.WriteLine("poggies");
+                    }
+                    catch (HttpRequestException error)
+                    {
+                        lblPasswordChangeError.ForeColor = Color.LightCoral;
+                        lblPasswordChangeError.Text = "Database error!";
+                        Trace.WriteLine(error);
+                    }
                 }
             }
         }

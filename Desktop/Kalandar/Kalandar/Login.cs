@@ -37,68 +37,91 @@ namespace Kalandar
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            using (var client = new HttpClient())
+            if (txtLoginEmail.Text == "")
             {
-                try
+                lblLoginError.ForeColor = Color.LightCoral;
+                lblLoginError.Text = "Email can not be empty!";
+            }
+            else if (txtLoginPassword.Text == "")
+            {
+                lblLoginError.ForeColor = Color.LightCoral;
+                lblLoginError.Text = "Password can not be empty!";
+            }
+            else
+            {
+                using (var client = new HttpClient())
                 {
-                    var endpoint = new Uri("http://localhost:8080/api/auth/login");
-                    var loginUser = new NewUser()
+                    try
                     {
-                        email = txtLoginEmail.Text,
-                        password = txtLoginPassword.Text
-                    };
-                    var newPostJson = JsonConvert.SerializeObject(loginUser);
-                    var payload = new StringContent(newPostJson, Encoding.UTF8, "application/json");
-                    var result = client.PostAsync(endpoint, payload).Result.Content.ReadAsStringAsync().Result;
-                    var json = result;
-                    var token = JsonConvert.DeserializeObject<CurrentUser>(json).token;
-                    
-                    CurrentUser.userToken = token;
-                    
+                        var endpoint = new Uri("http://localhost:8080/api/auth/login");
+                        var loginUser = new NewUser()
+                        {
+                            email = txtLoginEmail.Text,
+                            password = txtLoginPassword.Text
+                        };
+                        var newPostJson = JsonConvert.SerializeObject(loginUser);
+                        var payload = new StringContent(newPostJson, Encoding.UTF8, "application/json");
+                        var result = client.PostAsync(endpoint, payload).Result.Content.ReadAsStringAsync().Result;
+                        var json = result;
+                        var token = JsonConvert.DeserializeObject<CurrentUser>(json).token;
 
-                }
-                catch (HttpRequestException error)
-                {
-                    lblLoginText.Text = error.Message;
-                    
-                    Trace.Write(error.Message);
-                }
-                
-                try
-                {
-                    string token = CurrentUser.userToken;
+                        CurrentUser.userToken = token;
 
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                    var endpoint = new Uri("http://localhost:8080/api/user/profile");
-                    var result = client.GetAsync(endpoint).Result;
-                    var json = result.Content.ReadAsStringAsync().Result;
-                    CurrentUser user = JsonConvert.DeserializeObject<CurrentUser>(json);
 
-                    UserData.id = user.id;
-                    UserData.email = user.email;
-                    UserData.firstName = user.firstName;
-                    UserData.lastName = user.lastName;
-                    UserData.username = user.username;
-                    UserData.role = user.role;
-                    
-                    if (token != null)
-                    {
-                        this.Hide();
-                        Form applicationForm = new Kalandar();
-                        applicationForm.ShowDialog();
                     }
-                    else
+                    catch (HttpRequestException error)
                     {
-                        Trace.Write("Error");
-                    }
-                    
-                }
-                catch (HttpRequestException error)
-                {
-                    Trace.Write(error.Message);
-                }
+                        lblLoginText.Text = error.Message;
 
-                
+                        Trace.Write(error.Message);
+                    }
+
+                    try
+                    {
+                        string token = CurrentUser.userToken;
+
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        var endpoint = new Uri("http://localhost:8080/api/user/profile");
+                        var result = client.GetAsync(endpoint).Result;
+                        var json = result.Content.ReadAsStringAsync().Result;
+
+                        if (result.IsSuccessStatusCode)
+                        {
+                            CurrentUser user = JsonConvert.DeserializeObject<CurrentUser>(json);
+                            UserData.id = user.id;
+                            UserData.email = user.email;
+                            UserData.firstName = user.firstName;
+                            UserData.lastName = user.lastName;
+                            UserData.username = user.username;
+                            UserData.role = user.role;
+                            if (token != null)
+                            {
+                                this.Hide();
+                                Form applicationForm = new Kalandar();
+                                applicationForm.ShowDialog();
+                            }
+                            else
+                            {
+                                lblLoginError.ForeColor = Color.LightCoral;
+                                lblLoginError.Text = "Database error!";
+                            }
+                        }
+                        else if ((int)result.StatusCode == 403)
+                        {
+                            lblLoginError.ForeColor = Color.LightCoral;
+                            lblLoginError.Text = "Wrong username or password!";
+                        }
+                        else
+                        {
+                            lblLoginError.ForeColor = Color.LightCoral;
+                            lblLoginError.Text = "Database error!";
+                        }
+                    }
+                    catch (HttpRequestException error)
+                    {
+                        Trace.Write(error.Message);
+                    }
+                }
             }
         }
 
