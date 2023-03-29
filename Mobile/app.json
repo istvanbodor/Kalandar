@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/kalandar_icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#181818"
+      "backgroundColor": "#121212"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/kalandar_icon.png",
-        "backgroundColor": "#181818"
+        "backgroundColor": "#121212"
       }
     },
     "web": {
