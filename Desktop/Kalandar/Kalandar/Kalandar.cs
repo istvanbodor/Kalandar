@@ -121,18 +121,20 @@ namespace Kalandar
 
                 List<EventClass> events = JsonConvert.DeserializeObject<List<EventClass>>(json);
                 Trace.WriteLine(json);
-                Trace.WriteLine(events);
                 if (events != null)
                 {
                     foreach (var data in events)
                     {
                         EventsBlank eventsUC = new EventsBlank();
-                        eventsUC.TitleText = data.Event;
-                        eventsUC.DateText = data.StartTime + " - " + data.EndTime;
-                        eventsUC.IsFullDayText = Convert.ToString(data.FullDay);
-                        eventsUC.OrganisedByText = "Organised by: " + data.Username;
-                        eventsUC.AddressCountryText = data.AddressId;
-                        eventsUC.CategoryText = data.Category;
+                        eventsUC.TitleText = data.@event;
+                        eventsUC.DateText = data.startTime + " - " + data.endTime;
+                        eventsUC.IsFullDayText = Convert.ToString(data.fullDay);
+                        eventsUC.OrganisedByText = "Organised by: " + data.username;
+                        eventsUC.CategoryText = data.category;
+                        eventsUC.AddressCountryText = data.address.country;
+                        eventsUC.AddressStreetHouseNoText = data.address.street + " " + data.address.houseNumber;
+                        eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
+
                         pnlCalendar.Controls.Add(eventsUC);
                     }
                 }

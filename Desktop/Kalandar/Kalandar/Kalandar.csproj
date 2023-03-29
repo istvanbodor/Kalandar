@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressClass.cs" />
     <Compile Include="APIConnectDetails.cs" />
     <Compile Include="EventClass.cs" />
     <Compile Include="Kalandar.cs">

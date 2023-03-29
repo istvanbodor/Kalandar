@@ -16,6 +16,7 @@ public class EventResponseDto {
 
     private String username;
     private String event;
+    private String category;
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;

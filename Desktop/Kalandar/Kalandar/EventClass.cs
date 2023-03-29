@@ -8,13 +8,13 @@ namespace Kalandar
 {
     internal class EventClass
     {
-        public int Id { get; set; }
-        public string Event { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-        public bool FullDay { get; set; }
-        public string Category { get; set; }
-        public string Username { get; set; }
-        public string AddressId { get; set; }
+        public string @event { get; set; }
+        public string startTime { get; set; }
+        public string endTime { get; set; }
+        public bool fullDay { get; set; }
+        public string category { get; set; }
+        public string username { get; set; }
+        public AddressClass address { get; set; }
+        public CurrentUser user { get; set; }
     }
 }
