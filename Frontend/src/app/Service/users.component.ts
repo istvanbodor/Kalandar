@@ -22,10 +22,26 @@ export class UsersComponent implements OnInit {
   }
 
   DeleteEvent(id: string) {
-    this.authService.deleteEvent(id).subscribe(() => {
+    this.authService.deleteEvent(id)
+    .subscribe ({next:() => {
       this.users$ = this.authService.getUsersData().pipe(tap((user) => {
         this.users = user;  
       }));
-    });
+    },
+   error: (error) => {
+      console.log('Error! =>', error)
+    }});
+  }
+
+  ChangeRole(id: string) {
+    this.authService.changeRole(id)
+    .subscribe({next:() => {
+      this.users$ = this.authService.getUsersData().pipe(tap((user) => {
+        this.users = user         
+      }));
+    },
+   error: (error) => {
+      console.log('Error! =>', error)
+    }});
   }
 }

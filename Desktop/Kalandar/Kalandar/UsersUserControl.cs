@@ -15,6 +15,7 @@ namespace Kalandar
 {
     public partial class UsersUserControl : UserControl
     {
+        private string baseURL = APIConnectDetails.baseURL;
         public UsersUserControl()
         {
             InitializeComponent();
@@ -100,7 +101,7 @@ namespace Kalandar
                 try
                 {
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                    var endpoint = new Uri("http://localhost:8080/api/admin/user");
+                    var endpoint = new Uri(baseURL + "api/admin/user");
                     var response = client.DeleteAsync(endpoint + $"/{this.lblId.Text}").Result;
                     Trace.WriteLine("userID = " + this.lblId.Text);
                     response.EnsureSuccessStatusCode();
@@ -120,10 +121,22 @@ namespace Kalandar
                 try
                 {
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                    var endpoint = new Uri("http://localhost:8080/api/admin/role/user/");
+                    var endpoint = new Uri(baseURL + "api/admin/role/user/");
                     var response = client.PutAsJsonAsync(endpoint + $"{this.lblId.Text}", "").Result;
                     Trace.WriteLine("userIDAdminRights = " + this.lblId.Text);
                     response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (this.lblRole.Text == "USER")
+                        {
+                            this.lblRole.Text = "ADMIN";
+                        }
+                        else
+                        {
+                            this.lblRole.Text = "USER";
+                        }
+                        
+                    }
                 }
                 catch (HttpRequestException error)
                 {

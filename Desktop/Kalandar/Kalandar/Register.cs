@@ -7,8 +7,10 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -17,6 +19,7 @@ namespace Kalandar
 {
     public partial class Register : Form
     {
+        private string baseURL = APIConnectDetails.baseURL;
         public Register()
         {
             InitializeComponent();
@@ -62,9 +65,6 @@ namespace Kalandar
         {
             txtRegisterPasswordRepeat.SelectAll();
         }
-
-        
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
 
@@ -83,7 +83,7 @@ namespace Kalandar
                 {
                     try
                     {
-                        var endpoint = new Uri("http://localhost:8080/api/auth/register");
+                        var endpoint = new Uri(baseURL + "api/auth/register");
                         var newUser = new NewUser()
                         {
                             firstName = txtRegisterFirstName.Text,
@@ -97,9 +97,14 @@ namespace Kalandar
                         var payload = new StringContent(newPostJson, Encoding.UTF8, "application/json");
                         var result = client.PostAsync(endpoint, payload).Result;
                         result.EnsureSuccessStatusCode();
-                        lblError.ForeColor = Color.Green;
-                        lblError.Text = "Account has been created!";
-                        Trace.Write("poggies");
+                        Trace.WriteLine((int)result.StatusCode);
+                        if (result.IsSuccessStatusCode)
+                        {
+                            lblError.ForeColor = Color.Green;
+                            lblError.Text = "Account has been created!";
+                            Trace.Write("Account has been created.");
+                        }
+                        
                     }
                     catch (HttpRequestException error)
                     {
@@ -153,10 +158,24 @@ namespace Kalandar
             }
             else
             {
-                return true;
+                if (!IsValidEmail(email))
+                {
+                    lblError.ForeColor = Color.LightCoral;
+                    lblError.Text = "Email is invalid!";
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
             }
         }
+        public bool IsValidEmail(string email)
+        {
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
 
-        
+            return emailRegex.IsMatch(email);
+        }
     }
 }

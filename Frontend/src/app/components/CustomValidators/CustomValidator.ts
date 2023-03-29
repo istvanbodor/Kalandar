@@ -17,13 +17,20 @@ export class CustomValidators {
       const startCtrl = control.get(start);
       const endCtrl = control.get(end);
 
-      if (startCtrl && endCtrl && startCtrl.value && endCtrl.value) {
+      if (startCtrl && endCtrl) {
         const startDate = new Date(startCtrl.value);
         const endDate = new Date(endCtrl.value);
   
-        return startDate > endDate ? null : { badVal: true };
+        return startDate > endDate ? { badVal: true } : null;
       }      
       return null;
     };
   }
-}
+
+  // static IsCustomCategoryEmpty(firstValue: string, secondValue: string) {
+  //     if (secondValue.length > 0 && firstValue !== null) {
+  //       return {validator: true}
+  //     }
+  //     return  {validator: false}
+  //   }
+  }
