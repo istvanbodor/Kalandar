@@ -22,6 +22,7 @@ namespace Kalandar
     public partial class Kalandar : Form
     {
         private DateClass selectedDate = new DateClass();
+        private string baseURL = APIConnectDetails.baseURL;
 
         public int GetYear
         {
@@ -41,10 +42,21 @@ namespace Kalandar
         public Kalandar()
         {
             InitializeComponent();
+            checkUserRole();
             generateCalendar();
             editDateText();
-            Trace.WriteLine($"KalandarToken = {token}");
+        }
 
+        private void checkUserRole()
+        {
+            if (UserData.role != "ADMIN")
+            {
+                btnUsers.Visible = false;
+            }
+            else
+            {
+                btnUsers.Visible = true;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -100,11 +112,32 @@ namespace Kalandar
 
         private void generateEvents()
         {
-
-            for (int i = 0; i < 15; i++)
+            using (var client = new HttpClient())
             {
-                EventsBlank eventsBlank = new EventsBlank();
-                pnlCalendar.Controls.Add(eventsBlank);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var endpoint = new Uri(baseURL + "api/events");
+                var result = client.GetAsync(endpoint).Result;
+                var json = result.Content.ReadAsStringAsync().Result;
+
+                List<EventClass> events = JsonConvert.DeserializeObject<List<EventClass>>(json);
+                Trace.WriteLine(json);
+                if (events != null)
+                {
+                    foreach (var data in events)
+                    {
+                        EventsBlank eventsUC = new EventsBlank();
+                        eventsUC.TitleText = data.@event;
+                        eventsUC.DateText = data.startTime + " - " + data.endTime;
+                        eventsUC.IsFullDayText = Convert.ToString(data.fullDay);
+                        eventsUC.OrganisedByText = "Organised by: " + data.username;
+                        eventsUC.CategoryText = data.category;
+                        eventsUC.AddressCountryText = data.address.country;
+                        eventsUC.AddressStreetHouseNoText = data.address.street + " " + data.address.houseNumber;
+                        eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
+
+                        pnlCalendar.Controls.Add(eventsUC);
+                    }
+                }
             }
         }
 
@@ -113,11 +146,12 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri("http://localhost:8080/api/admin/users");
+                var endpoint = new Uri(baseURL + "api/admin/users");
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 
                 List<NewUser> users = JsonConvert.DeserializeObject<List<NewUser>>(json);
+                Trace.WriteLine(users);
                 if (users != null)
                 {
                     foreach (var data in users)
@@ -141,24 +175,27 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri("http://localhost:8080/api/user/profile");
+                var endpoint = new Uri(baseURL + "api/user/profile");
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
-
-                UserData[] user = JsonConvert.DeserializeObject<UserData[]>(json);
-                if (user != null)
-                {
-                    foreach (var data in user)
-                    {
-                    //    CurrentUser.id = data.id;
-                    //    CurrentUser.firstName = data.firstName;
-                    //    CurrentUser.lastName = data.lastName;
-                    //    CurrentUser.email = data.email;
-                    //    CurrentUser.username = data.username;
-                    //    CurrentUser.role = data.role;
-                    }
-                }
+                CurrentUser user = JsonConvert.DeserializeObject<CurrentUser>(json);
+                Trace.WriteLine(user.username);
+                UserData.id = user.id;
+                UserData.email = user.email;
+                UserData.firstName = user.firstName;
+                UserData.lastName = user.lastName;
+                UserData.username = user.username;
+                UserData.role = user.role;
+                Trace.Write(token);
             }
+
+            ProfileUserControl profileUC = new ProfileUserControl();
+            profileUC.firstNameText = UserData.firstName;
+            profileUC.lastNameText = UserData.lastName;
+            profileUC.usernameText = UserData.username;
+            profileUC.emailText = UserData.email;
+            pnlCalendar.Controls.Add(profileUC);
+
         }
 
         private void pctrNextMonth_Click(object sender, EventArgs e)
@@ -200,7 +237,6 @@ namespace Kalandar
             pnlCalendar.Controls.Clear();
             pctrNextMonth.Visible = false;
             pctrPrevMonth.Visible = false;
-            pnlWeekdays.Visible = false;
             generateEvents();
             lblTopBar.Text = "Events";
             pnlHeader.Visible = false;
@@ -228,7 +264,7 @@ namespace Kalandar
         {
 
             lblTopBar.Text = "Users";
-            pnlWeekdays.Visible = true;
+            pnlWeekdays.Visible = false;
             pnlHeader.Visible = true;
             btnCalendar.BackColor = Color.FromArgb(60, 60, 60);
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
@@ -252,8 +288,7 @@ namespace Kalandar
         private void btnProfile_Click(object sender, EventArgs e)
         {
             lblTopBar.Text = "Profile";
-            pnlWeekdays.Visible = true;
-            pnlHeader.Visible = true;
+            pnlHeader.Visible = false;
             btnCalendar.BackColor = Color.FromArgb(60, 60, 60);
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
             btnUsers.BackColor = Color.FromArgb(60, 60, 60);
@@ -262,6 +297,13 @@ namespace Kalandar
             pctrNextMonth.Visible = false;
             pctrPrevMonth.Visible = false;
             generateUserProfile();
+        }
+
+        private void btnAddEvent_Click(object sender, EventArgs e)
+        {
+            AddEventForm addEventForm = new AddEventForm();
+
+            addEventForm.Show();
         }
     }
 }

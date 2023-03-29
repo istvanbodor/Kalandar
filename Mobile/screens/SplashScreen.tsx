@@ -1,29 +1,38 @@
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Button } from 'react-native'
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient';
-
-export default function SplashScreen() {
+import  MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import * as Animatable from 'react-native-animatable'
+export default function SplashScreen({navigation}: any) {
   return (
     <View style={styles.containter}>
         
         <View style={styles.header}>
 
-            <Image source={require('../assets/kalandar_icon.png')} style={styles.logo} resizeMode="stretch" />
+            <Animatable.Image animation="bounceIn" source={require('../assets/kalandar_icon.png')} style={styles.logo} resizeMode="stretch" />
 
 
         </View>
 
-        <View style={styles.footer}>
+        <Animatable.View animation="fadeInUpBig" style={styles.footer}>
             <Text style={styles.title}>Welcome to the Kalandar app!</Text>
             <Text style={styles.text}>Your adventures are awaiting you.</Text>
-        </View>
+            
+
+                <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer} onPress={()=>navigation.navigate('LoginScreen')}>
+                    <Text style={styles.buttonText}>Get Started! <MaterialIcons name='navigate-next'  /></Text>
+                    
+                </TouchableOpacity>
+
+               
+
+        </Animatable.View>
 
     </View>
   )
 }
 
 
-const {height} = Dimensions.get("screen");
+const {height, width} = Dimensions.get("screen");
 const logoheight = height*0.28;
 
 
@@ -31,7 +40,7 @@ const styles = StyleSheet.create({
 
     containter: {
         flex: 1,
-        backgroundColor: '#181818',
+        backgroundColor: '#121212',
        
     },
     title: {
@@ -59,7 +68,28 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 30,
         paddingVertical: 50,
         paddingHorizontal: 50
-    }
+    },
+    buttonContainer: {
+        
+        marginTop: 50,
+        borderRadius: 30,
+        backgroundColor: '#FFD700',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        width: width*0.6,
+        marginLeft: width*0.2
+        
+        
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        flexDirection: 'row',
+       
+    },
+    
     
 
 

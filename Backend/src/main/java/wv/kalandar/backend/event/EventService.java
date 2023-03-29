@@ -157,7 +157,9 @@ public class EventService {
                 .startTime(item.getStartTime())
                 .username(item.getUser().getUsername())
                 .address(item.getAddress())
+                .category(item.getCategory())
                 .event(item.getEvent())
+                .category(item.getCategory())
                 .build();
     }
 }

@@ -16,6 +16,7 @@ public class EventResponseDto {
 
     private String username;
     private String event;
+    private String category;
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
@@ -23,5 +24,7 @@ public class EventResponseDto {
     private boolean isFullDay;
 
     private Address address;
+
+    private String category;
 
 }
