@@ -2,23 +2,38 @@
 <div class="container">
         <div class="row">
                 <div class="col">
-                        <h2 class="mb-3">First Name: {{this.user?.firstName}}</h2>
-                        <h2 class="mb-3">Last name: {{this.user?.lastName}}</h2>
-                        <h2 class="mb-3">Username: {{this.user?.username}}</h2>
-                        <h2 class="mb-3">Email: {{this.user?.email}}</h2>
-
-                </div>
+                        <h2 class="mb-3">First name: <span class="userData">{{this.user?.firstName}}</span> </h2>
+                        <h2 class="mb-3">Last name:  <span class="userData">{{this.user?.lastName}}</span></h2>
+                        <h2 class="mb-3">Username:  <span class="userData">{{this.user?.username}}</span></h2>
+                        <h2 class="mb-3">Email: <span class="userData">{{this.user?.email}}</span></h2>
+                        </div>
                 <div class="col">
                         <h2>Change password</h2>
+                        <div *ngIf="alert" class="alert alert alert-success alert-dismissible fade show" role="alert"
+                        style="text-align: center;">
+                        <strong>Success !</strong>
+                        <br>
+                        <span>Congratulations, your password has been successfully changed.</span>
+                        <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
+                          <strong aria-hidden="true">&times;</strong>
+                        </button>
+                      </div>
                         <form [formGroup]="passwordChangeForm" (ngSubmit)="changePasswordSubmit()">
                                 <div class="form-group mb-3">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" formControlName="password">
+                                        <input type="password" class="form-control" placeholder="Password"  formControlName="password">
+                                        <strong class="errorMessage" *ngIf="password && password.invalid && password.touched">This password is not
+                                                valid!</strong>
+                                              <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
                                 </div>
                                 <div class="form-group mb-3">
                                         <label>Password confirmation</label>
-                                        <input type="password" class="form-control" formControlName="Passwordconfirmation">
+                                        <input type="password" class="form-control"placeholder="Password confirmation"  formControlName="confirmPassword" >
+                                        <strong class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This
+                                                password is not valid!</strong>
+                                              <p class="errorMessage" *ngIf="passwordMatchError"> Passwords do not match!</p>
                                 </div>
+                                <button [disabled]="passwordChangeForm.invalid" class="btn btn-primary btn-md" type="submit">Save</button>
                         </form>
                 </div>
         </div>

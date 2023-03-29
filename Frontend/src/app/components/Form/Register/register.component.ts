@@ -28,8 +28,7 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required,Validators.email]),
 
   },
-  [CustomValidators.MatchValidator('password', 'confirmPassword')]
-  )
+  [CustomValidators.MatchValidator('password', 'confirmPassword')])
 
   get firstName() {
     return this.registerForm.get('firstName')

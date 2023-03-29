@@ -1,20 +1,32 @@
-.container{
+.container {
     margin-top: 30px;
-    background:rgba(255, 255, 255, 0.2);
-    padding:40px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
     border-radius: 10px;
     height: 80%;
 }
 
-input{
-   width: 80%;
+input {
+    width: 80%;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-label{
+label {
     font-weight: bold;
     font-size: large;
+}
+
+.errorMessage {
+    color: red;
+}
+
+p{
+    font-weight: bold;
+}
+
+.userData{
+    color: gold;
 }

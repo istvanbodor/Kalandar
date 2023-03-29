@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { tr } from "date-fns/locale";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
+import { IsAdminPipe } from "../components/CustomPipe/CustomPipe";
 import { UsersApiService } from "./users.service";
 
 
@@ -14,6 +16,9 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   expired = false;
+
+  users: any
+  admin:boolean = true
 
   private isTokenExpired(auth_token: string) {
     const expiry = (JSON.parse(atob(auth_token.split('.')[1]))).exp;
@@ -30,6 +35,19 @@ export class AuthService {
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
     const auth_token = localStorage.getItem('token')
     this._isLoggedIn$.next(!!auth_token);
+  }
+
+  adminUser() {
+     
+    this.getUsersData().pipe(tap((result) => {
+      this.users = result
+
+      if (this.users.role === 'ADMIN') {
+        this.admin
+      }
+    }
+    ))
+
   }
 
   login(email: string, password: string): Observable<any> {
@@ -52,7 +70,7 @@ export class AuthService {
     return this.http.get(this.url + `api/admin/users`, requestOptions)
   }
 
-  getProfile(): Observable<any>{
+  getProfile(): Observable<any> {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -63,7 +81,7 @@ export class AuthService {
     return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
   }
 
-  changePassword() {
+  changePassword(password: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -71,7 +89,7 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/user/password`, {}, requestOptions)
+    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
   }
 
   loggedIn() {

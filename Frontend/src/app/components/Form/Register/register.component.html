@@ -1,51 +1,55 @@
 <form class="container" [formGroup]="registerForm" (ngSubmit)="userData()" style="margin-top: 40px;">
-    <h1>{{title}}</h1>
-    <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
-  <div *ngIf="alert"  class="alert alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
+  <h1>{{title}}</h1>
+  <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
+  <div *ngIf="alert" class="alert alert alert-success alert-dismissible fade show" role="alert"
+    style="text-align: center;">
     <strong>Success !</strong>
-   <br>
+    <br>
     <span>Congratulations, your account has been successfully created.</span>
     <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
       <strong aria-hidden="true">&times;</strong>
-    </button>   
+    </button>
   </div>
-    <div class="form-group mb-3">
-      <label for="firsNameLabel">First name</label>
-      <input type="text" class="form-control" id="firstNameLabel" placeholder="First Name" formControlName="firstName">
-      <strong class="errorMessage" *ngIf="firstName && firstName.invalid && firstName.touched">This First name is not valid!</strong>
-    </div>
-    <div class="form-group mb-3">
-      <label for="lastNameLabel">Last name</label>
-      <input type="text" class="form-control" id="lastNameLabel" placeholder="Last Name" formControlName="lastName">
-      <strong class="errorMessage" *ngIf="lastName && lastName.invalid && lastName.touched">This Last name is not valid!</strong>
-    </div>
-      <div class="form-group mb-3">
-        <label for="usernameLabel">Username</label>
-        <input type="text" class="form-control" id="usernameLabel" placeholder="Username" formControlName="username">
-        <strong class="errorMessage" *ngIf="username && username.invalid && username.touched">This Username is not valid!</strong>
-      </div>
-      <div class="form-group mb-3">
-        <label for="passwordLabel">Password</label>
-        <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password">
-        <strong class="errorMessage"*ngIf="password && password.invalid && password.touched">This password is not valid!</strong>
-        <p class="errorMessage" *ngIf="passwordMatchError" style="font-weight: bold;">Passwords do not match!</p>
-      </div>
-      <div class="form-group mb-3">
-        <label for="passwordConfirmLabel">Password Confirmation</label>
-        <input type="password" class="form-control" id="passwordConfirmLabel" placeholder="Password Confirmation" formControlName="confirmPassword">
-        <strong class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This password is not valid!</strong>
-        <p class="errorMessage" *ngIf="passwordMatchError" style="font-weight: bold;"> Passwords do not match!</p>
-      </div>
-      <div class="form-group mb-3">
-        <label for="emailLabel">Email</label>
-        <input type="email" class="form-control" id="emailLabel" placeholder="example@gmail.com" formControlName="email" name="email">
-        <strong class="errorMessage" *ngIf="email && email.invalid && email.touched">This email is not valid!</strong>
+  <div class="form-group mb-3">
+    <label for="firsNameLabel">First name</label>
+    <input type="text" class="form-control" id="firstNameLabel" placeholder="First Name" formControlName="firstName">
+    <strong class="errorMessage" *ngIf="firstName && firstName.invalid && firstName.touched">This First name is not
+      valid!</strong>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lastNameLabel">Last name</label>
+    <input type="text" class="form-control" id="lastNameLabel" placeholder="Last Name" formControlName="lastName">
+    <strong class="errorMessage" *ngIf="lastName && lastName.invalid && lastName.touched">This Last name is not
+      valid!</strong>
+  </div>
+  <div class="form-group mb-3">
+    <label for="usernameLabel">Username</label>
+    <input type="text" class="form-control" id="usernameLabel" placeholder="Username" formControlName="username">
+    <strong class="errorMessage" *ngIf="username && username.invalid && username.touched">This Username is not
+      valid!</strong>
+  </div>
+  <div class="form-group mb-3">
+    <label for="passwordLabel">Password</label>
+    <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password">
+    <strong class="errorMessage" *ngIf="password && password.invalid && password.touched">This password is not
+      valid!</strong>
+    <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
+  </div>
+  <div class="form-group mb-3">
+    <label for="passwordConfirmLabel">Password Confirmation</label>
+    <input type="password" class="form-control" id="passwordConfirmLabel" placeholder="Password Confirmation"
+      formControlName="confirmPassword">
+    <strong class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This
+      password is not valid!</strong>
+    <p class="errorMessage" *ngIf="passwordMatchError"> Passwords do not match!</p>
+  </div>
+  <div class="form-group mb-3">
+    <label for="emailLabel">Email</label>
+    <input type="email" class="form-control" id="emailLabel" placeholder="example@gmail.com" formControlName="email"
+      name="email">
+    <strong class="errorMessage" *ngIf="email && email.invalid && email.touched">This email is not valid!</strong>
+  </div>
+  <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Register</button>
 
-        
-      </div>
-      <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary" >Register</button>
-  
-      <span class="formTexts">Already have an account?<a routerLink="/login"> Login</a></span>
-    </form>
-
-
+  <span class="formTexts">Already have an account?<a routerLink="/login"> Login</a></span>
+</form>
