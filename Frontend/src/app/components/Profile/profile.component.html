@@ -1,8 +1,25 @@
-<h1 style="text-align: center;">Profile</h1>
+<h1>Profile</h1>
+<div class="container">
+        <div class="row">
+                <div class="col">
+                        <h2 class="mb-3">First Name: {{this.user?.firstName}}</h2>
+                        <h2 class="mb-3">Last name: {{this.user?.lastName}}</h2>
+                        <h2 class="mb-3">Username: {{this.user?.username}}</h2>
+                        <h2 class="mb-3">Email: {{this.user?.email}}</h2>
 
-<div class="container-fluid">
-        <h3>User</h3>
-        <h4>Username</h4>
-        <h4>Password</h4>
-        <h4>Email</h4>
+                </div>
+                <div class="col">
+                        <h2>Change password</h2>
+                        <form [formGroup]="passwordChangeForm" (ngSubmit)="changePasswordSubmit()">
+                                <div class="form-group mb-3">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" formControlName="password">
+                                </div>
+                                <div class="form-group mb-3">
+                                        <label>Password confirmation</label>
+                                        <input type="password" class="form-control" formControlName="Passwordconfirmation">
+                                </div>
+                        </form>
+                </div>
+        </div>
 </div>

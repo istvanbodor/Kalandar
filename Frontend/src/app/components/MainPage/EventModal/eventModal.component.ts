@@ -40,7 +40,7 @@ export class EventModalComponent implements OnInit{
       houseNumber: new FormControl('',[Validators.required]),
     }),
     user:  new FormGroup({
-      id: new FormControl(this.authService.getUserId())
+      id: new FormControl(1)
     })
   },
   [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],

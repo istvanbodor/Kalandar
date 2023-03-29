@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
 import { UsersApiService } from "./users.service";
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +13,6 @@ export class AuthService {
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-  auth_token = localStorage.getItem('token')
   expired = false;
 
   private isTokenExpired(auth_token: string) {
@@ -21,12 +21,10 @@ export class AuthService {
   }
 
   tokenExpired() {
-    let logged = true
     if (this.isTokenExpired('token')) {
-      logged = false
       return this._router.navigate(['/login'])
     }
-    return logged
+    return null
   }
 
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
@@ -38,19 +36,11 @@ export class AuthService {
     return this.usersApiService
       .login(email, password).pipe(
         tap((response: any) => {
-          console.log('token: ', response.token)
           this._isLoggedIn$.next(true)
           localStorage.setItem('token', response.token)
-          localStorage.setItem('id', response.id);
         })
       )
   }
-
-  getUserId() {
-    return localStorage.getItem('id');
-  }
-
-
   getUsersData() {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
@@ -59,10 +49,10 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.get(this.url + `api/admin/users`, requestOptions);
+    return this.http.get(this.url + `api/admin/users`, requestOptions)
   }
 
-  getProfile() {
+  getProfile(): Observable<any>{
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -70,7 +60,18 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers }
-    return this.http.get(this.url + `api/user/profile`, requestOptions)
+    return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
+  }
+
+  changePassword() {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.put(this.url + `api/user/password`, {}, requestOptions)
   }
 
   loggedIn() {
@@ -105,7 +106,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeRole(id: string) {
+  changeEvent(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
