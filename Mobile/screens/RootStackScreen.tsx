@@ -1,16 +1,16 @@
 import React from 'react'
-
-import {createStackNavigator, Header} from '@react-navigation/stack'
-
+import {createStackNavigator} from '@react-navigation/stack'
 import SplashScreen from './SplashScreen';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
 
 
+
+
 const RootStack = createStackNavigator<any>();
 
 
-const RootStackScreen = ({navigation}) => (
+const RootStackScreen = () => (
 
     <RootStack.Navigator screenOptions={{ 
         headerShown: false

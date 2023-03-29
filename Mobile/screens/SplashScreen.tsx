@@ -2,8 +2,7 @@ import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Button } f
 import React from 'react'
 import  MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import * as Animatable from 'react-native-animatable'
-
-export default function SplashScreen() {
+export default function SplashScreen({navigation}: any) {
   return (
     <View style={styles.containter}>
         
@@ -19,7 +18,7 @@ export default function SplashScreen() {
             <Text style={styles.text}>Your adventures are awaiting you.</Text>
             
 
-                <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer}>
+                <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer} onPress={()=>navigation.navigate('LoginScreen')}>
                     <Text style={styles.buttonText}>Get Started! <MaterialIcons name='navigate-next'  /></Text>
                     
                 </TouchableOpacity>
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
 
     containter: {
         flex: 1,
-        backgroundColor: '#181818',
+        backgroundColor: '#121212',
        
     },
     title: {
