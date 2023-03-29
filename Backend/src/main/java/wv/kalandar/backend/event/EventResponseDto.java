@@ -24,4 +24,6 @@ public class EventResponseDto {
 
     private Address address;
 
+    private String category;
+
 }

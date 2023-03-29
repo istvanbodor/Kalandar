@@ -158,6 +158,7 @@ public class EventService {
                 .username(item.getUser().getUsername())
                 .address(item.getAddress())
                 .event(item.getEvent())
+                .category(item.getCategory())
                 .build();
     }
 }
