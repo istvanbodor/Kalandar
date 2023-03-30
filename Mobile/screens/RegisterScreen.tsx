@@ -3,11 +3,19 @@ import * as Animatable from 'react-native-animatable'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 import React from 'react'
+import { Modal } from 'react-native'
 
 interface FormData {
   email: string
   password: string
+  firstName: string
+  lastName: string
+  username: string
   emailCheck: boolean
+  lastNameCheck: boolean
+  firstNameCheck: boolean
+  usernameCheck: boolean
+  passwordCheck: boolean
   secureTextEntry: boolean
 }
 
@@ -15,31 +23,132 @@ interface FormData {
 export default function RegisterScreen({navigation}: any) {
 
   const emailExpression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+  const namesExpression: RegExp = /^[A-Z][a-zA-Z\d]{2,}$/;
+
+  const usernameExpression: RegExp = /^[a-zA-Z\d]{3,}$/;
+  
   
   const [data, setData] = React.useState<FormData>({
     email: '',
     password: '',
+    firstName: '',
+    lastName: '',
+    username: '',
     emailCheck: false,
+    firstNameCheck: false,
+    lastNameCheck: false,
+    usernameCheck: false,
+    passwordCheck: false,
     secureTextEntry: true
   })
 
-  const handleTextInputChange = (value: string) =>{
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
+
+  const handleFirstNameTextInputChange = (value: string) =>{
          
       setData(
         {
           ...data,
-          email: value,
-          emailCheck: emailExpression.test(value)
+          firstName: value,
+          firstNameCheck: namesExpression.test(value)
         }
         
-      )
-          
+      )     
   }
 
 
+  const handleLastNameTextInputChange = (value: string) =>{
+         
+    setData(
+      {
+        ...data,
+        lastName: value,
+        lastNameCheck: namesExpression.test(value)
+      }
+      
+    )    
+}
+
+const handleUsernameInputChange = (value: string) =>{
+         
+  setData(
+    {
+      ...data,
+      username: value,
+      usernameCheck: usernameExpression.test(value)
+    }
+    
+  )    
+}
+
+const handleEmailInputChange = (value: string) =>{
+         
+  setData(
+    {
+      ...data,
+      email: value,
+      emailCheck: emailExpression.test(value)
+    }
+    
+  )    
+}
+
+const handlePasswordInputChange = (value: string) =>{
+         
+  setData(
+    {
+      ...data,
+      password: value,
+      passwordCheck: value.length>=3
+    }
+    
+  )    
+}
+
+ 
+
+
+
   return (
+            <>
+            
+                
+    <Modal visible={modalVisible} animationType='slide'>
+        <View style={styles.modalContainer}>
+        <Text style={{color: '#fff', fontSize: 20, paddingLeft: 20, marginTop: 40, textAlign: 'justify', paddingRight: 20, fontStyle: 'italic'}}>
+          - First and Last name fields must start with a capital letter and has to have a minimum length of 3 and must only contain letters!
+        </Text>
+
+        <Text style={{color: '#fff', fontSize: 20, paddingLeft: 20, marginTop: 40, textAlign: 'justify', paddingRight: 20, fontStyle: 'italic'}}>
+          - The username field must contain at least 3 characters and no special characters!
+        </Text>
+
+        <Text style={{color: '#fff', fontSize: 20, paddingLeft: 20, marginTop: 40, textAlign: 'justify', paddingRight: 20, fontStyle: 'italic'}}>
+          - The email field must have email format! ex: example@example.com
+        </Text>
+
+        <Text style={{color: '#fff', fontSize: 20, paddingLeft: 20, marginTop: 40, textAlign: 'justify', paddingRight: 20, fontStyle: 'italic'}}>
+          - The password field must have at least 3 characters</Text>
+
+        <TouchableOpacity onPress={()=>setModalVisible(false)} activeOpacity={0.7} style={{...styles.buttonContainer, backgroundColor:'#fff', borderWidth: 1, alignSelf: 'center', marginTop: 200}} >
+                    <Text style={{...styles.buttonText, color: '#121212'}}>Understood!</Text>
+                    
+                </TouchableOpacity>
+
+
+        </View>
+    
+
+    </Modal>
+
+
     <View style={styles.container}>
         <View style={styles.header}>
+          <TouchableOpacity onPress={()=>setModalVisible(true)} style={styles.infoIcon}>
+          <FontAwesome color='white' name='info' size={30}></FontAwesome>
+          </TouchableOpacity>
+        
           <Text style={styles.welcomeText}>Register!</Text>
         </View>
 
@@ -50,8 +159,8 @@ export default function RegisterScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='First Name' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleTextInputChange(value)}></TextInput>
-            {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
+            <TextInput placeholder='First Name'  style={styles.textInput} onChangeText={(value)=>handleFirstNameTextInputChange(value)}></TextInput>
+            {data.firstNameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
 
@@ -59,8 +168,8 @@ export default function RegisterScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='Last Name' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleTextInputChange(value)}></TextInput>
-            {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
+            <TextInput placeholder='Last Name' style={styles.textInput} onChangeText={(value)=>handleLastNameTextInputChange(value)}></TextInput>
+            {data.lastNameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
 
@@ -68,8 +177,8 @@ export default function RegisterScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='Username' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleTextInputChange(value)}></TextInput>
-            {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
+            <TextInput placeholder='Username' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleUsernameInputChange(value)}></TextInput>
+            {data.usernameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
 
@@ -77,7 +186,7 @@ export default function RegisterScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <FontAwesome name='envelope-o' size={25}></FontAwesome>
-            <TextInput placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleTextInputChange(value)}></TextInput>
+            <TextInput placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleEmailInputChange(value)}></TextInput>
             {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -86,14 +195,15 @@ export default function RegisterScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <Feather name='lock' size={25}/>
-            <TextInput placeholder='Password' secureTextEntry={data.secureTextEntry} autoCapitalize='none' style={styles.textInput}></TextInput>
+            <TextInput placeholder='Password' secureTextEntry={data.secureTextEntry} onChangeText={(value)=>handlePasswordInputChange(value)} autoCapitalize='none' style={styles.textInput}></TextInput>
             <TouchableOpacity onPress={()=>setData({...data, secureTextEntry: !data.secureTextEntry})}>
             {
               data.secureTextEntry? <Feather name='eye-off'  color="grey" size={20} /> : <Feather name='eye'  color="grey" size={20} />
             }
-            
             </TouchableOpacity>
-            
+            {
+              data.passwordCheck && <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View>
+            }
           </View>
 
 
@@ -118,11 +228,12 @@ export default function RegisterScreen({navigation}: any) {
 
         </Animatable.View>
     </View>
+    </>
   )
 }
 
 
-const {width} = Dimensions.get('screen')
+const {width, height} = Dimensions.get('screen')
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -179,6 +290,16 @@ buttonText: {
   flexDirection: 'row',
  
 },
+infoIcon: {
+  flex: 1,
+  marginTop: 50,
+  alignItems: 'flex-end'
+
+},
+modalContainer: {
+  backgroundColor: '#121212',
+  height: height 
+}
 })
 
 
