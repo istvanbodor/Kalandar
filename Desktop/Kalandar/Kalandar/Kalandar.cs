@@ -115,7 +115,7 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri(baseURL + "api/events");
+                var endpoint = new Uri(baseURL + "api/events/user/" + UserData.id);
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 
@@ -302,7 +302,12 @@ namespace Kalandar
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
             AddEventForm addEventForm = new AddEventForm();
-
+            addEventForm.StartDateText = DateTime.Now.ToString("dd MMMM yyyy");
+            addEventForm.EndDateText = DateTime.Now.ToString("dd MMMM yyyy");
+            addEventForm.StartHourText = DateTime.Now.ToString("HH");
+            addEventForm.StartMinuteText = DateTime.Now.ToString("mm");
+            addEventForm.EndHourText = DateTime.Now.AddHours(1).ToString("HH");
+            addEventForm.EndMinuteText = DateTime.Now.ToString("mm");
             addEventForm.Show();
         }
     }

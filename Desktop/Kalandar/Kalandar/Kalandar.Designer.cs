@@ -45,7 +45,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlWeekdays = new System.Windows.Forms.Panel();
-            this.btnAddEvent = new System.Windows.Forms.Button();
             this.lblSunday = new System.Windows.Forms.Label();
             this.lblThursday = new System.Windows.Forms.Label();
             this.lblSaturday = new System.Windows.Forms.Label();
@@ -196,7 +195,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panel1.Controls.Add(this.btnAddEvent);
             this.panel1.Controls.Add(this.pctrNextMonth);
             this.panel1.Controls.Add(this.pctrPrevMonth);
             this.panel1.Controls.Add(this.lblTopBar);
@@ -237,7 +235,7 @@
             this.lblTopBar.Name = "lblTopBar";
             this.lblTopBar.Size = new System.Drawing.Size(810, 45);
             this.lblTopBar.TabIndex = 3;
-            this.lblTopBar.Text = "2023 Március";
+            this.lblTopBar.Text = "Date here";
             this.lblTopBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnExit
@@ -280,16 +278,6 @@
             this.pnlWeekdays.Name = "pnlWeekdays";
             this.pnlWeekdays.Size = new System.Drawing.Size(883, 63);
             this.pnlWeekdays.TabIndex = 7;
-            // 
-            // btnAddEvent
-            // 
-            this.btnAddEvent.Location = new System.Drawing.Point(726, 12);
-            this.btnAddEvent.Name = "btnAddEvent";
-            this.btnAddEvent.Size = new System.Drawing.Size(75, 23);
-            this.btnAddEvent.TabIndex = 10;
-            this.btnAddEvent.Text = "Add Event";
-            this.btnAddEvent.UseVisualStyleBackColor = true;
-            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
             // 
             // lblSunday
             // 
@@ -442,6 +430,5 @@
         private System.Windows.Forms.Panel pnlCalendarLayout;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel pnlWeekdays;
-        private System.Windows.Forms.Button btnAddEvent;
     }
 }

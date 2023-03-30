@@ -47,13 +47,25 @@ namespace Kalandar
             
             
         }
-
         private void btnDay_Click(object sender, EventArgs e)
         {
-            UserEventsForm eventForm = new UserEventsForm();
+            AddEventForm eventForm = new AddEventForm();
+            var now = DateTime.Now;
 
+            eventForm.EndDateText = buttonDate.ToString("dd MMMM yyyy");
+            eventForm.StartHourText = DateTime.Now.ToString("HH");
+            eventForm.StartMinuteText = DateTime.Now.ToString("mm");
+            eventForm.EndHourText = DateTime.Now.AddHours(1).ToString("HH");
+            eventForm.EndMinuteText = DateTime.Now.ToString("mm");
             eventForm.DateText = buttonDate.ToString("dd MMMM yyyy");
-            eventForm.Show();
+            eventForm.DTPStartDate = new DateTime(buttonDate.Year, buttonDate.Month, buttonDate.Day);
+            eventForm.StartDateText = eventForm.DTPStartDate.ToString("dd MMMM yyyy");
+
+            if(buttonDate >= new DateTime(now.Year, now.Month, now.Day, 0, 0, 0))
+            {
+                eventForm.Show();
+            }
+            
         }
     }
 }
