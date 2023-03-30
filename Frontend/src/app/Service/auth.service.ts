@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { tr } from "date-fns/locale";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
-import { IsAdminPipe } from "../components/CustomPipe/CustomPipe";
 import { UsersApiService } from "./users.service";
 
 
@@ -21,7 +19,7 @@ export class AuthService {
   admin:boolean = true
 
   private isTokenExpired(auth_token: string) {
-    const expiry = (JSON.parse(atob(auth_token.split('.')[1]))).exp;
+    const expiry = (JSON.parse((auth_token.split('.')[1]))).exp;
     return expiry * 1000 > Date.now();
   }
 
@@ -38,7 +36,6 @@ export class AuthService {
   }
 
   adminUser() {
-     
     this.getUsersData().pipe(tap((result) => {
       this.users = result
 

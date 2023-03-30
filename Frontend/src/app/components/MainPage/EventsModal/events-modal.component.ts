@@ -1,21 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
-@Component({
-  selector: 'app-eventModal',
-  templateUrl: './EventModal.component.html',
-  styleUrls: ['./eventModal.component.scss']
-})
 
-export class EventModalComponent implements OnInit{
+@Component({
+  selector: 'app-events-modal',
+  templateUrl: './events-modal.component.html',
+  styleUrls: ['./events-modal.component.scss']
+})
+export class EventsModalComponent {
 
   closeResult = '';
   alert: boolean = false;
 
   date: string;
-  
+
+
+
+
   today: Date = new Date();
   currentYear: number = this.today.getFullYear();
   currentMonth: number = this.today.getMonth();
@@ -29,11 +32,6 @@ export class EventModalComponent implements OnInit{
   constructor(private modalService: NgbModal, private authService: AuthService) {
     this.date = new Date().toISOString().slice(0, 16);
   }
-
-  ngOnInit(): void {
-
-  }
-
 
   eventForm = new FormGroup({
     event: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
@@ -151,5 +149,4 @@ export class EventModalComponent implements OnInit{
 
     return Days
   }
-
 }

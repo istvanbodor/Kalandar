@@ -1,4 +1,22 @@
-<div>
+<!-- <div class="container-fluid">
+	<div class="container">
+		<div class="grid-calendar">
+				<div class="row calendar-week-header">
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Monday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Tuesday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Wednesday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Thursday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Friday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Saturday</span></div>
+				<div class="col-xs-1 grid-cell"><span class="TextColor">Sunday</span></div>
+			</div>
+      
+			<div class="row days calendar-week" *ngFor="let week of [1, 2, 3, 4, 5]">
+				<div class="col-xs-1 grid-cell" *ngFor="let day of days().slice((week-1)*7, week*7)">
+       <div (click)="open(content)"  style="width: 100%; height: 100%;"> <span style="float: right;">{{day}}</span>  -->
+
+
+<div (click)="open(content)">
   <ng-template #content let-modal $modal-lg: 80px !default;>
     <div class="modal-header">
       <h4 class="modal-title" id="eventModal">Create event</h4>
@@ -13,7 +31,8 @@
         <div class="mb-3">
           <label for="eventNameLabel">Event Name</label>
           <input type="text" class="form-control" id="eventNameLabel" placeholder="Event name" formControlName="event">
-          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not
+          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is
+            not
             valid!</strong>
         </div>
         <div class="mb-3">
@@ -26,7 +45,8 @@
         <div class="mb-3">
           <label>End time</label>
           <input type="datetime-local" class="form-control" formControlName="endTime">
-          <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This date
+          <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This
+            date
             is not valid!</strong>
           <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
         </div>
@@ -79,7 +99,8 @@
             <div class="mb-3">
               <label>House number: </label>
               <input type="text" class="form-control" formControlName="houseNumber">
-              <strong class="errorMessage" *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
+              <strong class="errorMessage"
+                *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
                 house number
                 is not valid!</strong>
             </div>
@@ -92,7 +113,8 @@
       </div>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
+
+<!-- </div></div> -->
 
 <pre>{{ closeResult }}</pre>
