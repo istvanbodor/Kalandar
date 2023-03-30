@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/Form/Register/register.component
 import { CalendarDayComponent } from './components/MainPage/CalendarDay/calendarDay.component';
 import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
-import { MainPageComponent } from './components/MainPage/main-page.component';
 import { ProfileComponent } from './components/Profile/profile.component';
 import { UsersComponent } from './Service/users.component';
 const routes: Routes = [
