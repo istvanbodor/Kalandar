@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit{
             this.router.navigate(['/calendar/month']);
           },
           error:(err : HttpErrorResponse) => {
+            this.loginForm.reset({})
             this.alert = true;
             console.log('http login error -> ', err);
           }

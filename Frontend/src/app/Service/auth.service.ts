@@ -1,8 +1,11 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { tr } from "date-fns/locale";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
+import { IsAdminPipe } from "../components/CustomPipe/CustomPipe";
 import { UsersApiService } from "./users.service";
+
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +15,10 @@ export class AuthService {
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-  auth_token = localStorage.getItem('token')
   expired = false;
+
+  users: any
+  admin:boolean = true
 
   private isTokenExpired(auth_token: string) {
     const expiry = (JSON.parse(atob(auth_token.split('.')[1]))).exp;
@@ -21,12 +26,10 @@ export class AuthService {
   }
 
   tokenExpired() {
-    let logged = true
     if (this.isTokenExpired('token')) {
-      logged = false
       return this._router.navigate(['/login'])
     }
-    return logged
+    return null
   }
 
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
@@ -34,18 +37,28 @@ export class AuthService {
     this._isLoggedIn$.next(!!auth_token);
   }
 
+  adminUser() {
+     
+    this.getUsersData().pipe(tap((result) => {
+      this.users = result
+
+      if (this.users.role === 'ADMIN') {
+        this.admin
+      }
+    }
+    ))
+
+  }
+
   login(email: string, password: string): Observable<any> {
     return this.usersApiService
       .login(email, password).pipe(
         tap((response: any) => {
-          console.log('token: ', response.token)
           this._isLoggedIn$.next(true)
           localStorage.setItem('token', response.token)
         })
       )
   }
-
-
   getUsersData() {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
@@ -54,7 +67,29 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.get(this.url + `api/admin/users`, requestOptions);
+    return this.http.get(this.url + `api/admin/users`, requestOptions)
+  }
+
+  getProfile(): Observable<any> {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers }
+    return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
+  }
+
+  changePassword(password: string) {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
   }
 
   loggedIn() {
@@ -63,6 +98,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token')
+    localStorage.removeItem('id')
     this._router.navigate(['/login'])
   }
 
@@ -77,7 +113,7 @@ export class AuthService {
     return this.http.post<any>(this.url + `api/events`, data, requestOptions)
   }
 
-  deleteEvent(id: any) {
+  deleteEvent(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -88,7 +124,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeRole(id: string) {
+  changeEvent(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -98,7 +134,5 @@ export class AuthService {
     const requestOptions = { headers: headers };
     return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
   }
-
-
 
 }

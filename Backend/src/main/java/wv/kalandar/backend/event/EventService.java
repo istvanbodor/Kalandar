@@ -159,7 +159,6 @@ public class EventService {
                 .address(item.getAddress())
                 .category(item.getCategory())
                 .event(item.getEvent())
-                .category(item.getCategory())
                 .build();
     }
 }

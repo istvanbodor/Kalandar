@@ -101,6 +101,14 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+p{
+  font-weight: bold;
+}
+
+label, h1, span{
+  color: black;
+}
 html, body { height: 100%; } 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

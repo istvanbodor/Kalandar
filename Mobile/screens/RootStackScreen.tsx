@@ -13,11 +13,13 @@ const RootStack = createStackNavigator<any>();
 const RootStackScreen = () => (
 
     <RootStack.Navigator screenOptions={{ 
-        headerShown: false
+        headerShown: false,
+        headerMode: 'float',
+        gestureEnabled: true,
      }}>
 
     <RootStack.Screen name="SplashScreen" component={SplashScreen} />
-    <RootStack.Screen name="LoginScreen" component={LoginScreen} /> 
+    <RootStack.Screen name="LoginScreen" component={LoginScreen}  /> 
     <RootStack.Screen name="RegisterScreen" component={RegisterScreen} /> 
 
     </RootStack.Navigator>
