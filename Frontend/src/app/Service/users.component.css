@@ -1,0 +1,10 @@
+.table{
+   color: white;
+}
+
+.container{
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 10px;
+}

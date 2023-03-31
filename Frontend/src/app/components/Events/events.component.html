@@ -1,46 +1,22 @@
 <div id="hatter">
-<h1 style="text-align: center;">Events</h1>
-
-<div class="container-fluid">
+    <h1 style="text-align: center;">Events</h1>
 
 
 
-
-      <!-- <h2 style="text-align: center;">API data</h2>
-
-      <div class="container table-responsive">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th scope="col"><span>ID</span> </th>
-                      <th scope="col">Last_Name</th>
-                      <th scope="col">First_Name</th>
-                      <th scope="col">Username</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Role</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let item of users$ |async">
-                      <td>{{item.id}}</td>
-                      <td>{{item.firstName}}</td>
-                      <td>{{item.lastName}}</td>
-                      <td>{{item.username}}</td>
-                      <td>{{item.email}}</td>
-                      <td>{{item.admin | yesNo}}</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div> -->
-
-    <div class="container mb-3" style="border: 1px solid black; background-color: rgba(245, 245, 245, 0.1);">
-      asd
-    <div class="container mb-3" style="border: 1px solid black; background-color: rgba(245, 245, 245, 0.1);">
-        asd
-    </div>
-    <div class="container mb-3" style="border: 1px solid black; background-color: rgba(245, 245, 245, 0.1);">
-        asd
-    </div>
-</div>
-</div>
+    <div class="container mb-3" style="border: 1px solid black; background-color: rgba(245, 245, 245, 0.1);  width: 40%; ">
+        <h2>User events</h2>
+        <div class="container-fluid mb-3" style="border: 1px solid black; background-color: rgba(245, 245, 245, 0.1); "
+            *ngFor="let item of events$ | async; let i = index" >
+            <div class="row">
+                <div class="col-4">
+                    <img class="img-fluid "  src="../../../../assets/kalandar.png"
+                        alt="kalandar_Icon_Image" style="padding-top: 10%;">
+                </div>
+                <div class="col-7">
+                    <h6>Event title: {{item.event}}</h6>
+                    <p>Category: {{item.category}}</p>
+                    <p>{{item.startTime}} - {{item.endTime}}</p>
+                    <p>{{item.fullDay | IsFullDAy}}</p>
+                </div>
+            </div>
+        </div>

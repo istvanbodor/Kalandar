@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/Service/auth.service';
-import { CustomValidators } from '../../CustomValidators/CustomValidator';
+import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 @Component({
   selector: 'app-eventModal',
   templateUrl: './EventModal.component.html',

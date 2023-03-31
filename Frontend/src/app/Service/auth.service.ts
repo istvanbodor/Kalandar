@@ -35,7 +35,7 @@ export class AuthService {
     this._isLoggedIn$.next(!!auth_token);
   }
 
-  adminUser() {
+  adminUser() {   
     this.getUsersData().pipe(tap((result) => {
       this.users = result
 
@@ -78,7 +78,7 @@ export class AuthService {
     return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
   }
 
-  changePassword(password: string) {
+  getUserEvents(id: string){
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -86,8 +86,20 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
+    return this.http.get(this.url + `api/events/user/${id}`, requestOptions)
   }
+
+  getAllEvents(){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get(this.url + `api/events`, requestOptions)
+  }
+
 
   loggedIn() {
     return !!localStorage.getItem('token')
@@ -130,6 +142,17 @@ export class AuthService {
 
     const requestOptions = { headers: headers };
     return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
+  }
+
+  changePassword(password: string) {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
   }
 
 }
