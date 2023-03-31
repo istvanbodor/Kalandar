@@ -44,26 +44,22 @@ namespace Kalandar
                     btnDay.ForeColor = Color.FromArgb(181, 130, 64);
                 }
             }
-            
-            
         }
         private void btnDay_Click(object sender, EventArgs e)
         {
-            AddEventForm eventForm = new AddEventForm();
+            Trace.WriteLine("Buttondate: " + buttonDate + "Type: " + buttonDate.GetType());
             var now = DateTime.Now;
-
-            eventForm.EndDateText = buttonDate.ToString("dd MMMM yyyy");
-            eventForm.StartHourText = DateTime.Now.ToString("HH");
-            eventForm.StartMinuteText = DateTime.Now.ToString("mm");
-            eventForm.EndHourText = DateTime.Now.AddHours(1).ToString("HH");
-            eventForm.EndMinuteText = DateTime.Now.ToString("mm");
+            UserEventsForm eventForm = new UserEventsForm();
             eventForm.DateText = buttonDate.ToString("dd MMMM yyyy");
-            eventForm.DTPStartDate = new DateTime(buttonDate.Year, buttonDate.Month, buttonDate.Day);
-            eventForm.StartDateText = eventForm.DTPStartDate.ToString("dd MMMM yyyy");
-
-            if(buttonDate >= new DateTime(now.Year, now.Month, now.Day, 0, 0, 0))
+            eventForm.ActualDate = buttonDate;
+            if (buttonDate >= new DateTime(now.Year, now.Month, now.Day, 0, 0, 0))
             {
                 eventForm.Show();
+            }
+            else
+            {
+                string message = "no";
+                MessageBox.Show(message);
             }
             
         }

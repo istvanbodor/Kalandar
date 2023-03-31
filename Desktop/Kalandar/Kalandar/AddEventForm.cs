@@ -225,12 +225,12 @@ namespace Kalandar
                 {
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                     var endpoint = new Uri(baseURL + "api/events");
-                    Trace.WriteLine(dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value}:{nmrcStartMinute.Value}:00"));
+                    Trace.WriteLine(dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"));
                     var newEvent = new EventClass()
                     {
                         @event = txtEventTitle.Text,
-                        startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value}:{nmrcStartMinute.Value}:00"),
-                        endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value}:{nmrcEndMinute.Value}:00"),
+                        startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                        endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value.ToString().PadLeft(2, '0')}:{nmrcEndMinute.Value.ToString().PadLeft(2, '0')}:00"),
                         fullDay = chckFullDay.Checked,
                         category = txtCategory.Text,
                         address = new AddressClass
@@ -290,24 +290,24 @@ namespace Kalandar
 
         private void nmrcStartHour_ValueChanged(object sender, EventArgs e)
         {
-            txtStartHourText.Text = nmrcStartHour.Value.ToString();
+            txtStartHourText.Text = nmrcStartHour.Value.ToString().PadLeft(2, '0'); ;
         }
         private void nmrcStartMinute_ValueChanged(object sender, EventArgs e)
         {
-            txtStartMinuteText.Text = nmrcStartMinute.Value.ToString();
+            txtStartMinuteText.Text = nmrcStartMinute.Value.ToString().PadLeft(2, '0');
         }
         private void nmrcEndHour_ValueChanged(object sender, EventArgs e)
         {
-            txtEndHourText.Text = nmrcEndHour.Value.ToString();
+            txtEndHourText.Text = nmrcEndHour.Value.ToString().PadLeft(2, '0'); ;
         }
         private void nmrcEndMinute_ValueChanged(object sender, EventArgs e)
         {
-            txtEndMinuteText.Text = nmrcEndMinute.Value.ToString();
+            txtEndMinuteText.Text = nmrcEndMinute.Value.ToString().PadLeft(2, '0'); ;
         }
 
         private void txtCountry_Click(object sender, EventArgs e)
         {
-            this.txtCountry.SelectAll();
+            this.txtCountry.SelectAll(); 
         }
 
         private void txtStreet_Click(object sender, EventArgs e)

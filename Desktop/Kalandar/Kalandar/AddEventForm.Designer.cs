@@ -1,4 +1,7 @@
-﻿namespace Kalandar
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace Kalandar
 {
     partial class AddEventForm
     {
@@ -114,7 +117,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -125,18 +128,19 @@
             // 
             // lblDate
             // 
+            this.lblDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblDate.Location = new System.Drawing.Point(3, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(733, 54);
             this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "DATE";
+            this.lblDate.Text = "ADD EVENT";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
@@ -172,10 +176,10 @@
             // 
             // txtEventTitle
             // 
-            this.txtEventTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtEventTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtEventTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEventTitle.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEventTitle.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEventTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtEventTitle.Location = new System.Drawing.Point(117, 3);
             this.txtEventTitle.Name = "txtEventTitle";
             this.txtEventTitle.Size = new System.Drawing.Size(244, 24);
@@ -230,23 +234,28 @@
             // 
             // dtpStartDate
             // 
+            this.dtpStartDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.dtpStartDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.dtpStartDate.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.dtpStartDate.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.dtpStartDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.dtpStartDate.Location = new System.Drawing.Point(343, 6);
-            this.dtpStartDate.MinDate = new System.DateTime(2023, 3, 30, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(16, 20);
             this.dtpStartDate.TabIndex = 4;
-            this.dtpStartDate.Value = new System.DateTime(2023, 3, 30, 10, 5, 59, 0);
+            this.dtpStartDate.Value = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // txtStartDate
             // 
-            this.txtStartDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtStartDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtStartDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStartDate.Enabled = false;
             this.txtStartDate.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartDate.ForeColor = System.Drawing.Color.DimGray;
+            this.txtStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtStartDate.Location = new System.Drawing.Point(181, 3);
             this.txtStartDate.Name = "txtStartDate";
+            this.txtStartDate.ReadOnly = true;
             this.txtStartDate.Size = new System.Drawing.Size(156, 24);
             this.txtStartDate.TabIndex = 3;
             this.txtStartDate.Text = "PICK A DATE";
@@ -266,7 +275,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.panel8.Location = new System.Drawing.Point(20, 102);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(256, 2);
@@ -276,7 +285,7 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.ForeColor = System.Drawing.Color.White;
+            this.lblFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.lblFirstName.Location = new System.Drawing.Point(16, 65);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(239, 31);
@@ -286,7 +295,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.panel9.Location = new System.Drawing.Point(20, 347);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(256, 2);
@@ -296,7 +305,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(16, 310);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 31);
@@ -324,15 +333,16 @@
             // 
             // txtZipCode
             // 
-            this.txtZipCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtZipCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtZipCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtZipCode.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtZipCode.ForeColor = System.Drawing.Color.DimGray;
+            this.txtZipCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtZipCode.Location = new System.Drawing.Point(117, 3);
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(244, 24);
             this.txtZipCode.TabIndex = 3;
             this.txtZipCode.Text = "ZIP CODE";
+            this.txtZipCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtZipCode.Click += new System.EventHandler(this.txtZipCode_Click);
             // 
             // label7
@@ -368,15 +378,16 @@
             // 
             // txtCity
             // 
-            this.txtCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCity.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.ForeColor = System.Drawing.Color.DimGray;
+            this.txtCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtCity.Location = new System.Drawing.Point(117, 3);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(244, 24);
             this.txtCity.TabIndex = 3;
             this.txtCity.Text = "CITY";
+            this.txtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCity.Click += new System.EventHandler(this.txtCity_Click);
             // 
             // label8
@@ -412,15 +423,16 @@
             // 
             // txtHouseNumber
             // 
-            this.txtHouseNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtHouseNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtHouseNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHouseNumber.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHouseNumber.ForeColor = System.Drawing.Color.DimGray;
+            this.txtHouseNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtHouseNumber.Location = new System.Drawing.Point(135, 3);
             this.txtHouseNumber.Name = "txtHouseNumber";
             this.txtHouseNumber.Size = new System.Drawing.Size(244, 24);
             this.txtHouseNumber.TabIndex = 3;
             this.txtHouseNumber.Text = "HOUSE NUMBER";
+            this.txtHouseNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtHouseNumber.Click += new System.EventHandler(this.txtHouseNumber_Click);
             // 
             // label5
@@ -456,15 +468,16 @@
             // 
             // txtStreet
             // 
-            this.txtStreet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtStreet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtStreet.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtStreet.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStreet.ForeColor = System.Drawing.Color.DimGray;
+            this.txtStreet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtStreet.Location = new System.Drawing.Point(135, 3);
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(244, 24);
             this.txtStreet.TabIndex = 3;
             this.txtStreet.Text = "EVENT TITLE";
+            this.txtStreet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStreet.Click += new System.EventHandler(this.txtStreet_Click);
             // 
             // label6
@@ -500,15 +513,16 @@
             // 
             // txtCountry
             // 
-            this.txtCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCountry.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.ForeColor = System.Drawing.Color.DimGray;
+            this.txtCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtCountry.Location = new System.Drawing.Point(117, 3);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(244, 24);
             this.txtCountry.TabIndex = 3;
             this.txtCountry.Text = "COUNTRY";
+            this.txtCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCountry.Click += new System.EventHandler(this.txtCountry_Click);
             // 
             // label9
@@ -526,7 +540,7 @@
             // 
             // btnAddEvent
             // 
-            this.btnAddEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnAddEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.btnAddEvent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.btnAddEvent.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.btnAddEvent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
@@ -561,10 +575,10 @@
             // 
             // txtCategory
             // 
-            this.txtCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCategory.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategory.ForeColor = System.Drawing.Color.DimGray;
+            this.txtCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtCategory.Location = new System.Drawing.Point(117, 3);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(244, 24);
@@ -624,13 +638,13 @@
             // 
             // txtStartMinuteText
             // 
-            this.txtStartMinuteText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtStartMinuteText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtStartMinuteText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStartMinuteText.Enabled = false;
             this.txtStartMinuteText.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartMinuteText.ForeColor = System.Drawing.Color.DimGray;
+            this.txtStartMinuteText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtStartMinuteText.Location = new System.Drawing.Point(215, 2);
             this.txtStartMinuteText.Name = "txtStartMinuteText";
+            this.txtStartMinuteText.ReadOnly = true;
             this.txtStartMinuteText.Size = new System.Drawing.Size(95, 24);
             this.txtStartMinuteText.TabIndex = 29;
             this.txtStartMinuteText.Text = "MINUTE";
@@ -672,13 +686,13 @@
             // 
             // txtStartHourText
             // 
-            this.txtStartHourText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtStartHourText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtStartHourText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStartHourText.Enabled = false;
             this.txtStartHourText.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartHourText.ForeColor = System.Drawing.Color.DimGray;
+            this.txtStartHourText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtStartHourText.Location = new System.Drawing.Point(49, 2);
             this.txtStartHourText.Name = "txtStartHourText";
+            this.txtStartHourText.ReadOnly = true;
             this.txtStartHourText.Size = new System.Drawing.Size(95, 24);
             this.txtStartHourText.TabIndex = 3;
             this.txtStartHourText.Text = "HOUR";
@@ -735,13 +749,13 @@
             // 
             // txtEndMinuteText
             // 
-            this.txtEndMinuteText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtEndMinuteText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtEndMinuteText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEndMinuteText.Enabled = false;
             this.txtEndMinuteText.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndMinuteText.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEndMinuteText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtEndMinuteText.Location = new System.Drawing.Point(216, 2);
             this.txtEndMinuteText.Name = "txtEndMinuteText";
+            this.txtEndMinuteText.ReadOnly = true;
             this.txtEndMinuteText.Size = new System.Drawing.Size(95, 24);
             this.txtEndMinuteText.TabIndex = 29;
             this.txtEndMinuteText.Text = "MINUTE";
@@ -783,13 +797,13 @@
             // 
             // txtEndHourText
             // 
-            this.txtEndHourText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtEndHourText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtEndHourText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEndHourText.Enabled = false;
             this.txtEndHourText.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndHourText.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEndHourText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtEndHourText.Location = new System.Drawing.Point(50, 2);
             this.txtEndHourText.Name = "txtEndHourText";
+            this.txtEndHourText.ReadOnly = true;
             this.txtEndHourText.Size = new System.Drawing.Size(95, 24);
             this.txtEndHourText.TabIndex = 3;
             this.txtEndHourText.Text = "HOUR";
@@ -818,6 +832,7 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(362, 49);
             this.panel31.TabIndex = 33;
+            //this.panel31.CalendarMonthBackground = Color.Aqua;
             // 
             // panel32
             // 
@@ -830,22 +845,22 @@
             // dtpEndDate
             // 
             this.dtpEndDate.Location = new System.Drawing.Point(329, 6);
-            this.dtpEndDate.MinDate = new System.DateTime(2023, 3, 30, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(16, 20);
             this.dtpEndDate.TabIndex = 4;
-            this.dtpEndDate.Value = new System.DateTime(2023, 3, 30, 10, 5, 59, 0);
+            this.dtpEndDate.Value = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // txtEndDate
             // 
-            this.txtEndDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtEndDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.txtEndDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEndDate.Enabled = false;
             this.txtEndDate.Font = new System.Drawing.Font("Muli ExtraBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndDate.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.txtEndDate.Location = new System.Drawing.Point(169, 3);
             this.txtEndDate.Name = "txtEndDate";
+            this.txtEndDate.ReadOnly = true;
             this.txtEndDate.Size = new System.Drawing.Size(176, 24);
             this.txtEndDate.TabIndex = 3;
             this.txtEndDate.Text = "PICK A DATE";
@@ -867,7 +882,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
             this.ClientSize = new System.Drawing.Size(800, 605);
             this.Controls.Add(this.panel28);
             this.Controls.Add(this.panel25);
