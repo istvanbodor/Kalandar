@@ -130,7 +130,19 @@ export class AuthService {
     const requestOptions = {headers: headers}
     return this.http.delete(this.url + `api/events/${id}`, requestOptions)
   }
+
   
+  changeEvent(id : string){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+
+    const requestOptions = {headers: headers}
+    return this.http.put(this.url + `api/events/${id}`, requestOptions)
+  }
+
   deleteUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
