@@ -9,7 +9,7 @@ import { RegisterComponent } from './components/Form/Register/register.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
-import { IsAdminPipe, IsFullDAy } from './components/CustomPipe/CustomPipe';
+import { IsAdminPipe, IsFullDay } from './components/CustomPipe/CustomPipe';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarMonthComponent } from './components/MainPage/CalendarMonth/calendar.component';
 import { CalendarWeekComponent } from './components/MainPage/CalendarWeek/calendarWeek.component';
@@ -23,9 +23,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProfileComponent } from './components/Profile/profile.component';
-import { EventsModalComponent } from './components/MainPage/Modals/EventsModal/events-modal.component';
+import { EventsModalComponent } from './components/MainPage/Modals/EventsModal/eventsModal.component';
 import { EventModalComponent } from './components/MainPage/Modals/AddEventModal/eventModal.component';
 import { CalendarHeaderComponent } from './components/MainPage/CalendarHeader/calendarHeader.component';
+import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEventModal/updateEventModal.component';
 
 
 
@@ -41,11 +42,12 @@ import { CalendarHeaderComponent } from './components/MainPage/CalendarHeader/ca
     CalendarWeekComponent,
     CalendarDayComponent,
     IsAdminPipe,
-    IsFullDAy,
+    IsFullDay,
     EventsComponent,
     ProfileComponent,
     EventsModalComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    UpdateEventModalComponent
   ],
   imports: [
     BrowserModule,
