@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from 'src/app/components/Profile/profile.component';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 @Component({
@@ -26,7 +27,7 @@ export class EventModalComponent implements OnInit{
   endDate: Object =  new Date(this.currentYear, this.currentMonth, 31);
 
 
-  constructor(private modalService: NgbModal, private authService: AuthService) {
+  constructor(private modalService: NgbModal, private authService: AuthService, private profileComponent: ProfileComponent) {
     this.date = new Date().toISOString().slice(0, 16);
   }
 

@@ -37,12 +37,6 @@ padding:40px;
 border-radius: 10px;
 }
 
-.TextColor{
-color: black;
-}
-
-
-
 * {
 box-sizing: border-box;
 }
@@ -79,12 +73,12 @@ min-width: $min-width;
 }
 
 .calendar-week .grid-cell {
-  background-color: #f6f6f6;
+  background-color: #596581;
   border: 1px solid #fff;
   text-align: center; 
 }
 .calendar-week-header .grid-cell{
-  background-color: white;
+  background-color: #596581;
   border: 1px solid #fff;
   text-align: center; 
   font-weight: bold;
