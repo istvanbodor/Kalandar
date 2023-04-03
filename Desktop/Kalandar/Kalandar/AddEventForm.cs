@@ -24,6 +24,9 @@ namespace Kalandar
         {
             InitializeComponent();
         }
+
+        public void Initialize() { 
+        }
         public string EventTitleText
         {
             get
@@ -117,19 +120,117 @@ namespace Kalandar
             }
         }
 
-        
+        public string EventCategoryText
+        {
+            get
+            {
+                return this.txtCategory.Text;
+            }
+            set
+            {
+                this.txtCategory.Text = value;
+            }
+        }
 
-        //public string EventCategoryText
-        //{
-        //    get
-        //    {
-        //        return this.txtCategory.Text;
-        //    }
-        //    set
-        //    {
-        //        this.txtCategory.Text = value;
-        //    }
-        //}
+        public DateTime DTPStartDate
+        {
+            get
+            {
+                return this.dtpStartDate.Value;
+            }
+            set
+            {
+                if(value >= dtpStartDate.MinDate)
+                {
+                    this.dtpStartDate.Value = value;
+                }
+                else
+                {
+                    string message = "Simple MessageBox";
+                    MessageBox.Show(message);
+                }
+                
+            }
+        }
+        
+        public DateTime DTPEndDate
+        {
+            get
+            {
+                return this.dtpEndDate.Value;
+            }
+            set
+            {
+                if(value >= dtpStartDate.MinDate)
+                {
+                    this.dtpEndDate.Value = value;
+                }
+                else
+                {
+                    string message = "Simple MessageBox";
+                    MessageBox.Show(message);
+                }
+                
+            }
+        }
+
+        public string StartHourText
+        {
+            get
+            {
+                return this.nmrcStartHour.Text;
+            }
+            set
+            {
+                this.nmrcStartHour.Text = value;
+            }
+        }
+
+        public string StartMinuteText
+        {
+            get
+            {
+                return this.nmrcStartMinute.Text;
+            }
+            set
+            {
+                this.nmrcStartMinute.Text = value;
+            }
+        }
+        public string EndHourText
+        {
+            get
+            {
+                return this.nmrcEndHour.Text;
+            }
+            set
+            {
+                this.nmrcEndHour.Text = value;
+            }
+        }
+        public string EndMinuteText
+        {
+            get
+            {
+                return this.nmrcEndMinute.Text;
+            }
+            set
+            {
+                this.nmrcEndMinute.Text = value;
+            }
+        }
+        public string DateText
+        {
+            get
+            {
+                return this.lblDate.Text;
+            }
+            set
+            {
+                this.lblDate.Text = value;
+            }
+        }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -141,20 +242,17 @@ namespace Kalandar
         {
             using (var client = new HttpClient())
             {
-                dtpStartDate.Format = DateTimePickerFormat.Custom;
-                dtpStartDate.CustomFormat = "yyyy-MM-ddTHH:mm:ss";
-                dtpEndDate.Format = DateTimePickerFormat.Custom;
-                dtpEndDate.CustomFormat = "yyyy-MM-ddTHH:mm:ss";
                 Trace.WriteLine("End date: " + dtpEndDate.Text);
                 try
                 {
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                     var endpoint = new Uri(baseURL + "api/events");
+                    Trace.WriteLine(dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"));
                     var newEvent = new EventClass()
                     {
                         @event = txtEventTitle.Text,
-                        startTime = dtpStartDate.Text,
-                        endTime = dtpEndDate.Text,
+                        startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                        endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value.ToString().PadLeft(2, '0')}:{nmrcEndMinute.Value.ToString().PadLeft(2, '0')}:00"),
                         fullDay = chckFullDay.Checked,
                         category = txtCategory.Text,
                         address = new AddressClass
@@ -176,12 +274,16 @@ namespace Kalandar
                     var result = client.PostAsync(endpoint, payload).Result;
                     result.EnsureSuccessStatusCode();
                     Trace.WriteLine((int)result.StatusCode);
+
                     if (result.IsSuccessStatusCode)
                     {
                         //lblError.ForeColor = Color.Green;
                         //lblError.Text = "Account has been created!";
                         //Trace.Write("Account has been created.");
                         Trace.WriteLine("Felvettem");
+                        UserEventsForm.acceptedForm = true;
+                        btnAddEvent.DialogResult = DialogResult.OK;
+                        Trace.Write("Button Dialogresult: " + btnAddEvent.DialogResult);
                     }
 
                 }
@@ -190,8 +292,79 @@ namespace Kalandar
                     //lblError.ForeColor = Color.LightCoral;
                     //lblError.Text = "User with this email already exists!";
                     Trace.Write(error.Message);
+                    btnAddEvent.DialogResult = DialogResult.Cancel;
                 };
             }
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            txtStartDate.Text = dtpStartDate.Text;
+        }
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpEndDate.Value >= dtpStartDate.Value)
+            {
+                txtEndDate.Text = dtpEndDate.Text;
+            }
+            else
+            {
+                string message = "Simple MessageBox";
+                MessageBox.Show(message);
+            }
+
+        }
+
+        private void nmrcStartHour_ValueChanged(object sender, EventArgs e)
+        {
+            txtStartHourText.Text = nmrcStartHour.Value.ToString().PadLeft(2, '0'); ;
+        }
+        private void nmrcStartMinute_ValueChanged(object sender, EventArgs e)
+        {
+            txtStartMinuteText.Text = nmrcStartMinute.Value.ToString().PadLeft(2, '0');
+        }
+        private void nmrcEndHour_ValueChanged(object sender, EventArgs e)
+        {
+            txtEndHourText.Text = nmrcEndHour.Value.ToString().PadLeft(2, '0'); ;
+        }
+        private void nmrcEndMinute_ValueChanged(object sender, EventArgs e)
+        {
+            txtEndMinuteText.Text = nmrcEndMinute.Value.ToString().PadLeft(2, '0'); ;
+        }
+
+        private void txtCountry_Click(object sender, EventArgs e)
+        {
+            this.txtCountry.SelectAll(); 
+        }
+
+        private void txtStreet_Click(object sender, EventArgs e)
+        {
+            this.txtStreet.SelectAll();
+        }
+
+        private void txtZipCode_Click(object sender, EventArgs e)
+        {
+            this.txtZipCode.SelectAll();
+        }
+
+        private void txtCity_Click(object sender, EventArgs e)
+        {
+            this.txtCity.SelectAll();
+        }
+
+        private void txtHouseNumber_Click(object sender, EventArgs e)
+        {
+            this.txtHouseNumber.SelectAll();
+        }
+
+        private void txtCategory_Click(object sender, EventArgs e)
+        {
+            this.txtCategory.SelectAll();
+        }
+
+        private void txtEventTitle_Click(object sender, EventArgs e)
+        {
+            this.txtEventTitle.SelectAll();
         }
     }
 }

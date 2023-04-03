@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +15,9 @@ namespace Kalandar
 {
     public partial class EventsBlank : UserControl
     {
+
+        private string baseURL = APIConnectDetails.baseURL;
+        private string token = CurrentUser.userToken;
         public EventsBlank()
         {
             InitializeComponent();
@@ -62,17 +68,6 @@ namespace Kalandar
                 this.lblFullDay.Text = value;
             }
         }
-        public string OrganisedByText
-        {
-            get
-            {
-                return this.lblOrganisedBy.Text;
-            }
-            set
-            {
-                this.lblOrganisedBy.Text = value;
-            }
-        }
         public string AddressZipCityText
         {
             get
@@ -104,6 +99,39 @@ namespace Kalandar
             set
             {
                 this.lblStreesHouseNo.Text = value;
+            }
+        }
+
+        public string LabelIdText
+        {
+            get
+            {
+                return this.lblId.Text;
+            }
+            set
+            {
+                this.lblId.Text = value;
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    var endpoint = new Uri(baseURL + "api/events");
+                    var response = client.DeleteAsync(endpoint + $"/{this.lblId.Text}").Result;
+                    Trace.WriteLine(endpoint + $"/{this.lblId.Text}");
+                    Trace.WriteLine("asd " + this.lblId.Text);
+                    response.EnsureSuccessStatusCode();
+                    this.Hide();
+                }
+                catch (HttpRequestException error)
+                {
+                    Trace.Write(error.Message);
+                }
             }
         }
     }

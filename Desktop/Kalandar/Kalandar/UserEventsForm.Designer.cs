@@ -32,8 +32,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddEvent = new System.Windows.Forms.Button();
+            this.pnlEvents = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblEventNumber = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -44,16 +48,17 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 54);
+            this.panel1.Size = new System.Drawing.Size(892, 54);
             this.panel1.TabIndex = 0;
             // 
             // lblDate
             // 
+            this.lblDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblDate.Location = new System.Drawing.Point(3, 0);
+            this.lblDate.Location = new System.Drawing.Point(0, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(733, 54);
+            this.lblDate.Size = new System.Drawing.Size(834, 54);
             this.lblDate.TabIndex = 4;
             this.lblDate.Text = "DATE";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,7 +73,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Orbitron", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.Location = new System.Drawing.Point(742, 0);
+            this.btnExit.Location = new System.Drawing.Point(834, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(58, 54);
             this.btnExit.TabIndex = 3;
@@ -76,20 +81,65 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // vScrollBar1
+            // panel2
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(783, 60);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 384);
-            this.vScrollBar1.TabIndex = 1;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panel2.Controls.Add(this.lblEventNumber);
+            this.panel2.Controls.Add(this.btnAddEvent);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 54);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(892, 48);
+            this.panel2.TabIndex = 1;
+            // 
+            // btnAddEvent
+            // 
+            this.btnAddEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnAddEvent.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddEvent.FlatAppearance.BorderSize = 0;
+            this.btnAddEvent.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnAddEvent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEvent.Font = new System.Drawing.Font("Orbitron", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEvent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddEvent.Location = new System.Drawing.Point(837, 0);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(55, 48);
+            this.btnAddEvent.TabIndex = 4;
+            this.btnAddEvent.Text = "+";
+            this.btnAddEvent.UseVisualStyleBackColor = false;
+            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
+            // 
+            // pnlEvents
+            // 
+            this.pnlEvents.AutoScroll = true;
+            this.pnlEvents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.pnlEvents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlEvents.Location = new System.Drawing.Point(0, 102);
+            this.pnlEvents.Name = "pnlEvents";
+            this.pnlEvents.Size = new System.Drawing.Size(892, 607);
+            this.pnlEvents.TabIndex = 2;
+            // 
+            // lblEventNumber
+            // 
+            this.lblEventNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEventNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEventNumber.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblEventNumber.Location = new System.Drawing.Point(0, 0);
+            this.lblEventNumber.Name = "lblEventNumber";
+            this.lblEventNumber.Size = new System.Drawing.Size(837, 48);
+            this.lblEventNumber.TabIndex = 5;
+            this.lblEventNumber.Text = "1 event(s)";
+            this.lblEventNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserEventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.vScrollBar1);
+            this.ClientSize = new System.Drawing.Size(892, 709);
+            this.Controls.Add(this.pnlEvents);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -97,6 +147,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserEventsForm";
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -106,6 +157,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnAddEvent;
+        public System.Windows.Forms.FlowLayoutPanel pnlEvents;
+        private System.Windows.Forms.Label lblEventNumber;
     }
 }

@@ -153,13 +153,13 @@ public class EventService {
     private EventResponseDto convertToDto(Event item) {
         return EventResponseDto.builder()
                 .endTime(item.getEndTime())
+                .id(item.getId())
                 .isFullDay(item.getFullDay())
                 .startTime(item.getStartTime())
                 .username(item.getUser().getUsername())
                 .address(item.getAddress())
                 .category(item.getCategory())
                 .event(item.getEvent())
-                .category(item.getCategory())
                 .build();
     }
 }
