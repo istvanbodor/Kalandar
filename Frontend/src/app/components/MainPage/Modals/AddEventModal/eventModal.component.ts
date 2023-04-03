@@ -5,7 +5,7 @@ import { ProfileComponent } from 'src/app/components/Profile/profile.component';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 @Component({
-  selector: 'app-eventModal',
+  selector: 'app-addEventModal',
   templateUrl: './EventModal.component.html',
   styleUrls: ['./eventModal.component.scss']
 })
@@ -16,7 +16,7 @@ export class EventModalComponent implements OnInit{
   alert: boolean = false;
 
   date: string;
-  
+
   today: Date = new Date();
   currentYear: number = this.today.getFullYear();
   currentMonth: number = this.today.getMonth();
