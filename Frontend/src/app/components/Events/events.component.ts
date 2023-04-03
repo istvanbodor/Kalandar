@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { id } from 'date-fns/locale';
 import { tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
+import { ProfileComponent } from '../Profile/profile.component';
 
 @Component({
   selector: 'app-events',
@@ -12,29 +12,25 @@ export class EventsComponent implements OnInit{
 
   events$: any
   events: any
-  user: any
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private profileComponent: ProfileComponent){}
 
   
 
   ngOnInit(): void {
+    //All events
 
-    this.events$ = this.authService.getAllEvents().pipe(tap((result) => this.events = result ))
+    // this.events$ = this.authService.getAllEvents().pipe(tap((result) => {
+    //   this.events = result
+    //   console.log(this.events)
+    // } ))
 
-
-    // this.authService.getProfile().subscribe({
-    //   next: (result: any[]) => {
-    //     this.user = result;
-    //     // console.log(this.user)
-
-    //     this.events$ = this.authService.getUserEvents(this.user.id).subscribe()
-    //   },
-    //   error: (error: any[]) => {
-    //     console.error('Error getting user profile =>', error);
-    //   }
-    // });
-
-   
+    // console.log('Value type =>',(this.profileComponent.userId()))
+    this.authService.getProfile().subscribe((user) =>{
+      this.events$ = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
+        // this.events = result
+        // console.log(this.events)
+      }))
+    }) 
   }
 }
