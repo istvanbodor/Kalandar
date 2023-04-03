@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EventResponseDto {
 
+    private long id;
     private String username;
     private String event;
     private String category;
