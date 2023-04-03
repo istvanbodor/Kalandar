@@ -476,7 +476,7 @@ namespace Kalandar
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(244, 24);
             this.txtStreet.TabIndex = 3;
-            this.txtStreet.Text = "EVENT TITLE";
+            this.txtStreet.Text = "STREET";
             this.txtStreet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStreet.Click += new System.EventHandler(this.txtStreet_Click);
             // 
@@ -541,6 +541,7 @@ namespace Kalandar
             // btnAddEvent
             // 
             this.btnAddEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(31)))), ((int)(((byte)(24)))));
+            this.btnAddEvent.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddEvent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.btnAddEvent.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.btnAddEvent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
@@ -832,7 +833,6 @@ namespace Kalandar
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(362, 49);
             this.panel31.TabIndex = 33;
-            //this.panel31.CalendarMonthBackground = Color.Aqua;
             // 
             // panel32
             // 

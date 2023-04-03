@@ -8,6 +8,7 @@ namespace Kalandar
 {
     internal class EventClass
     {
+        public string id { get; set; }
         public string @event { get; set; }
         public string startTime { get; set; }
         public string endTime { get; set; }

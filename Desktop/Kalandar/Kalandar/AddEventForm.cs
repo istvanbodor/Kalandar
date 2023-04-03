@@ -25,6 +25,8 @@ namespace Kalandar
             InitializeComponent();
         }
 
+        public void Initialize() { 
+        }
         public string EventTitleText
         {
             get
@@ -118,8 +120,6 @@ namespace Kalandar
             }
         }
 
-
-
         public string EventCategoryText
         {
             get
@@ -143,6 +143,27 @@ namespace Kalandar
                 if(value >= dtpStartDate.MinDate)
                 {
                     this.dtpStartDate.Value = value;
+                }
+                else
+                {
+                    string message = "Simple MessageBox";
+                    MessageBox.Show(message);
+                }
+                
+            }
+        }
+        
+        public DateTime DTPEndDate
+        {
+            get
+            {
+                return this.dtpEndDate.Value;
+            }
+            set
+            {
+                if(value >= dtpStartDate.MinDate)
+                {
+                    this.dtpEndDate.Value = value;
                 }
                 else
                 {
@@ -209,6 +230,7 @@ namespace Kalandar
                 this.lblDate.Text = value;
             }
         }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -252,12 +274,16 @@ namespace Kalandar
                     var result = client.PostAsync(endpoint, payload).Result;
                     result.EnsureSuccessStatusCode();
                     Trace.WriteLine((int)result.StatusCode);
+
                     if (result.IsSuccessStatusCode)
                     {
                         //lblError.ForeColor = Color.Green;
                         //lblError.Text = "Account has been created!";
                         //Trace.Write("Account has been created.");
                         Trace.WriteLine("Felvettem");
+                        UserEventsForm.acceptedForm = true;
+                        btnAddEvent.DialogResult = DialogResult.OK;
+                        Trace.Write("Button Dialogresult: " + btnAddEvent.DialogResult);
                     }
 
                 }
@@ -266,6 +292,7 @@ namespace Kalandar
                     //lblError.ForeColor = Color.LightCoral;
                     //lblError.Text = "User with this email already exists!";
                     Trace.Write(error.Message);
+                    btnAddEvent.DialogResult = DialogResult.Cancel;
                 };
             }
         }
@@ -276,7 +303,7 @@ namespace Kalandar
         }
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpEndDate.Value > dtpStartDate.Value)
+            if (dtpEndDate.Value >= dtpStartDate.Value)
             {
                 txtEndDate.Text = dtpEndDate.Text;
             }

@@ -16,12 +16,13 @@ namespace Kalandar
     public partial class UsersUserControl : UserControl
     {
         private string baseURL = APIConnectDetails.baseURL;
+        private string token = CurrentUser.userToken;
         public UsersUserControl()
         {
             InitializeComponent();
         }
 
-        private string token = CurrentUser.userToken;
+        
         public string IdText
         {
             get
