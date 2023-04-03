@@ -35,17 +35,16 @@ export class AuthService {
     this._isLoggedIn$.next(!!auth_token);
   }
 
-  adminUser() {   
-    this.getUsersData().pipe(tap((result) => {
-      this.users = result
-
-      if (this.users.role === 'ADMIN') {
-        this.admin
-      }
-    }
-    ))
-
-  }
+  // adminUser(): boolean{
+  //   this.getUsersData().pipe(tap((result) => {
+  //     this.users = result
+  //     if (this.users.role === 'ADMIN') {
+  //       this.admin
+  //       break;
+  //     }
+  //     !this.admin
+  //   }))
+  // }
 
   login(email: string, password: string): Observable<any> {
     return this.usersApiService
@@ -78,7 +77,7 @@ export class AuthService {
     return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
   }
 
-  getUserEvents(id: string){
+   getUserEvents(id: string){
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -107,7 +106,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token')
-    localStorage.removeItem('id')
     this._router.navigate(['/login'])
   }
 
@@ -122,7 +120,18 @@ export class AuthService {
     return this.http.post<any>(this.url + `api/events`, data, requestOptions)
   }
 
-  deleteEvent(id: string) {
+  deleteEvent(id: string){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+
+    const requestOptions = {headers: headers}
+    return this.http.delete(this.url + `api/events/${id}`, requestOptions)
+  }
+  
+  deleteUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -133,7 +142,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeEvent(id: string) {
+  changeUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

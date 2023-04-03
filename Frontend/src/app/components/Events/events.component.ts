@@ -26,11 +26,40 @@ export class EventsComponent implements OnInit{
     // } ))
 
     // console.log('Value type =>',(this.profileComponent.userId()))
-    this.authService.getProfile().subscribe((user) =>{
-      this.events$ = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
+    this.authService.getProfile()
+    .subscribe({
+      next: (user) =>{
+      this.events$ = this.authService
+      .getUserEvents(String(user.id)).pipe(tap((result) => {
         // this.events = result
         // console.log(this.events)
       }))
-    }) 
+    },
+    error: (error) =>{
+      console.log('user events error => ', error)
+    }
+  }) 
   }
+
+  DeleteEvent(id: string){
+    this.authService.deleteEvent(id)
+      .subscribe({
+        next: () => {
+          this.authService.getProfile()
+          .subscribe({
+            next: (user) =>{
+              this.events$ = this.authService
+              .getUserEvents(String(user.id)).pipe(tap((result) => {
+                // this.events = result
+                // console.log(this.events)
+              }))
+            },
+            error: (error) =>{
+              console.log('user events error => ', error)
+            }
+          })
+        }
+      })
+    }
+  
 }
