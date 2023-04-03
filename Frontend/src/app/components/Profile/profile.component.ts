@@ -22,10 +22,10 @@ export class ProfileComponent implements OnInit {
   alert = false
 
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService) {
   }
 
- 
+
 
   passwordChangeForm = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -63,16 +63,15 @@ export class ProfileComponent implements OnInit {
 
 
   userId() {
-    this.authService.getProfile().subscribe({
+    return this.authService.getProfile().subscribe({
       next: (result: string) => {
         this.user = result;
-
+        this.user.id;
       },
       error: (error) => {
         return console.log('error from getting the id => ', error)
-      }  
+      }
     });
-   return 1
   }
 
 

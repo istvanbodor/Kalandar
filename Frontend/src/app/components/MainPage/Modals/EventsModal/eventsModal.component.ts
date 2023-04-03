@@ -8,8 +8,8 @@ import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 
 @Component({
   selector: 'app-events-modal',
-  templateUrl: './events-modal.component.html',
-  styleUrls: ['./events-modal.component.scss']
+  templateUrl: './eventsModal.component.html',
+  styleUrls: ['./eventsModal.component.scss']
 })
 export class EventsModalComponent {
 

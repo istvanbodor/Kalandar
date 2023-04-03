@@ -14,14 +14,11 @@
                 </div>
                 <div class="col-7">
                     <h6>Event title: {{item.event}}</h6>
-
-                    <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right;">Remove</button>
                     <p>Category: {{item.category}}</p>
                     <p>{{item.startTime}} - {{item.endTime}}</p>
-                    <p>{{item.fullDay | IsFullDAy}}</p>
-                    <button class="btn btn-success btn-sm"(click)="DeleteEvent(item.id)" style="float: right;">Modify</button>
-                    
-
+                    <p>{{item.fullDay | IsFullDay}}</p>
+                    <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right; margin-left: 5px;">Remove</button>
+                    <app-updateEventsModal style="float:  right;"></app-updateEventsModal>
                 </div>
             </div>
         </div>

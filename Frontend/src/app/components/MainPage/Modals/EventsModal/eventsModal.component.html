@@ -45,11 +45,11 @@
                                     </div>
                                     <div  
                                         style="border: 1px white; border-bottom: 1px white;">
-                                        <h6>Event title: {{item.event}}</h6>
-                                        <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right;">Remove</button>
-                                        <p>Category: {{item.category}}</p>
+                                        <h6>Event title: {{item.event}}</h6>                                        <p>Category: {{item.category}}</p>
                                         <p>{{item.startTime  |date}} - {{item.endTime | date}}</p>
-                                        <p>{{item.fullDay | IsFullDAy}}</p>
+                                        <p>{{item.fullDay | IsFullDay}}</p>
+                                        <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right; margin-left: 5px;">Remove</button>
+                                        <app-updateEventsModal style="float:  right;"></app-updateEventsModal>
                                     </div>
                                 </div>
                             </div>

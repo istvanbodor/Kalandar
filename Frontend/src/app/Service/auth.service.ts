@@ -140,7 +140,7 @@ export class AuthService {
     })
 
     const requestOptions = {headers: headers}
-    return this.http.put(this.url + `api/events/${id}`, requestOptions)
+    return this.http.put(this.url + `api/events/${id}`, {}, requestOptions)
   }
 
   deleteUser(id: string) {
