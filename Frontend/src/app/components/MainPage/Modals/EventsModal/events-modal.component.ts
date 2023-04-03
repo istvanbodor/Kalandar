@@ -146,6 +146,24 @@ export class EventsModalComponent {
     this.alert = false
   }
 
+  DeleteEvent(id: string) {
+    this.authService.deleteEvent(id)
+      .subscribe({
+        next: () => {
+          this.authService.getProfile()
+            .subscribe({
+              next: (user) => {
+                this.events$ = this.authService
+                  .getUserEvents(String(user.id)).pipe()
+              },
+              error: (error) => {
+                console.log('user events error => ', error)
+              }
+            })
+        }
+      })
+  }
+
   days() {
     const Days = []
 
@@ -157,5 +175,17 @@ export class EventsModalComponent {
 
     }
     return Days
+  }
+
+  nextDay() {
+    return this.today.setDate(this.today.getDate() + 1)
+  }
+
+  dayBefore(){
+    return this.today.setDate(this.today.getDate() - 1)
+  }
+
+  dayNow(){
+    return this.today
   }
 }
