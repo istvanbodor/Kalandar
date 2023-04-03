@@ -53,7 +53,6 @@ namespace Kalandar
         private void btnDay_Click(object sender, EventArgs e)
         {
             Trace.WriteLine("Buttondate: " + buttonDate + "Type: " + buttonDate.GetType());
-            var eventCounter = 0;
             var nowStart = DateTime.Now;
             var nowEnd = DateTime.Now;
             UserEventsForm eventForm = new UserEventsForm();
@@ -92,7 +91,6 @@ namespace Kalandar
                         Trace.WriteLine("Button date: " + buttonDate + " startDate: " + startDate + " End Date: " + endDate + " End Now: " + nowEnd);
                         if (startDate <= buttonDate && endDate >= buttonDate)
                         {
-                            eventCounter++;
                             EventsBlank eventsUC = new EventsBlank();
                             eventsUC.TitleText = data.@event;
                             eventsUC.DateText = data.startTime.Replace('T', ' ') + " - " + data.endTime.Replace('T', ' ');
@@ -110,7 +108,6 @@ namespace Kalandar
                     }
                 }
             }
-            eventForm.EventsNumberText = eventCounter.ToString() + " event(s)";
             eventForm.Show();
 
 

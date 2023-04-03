@@ -79,6 +79,7 @@
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "MODIFY";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // lblDate
             // 

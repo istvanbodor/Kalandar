@@ -35,7 +35,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddEvent = new System.Windows.Forms.Button();
             this.pnlEvents = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblEventNumber = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +83,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panel2.Controls.Add(this.lblEventNumber);
             this.panel2.Controls.Add(this.btnAddEvent);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 54);
@@ -120,18 +118,6 @@
             this.pnlEvents.Size = new System.Drawing.Size(892, 607);
             this.pnlEvents.TabIndex = 2;
             // 
-            // lblEventNumber
-            // 
-            this.lblEventNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEventNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEventNumber.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblEventNumber.Location = new System.Drawing.Point(0, 0);
-            this.lblEventNumber.Name = "lblEventNumber";
-            this.lblEventNumber.Size = new System.Drawing.Size(837, 48);
-            this.lblEventNumber.TabIndex = 5;
-            this.lblEventNumber.Text = "1 event(s)";
-            this.lblEventNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // UserEventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +146,5 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnAddEvent;
         public System.Windows.Forms.FlowLayoutPanel pnlEvents;
-        private System.Windows.Forms.Label lblEventNumber;
     }
 }
