@@ -28,7 +28,7 @@
             <div class="row days calendar-week" *ngFor="let week of [1, 2, 3, 4, 5]">
                 <div class="col-xs-1 grid-cell" *ngFor="let day of days().slice((week-1)*7, week*7)">
                     <div (click)="open(content)" style="width: 100%; height: 100%;"> <span
-                            style="float: right;">{{day}}</span><app-eventModal></app-eventModal>
+                            style="float: right;">{{day}}</span><app-addEventModal></app-addEventModal>
 
                         <ng-template #content let-modal $modal-lg: 80px !default;>
                             <div class="modal-header">
