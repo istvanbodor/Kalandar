@@ -37,7 +37,7 @@
             this.lblFullDay = new System.Windows.Forms.Label();
             this.lblZipCity = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
-            this.lblStreesHouseNo = new System.Windows.Forms.Label();
+            this.lblStreetHouseNo = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,6 +79,7 @@
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "MODIFY";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // lblDate
             // 
@@ -139,18 +140,18 @@
             this.lblCountry.Text = "Hungary";
             this.lblCountry.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblStreesHouseNo
+            // lblStreetHouseNo
             // 
-            this.lblStreesHouseNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStreesHouseNo.ForeColor = System.Drawing.Color.White;
-            this.lblStreesHouseNo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblStreesHouseNo.Location = new System.Drawing.Point(537, 122);
-            this.lblStreesHouseNo.Name = "lblStreesHouseNo";
-            this.lblStreesHouseNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblStreesHouseNo.Size = new System.Drawing.Size(314, 20);
-            this.lblStreesHouseNo.TabIndex = 10;
-            this.lblStreesHouseNo.Text = "Buksi utca 40/B";
-            this.lblStreesHouseNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStreetHouseNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStreetHouseNo.ForeColor = System.Drawing.Color.White;
+            this.lblStreetHouseNo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStreetHouseNo.Location = new System.Drawing.Point(537, 122);
+            this.lblStreetHouseNo.Name = "lblStreetHouseNo";
+            this.lblStreetHouseNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblStreetHouseNo.Size = new System.Drawing.Size(314, 20);
+            this.lblStreetHouseNo.TabIndex = 10;
+            this.lblStreetHouseNo.Text = "Buksi utca 40/B";
+            this.lblStreetHouseNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnRemove
             // 
@@ -177,6 +178,7 @@
             this.lblId.Size = new System.Drawing.Size(35, 13);
             this.lblId.TabIndex = 12;
             this.lblId.Text = "label1";
+            this.lblId.Visible = false;
             // 
             // EventsBlank
             // 
@@ -185,7 +187,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.lblStreesHouseNo);
+            this.Controls.Add(this.lblStreetHouseNo);
             this.Controls.Add(this.lblCountry);
             this.Controls.Add(this.lblZipCity);
             this.Controls.Add(this.lblFullDay);
@@ -212,7 +214,7 @@
         private System.Windows.Forms.Label lblFullDay;
         private System.Windows.Forms.Label lblZipCity;
         private System.Windows.Forms.Label lblCountry;
-        private System.Windows.Forms.Label lblStreesHouseNo;
+        private System.Windows.Forms.Label lblStreetHouseNo;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label lblId;
     }
