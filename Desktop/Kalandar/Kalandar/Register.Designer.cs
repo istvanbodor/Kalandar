@@ -88,6 +88,8 @@
             this.pnlTopBar.Padding = new System.Windows.Forms.Padding(5);
             this.pnlTopBar.Size = new System.Drawing.Size(604, 55);
             this.pnlTopBar.TabIndex = 0;
+            this.pnlTopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
+            this.pnlTopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
             // 
             // btnExit
             // 
@@ -506,6 +508,8 @@
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REGISTER";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             this.panel1.ResumeLayout(false);

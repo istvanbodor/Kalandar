@@ -145,5 +145,12 @@ namespace Kalandar
                 }
             }
         }
+
+        public void buttonVisibility()
+        {
+            this.btnGiveRights.Visible = false;
+            this.btnDeleteUser.Visible = false;
+            this.BackColor = Color.FromArgb(36, 31, 24);
+        }
     }
 }

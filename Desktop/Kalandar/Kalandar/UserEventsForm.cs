@@ -16,9 +16,10 @@ namespace Kalandar
 {
     public partial class UserEventsForm : Form
     {
-        
+        public static bool acceptedForm { get; set; }
         private string baseURL = APIConnectDetails.baseURL;
         private string token = CurrentUser.userToken;
+        Point mouseLocation;
         public UserEventsForm()
         {
             InitializeComponent();
@@ -45,10 +46,21 @@ namespace Kalandar
                 this.lblDate.Text = value;
             }
         }
-        
 
-        public static bool acceptedForm { get; set; }
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
 
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -74,8 +86,7 @@ namespace Kalandar
                 addEventForm.APIMethod = "Add";
                 addEventForm.TitleText = "ADD EVENT";
                 addEventForm.ShowDialog();
-                if (actualDate >= new DateTime(now.Year, now.Month, now.Day) && acceptedForm == true)
-                {
+                
                     EventsBlank eventForm = new EventsBlank();
                     eventForm.DateText = addEventForm.StartDateText +
                         " " +
@@ -141,13 +152,10 @@ namespace Kalandar
                                     eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
                                     Trace.WriteLine("Spli-tes cucc: " + data.startTime.Split('T')[0]);
                                     pnlEvents.Controls.Add(eventsUC);
-
-
                                 }
                             }
                         }
                     }
-                }
             }
         }
     }

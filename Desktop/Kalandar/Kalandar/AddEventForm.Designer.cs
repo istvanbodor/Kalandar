@@ -32,7 +32,7 @@ namespace Kalandar
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEventForm));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -97,7 +97,7 @@ namespace Kalandar
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.txtEndDate = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -115,25 +115,27 @@ namespace Kalandar
             this.panel31.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlTop
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 54);
-            this.panel1.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Controls.Add(this.btnExit);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(800, 54);
+            this.pnlTop.TabIndex = 0;
+            this.pnlTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
+            this.pnlTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
             // 
             // lblTitle
             // 
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblTitle.Location = new System.Drawing.Point(3, 0);
+            this.lblTitle.Location = new System.Drawing.Point(268, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(733, 54);
+            this.lblTitle.Size = new System.Drawing.Size(264, 54);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "ADD EVENT";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,7 +185,7 @@ namespace Kalandar
             this.txtEventTitle.Location = new System.Drawing.Point(117, 3);
             this.txtEventTitle.Name = "txtEventTitle";
             this.txtEventTitle.Size = new System.Drawing.Size(244, 24);
-            this.txtEventTitle.TabIndex = 3;
+            this.txtEventTitle.TabIndex = 1;
             this.txtEventTitle.Text = "EVENT TITLE";
             this.txtEventTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEventTitle.Click += new System.EventHandler(this.txtEventTitle_Click);
@@ -209,7 +211,7 @@ namespace Kalandar
             this.chckFullDay.Location = new System.Drawing.Point(698, 295);
             this.chckFullDay.Name = "chckFullDay";
             this.chckFullDay.Size = new System.Drawing.Size(90, 24);
-            this.chckFullDay.TabIndex = 3;
+            this.chckFullDay.TabIndex = 9;
             this.chckFullDay.Text = "Full day";
             this.chckFullDay.UseVisualStyleBackColor = true;
             // 
@@ -240,10 +242,10 @@ namespace Kalandar
             this.dtpStartDate.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.dtpStartDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(130)))), ((int)(((byte)(64)))));
             this.dtpStartDate.Location = new System.Drawing.Point(343, 6);
-            this.dtpStartDate.MinDate = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(16, 20);
-            this.dtpStartDate.TabIndex = 4;
+            this.dtpStartDate.TabIndex = 3;
             this.dtpStartDate.Value = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
@@ -257,7 +259,7 @@ namespace Kalandar
             this.txtStartDate.Name = "txtStartDate";
             this.txtStartDate.ReadOnly = true;
             this.txtStartDate.Size = new System.Drawing.Size(156, 24);
-            this.txtStartDate.TabIndex = 3;
+            this.txtStartDate.TabIndex = 16;
             this.txtStartDate.Text = "PICK A DATE";
             // 
             // label3
@@ -340,7 +342,7 @@ namespace Kalandar
             this.txtZipCode.Location = new System.Drawing.Point(117, 3);
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(244, 24);
-            this.txtZipCode.TabIndex = 3;
+            this.txtZipCode.TabIndex = 11;
             this.txtZipCode.Text = "ZIP CODE";
             this.txtZipCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtZipCode.Click += new System.EventHandler(this.txtZipCode_Click);
@@ -385,7 +387,7 @@ namespace Kalandar
             this.txtCity.Location = new System.Drawing.Point(117, 3);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(244, 24);
-            this.txtCity.TabIndex = 3;
+            this.txtCity.TabIndex = 13;
             this.txtCity.Text = "CITY";
             this.txtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCity.Click += new System.EventHandler(this.txtCity_Click);
@@ -430,7 +432,7 @@ namespace Kalandar
             this.txtHouseNumber.Location = new System.Drawing.Point(135, 3);
             this.txtHouseNumber.Name = "txtHouseNumber";
             this.txtHouseNumber.Size = new System.Drawing.Size(244, 24);
-            this.txtHouseNumber.TabIndex = 3;
+            this.txtHouseNumber.TabIndex = 14;
             this.txtHouseNumber.Text = "HOUSE NUMBER";
             this.txtHouseNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtHouseNumber.Click += new System.EventHandler(this.txtHouseNumber_Click);
@@ -475,7 +477,7 @@ namespace Kalandar
             this.txtStreet.Location = new System.Drawing.Point(135, 3);
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(244, 24);
-            this.txtStreet.TabIndex = 3;
+            this.txtStreet.TabIndex = 12;
             this.txtStreet.Text = "STREET";
             this.txtStreet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStreet.Click += new System.EventHandler(this.txtStreet_Click);
@@ -520,7 +522,7 @@ namespace Kalandar
             this.txtCountry.Location = new System.Drawing.Point(117, 3);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(244, 24);
-            this.txtCountry.TabIndex = 3;
+            this.txtCountry.TabIndex = 10;
             this.txtCountry.Text = "COUNTRY";
             this.txtCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCountry.Click += new System.EventHandler(this.txtCountry_Click);
@@ -551,7 +553,7 @@ namespace Kalandar
             this.btnAddEvent.Location = new System.Drawing.Point(12, 541);
             this.btnAddEvent.Name = "btnAddEvent";
             this.btnAddEvent.Size = new System.Drawing.Size(775, 50);
-            this.btnAddEvent.TabIndex = 26;
+            this.btnAddEvent.TabIndex = 15;
             this.btnAddEvent.Text = "ADD EVENT";
             this.btnAddEvent.UseVisualStyleBackColor = false;
             this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
@@ -583,7 +585,7 @@ namespace Kalandar
             this.txtCategory.Location = new System.Drawing.Point(117, 3);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(244, 24);
-            this.txtCategory.TabIndex = 3;
+            this.txtCategory.TabIndex = 2;
             this.txtCategory.Text = "EVENT CATEGORY";
             this.txtCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCategory.Click += new System.EventHandler(this.txtCategory_Click);
@@ -626,7 +628,7 @@ namespace Kalandar
             0});
             this.nmrcStartMinute.Name = "nmrcStartMinute";
             this.nmrcStartMinute.Size = new System.Drawing.Size(18, 20);
-            this.nmrcStartMinute.TabIndex = 31;
+            this.nmrcStartMinute.TabIndex = 6;
             this.nmrcStartMinute.ValueChanged += new System.EventHandler(this.nmrcStartMinute_ValueChanged);
             // 
             // panel26
@@ -647,7 +649,7 @@ namespace Kalandar
             this.txtStartMinuteText.Name = "txtStartMinuteText";
             this.txtStartMinuteText.ReadOnly = true;
             this.txtStartMinuteText.Size = new System.Drawing.Size(95, 24);
-            this.txtStartMinuteText.TabIndex = 29;
+            this.txtStartMinuteText.TabIndex = 19;
             this.txtStartMinuteText.Text = "MINUTE";
             this.txtStartMinuteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -674,7 +676,7 @@ namespace Kalandar
             0});
             this.nmrcStartHour.Name = "nmrcStartHour";
             this.nmrcStartHour.Size = new System.Drawing.Size(18, 20);
-            this.nmrcStartHour.TabIndex = 27;
+            this.nmrcStartHour.TabIndex = 5;
             this.nmrcStartHour.ValueChanged += new System.EventHandler(this.nmrcStartHour_ValueChanged);
             // 
             // panel27
@@ -695,7 +697,7 @@ namespace Kalandar
             this.txtStartHourText.Name = "txtStartHourText";
             this.txtStartHourText.ReadOnly = true;
             this.txtStartHourText.Size = new System.Drawing.Size(95, 24);
-            this.txtStartHourText.TabIndex = 3;
+            this.txtStartHourText.TabIndex = 18;
             this.txtStartHourText.Text = "HOUR";
             this.txtStartHourText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -737,7 +739,7 @@ namespace Kalandar
             0});
             this.nmrcEndMinute.Name = "nmrcEndMinute";
             this.nmrcEndMinute.Size = new System.Drawing.Size(18, 20);
-            this.nmrcEndMinute.TabIndex = 31;
+            this.nmrcEndMinute.TabIndex = 8;
             this.nmrcEndMinute.ValueChanged += new System.EventHandler(this.nmrcEndMinute_ValueChanged);
             // 
             // panel29
@@ -758,7 +760,7 @@ namespace Kalandar
             this.txtEndMinuteText.Name = "txtEndMinuteText";
             this.txtEndMinuteText.ReadOnly = true;
             this.txtEndMinuteText.Size = new System.Drawing.Size(95, 24);
-            this.txtEndMinuteText.TabIndex = 29;
+            this.txtEndMinuteText.TabIndex = 21;
             this.txtEndMinuteText.Text = "MINUTE";
             this.txtEndMinuteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -785,7 +787,7 @@ namespace Kalandar
             0});
             this.nmrcEndHour.Name = "nmrcEndHour";
             this.nmrcEndHour.Size = new System.Drawing.Size(18, 20);
-            this.nmrcEndHour.TabIndex = 27;
+            this.nmrcEndHour.TabIndex = 7;
             this.nmrcEndHour.ValueChanged += new System.EventHandler(this.nmrcEndHour_ValueChanged);
             // 
             // panel30
@@ -806,7 +808,7 @@ namespace Kalandar
             this.txtEndHourText.Name = "txtEndHourText";
             this.txtEndHourText.ReadOnly = true;
             this.txtEndHourText.Size = new System.Drawing.Size(95, 24);
-            this.txtEndHourText.TabIndex = 3;
+            this.txtEndHourText.TabIndex = 20;
             this.txtEndHourText.Text = "HOUR";
             this.txtEndHourText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -845,7 +847,7 @@ namespace Kalandar
             // dtpEndDate
             // 
             this.dtpEndDate.Location = new System.Drawing.Point(329, 6);
-            this.dtpEndDate.MinDate = new System.DateTime(2023, 3, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(16, 20);
             this.dtpEndDate.TabIndex = 4;
@@ -862,7 +864,7 @@ namespace Kalandar
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.ReadOnly = true;
             this.txtEndDate.Size = new System.Drawing.Size(176, 24);
-            this.txtEndDate.TabIndex = 3;
+            this.txtEndDate.TabIndex = 17;
             this.txtEndDate.Text = "PICK A DATE";
             // 
             // label17
@@ -901,13 +903,13 @@ namespace Kalandar
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.chckFullDay);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEventForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEventForm";
-            this.panel1.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -941,7 +943,7 @@ namespace Kalandar
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel2;

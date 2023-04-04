@@ -21,6 +21,7 @@ namespace Kalandar
         private string token = CurrentUser.userToken;
         private string apiMethod;
         private string eventId;
+        Point mouseLocation;
         public AddEventForm()
         {
             InitializeComponent();
@@ -160,13 +161,7 @@ namespace Kalandar
                 if(value >= dtpStartDate.MinDate)
                 {
                     this.dtpStartDate.Value = value;
-                }
-                else
-                {
-                    string message = "Simple MessageBox";
-                    MessageBox.Show(message);
-                }
-                
+                }                
             }
         }
         
@@ -182,12 +177,6 @@ namespace Kalandar
                 {
                     this.dtpEndDate.Value = value;
                 }
-                else
-                {
-                    string message = "Simple MessageBox";
-                    MessageBox.Show(message);
-                }
-                
             }
         }
 
@@ -247,7 +236,18 @@ namespace Kalandar
                 this.lblTitle.Text = value;
             }
         }
-        
+
+        public string ButtonText
+        {
+            get
+            {
+                return this.btnAddEvent.Text;
+            }
+            set
+            {
+                this.btnAddEvent.Text = value;
+            }
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -301,7 +301,7 @@ namespace Kalandar
                             //Trace.Write("Account has been created.");
                             Trace.WriteLine("Felvettem");
                             UserEventsForm.acceptedForm = true;
-                            //btnAddEvent.DialogResult = DialogResult.OK;
+                            btnAddEvent.DialogResult = DialogResult.OK;
                             Trace.Write("Button Dialogresult: " + btnAddEvent.DialogResult);
                         }
 
@@ -442,6 +442,21 @@ namespace Kalandar
         private void txtEventTitle_Click(object sender, EventArgs e)
         {
             this.txtEventTitle.SelectAll();
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
         }
     }
 }

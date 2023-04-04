@@ -19,6 +19,7 @@ namespace Kalandar
 
         private string baseURL = APIConnectDetails.baseURL;
         private string token = CurrentUser.userToken;
+        public static bool eventsView;
         public EventsBlank()
         {
             InitializeComponent();
@@ -111,11 +112,11 @@ namespace Kalandar
         {
             get
             {
-                return this.lblStreesHouseNo.Text;
+                return this.lblStreetHouseNo.Text;
             }
             set
             {
-                this.lblStreesHouseNo.Text = value;
+                this.lblStreetHouseNo.Text = value;
             }
         }
 
@@ -151,69 +152,8 @@ namespace Kalandar
             }
         }
 
-        //private void refreshForm()
-        //{
-        //    pnlEvents.Controls.Clear();
-
-        //    var eventCounter = 0;
-        //    var nowStart = DateTime.Now;
-        //    var nowEnd = DateTime.Now;
-
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        //        var endpoint = new Uri(baseURL + "api/events/user/" + UserData.id);
-        //        var result = client.GetAsync(endpoint).Result;
-        //        var json = result.Content.ReadAsStringAsync().Result;
-
-        //        List<EventClass> events = JsonConvert.DeserializeObject<List<EventClass>>(json);
-        //        var orderedList = events.OrderBy(x => x.startTime).ToList();
-        //        Trace.WriteLine(json);
-        //        if (orderedList != null)
-        //        {
-        //            foreach (var data in orderedList)
-        //            {
-        //                nowStart = new DateTime(nowStart.Year, nowStart.Month, nowStart.Day);
-        //                nowEnd = new DateTime(nowEnd.Year, nowEnd.Month, nowEnd.Day, 23, 59, 59);
-
-        //                string[] eventStartDate = data.startTime.Replace("T", "-").Split('-');
-        //                int eventStartYear = Convert.ToInt32(eventStartDate[0]);
-        //                int eventStartMonth = Convert.ToInt32(eventStartDate[1]);
-        //                int eventStartDay = Convert.ToInt32(eventStartDate[2]);
-
-        //                string[] eventEndDate = data.endTime.Replace("T", "-").Split('-');
-        //                int eventEndYear = Convert.ToInt32(eventEndDate[0]);
-        //                int eventEndMonth = Convert.ToInt32(eventEndDate[1]);
-        //                int eventEndDay = Convert.ToInt32(eventEndDate[2]);
-
-        //                DateTime startDate = new DateTime(eventStartYear, eventStartMonth, eventStartDay);
-        //                DateTime endDate = new DateTime(eventEndYear, eventEndMonth, eventEndDay);
-        //                Trace.WriteLine("Button date: " + actualDate + " startDate: " + startDate + " End Date: " + endDate + " End Now: " + nowEnd);
-        //                if (startDate <= actualDate && endDate >= actualDate)
-        //                {
-        //                    eventCounter++;
-        //                    EventsBlank eventsUC = new EventsBlank();
-        //                    eventsUC.TitleText = data.@event;
-        //                    eventsUC.DateText = data.startTime.Replace('T', ' ') + " - " + data.endTime.Replace('T', ' ');
-        //                    eventsUC.IsFullDayText = data.fullDay ? "Full-day event" : "";
-        //                    eventsUC.CategoryText = data.category;
-        //                    eventsUC.LabelIdText = data.id;
-        //                    eventsUC.AddressCountryText = data.address.country;
-        //                    eventsUC.AddressStreetHouseNoText = data.address.street + " " + data.address.houseNumber;
-        //                    eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
-        //                    Trace.WriteLine("Spli-tes cucc: " + data.startTime.Split('T')[0]);
-        //                    pnlEvents.Controls.Add(eventsUC);
-
-
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         private void btnModify_Click(object sender, EventArgs e)
         {
-            
             acceptedForm = false;
             string[] dateArray = lblDate.Text.Split('-', ' ', ':');
 
@@ -241,9 +181,17 @@ namespace Kalandar
                 addEventForm.EndDateText = addEventForm.DTPEndDate.ToString("dd MMMM yyyy");
                 addEventForm.APIMethod = "Edit";
                 addEventForm.EventId = this.lblId.Text;
+                addEventForm.ZipText = this.lblZipCity.Text.Split(',')[0];
+                addEventForm.CityText = this.lblZipCity.Text.Split(',')[1];
+                addEventForm.EventTitleText = this.lblTitle.Text;
+                addEventForm.EventCategoryText = this.lblCategory.Text;
+                addEventForm.StreetText = this.lblStreetHouseNo.Text.Split(',')[0];
+                Trace.WriteLine(this.lblStreetHouseNo.Text);
+                Trace.WriteLine(this.lblTitle.Text);
                 addEventForm.TitleText = "MODIFY EVENT";
+                addEventForm.ButtonText = "MODIFY EVENT";
                 addEventForm.ShowDialog();
-                if (acceptedForm && startDate == DateTime.Parse(eventStartDate))
+                if (acceptedForm && startDate == DateTime.Parse(eventStartDate) && !eventsView)
                 {
                     this.lblTitle.Text = eventTitle;
                     this.lblCategory.Text = eventCategory;
@@ -255,14 +203,39 @@ namespace Kalandar
                         DateTime.Parse(eventEndDate).ToString("yyyy-MM-dd") +
                         " " + eventEndHour + ":" + eventEndMinute + ":00";
                     this.lblCountry.Text = eventCountry;
-                    this.lblZipCity.Text = eventZipCode + "," + eventCountry;
-                    this.lblStreesHouseNo.Text = eventStreet + " " + eventHouseNumber;
+                    this.lblZipCity.Text = eventZipCode + "," + eventCity;
+                    this.lblStreetHouseNo.Text = eventStreet + " " + eventHouseNumber;
                     this.lblFullDay.Text = eventFullDay ? "Full Day" : "";
                 }
-                else if(acceptedForm)
+                else if(acceptedForm && !eventsView)
                 {
-                    
+
                     this.Hide();
+                }
+                else if (eventsView && acceptedForm)
+                {
+                    this.lblTitle.Text = eventTitle;
+                    this.lblCategory.Text = eventCategory;
+                    this.lblDate.Text = DateTime.Parse(eventStartDate).ToString("yyyy-MM-dd") +
+                        " " +
+                        eventStartHour +
+                        ":" +
+                        eventStartMinute + ":00 - " +
+                        DateTime.Parse(eventEndDate).ToString("yyyy-MM-dd") +
+                        " " + eventEndHour + ":" + eventEndMinute + ":00";
+                    this.lblCountry.Text = eventCountry;
+                    this.lblZipCity.Text = eventZipCode + "," + eventCountry;
+                    this.lblStreetHouseNo.Text = eventStreet + " " + eventHouseNumber;
+                    this.lblFullDay.Text = eventFullDay ? "Full Day" : "";
+                    if(eventStartDate == DateTime.Now.ToString("dd MMMM yyyy"))
+                    {
+                        this.BackColor = Color.FromArgb(36, 31, 24);
+                    }
+                    else
+                    {
+                        this.BackColor = Color.FromArgb(50, 50, 50);
+                    }
+                    Trace.WriteLine("Startdate: " + startDate + " Event Start Date: " + eventStartDate);
                 }
                 
             }

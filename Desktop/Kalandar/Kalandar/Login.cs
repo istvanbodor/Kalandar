@@ -19,6 +19,7 @@ namespace Kalandar
     public partial class Login : Form
     {
         private string baseURL = APIConnectDetails.baseURL;
+        Point mouseLocation;
         public Login()
         {
             InitializeComponent();
@@ -134,6 +135,21 @@ namespace Kalandar
         private void txtLoginPassword_Click(object sender, EventArgs e)
         {
             txtLoginPassword.SelectAll();
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
         }
     }
 }
