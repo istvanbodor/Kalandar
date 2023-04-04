@@ -34,6 +34,10 @@ h2 {
   margin-right: auto;
 }
 
+.TextColor{
+  color: white;
+}
+
 .container-fluid {
   background: rgba(255, 255, 255, 0.1);
   padding: 40px;
@@ -77,13 +81,13 @@ $column-width: percentage(1/$number-of-columns);
   }
 
   .calendar-week .grid-cell {
-    background-color: #596581;
+    background-color: #212529;
     border: 1px solid #fff;
     text-align: center;
   }
 
   .calendar-week-header .grid-cell {
-    background-color: #596581;
+    background-color: #212529;
     border: 1px solid #fff;
     text-align: center;
     font-weight: bold;
