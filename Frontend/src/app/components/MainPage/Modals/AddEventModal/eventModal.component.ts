@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from 'src/app/components/Profile/profile.component';
 import { AuthService } from 'src/app/Service/auth.service';
-import { CustomValidators } from '../../CustomValidators/CustomValidator';
+import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 @Component({
   selector: 'app-eventModal',
   templateUrl: './EventModal.component.html',
-  styleUrls: ['./eventModal.component.css']
+  styleUrls: ['./eventModal.component.scss']
 })
 
 export class EventModalComponent implements OnInit{
@@ -15,9 +16,18 @@ export class EventModalComponent implements OnInit{
   alert: boolean = false;
 
   date: string;
+  
+  today: Date = new Date();
+  currentYear: number = this.today.getFullYear();
+  currentMonth: number = this.today.getMonth();
+  currentDay: number = this.today.getDate();
+  firstDay: Date = new Date(new Date().setDate(1))
+  lastDay: Date = new Date(new Date().setDate(31));
+  startDate: Object = new Date(this.currentYear, this.currentMonth, 1);
+  endDate: Object =  new Date(this.currentYear, this.currentMonth, 31);
 
 
-  constructor(private modalService: NgbModal, private authService: AuthService) {
+  constructor(private modalService: NgbModal, private authService: AuthService, private profileComponent: ProfileComponent) {
     this.date = new Date().toISOString().slice(0, 16);
   }
 
@@ -127,6 +137,20 @@ export class EventModalComponent implements OnInit{
 
  closeAlert(){
   this.alert = false
+  }
+
+  days(){
+    const Days = []
+
+    const numDays = new Date(this.currentYear,this.currentMonth + 1, 0).getDate();
+    for(let day = 1; day <= numDays; day++) {
+      const date = new Date(this.currentYear, this.currentMonth, day);
+      const dayOfMonth = date.getDate();
+      Days.push([dayOfMonth])
+
+    }
+
+    return Days
   }
 
 }

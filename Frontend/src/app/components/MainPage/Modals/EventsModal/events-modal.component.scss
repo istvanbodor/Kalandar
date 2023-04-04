@@ -1,0 +1,130 @@
+.errorMessage{
+    color: red;
+}
+
+mat-expansion-panel-header,
+mat-expansion-panel,mat-expansion-panel,
+mat-panel-description,mat-panel-title {
+  background-color: white;
+  color: black;
+}
+
+.btngroupLeft{
+margin-left: 5px;
+}
+
+.btngroupRight{
+float: right;
+margin-right: 5px;
+}
+h1{
+text-align: center;
+}
+
+h2{
+text-align: right;
+}
+
+.days{
+height: 100px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.container-fluid {   
+background:rgba(255, 255, 255, 0.1);
+padding:40px;
+border-radius: 10px;
+}
+
+* {
+box-sizing: border-box;
+}
+
+*:before {
+box-sizing: border-box;
+}
+
+*:after {
+box-sizing: border-box;
+}
+
+$min-width: 320px;
+$number-of-columns: 7;
+$column-width: percentage(1/$number-of-columns);
+
+.container {
+max-width: 100%;
+margin-left: auto;
+margin-right: auto;
+padding-bottom: 1em;
+}
+
+.row:before {
+display: table;
+content: " ";
+}
+
+.grid-calendar {
+min-width: $min-width;
+.row {
+  margin: 0;
+  
+}
+
+.calendar-week .grid-cell {
+  background-color: #596581;
+  border: 1px solid #fff;
+  text-align: center; 
+}
+.calendar-week-header .grid-cell{
+  background-color: #596581;
+  border: 1px solid #fff;
+  text-align: center; 
+  font-weight: bold;
+}
+
+.calendar-week-header .grid-cell > div > div {
+  padding-bottom: 10px;
+  height: auto;
+}
+
+.grid-cell {
+  display: inline-block;
+
+  min-height: 1px;
+  padding: 0;
+  position: relative;
+  width: $column-width;
+
+  // &.previous-month {
+  //   color: #a6a6a6;
+  // }
+  
+  // &.next-month {
+  //   background-color: #e1e1e1;
+  // }
+  
+  // > div {
+  //   display: flex;
+  //   justify-content: center;
+  //   width: 100%;
+
+  //   > div {
+  //     height: 0;
+  //     padding: 50% 0;
+  //   }
+  // }
+}
+}
+
+
+
+
+
+
+
+
+
+
+

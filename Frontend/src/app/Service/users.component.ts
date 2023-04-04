@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   }
 
   DeleteUser(id: string) {
-    this.authService.deleteEvent(id)
+    this.authService.deleteUser(id)
       .subscribe({
         next: () => {
           this.users$ = this.authService.getUsersData().pipe(tap((user) => {
@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
   }
 
   ChangeRole(id: string) {
-    this.authService.changeEvent(id)
+    this.authService.changeUser(id)
       .subscribe({
         next: () => {
           this.users$ = this.authService.getUsersData().pipe(tap((user) => {

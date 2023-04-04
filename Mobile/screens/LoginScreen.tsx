@@ -1,8 +1,11 @@
-import { View, Text, Button, TouchableOpacity, Dimensions, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Button, TouchableOpacity, Dimensions, StyleSheet, TextInput, ToastAndroid } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
-import React from 'react'
+import React, {useContext} from 'react'
+import { AuthContext } from '../contexts/AuthContext'
+import { AxiosError } from 'axios'
+
 
 interface FormData {
   email: string
@@ -14,6 +17,7 @@ interface FormData {
 
 export default function LoginScreen({navigation}: any) {
 
+
   const emailExpression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   
   const [data, setData] = React.useState<FormData>({
@@ -23,7 +27,17 @@ export default function LoginScreen({navigation}: any) {
     secureTextEntry: true
   })
 
-  const handleTextInputChange = (value: string) =>{
+  const def: FormData = {
+    email: '',
+    password: '',
+    emailCheck: false,
+    secureTextEntry: true
+  }
+
+  const {login} = useContext(AuthContext);
+
+
+  const handleEmailTextInputChange = (value: string) =>{
          
       setData(
         {
@@ -35,8 +49,35 @@ export default function LoginScreen({navigation}: any) {
       )
           
   }
+  const handlePasswordTextInputChange = (value: string) =>{
+         
+    setData(
+      {
+        ...data,
+        password: value,
+      }
+      
+    )
+        
+}
 
-
+  const handleLogin = ()=>{
+    if (data.emailCheck) {
+    try {
+      login({email: data.email, password: data.password})
+    }
+    catch (e)
+    { 
+      
+      ToastAndroid.showWithGravity('Wrong credentials', 2000, ToastAndroid.CENTER)
+    }
+    finally {
+      setData(def);
+    }
+  } else {
+    ToastAndroid.showWithGravity('Wrong email!', 2000, ToastAndroid.CENTER)
+  }
+}
   return (
     <View style={styles.container}>
         <View style={styles.header}>
@@ -50,7 +91,7 @@ export default function LoginScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <FontAwesome name='envelope-o' size={25}></FontAwesome>
-            <TextInput placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleTextInputChange(value)}></TextInput>
+            <TextInput value={data.email} placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleEmailTextInputChange(value)}></TextInput>
             {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -59,7 +100,7 @@ export default function LoginScreen({navigation}: any) {
           <View style={styles.formElement}>
 
             <Feather name='lock' size={25}/>
-            <TextInput placeholder='Password' secureTextEntry={data.secureTextEntry} autoCapitalize='none' style={styles.textInput}></TextInput>
+            <TextInput value={data.password} placeholder='Password' secureTextEntry={data.secureTextEntry} autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handlePasswordTextInputChange(value)}></TextInput>
             <TouchableOpacity onPress={()=>setData({...data, secureTextEntry: !data.secureTextEntry})}>
             {
               data.secureTextEntry? <Feather name='eye-off'  color="grey" size={20} /> : <Feather name='eye'  color="grey" size={20} />
@@ -69,7 +110,7 @@ export default function LoginScreen({navigation}: any) {
             
           </View>
           <View style={{flex: 1, alignItems: 'center'}} >
-          <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer}>
+          <TouchableOpacity onPress={()=>handleLogin()} activeOpacity={0.7} style={styles.buttonContainer}>
                     <Text style={styles.buttonText}>Log in</Text>
       
           </TouchableOpacity>

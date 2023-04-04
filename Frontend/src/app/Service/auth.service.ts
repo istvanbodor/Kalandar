@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { tr } from "date-fns/locale";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
-import { IsAdminPipe } from "../components/CustomPipe/CustomPipe";
 import { UsersApiService } from "./users.service";
 
 
@@ -21,7 +19,7 @@ export class AuthService {
   admin:boolean = true
 
   private isTokenExpired(auth_token: string) {
-    const expiry = (JSON.parse(atob(auth_token.split('.')[1]))).exp;
+    const expiry = (JSON.parse((auth_token.split('.')[1]))).exp;
     return expiry * 1000 > Date.now();
   }
 
@@ -37,18 +35,16 @@ export class AuthService {
     this._isLoggedIn$.next(!!auth_token);
   }
 
-  adminUser() {
-     
-    this.getUsersData().pipe(tap((result) => {
-      this.users = result
-
-      if (this.users.role === 'ADMIN') {
-        this.admin
-      }
-    }
-    ))
-
-  }
+  // adminUser(): boolean{
+  //   this.getUsersData().pipe(tap((result) => {
+  //     this.users = result
+  //     if (this.users.role === 'ADMIN') {
+  //       this.admin
+  //       break;
+  //     }
+  //     !this.admin
+  //   }))
+  // }
 
   login(email: string, password: string): Observable<any> {
     return this.usersApiService
@@ -81,7 +77,7 @@ export class AuthService {
     return this.http.get<any>(this.url + `api/user/profile`, requestOptions)
   }
 
-  changePassword(password: string) {
+   getUserEvents(id: string){
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -89,8 +85,20 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
+    return this.http.get(this.url + `api/events/user/${id}`, requestOptions)
   }
+
+  getAllEvents(){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.get(this.url + `api/events`, requestOptions)
+  }
+
 
   loggedIn() {
     return !!localStorage.getItem('token')
@@ -98,7 +106,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token')
-    localStorage.removeItem('id')
     this._router.navigate(['/login'])
   }
 
@@ -113,7 +120,18 @@ export class AuthService {
     return this.http.post<any>(this.url + `api/events`, data, requestOptions)
   }
 
-  deleteEvent(id: string) {
+  deleteEvent(id: string){
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+
+    const requestOptions = {headers: headers}
+    return this.http.delete(this.url + `api/events/${id}`, requestOptions)
+  }
+  
+  deleteUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -124,7 +142,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeEvent(id: string) {
+  changeUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -133,6 +151,17 @@ export class AuthService {
 
     const requestOptions = { headers: headers };
     return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
+  }
+
+  changePassword(password: string) {
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    const requestOptions = { headers: headers };
+    return this.http.put(this.url + `api/user/password`, { password }, requestOptions)
   }
 
 }
