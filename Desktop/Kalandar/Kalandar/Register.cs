@@ -20,6 +20,7 @@ namespace Kalandar
     public partial class Register : Form
     {
         private string baseURL = APIConnectDetails.baseURL;
+        Point mouseLocation;
         public Register()
         {
             InitializeComponent();
@@ -176,6 +177,21 @@ namespace Kalandar
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
 
             return emailRegex.IsMatch(email);
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
         }
     }
 }

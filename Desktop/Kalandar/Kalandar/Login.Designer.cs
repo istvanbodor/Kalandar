@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblLoginText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.pnlTopBar.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -57,17 +57,19 @@
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlTopBar
+            // pnlTop
             // 
-            this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.pnlTopBar.Controls.Add(this.btnExit);
-            this.pnlTopBar.Controls.Add(this.lblLoginText);
-            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlTopBar.Size = new System.Drawing.Size(604, 55);
-            this.pnlTopBar.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.pnlTop.Controls.Add(this.btnExit);
+            this.pnlTop.Controls.Add(this.lblLoginText);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Padding = new System.Windows.Forms.Padding(5);
+            this.pnlTop.Size = new System.Drawing.Size(604, 55);
+            this.pnlTop.TabIndex = 0;
+            this.pnlTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
+            this.pnlTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
             // 
             // btnExit
             // 
@@ -295,14 +297,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(604, 715);
             this.Controls.Add(this.pnlLogin);
-            this.Controls.Add(this.pnlTopBar);
+            this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOGIN";
-            this.pnlTopBar.ResumeLayout(false);
-            this.pnlTopBar.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -318,7 +320,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlTopBar;
+        private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Label lblLoginText;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

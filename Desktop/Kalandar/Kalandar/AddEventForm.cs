@@ -19,7 +19,9 @@ namespace Kalandar
 
         private string baseURL = APIConnectDetails.baseURL;
         private string token = CurrentUser.userToken;
-        private string id = UserData.id.ToString();
+        private string apiMethod;
+        private string eventId;
+        Point mouseLocation;
         public AddEventForm()
         {
             InitializeComponent();
@@ -36,6 +38,22 @@ namespace Kalandar
             set
             {
                 this.txtEventTitle.Text = value;
+            }
+        }
+
+        public string EventId
+        {
+            set
+            {
+                this.eventId = value;
+            }
+        }
+
+        public string APIMethod
+        {
+            set
+            {
+                this.apiMethod = value;
             }
         }
 
@@ -143,13 +161,7 @@ namespace Kalandar
                 if(value >= dtpStartDate.MinDate)
                 {
                     this.dtpStartDate.Value = value;
-                }
-                else
-                {
-                    string message = "Simple MessageBox";
-                    MessageBox.Show(message);
-                }
-                
+                }                
             }
         }
         
@@ -165,12 +177,6 @@ namespace Kalandar
                 {
                     this.dtpEndDate.Value = value;
                 }
-                else
-                {
-                    string message = "Simple MessageBox";
-                    MessageBox.Show(message);
-                }
-                
             }
         }
 
@@ -219,18 +225,29 @@ namespace Kalandar
                 this.nmrcEndMinute.Text = value;
             }
         }
-        public string DateText
+        public string TitleText
         {
             get
             {
-                return this.lblDate.Text;
+                return this.lblTitle.Text;
             }
             set
             {
-                this.lblDate.Text = value;
+                this.lblTitle.Text = value;
             }
         }
-        
+
+        public string ButtonText
+        {
+            get
+            {
+                return this.btnAddEvent.Text;
+            }
+            set
+            {
+                this.btnAddEvent.Text = value;
+            }
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -243,57 +260,117 @@ namespace Kalandar
             using (var client = new HttpClient())
             {
                 Trace.WriteLine("End date: " + dtpEndDate.Text);
-                try
+                if(apiMethod == "Add")
                 {
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                    var endpoint = new Uri(baseURL + "api/events");
-                    Trace.WriteLine(dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"));
-                    var newEvent = new EventClass()
+                    try
                     {
-                        @event = txtEventTitle.Text,
-                        startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"),
-                        endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value.ToString().PadLeft(2, '0')}:{nmrcEndMinute.Value.ToString().PadLeft(2, '0')}:00"),
-                        fullDay = chckFullDay.Checked,
-                        category = txtCategory.Text,
-                        address = new AddressClass
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        var endpoint = new Uri(baseURL + "api/events");
+                        Trace.WriteLine(dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"));
+                        var newEvent = new EventClass()
                         {
-                            city = txtCity.Text,
-                            zip = txtZipCode.Text,
-                            country = txtCountry.Text,
-                            street = txtStreet.Text,
-                            houseNumber = txtHouseNumber.Text,
-                        },
-                        user = new CurrentUser
+                            @event = txtEventTitle.Text,
+                            startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                            endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value.ToString().PadLeft(2, '0')}:{nmrcEndMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                            fullDay = chckFullDay.Checked,
+                            category = txtCategory.Text,
+                            address = new AddressClass
+                            {
+                                city = txtCity.Text,
+                                zip = txtZipCode.Text,
+                                country = txtCountry.Text,
+                                street = txtStreet.Text,
+                                houseNumber = txtHouseNumber.Text,
+                            },
+                            user = new CurrentUser
+                            {
+                                id = UserData.id
+                            }
+
+                        };
+                        var newPostJson = JsonConvert.SerializeObject(newEvent);
+                        var payload = new StringContent(newPostJson, UTF8Encoding.UTF8, "application/json");
+                        var result = client.PostAsync(endpoint, payload).Result;
+                        result.EnsureSuccessStatusCode();
+                        Trace.WriteLine((int)result.StatusCode);
+
+                        if (result.IsSuccessStatusCode)
                         {
-                            id = UserData.id
+                            //lblError.ForeColor = Color.Green;
+                            //lblError.Text = "Account has been created!";
+                            //Trace.Write("Account has been created.");
+                            Trace.WriteLine("Felvettem");
+                            UserEventsForm.acceptedForm = true;
+                            btnAddEvent.DialogResult = DialogResult.OK;
+                            Trace.Write("Button Dialogresult: " + btnAddEvent.DialogResult);
                         }
 
-                    };
-                    var newPostJson = JsonConvert.SerializeObject(newEvent);
-                    var payload = new StringContent(newPostJson, UTF8Encoding.UTF8, "application/json");
-                    var result = client.PostAsync(endpoint, payload).Result;
-                    result.EnsureSuccessStatusCode();
-                    Trace.WriteLine((int)result.StatusCode);
-
-                    if (result.IsSuccessStatusCode)
-                    {
-                        //lblError.ForeColor = Color.Green;
-                        //lblError.Text = "Account has been created!";
-                        //Trace.Write("Account has been created.");
-                        Trace.WriteLine("Felvettem");
-                        UserEventsForm.acceptedForm = true;
-                        btnAddEvent.DialogResult = DialogResult.OK;
-                        Trace.Write("Button Dialogresult: " + btnAddEvent.DialogResult);
                     }
-
+                    catch (HttpRequestException error)
+                    {
+                        //lblError.ForeColor = Color.LightCoral;
+                        //lblError.Text = "User with this email already exists!";
+                        Trace.Write(error.Message);
+                        //btnAddEvent.DialogResult = DialogResult.Cancel;
+                    };
                 }
-                catch (HttpRequestException error)
+                else if(apiMethod == "Edit")
                 {
-                    //lblError.ForeColor = Color.LightCoral;
-                    //lblError.Text = "User with this email already exists!";
-                    Trace.Write(error.Message);
-                    btnAddEvent.DialogResult = DialogResult.Cancel;
-                };
+                    try
+                    {
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.userToken);
+                        var endpoint = new Uri(baseURL + $"api/events/{eventId}");
+                        Trace.WriteLine("Event ID: " + eventId);
+                        var editEvent = new EventClass()
+                        {
+                            @event = txtEventTitle.Text,
+                            startTime = dtpStartDate.Value.ToString($"yyyy-MM-ddT{nmrcStartHour.Value.ToString().PadLeft(2, '0')}:{nmrcStartMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                            endTime = dtpEndDate.Value.ToString($"yyyy-MM-ddT{nmrcEndHour.Value.ToString().PadLeft(2, '0')}:{nmrcEndMinute.Value.ToString().PadLeft(2, '0')}:00"),
+                            fullDay = chckFullDay.Checked,
+                            category = txtCategory.Text,
+                            address = new AddressClass
+                            {
+                                city = txtCity.Text,
+                                zip = txtZipCode.Text,
+                                country = txtCountry.Text,
+                                street = txtStreet.Text,
+                                houseNumber = txtHouseNumber.Text,
+                            },
+                            user = new CurrentUser
+                            {
+                                id = UserData.id
+                            }
+
+                        };
+
+                        var editEventJson = JsonConvert.SerializeObject(editEvent, Formatting.Indented);
+                        var payload = new StringContent(editEventJson, Encoding.UTF8, "application/json");
+                        var response = client.PutAsync(endpoint, payload).Result;
+                        response.EnsureSuccessStatusCode();
+                        EventsBlank.acceptedForm = true;
+                        EventsBlank.eventStartDate = this.dtpStartDate.Text;
+                        EventsBlank.eventStartHour = this.txtStartHourText.Text;
+                        EventsBlank.eventStartMinute = this.txtStartMinuteText.Text;
+                        EventsBlank.eventEndDate = this.dtpEndDate.Text;
+                        EventsBlank.eventEndHour = this.txtEndHourText.Text;
+                        EventsBlank.eventEndMinute = this.txtEndMinuteText.Text;
+                        EventsBlank.eventTitle = this.txtEventTitle.Text;
+                        EventsBlank.eventCategory = this.txtCategory.Text;
+                        EventsBlank.eventCountry = this.txtCountry.Text;
+                        EventsBlank.eventCity = this.txtCity.Text;
+                        EventsBlank.eventZipCode = this.txtZipCode.Text;
+                        EventsBlank.eventStreet = this.txtStreet.Text;
+                        EventsBlank.eventHouseNumber = this.txtHouseNumber.Text;
+                        EventsBlank.eventFullDay = this.chckFullDay.Checked;
+                        
+                        Trace.WriteLine("poggies");
+                    }
+                    catch (HttpRequestException error)
+                    {
+                        Trace.WriteLine(error);
+                    }
+                }
+                
             }
         }
 
@@ -365,6 +442,21 @@ namespace Kalandar
         private void txtEventTitle_Click(object sender, EventArgs e)
         {
             this.txtEventTitle.SelectAll();
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
         }
     }
 }

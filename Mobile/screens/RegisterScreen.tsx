@@ -1,9 +1,11 @@
-import { View, Text, Button, TouchableOpacity, Dimensions, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Button, TouchableOpacity, Dimensions, StyleSheet, TextInput, ToastAndroid } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Modal } from 'react-native'
+import { AuthContext } from '../contexts/AuthContext'
+
 
 interface FormData {
   email: string
@@ -28,7 +30,8 @@ export default function RegisterScreen({navigation}: any) {
 
   const usernameExpression: RegExp = /^[a-zA-Z\d]{3,}$/;
   
-  
+  const {register} = useContext(AuthContext);
+
   const [data, setData] = React.useState<FormData>({
     email: '',
     password: '',
@@ -42,6 +45,20 @@ export default function RegisterScreen({navigation}: any) {
     passwordCheck: false,
     secureTextEntry: true
   })
+
+  const defData = {
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    username: '',
+    emailCheck: false,
+    firstNameCheck: false,
+    lastNameCheck: false,
+    usernameCheck: false,
+    passwordCheck: false,
+    secureTextEntry: true
+  }
 
   const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
@@ -106,8 +123,24 @@ const handlePasswordInputChange = (value: string) =>{
   )    
 }
 
- 
+ const handleRegister = () =>{
 
+    if(
+      data.emailCheck == true &&
+      data.firstNameCheck == true &&
+      data.lastNameCheck == true &&
+      data.passwordCheck == true &&
+      data.usernameCheck == true
+    )
+    {
+      register({firstName: data.firstName, lastName: data.lastName, username: data.username, email: data.email, password: data.password})
+      setData(defData)
+    }
+    else {
+      ToastAndroid.showWithGravity('Wrong credentials', 2000, ToastAndroid.CENTER);
+    }
+
+ }
 
 
   return (
@@ -159,7 +192,7 @@ const handlePasswordInputChange = (value: string) =>{
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='First Name'  style={styles.textInput} onChangeText={(value)=>handleFirstNameTextInputChange(value)}></TextInput>
+            <TextInput value={data.firstName} placeholder='First Name'  style={styles.textInput} onChangeText={(value)=>handleFirstNameTextInputChange(value)}></TextInput>
             {data.firstNameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -168,7 +201,7 @@ const handlePasswordInputChange = (value: string) =>{
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='Last Name' style={styles.textInput} onChangeText={(value)=>handleLastNameTextInputChange(value)}></TextInput>
+            <TextInput value={data.lastName} placeholder='Last Name' style={styles.textInput} onChangeText={(value)=>handleLastNameTextInputChange(value)}></TextInput>
             {data.lastNameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -177,7 +210,7 @@ const handlePasswordInputChange = (value: string) =>{
           <View style={styles.formElement}>
 
             <FontAwesome name='user-o' size={25}></FontAwesome>
-            <TextInput placeholder='Username' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleUsernameInputChange(value)}></TextInput>
+            <TextInput value={data.username} placeholder='Username' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleUsernameInputChange(value)}></TextInput>
             {data.usernameCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -186,7 +219,7 @@ const handlePasswordInputChange = (value: string) =>{
           <View style={styles.formElement}>
 
             <FontAwesome name='envelope-o' size={25}></FontAwesome>
-            <TextInput placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleEmailInputChange(value)}></TextInput>
+            <TextInput value={data.email} placeholder='Email' autoCapitalize='none' style={styles.textInput} onChangeText={(value)=>handleEmailInputChange(value)}></TextInput>
             {data.emailCheck &&  <Animatable.View animation='bounceIn'><Feather name='check-circle' color="green" size={20} /></Animatable.View> }
            
           </View>
@@ -195,7 +228,7 @@ const handlePasswordInputChange = (value: string) =>{
           <View style={styles.formElement}>
 
             <Feather name='lock' size={25}/>
-            <TextInput placeholder='Password' secureTextEntry={data.secureTextEntry} onChangeText={(value)=>handlePasswordInputChange(value)} autoCapitalize='none' style={styles.textInput}></TextInput>
+            <TextInput value={data.password} placeholder='Password' secureTextEntry={data.secureTextEntry} onChangeText={(value)=>handlePasswordInputChange(value)} autoCapitalize='none' style={styles.textInput}></TextInput>
             <TouchableOpacity onPress={()=>setData({...data, secureTextEntry: !data.secureTextEntry})}>
             {
               data.secureTextEntry? <Feather name='eye-off'  color="grey" size={20} /> : <Feather name='eye'  color="grey" size={20} />
@@ -211,7 +244,7 @@ const handlePasswordInputChange = (value: string) =>{
 
           <View style={{flex: 1, alignItems: 'center'}} >
             
-          <TouchableOpacity activeOpacity={0.7} style={{...styles.buttonContainer, backgroundColor:'#121212', borderWidth: 1}} >
+          <TouchableOpacity onPress={()=>handleRegister()} activeOpacity={0.7} style={{...styles.buttonContainer, backgroundColor:'#121212', borderWidth: 1}} >
                     <Text style={{...styles.buttonText, color: '#fff'}}>Register</Text>
                     
                 </TouchableOpacity>

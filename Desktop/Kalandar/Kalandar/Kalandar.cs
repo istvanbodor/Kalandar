@@ -25,6 +25,8 @@ namespace Kalandar
         private string baseURL = APIConnectDetails.baseURL;
         private string token = CurrentUser.userToken;
 
+        Point mouseLocation;
+
         public int GetYear
         {
             get { return Convert.ToInt32(selectedDate.Year); }
@@ -92,12 +94,13 @@ namespace Kalandar
                 
                 if(i == GetDay && GetMonth == selectedDate.CurrentMonth && GetYear == selectedDate.CurrentYear)
                 {
-                    
+                    Trace.WriteLine(GetDay);
                     ucDayNumber.days(i, true);
                     pnlCalendar.Controls.Add(ucDayNumber);
                 }
                 else
                 {
+                    Trace.WriteLine($"{GetYear}, {GetMonth}, {GetDay}");
                     ucDayNumber.days(i, false);
                     pnlCalendar.Controls.Add(ucDayNumber);
                 }
@@ -191,6 +194,10 @@ namespace Kalandar
                         usersUC.LastNameText = data.lastName;
                         usersUC.UsernameText = data.username;
                         usersUC.RoleText = data.role;
+                        if (data.id == UserData.id)
+                        {
+                            usersUC.buttonVisibility();
+                        }
                         pnlCalendar.Controls.Add(usersUC);
                     }
                 }
@@ -268,12 +275,14 @@ namespace Kalandar
             generateEvents();
             lblTopBar.Text = "Events";
             pnlHeader.Visible = false;
+            EventsBlank.eventsView = true;
 
 
         }
         
         private void btnKalendar_Click(object sender, EventArgs e)
         {
+            EventsBlank.eventsView = false;
             btnCalendar.BackColor = Color.FromArgb(181, 130, 64);
             btnEvents.BackColor = Color.FromArgb(60, 60, 60);
             btnProfile.BackColor = Color.FromArgb(60, 60, 60);
@@ -337,6 +346,21 @@ namespace Kalandar
             addEventForm.EndHourText = DateTime.Now.AddHours(1).ToString("HH");
             addEventForm.EndMinuteText = DateTime.Now.ToString("mm");
             addEventForm.Show();
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void pnlTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
         }
     }
 }
