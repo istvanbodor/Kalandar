@@ -132,7 +132,7 @@ export class AuthService {
   }
 
   
-  changeEvent(id : string){
+  updateEvent(id : string){
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
