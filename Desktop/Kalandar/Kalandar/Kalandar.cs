@@ -23,6 +23,7 @@ namespace Kalandar
     {
         private DateClass selectedDate = new DateClass();
         private string baseURL = APIConnectDetails.baseURL;
+        private string token = CurrentUser.userToken;
 
         public int GetYear
         {
@@ -37,7 +38,6 @@ namespace Kalandar
             get { return Convert.ToInt32(selectedDate.Day); }
         }
 
-        private string token = CurrentUser.userToken;
 
         public Kalandar()
         {
@@ -114,28 +114,56 @@ namespace Kalandar
         {
             using (var client = new HttpClient())
             {
+                Trace.WriteLine("userid " + UserData.id);
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var endpoint = new Uri(baseURL + "api/events");
+                var endpoint = new Uri(baseURL + "api/events/user/" + UserData.id);
                 var result = client.GetAsync(endpoint).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 
                 List<EventClass> events = JsonConvert.DeserializeObject<List<EventClass>>(json);
+                var orderedList = events.OrderBy(x => x.startTime).ToList();
                 Trace.WriteLine(json);
-                if (events != null)
+                if (orderedList != null)
                 {
-                    foreach (var data in events)
+                    foreach (var data in orderedList)
                     {
-                        EventsBlank eventsUC = new EventsBlank();
-                        eventsUC.TitleText = data.@event;
-                        eventsUC.DateText = data.startTime + " - " + data.endTime;
-                        eventsUC.IsFullDayText = Convert.ToString(data.fullDay);
-                        eventsUC.OrganisedByText = "Organised by: " + data.username;
-                        eventsUC.CategoryText = data.category;
-                        eventsUC.AddressCountryText = data.address.country;
-                        eventsUC.AddressStreetHouseNoText = data.address.street + " " + data.address.houseNumber;
-                        eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
+                        DateTime now = DateTime.Now;
+                        now = new DateTime(now.Year, now.Month, now.Day);
 
-                        pnlCalendar.Controls.Add(eventsUC);
+
+                        string[] eventStartDate = data.startTime.Replace("T", "-").Split('-');
+                        int eventStartYear = Convert.ToInt32(eventStartDate[0]);
+                        int eventStartMonth = Convert.ToInt32(eventStartDate[1]);
+                        int eventStartDay = Convert.ToInt32(eventStartDate[2]);
+
+                        string[] eventEndDate = data.endTime.Replace("T", "-").Split('-');
+                        int eventEndYear = Convert.ToInt32(eventEndDate[0]);
+                        int eventEndMonth = Convert.ToInt32(eventEndDate[1]);
+                        int eventEndDay = Convert.ToInt32(eventEndDate[2]);
+
+                        DateTime startDate = new DateTime(eventStartYear, eventStartMonth, eventStartDay);
+                        DateTime endDate = new DateTime(eventEndYear, eventEndMonth, eventEndDay);
+                        
+                        if ( endDate >= now)
+                        {
+                            EventsBlank eventsUC = new EventsBlank();
+                            eventsUC.TitleText = data.@event;
+                            eventsUC.DateText = data.startTime.Replace('T', ' ') + " - " + data.endTime.Replace('T', ' ');
+                            eventsUC.IsFullDayText = data.fullDay ? "Full-day event" : "";
+                            eventsUC.CategoryText = data.category;
+                            eventsUC.AddressCountryText = data.address.country;
+                            eventsUC.LabelIdText = data.id;
+                            eventsUC.AddressStreetHouseNoText = data.address.street + " " + data.address.houseNumber;
+                            eventsUC.AddressZipCityText = data.address.zip + ", " + data.address.city;
+                            Trace.WriteLine("Spli-tes cucc: " + data.startTime.Split('T')[0]);
+
+                            if (startDate <= now && endDate >= now)
+                            {
+                                eventsUC.BackColor = Color.FromArgb(36, 31, 24);
+                            }
+
+                            pnlCalendar.Controls.Add(eventsUC);
+                        }
                     }
                 }
             }
@@ -302,7 +330,12 @@ namespace Kalandar
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
             AddEventForm addEventForm = new AddEventForm();
-
+            addEventForm.StartDateText = DateTime.Now.ToString("dd MMMM yyyy");
+            addEventForm.EndDateText = DateTime.Now.ToString("dd MMMM yyyy");
+            addEventForm.StartHourText = DateTime.Now.ToString("HH");
+            addEventForm.StartMinuteText = DateTime.Now.ToString("mm");
+            addEventForm.EndHourText = DateTime.Now.AddHours(1).ToString("HH");
+            addEventForm.EndMinuteText = DateTime.Now.ToString("mm");
             addEventForm.Show();
         }
     }

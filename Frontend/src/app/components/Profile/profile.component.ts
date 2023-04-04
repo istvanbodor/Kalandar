@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Type } from '@angular/compiler';
+import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../CustomValidators/CustomValidator';
+
+@Injectable({
+  providedIn: 'root'
+})
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,12 +16,16 @@ import { CustomValidators } from '../CustomValidators/CustomValidator';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
-
   user: any
   users$: any
   users: any
   alert = false
+
+
+  constructor(private authService: AuthService) { 
+  }
+
+ 
 
   passwordChangeForm = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -43,7 +53,7 @@ export class ProfileComponent implements OnInit {
     this.authService.getProfile().subscribe({
       next: (result: any[]) => {
         this.user = result;
-        // console.log(this.user)
+        console.log(this.user.id)
       },
       error: (error: any[]) => {
         console.error('Error getting user profile =>', error);
@@ -51,23 +61,39 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+  userId() {
+    this.authService.getProfile().subscribe({
+      next: (result: string) => {
+        this.user = result;
+
+      },
+      error: (error) => {
+        return console.log('error from getting the id => ', error)
+      }  
+    });
+   return 1
+  }
+
+
+
   changePasswordSubmit() {
     const password = this.passwordChangeForm.get('password')?.value;
     console.log(password)
     if (password) {
       this.authService.changePassword(password)
-      .subscribe({
-        next: () => {
+        .subscribe({
+          next: () => {
             this.alert = true
             this.passwordChangeForm.reset({})
-        },
-        error: (error) => {
-          this.passwordChangeForm.reset({})
-          console.log('Error! =>', error)
-        }
-      });
+          },
+          error: (error) => {
+            this.passwordChangeForm.reset({})
+            console.log('Error! =>', error)
+          }
+        });
     }
-     
+
   }
 
   closeAlert() {

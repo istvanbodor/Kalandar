@@ -153,6 +153,7 @@ public class EventService {
     private EventResponseDto convertToDto(Event item) {
         return EventResponseDto.builder()
                 .endTime(item.getEndTime())
+                .id(item.getId())
                 .isFullDay(item.getFullDay())
                 .startTime(item.getStartTime())
                 .username(item.getUser().getUsername())

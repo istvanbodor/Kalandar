@@ -1,7 +1,8 @@
-<div>
+<div (click)="open(content)" id="modalBody" class="btn btn-primary">
+  <h6 style="font-size: 20px;">+</h6>
   <ng-template #content let-modal $modal-lg: 80px !default;>
     <div class="modal-header">
-      <h4 class="modal-title" id="eventModal">Create event</h4>
+      <h4 class="modal-title" id="eventModal">Add event</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -13,7 +14,8 @@
         <div class="mb-3">
           <label for="eventNameLabel">Event Name</label>
           <input type="text" class="form-control" id="eventNameLabel" placeholder="Event name" formControlName="event">
-          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is not
+          <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is
+            not
             valid!</strong>
         </div>
         <div class="mb-3">
@@ -26,7 +28,8 @@
         <div class="mb-3">
           <label>End time</label>
           <input type="datetime-local" class="form-control" formControlName="endTime">
-          <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This date
+          <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This
+            date
             is not valid!</strong>
           <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
         </div>
@@ -79,7 +82,8 @@
             <div class="mb-3">
               <label>House number: </label>
               <input type="text" class="form-control" formControlName="houseNumber">
-              <strong class="errorMessage" *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
+              <strong class="errorMessage"
+                *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
                 house number
                 is not valid!</strong>
             </div>
@@ -92,7 +96,6 @@
       </div>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-primary" (click)="open(content)">Create Event</button>
 </div>
 
 <pre>{{ closeResult }}</pre>
