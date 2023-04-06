@@ -88,7 +88,7 @@ export default function ProfileScreen() {
                     
                 </TouchableOpacity>
 
-                <TouchableOpacity activeOpacity={0.7} style={{...stlyes.buttonContainer, backgroundColor:'#121212', borderWidth: 1, marginTop: 100}} onPress={()=>logout()} >
+                <TouchableOpacity activeOpacity={0.7} style={{...stlyes.buttonContainer, backgroundColor:'#121212', borderWidth: 1, borderColor: '#fff', marginTop: 100}} onPress={()=>logout()} >
                     <Text style={{color: '#fff', fontSize: 20, textAlign: 'center'}}>Log Out</Text>
                     <Feather name='log-out' size={40} color={'#fff'} style={{alignSelf: 'center'}} />
                     

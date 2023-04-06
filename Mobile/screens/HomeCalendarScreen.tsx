@@ -1,15 +1,27 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet, Dimensions } from 'react-native'
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
+import { Agenda } from 'react-native-calendars';
+
 
 export default function HomeCalendarScreen() {
 
   const {logout} = useContext(AuthContext);
 
   return (
-    <View>
-      <Text>HomeCalendarScreen</Text>
-      <Button title='logout' onPress={()=>{logout()}} />
+    <View style={styles.container}>
+      <Agenda  theme={{calendarBackground: '#121212'}} scrollEnabled={true} />
     </View>
   )
 }
+
+const {height, width} = Dimensions.get('screen')
+const styles = StyleSheet.create({
+
+  container: {
+    backgroundColor: '#121212',
+    height: height
+  }
+
+
+})
