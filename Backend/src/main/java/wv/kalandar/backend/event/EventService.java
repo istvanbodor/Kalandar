@@ -3,6 +3,8 @@ package wv.kalandar.backend.event;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import wv.kalandar.backend.address.Address;
@@ -161,5 +163,14 @@ public class EventService {
                 .category(item.getCategory())
                 .event(item.getEvent())
                 .build();
+    }
+
+    public List<EventResponseDto> getEventOfAuthenticatedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = userRepository.findUsersByEmail(currentPrincipalName).get();
+        List<Event> list = eventRepsoitory.findEventByUser(user);
+        return getEventResponseDtos(list);
     }
 }
