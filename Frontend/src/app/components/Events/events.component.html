@@ -18,7 +18,7 @@
                     <p>{{item.startTime}} - {{item.endTime}}</p>
                     <p>{{item.fullDay | IsFullDay}}</p>
                     <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right; margin-left: 5px;">Remove</button>
-                    <app-updateEventsModal style="float:  right;"></app-updateEventsModal>
+                    <app-updateEventsModal style="float:  right;"  (click)="storeEventId(item.id)"></app-updateEventsModal>
                 </div>
             </div>
         </div>
