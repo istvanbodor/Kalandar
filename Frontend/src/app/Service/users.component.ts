@@ -32,8 +32,8 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ChangeRole(id: string) {
-    this.authService.changeUser(id)
+  ChangeRole(id: string, body: any) {
+    this.authService.updateRole(id, body)
       .subscribe({
         next: () => {
           this.users$ = this.authService.getUsersData().pipe(tap((user) => {

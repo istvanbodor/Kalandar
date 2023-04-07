@@ -135,10 +135,7 @@ export class AuthService {
 
   async updateEvent(id : string, body: any){
     const auth_token = localStorage.getItem('token')
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${auth_token}`
-    })
+
 
     const requestOptions = {headers: {authorization: `Bearer ${auth_token}`}}
     axios.put(this.url + `api/events/${id}`, body, requestOptions)
@@ -155,7 +152,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeUser(id: string) {
+  updateRole(id: string, body: any) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -163,7 +160,7 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
+    return this.http.put(this.url + `api/admin/role/user/${id}`, body, requestOptions)
   }
 
   changePassword(password: string) {

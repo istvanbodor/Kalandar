@@ -26,7 +26,7 @@
                         (click)="DeleteUser(item.id)">Delete</button></td>
                 <td><button class="btn btn-success"
                     *ngIf="item.role === 'USER' || item.role === 'ADMIN'"
-                        (click)="ChangeRole(item.id)">Change</button></td>
+                        (click)="ChangeRole(item.id, item.role)">Change</button></td>
             </tr>
         </tbody>
     </table>
