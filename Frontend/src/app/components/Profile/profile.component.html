@@ -21,14 +21,14 @@
                         <form [formGroup]="passwordChangeForm" (ngSubmit)="changePasswordSubmit()">
                                 <div class="form-group mb-3">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password"  formControlName="password">
+                                        <input type="password" class="form-control" placeholder="Password"  formControlName="password" autocomplete="on">
                                         <strong class="errorMessage" *ngIf="password && password.invalid && password.touched">This password is not
                                                 valid!</strong>
                                               <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
                                 </div>
                                 <div class="form-group mb-3">
                                         <label>Password confirmation</label>
-                                        <input type="password" class="form-control"placeholder="Password confirmation"  formControlName="confirmPassword" >
+                                        <input type="password" class="form-control"placeholder="Password confirmation"  formControlName="confirmPassword" autocomplete="on">
                                         <strong class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This
                                                 password is not valid!</strong>
                                               <p class="errorMessage" *ngIf="passwordMatchError"> Passwords do not match!</p>
