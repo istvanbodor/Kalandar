@@ -44,11 +44,7 @@ export class UpdateEventModalComponent {
             houseNumber: new FormControl('', [Validators.required]),
         }),
         user: new FormGroup({
-            id: new FormControl(this.authService.getProfile()
-                .subscribe((result) => {
-                    this.user = result
-                    return this.user.id
-                }))
+            id: new FormControl(1)
         })
     },
         [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
@@ -112,43 +108,26 @@ export class UpdateEventModalComponent {
 
     private getDismissReason(reason: any): string {
         if (reason === ModalDismissReasons.ESC) {
+            localStorage.removeItem('eventId')
             return 'by pressing ESC';
         } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            localStorage.removeItem('eventId')
             return 'by clicking on a backdrop';
         } else {
+            localStorage.removeItem('eventId')
             return `with: ${reason}`
         }
     }
 
     submitEvent() {
-        console.log(this.eventForm.value)
-        this.authService.updateEvent(String(localStorage.getItem('id')))
-            .subscribe({
-                next: (result) => {
-                    console.warn("Event data =>", result)
-                    this.eventForm.reset({})
-                },
-                error: (error) => console.log('Error =>', error)
-            })
-
-
-    }
-
-    UpdateEvent(id: string) {
-        this.authService.updateEvent(id)
-            .subscribe({
-                next: () => {
-                    this.authService.getProfile()
-                        .subscribe({
-                            next: (user) => {
-                                this.events$ = this.authService
-                                    .getUserEvents(String(user.id)).pipe()
-                            },
-                            error: (error) => {
-                                console.log('user events error => ', error)
-                            }
-                        })
-                }
-            })
+        this.authService.updateEvent(String(localStorage.getItem('eventId')) , this.eventForm.value)
+            // .subscribe({
+            //     next: () => {
+            //         console.warn("Update event data =>", this.eventForm.value)
+            //         this.eventForm.reset({})
+            //         localStorage.removeItem('eventId')
+            //     },
+            //     error: (error) => console.log('Error =>', error)
+            // })
     }
 }

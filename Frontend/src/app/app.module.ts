@@ -65,7 +65,7 @@ import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEv
     MatInputModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

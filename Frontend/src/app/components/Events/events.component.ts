@@ -58,4 +58,7 @@ export class EventsComponent implements OnInit {
       })
   }
 
+  storeEventId(id: string){
+    return localStorage.setItem('eventId',id)
+  }
 }

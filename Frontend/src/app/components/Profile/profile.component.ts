@@ -53,28 +53,12 @@ export class ProfileComponent implements OnInit {
     this.authService.getProfile().subscribe({
       next: (result: any[]) => {
         this.user = result;
-        console.log(this.user.id)
       },
       error: (error: any[]) => {
         console.error('Error getting user profile =>', error);
       }
     });
   }
-
-
-  userId() {
-    return this.authService.getProfile().subscribe({
-      next: (result: string) => {
-        this.user = result;
-        this.user.id;
-      },
-      error: (error) => {
-        return console.log('error from getting the id => ', error)
-      }
-    });
-  }
-
-
 
   changePasswordSubmit() {
     const password = this.passwordChangeForm.get('password')?.value;

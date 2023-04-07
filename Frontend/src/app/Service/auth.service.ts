@@ -3,6 +3,7 @@ import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
 import { UsersApiService } from "./users.service";
+import axios from "axios";
 
 
 @Injectable({
@@ -131,16 +132,16 @@ export class AuthService {
     return this.http.delete(this.url + `api/events/${id}`, requestOptions)
   }
 
-  
-  updateEvent(id : string){
+
+  async updateEvent(id : string, body: any){
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     })
 
-    const requestOptions = {headers: headers}
-    return this.http.put(this.url + `api/events/${id}`, {}, requestOptions)
+    const requestOptions = {headers: {authorization: `Bearer ${auth_token}`}}
+    axios.put(this.url + `api/events/${id}`, body, requestOptions)
   }
 
   deleteUser(id: string) {
