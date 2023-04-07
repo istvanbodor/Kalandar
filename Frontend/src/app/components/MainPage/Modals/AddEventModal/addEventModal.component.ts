@@ -6,11 +6,11 @@ import { AuthService } from 'src/app/Service/auth.service';
 import { CustomValidators } from '../../../CustomValidators/CustomValidator';
 @Component({
   selector: 'app-addEventModal',
-  templateUrl: './EventModal.component.html',
-  styleUrls: ['./eventModal.component.scss']
+  templateUrl: './addEventModal.component.html',
+  styleUrls: ['./addEventModal.component.scss']
 })
 
-export class EventModalComponent implements OnInit {
+export class addEventModalComponent implements OnInit {
 
   closeResult = '';
   alert: boolean = false;
