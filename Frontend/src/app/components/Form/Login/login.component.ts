@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit{
 
   title: string ="Login";
   alert: boolean = false;
+  user: any
 
   constructor(private authService: AuthService, private router: Router, private usersApiService: UsersApiService) {}
 
@@ -52,7 +53,11 @@ export class LoginComponent implements OnInit{
         .login(email, password)
         .subscribe({
           next:(result) => {
-            console.log(result)
+            this.authService.getProfile().subscribe((result) =>{
+              this.user = result
+              localStorage.setItem('userId', this.user.id)
+            })
+            // console.log(result)
             this.router.navigate(['/calendar/month']);
           },
           error:(err : HttpErrorResponse) => {
