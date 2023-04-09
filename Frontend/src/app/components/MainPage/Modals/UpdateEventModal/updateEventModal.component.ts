@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { tap } from "rxjs";
 import { CustomValidators } from "src/app/components/CustomValidators/CustomValidator";
 import { AuthService } from "src/app/Service/auth.service";
 
@@ -10,7 +11,7 @@ import { AuthService } from "src/app/Service/auth.service";
     styleUrls: ['./updateEventModal.component.css']
 })
 
-export class UpdateEventModalComponent {
+export class UpdateEventModalComponent{
 
     closeResult = '';
     events$: any
@@ -44,7 +45,7 @@ export class UpdateEventModalComponent {
             houseNumber: new FormControl('', [Validators.required]),
         }),
         user: new FormGroup({
-            id: new FormControl(1)
+            id: new FormControl(localStorage.getItem('userId'))
         })
     },
         [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
@@ -121,6 +122,20 @@ export class UpdateEventModalComponent {
 
     submitEvent() {
         this.authService.updateEvent(String(localStorage.getItem('eventId')) , this.eventForm.value)
+        localStorage.removeItem('eventId')
+        // .subscribe({
+        //     next: (user: any) => {
+        //       this.events$ = this.authService
+        //         .getUserEvents(String(user.id)).pipe(tap((result) => {
+        //           // this.events = result
+        //           // console.log(this.events)
+        //         }))
+        //     },
+        //     error: (error: any) => {
+        //       console.log('user events error => ', error)
+        //     }
+        //   })
+
             // .subscribe({
             //     next: () => {
             //         console.warn("Update event data =>", this.eventForm.value)
