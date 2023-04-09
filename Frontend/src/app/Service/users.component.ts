@@ -3,6 +3,7 @@ import { tap } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -17,9 +18,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
-    
-    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user ))  
+    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user )) 
   }
 
   ngOnDestroy(): void {
@@ -50,8 +49,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ChangeRole(id: string, body: any) {  
- 
-
     this.authService.updateRole(id, body)
       .subscribe({
         next: () => {
@@ -62,8 +59,6 @@ export class UsersComponent implements OnInit, OnDestroy {
         error: (error) => {
           console.log('Error! =>', error)
         }
-      });
-
-    
+      });  
   }
 }
