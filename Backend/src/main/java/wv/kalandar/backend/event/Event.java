@@ -1,6 +1,7 @@
 package wv.kalandar.backend.event;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import org.springframework.lang.NonNull;
 import wv.kalandar.backend.address.Address;
 import wv.kalandar.backend.user.User;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "EVENTS")
+@Builder
 public class Event {
 
     @Id

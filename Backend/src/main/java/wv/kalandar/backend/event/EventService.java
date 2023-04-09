@@ -173,4 +173,33 @@ public class EventService {
         List<Event> list = eventRepsoitory.findEventByUser(user);
         return getEventResponseDtos(list);
     }
+    @Transactional
+    public void addEventOfAuthUser(EventDto event) {
+        Optional<Event> checkIfEventExists = this.eventRepsoitory.findEventByEventAndStartTime(
+                event.getEvent(), event.getStartTime()
+        );
+
+        if (checkIfEventExists.isPresent()) {
+            throw new IllegalStateException();
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = userRepository.findUsersByEmail(currentPrincipalName).get();
+        if  (event.getAddress() != null) {
+            Optional<Address> savedAddress = findSameAddress(event.getAddress());
+            event.setAddress(savedAddress.orElseGet(() -> addressRepository.save(event.getAddress())));
+            // log
+        }
+        Event toSaveEvent = Event.builder()
+                .user(user)
+                .event(event.getEvent())
+                .address(event.getAddress())
+                .endTime(event.getEndTime())
+                .startTime(event.getStartTime())
+                .isFullDay(event.isFullDay())
+                .category(event.getCategory())
+                .build();
+        eventRepsoitory.save(toSaveEvent);
+    }
 }

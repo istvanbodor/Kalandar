@@ -67,4 +67,9 @@ public class EventController {
         return eventService.getEventOfAuthenticatedUser();
     }
 
+    @PostMapping(path = "/user")
+    public void addEventOfAuthUser(@RequestBody EventDto event) {
+         eventService.addEventOfAuthUser(event);
+    }
+
 }
