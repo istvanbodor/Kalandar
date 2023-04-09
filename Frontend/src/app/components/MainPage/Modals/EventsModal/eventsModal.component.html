@@ -1,9 +1,9 @@
 <h2>{{today | date: 'hh:mm:ss'}}</h2>
 
 <div>
-  <button class="btngroupLeft btn btn-primary col" (click)="dayBefore()">Yesterday</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="dayBefore()"><</button>
   <button class="btngroupLeft btn btn-primary col" (click)="dayNow()">Today</button>
-  <button class="btngroupLeft btn btn-primary col" (click)="nextDay()">Tomorrow</button>
+  <button class="btngroupLeft btn btn-primary col" (click)="nextDay()">></button>
 
   <button class="btngroupRight btn btn-primary col" routerLink="/calendar/month">Month</button>
   <button class="btngroupRight btn btn-primary col" routerLink="/calendar/week">Week</button>
@@ -27,7 +27,7 @@
 
             <div class="row days calendar-week TextColor" *ngFor="let week of [1, 2, 3, 4, 5]">
                 <div class="col-xs-1 grid-cell" *ngFor="let day of days().slice((week-1)*7, week*7)">
-                    <div (click)="open(content)" style="width: 100%; height: 100%;"> <span
+                    <div (click)="open(content)" style="width: 100%; height: 100%;" > <span
                             style="float: right;">{{day}}</span><app-addEventModal></app-addEventModal>
 
                         <ng-template #content let-modal $modal-lg: 80px !default;>
@@ -36,20 +36,21 @@
                                 <button type="button" class="btn-close" aria-label="Close"
                                     (click)="modal.dismiss('Cross click')"></button>
                             </div>
-                            <div class="container mb-3"
-                                style="border: 1px solid black; background-color: #212529; color:  white;" >
-                                <div class="modal-body"  *ngFor="let item of events$ | async;">
-                                    <div >
-                                        <img class="img-fluid " src="../../../../assets/kalandar.png"
-                                            alt="kalandar_Icon_Image" style="padding-top: 10%; width: 30%; height: 30%;">
-                                    </div>
-                                    <div>
-                                        <h6>Event title: {{item.event}}</h6>                                        
-                                        <p>Category: {{item.category}}</p>
-                                        <p>{{item.startTime  |date}} - {{item.endTime | date}}</p>
-                                        <p>{{item.fullDay | IsFullDay}}</p>
-                                        <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right; margin-left: 5px;">Remove</button>
-                                        <app-updateEventsModal style="float:  right;"></app-updateEventsModal>
+                            <div class="container mb-3 modalBodyStyle">
+                                <div class="modal-body"  *ngFor="let item of events$ | async;" >
+                                     <div> <!--*ngIf="(item.startTime | date : 'd') === (today | date : 'd')" -->
+                                        <div>
+                                            <img class="img-fluid " src="../../../../assets/kalandar.png"
+                                                alt="kalandar_Icon_Image" style="padding-top: 10%; width: 30%; height: 30%;">
+                                        </div>
+                                        <div>
+                                            <h6>Event title: {{item.event}}</h6>
+                                            <p>Category: {{item.category}}</p>
+                                            <p>{{item.startTime  |date}} - {{item.endTime | date}}</p>
+                                            <p>{{item.fullDay | IsFullDay}}</p>
+                                            <button class="btn btn-danger btn-sm"(click)="DeleteEvent(item.id)" style="float: right; margin-left: 5px;">Remove</button>
+                                            <app-updateEventsModal style="float:  right;"  (click)="storeEventId(item.id)"></app-updateEventsModal>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

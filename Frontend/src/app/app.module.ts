@@ -24,10 +24,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProfileComponent } from './components/Profile/profile.component';
 import { EventsModalComponent } from './components/MainPage/Modals/EventsModal/eventsModal.component';
-import { EventModalComponent } from './components/MainPage/Modals/AddEventModal/eventModal.component';
+import { addEventModalComponent } from './components/MainPage/Modals/AddEventModal/addEventModal.component';
 import { CalendarHeaderComponent } from './components/MainPage/CalendarHeader/calendarHeader.component';
 import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEventModal/updateEventModal.component';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEv
     LayoutComponent,
     RegisterComponent,
     UsersComponent,
-    EventModalComponent,
+    addEventModalComponent,
     CalendarMonthComponent,
     CalendarWeekComponent,
     CalendarDayComponent,
@@ -66,6 +67,10 @@ import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEv
     MatNativeDateModule,
     MatDialogModule,
     MatExpansionModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
