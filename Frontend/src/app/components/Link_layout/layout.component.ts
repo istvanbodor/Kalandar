@@ -23,12 +23,6 @@ export class LayoutComponent {
   }
 
   constructor(public _authService: AuthService,private router: Router, public communicationService: CommunicationService) { 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.activePath = event.url.split('/')[1] || 'default';
-        this.activeClassName = this.activePath + 'PageClass';
-        console.log(this.activeClassName);
-      }
-    });
+   
   }
 }

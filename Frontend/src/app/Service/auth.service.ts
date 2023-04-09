@@ -16,36 +16,17 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   expired = false;
 
-  users: any
+  user: any
   admin:boolean = true
-
-  private isTokenExpired(auth_token: string) {
-    const expiry = (JSON.parse((auth_token.split('.')[1]))).exp;
-    return expiry * 1000 > Date.now();
-  }
-
-  tokenExpired() {
-    if (this.isTokenExpired('token')) {
-      return this._router.navigate(['/login'])
-    }
-    return null
-  }
 
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
     const auth_token = localStorage.getItem('token')
     this._isLoggedIn$.next(!!auth_token);
   }
 
-  // adminUser(): boolean{
-  //   this.getUsersData().pipe(tap((result) => {
-  //     this.users = result
-  //     if (this.users.role === 'ADMIN') {
-  //       this.admin
-  //       break;
-  //     }
-  //     !this.admin
-  //   }))
-  // }
+  userRole(){
+    return localStorage.getItem('userRole')
+  }
 
   login(email: string, password: string): Observable<any> {
     return this.usersApiService
@@ -108,6 +89,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    localStorage.removeItem('userRole')
     this._router.navigate(['/login'])
   }
 

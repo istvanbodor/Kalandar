@@ -1,21 +1,38 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
   isDelete = false;
   users: any;
   users$: any;
-  constructor(private authService: AuthService) { }
+  user: any
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user ))    
+
+    
+    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user ))  
+  }
+
+  ngOnDestroy(): void {
+    this.authService.getProfile().subscribe({
+      next: (result: any[]) => {
+        this.user = result;
+        localStorage.removeItem('userRole')
+        localStorage.setItem('userRole', this.user.role)
+      },
+      error: (error: any[]) => {
+        console.error('Error getting user profile =>', error);
+      }
+    });
   }
 
   DeleteUser(id: string) {
@@ -32,7 +49,9 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ChangeRole(id: string, body: any) {
+  ChangeRole(id: string, body: any) {  
+ 
+
     this.authService.updateRole(id, body)
       .subscribe({
         next: () => {
@@ -44,5 +63,7 @@ export class UsersComponent implements OnInit {
           console.log('Error! =>', error)
         }
       });
+
+    
   }
 }
