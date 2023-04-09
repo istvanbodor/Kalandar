@@ -1,3 +1,5 @@
+import { AddressDto } from "./AddressDto"
+
 export interface EventsResponseDto {
 
     id: string
@@ -7,6 +9,6 @@ export interface EventsResponseDto {
     startTime: string
     endTime: string
     fullDay: string
-    address?: object
+    address?: AddressDto
     
 }

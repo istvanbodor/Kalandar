@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.17.11",
+    "@react-native-picker/picker": "^2.4.9",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/drawer": "^6.6.2",
     "@react-navigation/stack": "^6.3.16",
@@ -23,6 +24,7 @@
     "react-native-calendar": "^0.13.1",
     "react-native-calendars": "^1.1294.0",
     "react-native-linear-gradient": "^2.6.2",
+    "react-native-picker-select": "^8.0.4",
     "react-native-reanimated": "^2.14.4",
     "react-native-swipeable-weekly-calendar": "^1.0.4",
     "react-native-vector-icons": "^9.2.0",
