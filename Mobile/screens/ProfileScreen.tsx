@@ -11,20 +11,19 @@ export default function ProfileScreen() {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
 
-  const {logout, token} = useContext(AuthContext);
+  const {logout, token, login} = useContext(AuthContext);
 
   const [data, setData] = useState<UserProfileDto>()
-
-  useEffect(()=>{
-
-    const config = {
-      headers: {
-        Authorization: 'Bearer '+token?.token
-      }
+  const config = {
+    headers: {
+      Authorization: 'Bearer '+token?.token
     }
+  }
+  useEffect(()=>{
+    
     const getData = async ()=>{
       console.log('asd')
-      console.log(token)
+      console.log('sent token'+token)
       console.log(config.headers)
       await axios.get(BaseUrl+'/api/user/profile',config).then((response)=>{
         setData({firstName: response.data.firstName, lastName: response.data.lastName})
@@ -36,7 +35,7 @@ export default function ProfileScreen() {
     }
     getData();
 
-  }, [])
+  }, [] )
 
   const handleFirstPasswordChange = (value : string)=>{
   setPassword(value);

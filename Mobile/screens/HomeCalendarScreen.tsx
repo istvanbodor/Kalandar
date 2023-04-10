@@ -1,16 +1,16 @@
-import { View, StyleSheet, Dimensions, Image, Modal, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native'
+import { View, StyleSheet, Dimensions, Image, Modal, Text, ScrollView, TouchableOpacity, TextInput, KeyboardAvoidingView, ToastAndroid } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { Calendar } from 'react-native-calendars'
 import { EventsResponseDto } from '../interfaces/EventsResponseDto';
 import axios from 'axios';
 import { BaseUrl } from '../url/BaseUrl';
-import { event } from 'react-native-reanimated';
 import { MarkedDates } from 'react-native-calendars/src/types';
 import Feather from 'react-native-vector-icons/Feather';
 import { AddEventDto } from '../interfaces/AddEventDto';
 import { Picker } from '@react-native-picker/picker';
-
+import CheckBox from 'react-native-check-box'
+import { event, set } from 'react-native-reanimated';
 
 
 export default function HomeCalendarScreen() {
@@ -27,10 +27,22 @@ export default function HomeCalendarScreen() {
       selectedColor: '#FFD700',
     },
   })
-  const [eventFormData, setEventFormData] = useState<AddEventDto>({
+  const defdata = {
     event: '',
-    category: ''
-  })
+    category: 'Testcategory',
+    startTime: '',
+    endTime: '',
+    fullDay: false,
+    address: {
+      country: '',
+      city: '',
+      street: '',
+      houseNumber: '',
+      zip: ''
+    }
+  }
+  const [editing, setEditing] = useState<boolean>(false)
+  const [eventFormData, setEventFormData] = useState<AddEventDto>(defdata)
   const config = {
     headers: {
       Authorization: 'Bearer ' + token?.token
@@ -115,18 +127,18 @@ export default function HomeCalendarScreen() {
     
   };  */
 
-
+  const [day2, setDay2] = useState<any>()
 
   const onDayPress = (day: any) => {
     setSelectedDay(day.dateString)
+    setDay2(day)
     console.log(day.dateString)
+    console.log('asdasdaadad ' + day.dat)
     console.log(selectedDay + 'asd')
     setCurrentEvents(events.filter(e => e.startTime.slice(0, 10) == day.dateString))
     console.log(selectedDay)
     console.log(currentEvents?.length)
     console.log(currentEvents)
-    console.log(events)
-    console.log(events[2].startTime.slice(0, 10))
     setModalVisible(true);
   }
 
@@ -140,26 +152,115 @@ export default function HomeCalendarScreen() {
     console.log()
   }
 
+  const handleEventForm = async () => {
+    if (
+      !(eventFormData.address.city.length>0&&eventFormData.address.country.length>0&&eventFormData.address.houseNumber.length>0&&eventFormData.address.street.length>0&&eventFormData.address.zip.length>0)
+    ) {
+
+      setEventFormData({
+        ...eventFormData,
+        address: {
+        country: '',
+        city: '',
+        street: '',
+        houseNumber: '',
+        zip: ''
+        }
+      })
+    }
+    
+    const testTimes: RegExp = /^\d{2}:\d{2}$/
+    if (eventFormData.fullDay && eventFormData.event.length > 0 && !testTimes.test(eventFormData.startTime)) {
+      await axios.post(BaseUrl + "/api/events/user", {
+        ...eventFormData,
+        startTime: selectedDay + 'T00:00'
+      }, config).then(() => {
+        ToastAndroid.showWithGravity('Event added', 2000, ToastAndroid.CENTER)
+
+      })
+        .catch((e) => {
+          console.log(e)
+          console.log(selectedDay + 'T00:00')
+          console.log(eventFormData)
+
+        })
+
+      setEventFormData(defdata)
+    }
+    else if (!eventFormData.fullDay && eventFormData.event.length > 0 && testTimes.test(eventFormData.startTime) && testTimes.test(eventFormData.endTime)) {
+      await axios.post(BaseUrl + "/api/events/user", {
+        ...eventFormData,
+        startTime: selectedDay + 'T' + eventFormData.startTime,
+        endTime: selectedDay + 'T' + eventFormData.endTime,
+      }, config).then(() => {
+        ToastAndroid.showWithGravity('Event added', 2000, ToastAndroid.CENTER)
+
+      })
+        .catch((e) => console.log(e))
+
+        setEventFormData(defdata)
+    }
+    else if (eventFormData.fullDay && eventFormData.event.length > 0 && testTimes.test(eventFormData.startTime) && eventFormData.endTime.length==0) {
+      await axios.post(BaseUrl + "/api/events/user", {
+        ...eventFormData,
+        startTime: selectedDay + 'T' + eventFormData.startTime,
+      }, config).then(() => {
+        ToastAndroid.showWithGravity('Event added', 2000, ToastAndroid.CENTER)
+
+      })
+        .catch((e) => console.log(e))
+
+        setEventFormData(defdata)
+    }
+    else{
+      ToastAndroid.showWithGravity('Not a valid event', 2000, ToastAndroid.CENTER)
+    }
+   
+
+
+
+
+    await fetchEvents()
+
+
+  }
+
+  const editPress = ()=>{
+        setEditing(true)
+        setAddModalVisible(true);
+        
+  }
+
+
+  const handleBack = async () => {
+    setCurrentEvents(events.filter(e => e.startTime.slice(0, 10) == selectedDay))
+    setAddModalVisible(false)
+    setEventFormData(defdata)
+    setEditing(false)
+  }
+
+
   return (
     <>
+
       <Modal visible={addModalVisible}>
-        <View style={styles.addmodalcontainer}>
-          <TouchableOpacity onPress={() => setAddModalVisible(false)} activeOpacity={0.5} style={{ marginLeft: 10 }}><Feather name='arrow-left-circle' size={40} color='#fff' /></TouchableOpacity>
+        <ScrollView style={styles.addmodalcontainer}>
+          <TouchableOpacity onPress={() => handleBack()} activeOpacity={0.5} style={{ marginLeft: 10 }}><Feather name='arrow-left-circle' size={40} color='#fff' /></TouchableOpacity>
 
           {/* <Text style={styles.modalDate}><Feather name='plus' size={20} color='#FFD700' /> Event</Text> */}
           <View style={styles.formContainer}>
             <View style={styles.formLeft}>
-              <Text style={{color: '#FFD700', marginBottom: 10, fontSize: 20, fontWeight: 'bold', alignSelf: 'center'}}>Event</Text>
-              
+              <Text style={{ color: '#FFD700', marginBottom: 10, fontSize: 20, fontWeight: 'bold', alignSelf: 'center' }}>Event</Text>
+
               <Text style={styles.formText}>Event</Text>
-              <TextInput   style={styles.inps} />
+              <TextInput value={eventFormData.event} onChangeText={(value) => { setEventFormData({ ...eventFormData, event: value }) }} style={styles.inps} />
               <Text style={styles.formText}>Start time</Text>
-              <TextInput placeholder='hh:mm' placeholderTextColor='#fff'  style={styles.inps} />
+              <TextInput value={eventFormData.startTime} onChangeText={(value) => { setEventFormData({ ...eventFormData, startTime: value }) }} placeholder='hh:mm' placeholderTextColor='#fff' style={styles.inps} />
               <Text style={styles.formText}>End time</Text>
-              <TextInput   style={styles.inps} />
+              <TextInput value={eventFormData.endTime} onChangeText={(value) => { setEventFormData({ ...eventFormData, endTime: value }) }} placeholder='hh:mm' placeholderTextColor='#fff' style={styles.inps} />
 
               <Text style={styles.formText}>Category</Text>
-              <Picker style={{ backgroundColor: '#fff', width: 200}}>
+              <Picker selectedValue={eventFormData.category} onValueChange={(value) => setEventFormData({ ...eventFormData, category: value })} style={{ backgroundColor: '#fff', width: 200 }}>
                 <Picker.Item label="Testcategory" value="Testcategory" />
                 <Picker.Item label="Business" value="Business" />
                 <Picker.Item label="Free-time" value="Free-time" />
@@ -169,23 +270,52 @@ export default function HomeCalendarScreen() {
                 <Picker.Item label="Travel" value="Travel" />
                 <Picker.Item label="Entertainment" value="Entertainment" />
               </Picker>
+              <CheckBox
+                onClick={() => { setEventFormData({ ...eventFormData, fullDay: !eventFormData.fullDay }) }}
+                style={{ marginTop: 10 }}
+                checkBoxColor='#fff'
+                isChecked={eventFormData.fullDay}
+                leftText='All day long'
+                leftTextStyle={{ color: '#fff', fontSize: 20 }}
+              />
 
             </View>
             <View style={styles.formRight}>
-            <Text style={{color: '#FFD700', marginBottom: 10, fontSize: 20, fontWeight: 'bold', alignSelf: 'center'}}>Location</Text>
-              <Text style={styles.formText}>Category</Text>
-              <Picker style={{ backgroundColor: '#fff', width: 200 }}></Picker>
+              <Text style={{ color: '#FFD700', marginBottom: 10, fontSize: 20, fontWeight: 'bold', alignSelf: 'center', paddingLeft: 0 }}>Location</Text>
+              <Text style={styles.formText}>Country</Text>
 
+              <TextInput value={eventFormData.address.country} onChangeText={(value) => { setEventFormData({ ...eventFormData, address: { ...eventFormData.address, country: value } }) }} style={styles.inps} />
+              <Text style={styles.formText}>City</Text>
+              <TextInput value={eventFormData.address.city} onChangeText={(value) => { setEventFormData({ ...eventFormData, address: { ...eventFormData.address, city: value } }) }} style={styles.inps} />
+              <Text style={styles.formText}>Street</Text>
+              <TextInput value={eventFormData.address.street} onChangeText={(value) => { setEventFormData({ ...eventFormData, address: { ...eventFormData.address, street: value } }) }} style={styles.inps} />
 
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.formText}>House Number</Text>
+                  <TextInput value={eventFormData.address.houseNumber} onChangeText={(value) => { setEventFormData({ ...eventFormData, address: { ...eventFormData.address, houseNumber: value } }) }} style={styles.inps} />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.formText}>ZIP</Text>
+                  <TextInput value={eventFormData.address.zip} onChangeText={(value) => { setEventFormData({ ...eventFormData, address: { ...eventFormData.address, zip: value } }) }} style={styles.inps} />
+
+                </View>
+
+              </View>
+              <TouchableOpacity onPress={() => handleEventForm()} activeOpacity={0.7} style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>Add event</Text>
+
+              </TouchableOpacity>
             </View>
           </View>
 
 
 
 
-        </View>
+        </ScrollView>
 
       </Modal>
+
       <Modal animationType='slide' visible={modalVisible} >
 
         <View style={styles.modalContainer}>
@@ -201,8 +331,8 @@ export default function HomeCalendarScreen() {
                     return (
                       <View key={i} style={styles.item}>
                         <View style={styles.itemleft}>
-                          {item.fullDay ? <Text style={styles.clockText}><Feather name='clock' /> All day!</Text> :
-                            <Text style={styles.clockText}><Feather size={15} name='clock' /> {item.startTime.slice(11, 16)}-{item.endTime.slice(11, 16)}</Text>
+                          {item.fullDay&&item.startTime.slice(11,16)=='00:00' ? <Text style={styles.clockText}><Feather name='clock' /> All day!</Text> :
+                            <Text style={styles.clockText}><Feather size={15} name='clock' /> {item.startTime.slice(11, 16)} - {item.endTime?item.endTime.slice(11, 16):''}</Text>
 
                           }
                           <View>
@@ -218,14 +348,14 @@ export default function HomeCalendarScreen() {
                         <View style={styles.itemright}>
                           <View>
                             {
-                              item.address ? <Text style={{ fontSize: 10, fontWeight: 'bold' }}><Feather color={'black'} size={20} name='map-pin' />{item.address.city} {item.address.street} {item.address.houseNumber}, {item.address.country}</Text> :
+                              item.address ? <Text style={{ fontSize: 10, fontWeight: 'bold' }}><Feather color={'black'} size={20} name='map-pin' />{item.address.city} {item.address.street} {item.address.houseNumber} {item.address.country}</Text> :
                                 <Text><Feather color={'black'} size={20} name='map-pin' /></Text>
                             }
 
                           </View>
 
                           <View style={{ flexDirection: 'row' }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={()=>editPress()}>
                               <Feather color={'blue'} size={20} name='edit' />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => handleDeleteEvent(item.id)} style={{ paddingRight: 5, paddingLeft: 15 }}>
@@ -366,7 +496,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212'
   },
   formContainer: {
-    flexDirection: 'row',
     marginTop: 15
   },
   formText: {
@@ -375,14 +504,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   formLeft: {
-    flex: 1,
     paddingLeft: 15,
-    
+
   },
   formRight: {
-    flex: 1,
-    paddingRight: 15
-
+    paddingLeft: 15
   },
   inps: {
     borderBottomColor: '#fff',
@@ -393,7 +519,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10
   },
+  buttonContainer: {
 
+    marginTop: 20,
+    borderRadius: 30,
+    backgroundColor: '#FFD700',
+    alignSelf: 'center',
+    paddingVertical: 8,
+    width: width * 0.7,
+    bottom: 10
+
+  },
+  buttonText: {
+    color: '#121212',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    flexDirection: 'row',
+
+  },
 
 
 })
