@@ -43,9 +43,9 @@ export class CalendarMonthComponent implements OnInit{
     map((result: any) => result.map((event: any) => ({
       title: event.event,
       start: parseISO(event.startTime),
+      end: parseISO(event.endTime),
       fullday: parseISO(event.fullDay),
-      allDay: event.fullDay,
-      
+      allDay: event.fullDay, 
     })))
   );
 
