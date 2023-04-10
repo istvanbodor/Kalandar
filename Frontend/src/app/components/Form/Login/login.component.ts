@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit{
               this.user = result
               localStorage.setItem('userId', this.user.id)
               localStorage.setItem('userRole', this.user.role)
+              location.reload()
             })
             // console.log(result)
             this.router.navigate(['/calendar/month']);

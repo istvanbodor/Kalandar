@@ -130,6 +130,7 @@ export class addEventModalComponent implements OnInit {
           console.warn("Event data =>", this.eventForm.value)
           this.alert = true;
           this.eventForm.reset({})
+           location.reload()
         },
         error: (error) => console.log('Error =>', error)
       })

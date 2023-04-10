@@ -37,31 +37,34 @@ export class CalendarMonthComponent implements OnInit{
 
   events$: any;
 
+
+
  
-  events: Observable<CalendarEvent[]> = this.authService.getUserEvents(String(localStorage.getItem('userId')))
+  events: Observable<CalendarEvent[]> =this.authService.getUserEvents(String(localStorage.getItem('userId')))
   .pipe(
     map((result: any) => result.map((event: any) => ({
       title: event.event,
       start: parseISO(event.startTime),
       end: parseISO(event.endTime),
       fullday: parseISO(event.fullDay),
-      allDay: event.fullDay, 
+      allDay: event.fullDay,
     })))
-  );
+   
+  )
 
   constructor(private authService: AuthService){}
 
 
-  ngOnInit(): void {
-    this.authService.getProfile()
-    .subscribe({
-      next: (user) => {
+  ngOnInit(): void { 
+  //   this.authService.getProfile()
+  //   .subscribe({
+  //     next: (result) => {
 
- 
-      },
-      error: (error) => {
-        console.log('user events error => ', error)
-      }
-    })
+  //     },
+  //     error: (error) => {
+  //       console.log('user events error => ', error)
+  //     }
+  //   })
   }
+
 }

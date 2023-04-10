@@ -3,17 +3,14 @@
 <app-calendar-header [(view)]="view" [(viewDate)]="viewDate">
 </app-calendar-header>
 
-
-
 <app-addEventModal></app-addEventModal>
 
-<ng-container *ngIf="events | async as events">
-<div [ngSwitch]="view" class="calendarStlye">
+
+<div [ngSwitch]="view" class="calendarStlye" *ngIf="events | async as events">
 	<mwl-calendar-month-view
 	  *ngSwitchCase="'month'"
 	  [viewDate]="viewDate"
-	  [events]="events"
-	  
+	  [events]="events"	  
 	>
 	</mwl-calendar-month-view>
 	<mwl-calendar-week-view
@@ -29,6 +26,7 @@
 	>
 	</mwl-calendar-day-view>
   </div>
-</ng-container>
+
+<div>&nbsp;</div>
 
 <!-- <app-events-modal></app-events-modal> -->

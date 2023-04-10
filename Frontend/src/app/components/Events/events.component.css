@@ -13,3 +13,14 @@
     font-weight: bolder;
 }
 
+.eventOuterBodyStyle{
+    border: 1px solid black; 
+    background-color: rgba(245, 245, 245, 0.1);  
+    width: 40%;
+}
+
+.eventInnerBodyStyle{
+    border: 1px solid black; 
+    background-color: rgba(245, 245, 245, 0.1); 
+}
+
