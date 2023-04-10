@@ -29,171 +29,60 @@
 }
 
 
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+  opacity: 0.55;
+  color: black;
+
+}
+
+// .cal-cell-top, mwl-calendar-month-cell{
+//   background-color: #1f262d;
+// }
+
+// .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+//   color: red;
+// }
+
+// .cal-month-view .cal-header .cal-cell{
+//   padding: 5px 0;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   display: block;
+//   white-space: nowrap;
+//   background-color: #1f262d;
+//   color: white;
+// }
+
+// .cal-month-view:hover .cal-header:hover .cal-cell:hover {
+//   padding: 5px 0;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   display: block;
+//   white-space: nowrap;
+//   background-color: #1f262d;
+//   color: white;
+// }
+
+// .cal-month-view .cal-events {
+//   flex: 1;
+//   align-items: flex-end;
+//   margin: 3px;
+//   line-height: 10px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   background-color: #1f262d;
+// }
+
+
+// .cal-day-number{
+//   color: white;
+// }
+// .cal-day-view .cal-drag-over .cal-hour-segment, .cal-day-view .cal-hour-segment:hover {
+//   background-color: black;
+// }
 
   
 
-//   @media screen and (max-width: 1024px) {
-//     .calendar-week-header{
-//       font-size: 17;
-//       font-weight: bold;
-//     }
-    
-//     }
-    
-//     @media screen and (max-width: 950px) {
-//       .calendar-week-header{
-//         font-size: 13px;
-//         font-weight: bold;
-//       }
-    
-//     }
-    
-    
-//     @media screen and (max-width: 650px) {
-//       .calendar-week-header{
-//         font-size: 11px;
-//         font-weight: bold;
-//       }
-    
-    
-//     }
-    
-//     @media screen and (max-width: 480px) {
-//       .calendar-week-header{
-//         font-size: 8px;
-//         font-weight: bold;
-//       }
-    
-//     }
-  
-
-// .btngroupLeft{
-//   margin-left: 5px;
-// }
-
-// .btngroupRight{
-//   float: right;
-//   margin-right: 5px;
-// }
-// h1{
-//   text-align: center;
-// }
-
-// h2{
-//   text-align: right;
-// }
-
-// .days{
-//   height: 100px;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// .container-fluid {   
-//   background:rgba(255, 255, 255, 0.1);
-//   padding:40px;
-//   border-radius: 10px;
-// }
-
-// .TextColor{
-//   color: black;
-// }
-
-
-
-// * {
-//   box-sizing: border-box;
-// }
-
-// *:before {
-//   box-sizing: border-box;
-// }
-
-// *:after {
-//   box-sizing: border-box;
-// }
-
-// $min-width: 320px;
-// $number-of-columns: 7;
-// $column-width: percentage(1/$number-of-columns);
-
-// .container {
-//   max-width: 100%;
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding-bottom: 1em;
-// }
-
-// .row:before {
-//   display: table;
-//   content: " ";
-// }
-
-// .grid-calendar {
-//   min-width: $min-width;
-//   .row {
-//     margin: 0;
-    
-//   }
-  
-//   .calendar-week .grid-cell {
-//     background-color: #f6f6f6;
-//     border: 1px solid #fff;
-//     text-align: center; 
-//   }
-//   .calendar-week-header .grid-cell{
-//     background-color: white;
-//     border: 1px solid #fff;
-//     text-align: center; 
-//     font-weight: bold;
-//   }
-
-//   .calendar-week-header .grid-cell > div > div {
-//     padding-bottom: 10px;
-//     height: auto;
-//   }
-  
-//   .grid-cell {
-//     display: inline-block;
-  
-//     min-height: 1px;
-//     padding: 0;
-//     position: relative;
-//     width: $column-width;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // &.previous-month {
-    //   color: #a6a6a6;
-    // }
-    
-    // &.next-month {
-    //   background-color: #e1e1e1;
-    // }
-    
-    // > div {
-    //   display: flex;
-    //   justify-content: center;
-    //   width: 100%;
-
-    //   > div {
-    //     height: 0;
-    //     padding: 50% 0;
-    //   }
-    // }
-//   }
-// }
 
 
 

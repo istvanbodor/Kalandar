@@ -1,9 +1,24 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { start } from '@popperjs/core';
-import { CalendarEvent } from 'calendar-utils';
+import { CalendarEvent, EventColor } from 'calendar-utils';
 import { getDay, parseISO } from 'date-fns';
 import { Observable, map, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
+
+const colors: Record<string, EventColor> = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
 
 @Component({
   selector: 'app-calendar-month',
@@ -38,7 +53,7 @@ export class CalendarMonthComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.userId =this.authService.getProfile()
+    this.authService.getProfile()
     .subscribe({
       next: (user) => {
 
