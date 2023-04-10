@@ -38,17 +38,17 @@ export class addEventModalComponent implements OnInit {
 
 
   eventForm = new FormGroup({
-    event: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+    event: new FormControl('', [Validators.required, Validators.minLength(3)]),
     startTime: new FormControl('', Validators.required),
     endTime: new FormControl(''),
     fullDay: new FormControl(''),
     category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     address: new FormGroup({
-      city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      country: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      zip: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]),
-      street: new FormControl('', [Validators.required]),
-      houseNumber: new FormControl('', [Validators.required]),
+      city: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+      country: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+      zip: new FormControl(''),
+      street: new FormControl(''),
+      houseNumber: new FormControl(''),
     }),
     user: new FormGroup({
       id: new FormControl(localStorage.getItem('userId'))
@@ -138,19 +138,4 @@ export class addEventModalComponent implements OnInit {
   closeAlert() {
     this.alert = false
   }
-
-  days() {
-    const Days = []
-
-    const numDays = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    for (let day = 1; day <= numDays; day++) {
-      const date = new Date(this.currentYear, this.currentMonth, day);
-      const dayOfMonth = date.getDate();
-      Days.push([dayOfMonth])
-
-    }
-
-    return Days
-  }
-
 }

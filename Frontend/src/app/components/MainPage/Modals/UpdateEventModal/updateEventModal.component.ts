@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -28,28 +29,28 @@ export class UpdateEventModalComponent{
     startDate: Object = new Date(this.currentYear, this.currentMonth, 1);
     endDate: Object = new Date(this.currentYear, this.currentMonth, 31);
 
-    constructor(private modalService: NgbModal, private authService: AuthService) {
+    constructor(private modalService: NgbModal, private authService: AuthService, private location: Location) {
         this.date = new Date().toISOString().slice(0, 16);
     }
     eventForm = new FormGroup({
-        event: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-        startTime: new FormControl('', Validators.required),
+        event: new FormControl('', Validators.minLength(3)),
+        startTime: new FormControl(''),
         endTime: new FormControl(''),
         fullDay: new FormControl(''),
-        category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+        category: new FormControl('', [ Validators.pattern('[a-zA-Z]+$')]),
         address: new FormGroup({
-            city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-            country: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-            zip: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]),
-            street: new FormControl('', [Validators.required]),
-            houseNumber: new FormControl('', [Validators.required]),
+          city: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+          country: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+          zip: new FormControl(''),
+          street: new FormControl(''),
+          houseNumber: new FormControl(''),
         }),
         user: new FormGroup({
-            id: new FormControl(localStorage.getItem('userId'))
+          id: new FormControl(localStorage.getItem('userId'))
         })
-    },
+      },
         [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
-    )
+      )
 
     get event() {
         return this.eventForm.get('event')
@@ -123,6 +124,7 @@ export class UpdateEventModalComponent{
     submitEvent() {
         this.authService.updateEvent(String(localStorage.getItem('eventId')) , this.eventForm.value)
         localStorage.removeItem('eventId')
+        location.reload()
         // .subscribe({
         //     next: (user: any) => {
         //       this.events$ = this.authService
