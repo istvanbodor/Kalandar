@@ -8,14 +8,14 @@ import { ProfileComponent } from '../Profile/profile.component';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent implements OnInit{
+export class EventsComponent implements OnInit {
 
   events$: any
   events: any
 
-  constructor(private authService: AuthService, private profileComponent: ProfileComponent){}
+  constructor(private authService: AuthService, private profileComponent: ProfileComponent) { }
 
-  
+
 
   ngOnInit(): void {
     //All events
@@ -25,41 +25,40 @@ export class EventsComponent implements OnInit{
     //   console.log(this.events)
     // } ))
 
-    // console.log('Value type =>',(this.profileComponent.userId()))
     this.authService.getProfile()
-    .subscribe({
-      next: (user) =>{
-      this.events$ = this.authService
-      .getUserEvents(String(user.id)).pipe(tap((result) => {
-        // this.events = result
-        // console.log(this.events)
-      }))
-    },
-    error: (error) =>{
-      console.log('user events error => ', error)
-    }
-  }) 
+      .subscribe({
+        next: (user) => {
+          this.events$ = this.authService
+            .getUserEvents(String(user.id)).pipe(tap((result) => {
+              // this.events = result
+              // console.log(this.events)
+            }))
+        },
+        error: (error) => {
+          console.log('user events error => ', error)
+        }
+      })
   }
 
-  DeleteEvent(id: string){
+  DeleteEvent(id: string) {
     this.authService.deleteEvent(id)
       .subscribe({
         next: () => {
           this.authService.getProfile()
-          .subscribe({
-            next: (user) =>{
-              this.events$ = this.authService
-              .getUserEvents(String(user.id)).pipe(tap((result) => {
-                // this.events = result
-                // console.log(this.events)
-              }))
-            },
-            error: (error) =>{
-              console.log('user events error => ', error)
-            }
-          })
+            .subscribe({
+              next: (user) => {
+                this.events$ = this.authService
+                  .getUserEvents(String(user.id)).pipe()
+              },
+              error: (error) => {
+                console.log('user events error => ', error)
+              }
+            })
         }
       })
-    }
-  
+  }
+
+  storeEventId(id: string){
+    return localStorage.setItem('eventId',id)
+  }
 }

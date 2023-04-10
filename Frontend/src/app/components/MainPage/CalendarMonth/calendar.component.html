@@ -1,35 +1,32 @@
-<h2>{{today | date: 'hh:mm:ss'}}</h2>
+<br>
 
-<div>
-  <button class="btngroupLeft btn btn-primary col" (click)="dayBefore()">Yesterday</button>
-  <button class="btngroupLeft btn btn-primary col" (click)="dayNow()">Today</button>
-  <button class="btngroupLeft btn btn-primary col" (click)="nextDay()">Tomorrow</button>
+<app-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</app-calendar-header>
 
-  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/month">Month</button>
-  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/week">Week</button>
-  <button class="btngroupRight btn btn-primary col" routerLink="/calendar/day">Day</button>
-</div>
-
-<h1>{{today | date: 'MMMM yyyy'}}</h1>
-
-<app-events-modal></app-events-modal>
-
- <!-- <div class="container-fluid">
-	<div class="container">
-		<div class="grid-calendar">
-				<div class="row calendar-week-header">
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Monday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Tuesday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Wednesday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Thursday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Friday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Saturday</span></div>
-				<div class="col-xs-1 grid-cell"><span class="TextColor">Sunday</span></div>
-			</div> -->
-			<!--<div class="row days calendar-week" *ngFor="let week of [1, 2, 3, 4, 5]">
-				<div class="col-xs-1 grid-cell" *ngFor="let day of days().slice((week-1)*7, week*7)">
-				  <app-eventModal></app-eventModal>{{day}}</div></div> -->
-				  <!-- <div class="row days calendar-week" *ngFor="let week of [1, 2, 3, 4, 5]">
-					<app-eventModal class="col-xs-1 grid-cell" *ngFor="let day of days().slice((week-1)*7, week*7)"></app-eventModal> -->
+<app-addEventModal></app-addEventModal>
 
 
+<div [ngSwitch]="view" class="calendarStlye" *ngIf="events | async as events">
+	<mwl-calendar-month-view
+	  *ngSwitchCase="'month'"
+	  [viewDate]="viewDate"
+	  [events]="events"	  
+	>
+	</mwl-calendar-month-view>
+	<mwl-calendar-week-view
+	  *ngSwitchCase="'week'"
+	  [viewDate]="viewDate"
+	  [events]="events"
+	>
+	</mwl-calendar-week-view>
+	<mwl-calendar-day-view
+	  *ngSwitchCase="'day'"
+	  [viewDate]="viewDate"
+	  [events]="events"
+	>
+	</mwl-calendar-day-view>
+  </div>
+
+<div>&nbsp;</div>
+
+<!-- <app-events-modal></app-events-modal> -->

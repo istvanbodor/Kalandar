@@ -2,10 +2,10 @@
 <div class="container">
         <div class="row">
                 <div class="col">
-                        <h2 class="mb-3">First name: <span class="userData">{{this.user?.firstName}}</span> </h2>
-                        <h2 class="mb-3">Last name:  <span class="userData">{{this.user?.lastName}}</span></h2>
-                        <h2 class="mb-3">Username:  <span class="userData">{{this.user?.username}}</span></h2>
-                        <h2 class="mb-3">Email: <span class="userData">{{this.user?.email}}</span></h2>
+                        <h2 class="mb-3">First name: <span class="userDataStyle">{{this.user?.firstName}}</span> </h2>
+                        <h2 class="mb-3">Last name:  <span class="userDataStyle">{{this.user?.lastName}}</span></h2>
+                        <h2 class="mb-3">Username:  <span class="userDataStyle">{{this.user?.username}}</span></h2>
+                        <h2 class="mb-3">Email: <span class="userDataStyle">{{this.user?.email}}</span></h2>
                         </div>
                 <div class="col">
                         <h2>Change password</h2>
@@ -21,14 +21,14 @@
                         <form [formGroup]="passwordChangeForm" (ngSubmit)="changePasswordSubmit()">
                                 <div class="form-group mb-3">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password"  formControlName="password">
+                                        <input type="password" class="form-control" placeholder="Password"  formControlName="password" autocomplete="on">
                                         <strong class="errorMessage" *ngIf="password && password.invalid && password.touched">This password is not
                                                 valid!</strong>
                                               <p class="errorMessage" *ngIf="passwordMatchError">Passwords do not match!</p>
                                 </div>
                                 <div class="form-group mb-3">
                                         <label>Password confirmation</label>
-                                        <input type="password" class="form-control"placeholder="Password confirmation"  formControlName="confirmPassword" >
+                                        <input type="password" class="form-control"placeholder="Password confirmation"  formControlName="confirmPassword" autocomplete="on">
                                         <strong class="errorMessage" *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">This
                                                 password is not valid!</strong>
                                               <p class="errorMessage" *ngIf="passwordMatchError"> Passwords do not match!</p>

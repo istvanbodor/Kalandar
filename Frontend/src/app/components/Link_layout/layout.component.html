@@ -3,17 +3,17 @@
 		<ul class="navbar-nav mr-auto">
 			<img class="img-fluid" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image" id="kalandarImage">
 			<li class="nav-item">
-				<a class="nav-link" routerLink="/calendar/month" routerLinkActive="active">Kalandar</a>
+				<a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/calendar/month" routerLinkActive="active">Kalandar</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
+				<a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/events" routerLinkActive="active">Events</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" routerLink="/profile" routerLinkActive="active" *ngIf="_authService.loggedIn()" >Profile</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" routerLink="/users" routerLinkActive="active"
-					*ngIf="_authService.loggedIn()">Users</a>
+					*ngIf="_authService.userRole() === 'ADMIN'">Users</a>
 			</li>
 		</ul>
 	</div>

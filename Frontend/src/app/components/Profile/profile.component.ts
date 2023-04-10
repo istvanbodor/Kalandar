@@ -22,10 +22,10 @@ export class ProfileComponent implements OnInit {
   alert = false
 
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService) {
   }
 
- 
+
 
   passwordChangeForm = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -53,29 +53,12 @@ export class ProfileComponent implements OnInit {
     this.authService.getProfile().subscribe({
       next: (result: any[]) => {
         this.user = result;
-        console.log(this.user.id)
       },
       error: (error: any[]) => {
         console.error('Error getting user profile =>', error);
       }
     });
   }
-
-
-  userId() {
-    this.authService.getProfile().subscribe({
-      next: (result: string) => {
-        this.user = result;
-
-      },
-      error: (error) => {
-        return console.log('error from getting the id => ', error)
-      }  
-    });
-   return 1
-  }
-
-
 
   changePasswordSubmit() {
     const password = this.passwordChangeForm.get('password')?.value;

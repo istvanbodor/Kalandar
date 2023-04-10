@@ -1,8 +1,7 @@
-<div (click)="open(content)" id="modalBody" class="btn btn-primary">
-  <h6 style="font-size: 20px;">+</h6>
+<div (click)="open(content)" id="modalBody" class="btn btn-primary btn-md" style="margin-bottom: 50px;">Add Event
   <ng-template #content let-modal $modal-lg: 80px !default;>
     <div class="modal-header">
-      <h4 class="modal-title" id="eventModal">Add event</h4>
+      <h4 class="modal-title" id="eventModal">Add new event</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -99,3 +98,4 @@
 </div>
 
 <pre>{{ closeResult }}</pre>
+

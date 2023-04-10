@@ -3,6 +3,7 @@ import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject, catchError, Observable, tap } from "rxjs";
 import { UsersApiService } from "./users.service";
+import axios from "axios";
 
 
 @Injectable({
@@ -15,36 +16,17 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   expired = false;
 
-  users: any
+  user: any
   admin:boolean = true
-
-  private isTokenExpired(auth_token: string) {
-    const expiry = (JSON.parse((auth_token.split('.')[1]))).exp;
-    return expiry * 1000 > Date.now();
-  }
-
-  tokenExpired() {
-    if (this.isTokenExpired('token')) {
-      return this._router.navigate(['/login'])
-    }
-    return null
-  }
 
   constructor(private usersApiService: UsersApiService, private _router: Router, private http: HttpClient) {
     const auth_token = localStorage.getItem('token')
     this._isLoggedIn$.next(!!auth_token);
   }
 
-  // adminUser(): boolean{
-  //   this.getUsersData().pipe(tap((result) => {
-  //     this.users = result
-  //     if (this.users.role === 'ADMIN') {
-  //       this.admin
-  //       break;
-  //     }
-  //     !this.admin
-  //   }))
-  // }
+  userRole(){
+    return localStorage.getItem('userRole')
+  }
 
   login(email: string, password: string): Observable<any> {
     return this.usersApiService
@@ -106,6 +88,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    localStorage.removeItem('userRole')
     this._router.navigate(['/login'])
   }
 
@@ -130,7 +114,16 @@ export class AuthService {
     const requestOptions = {headers: headers}
     return this.http.delete(this.url + `api/events/${id}`, requestOptions)
   }
-  
+
+
+  async updateEvent(id : string, body: any){
+    const auth_token = localStorage.getItem('token')
+
+
+    const requestOptions = {headers: {authorization: `Bearer ${auth_token}`}}
+    axios.put(this.url + `api/events/${id}`, body, requestOptions)
+  }
+
   deleteUser(id: string) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
@@ -142,7 +135,7 @@ export class AuthService {
     return this.http.delete(this.url + `api/admin/user/${id}`, requestOptions);
   }
 
-  changeUser(id: string) {
+  updateRole(id: string, body: any) {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -150,7 +143,7 @@ export class AuthService {
     });
 
     const requestOptions = { headers: headers };
-    return this.http.put(this.url + `api/admin/role/user/${id}`, {}, requestOptions)
+    return this.http.put(this.url + `api/admin/role/user/${id}`, body, requestOptions)
   }
 
   changePassword(password: string) {

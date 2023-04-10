@@ -10,9 +10,9 @@ export class IsAdminPipe implements PipeTransform {
 }
 
 @Pipe({
-  name: "IsFullDAy"
+  name: "IsFullDay"
 })
-export class IsFullDAy implements PipeTransform {
+export class IsFullDay implements PipeTransform {
   transform(value: boolean, ...args: String[]): String {
     return value === true ? "Full day" : "Not full day";
   }
