@@ -28,7 +28,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
       const setTokenIfExists= async ()=>{
          console.log('lefutott')
 
-        await new Promise(resolve=>setTimeout(resolve, 1000))
+       // await new Promise(resolve=>setTimeout(resolve, 1000))
         const token = await AsyncStorage.getItem('token').catch((e)=>{console.log(e)});
         console.log('At start: '+token)
         if(token!=null){
@@ -37,7 +37,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
         setInit(true);
       }
 
-      setTokenIfExists();
+       setTokenIfExists();
 },[])
 
   const login = async (user: UserLoingDto) => {

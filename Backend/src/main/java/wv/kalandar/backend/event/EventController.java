@@ -62,4 +62,14 @@ public class EventController {
 
     }
 
+    @GetMapping(path = "/user")
+    public List<EventResponseDto> getEventOfUser() {
+        return eventService.getEventOfAuthenticatedUser();
+    }
+
+    @PostMapping(path = "/user")
+    public void addEventOfAuthUser(@RequestBody EventDto event) {
+         eventService.addEventOfAuthUser(event);
+    }
+
 }
