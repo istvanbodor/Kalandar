@@ -1,133 +1,181 @@
+@import 'angular-calendar/scss/angular-calendar.scss';
 
-  
-  @media screen and (max-width: 1024px) {
-    .calendar-week-header{
-      font-size: 17;
-      font-weight: bold;
-    }
-    
-    }
-    
-    @media screen and (max-width: 950px) {
-      .calendar-week-header{
-        font-size: 13px;
-        font-weight: bold;
-      }
-    
-    }
-    
-    
-    @media screen and (max-width: 650px) {
-      .calendar-week-header{
-        font-size: 11px;
-        font-weight: bold;
-      }
-    
-    
-    }
-    
-    @media screen and (max-width: 480px) {
-      .calendar-week-header{
-        font-size: 8px;
-        font-weight: bold;
-      }
-    
-    }
-  
+.dark-theme {
+  // First define some global color variables for your app, these are just for the demo, they can be anything you like
+  $bg-dark-primary: #1f262d;
+  $bg-dark-secondary: #394046;
+  $bg-active: #2c343a;
+  $text-color: #d5d6d7;
+  $border-color: rgba(0, 0, 0, 0.6);
 
-.btngroupLeft{
-  margin-left: 5px;
+
+ 
 }
 
-.btngroupRight{
-  float: right;
-  margin-right: 5px;
-}
-h1{
-  text-align: center;
-}
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+  opacity: 15;
 
-h2{
-  text-align: right;
 }
-
-.days{
-  height: 100px;
-  margin-left: auto;
-  margin-right: auto;
+.cal-day-view .cal-drag-over .cal-hour-segment, .cal-day-view .cal-hour-segment:hover {
+  background-color: black;
 }
-
-.container-fluid {   
-  background:rgba(255, 255, 255, 0.1);
-  padding:40px;
-  border-radius: 10px;
-}
-
-.TextColor{
+.calendarStlye{
+  opacity: 15;
+  color:#d5d6d7 ;
+  $border-color: rgba(0, 0, 0, 0.6);
+  background-color: #1f262d;
   color: black;
 }
 
-
-
-* {
-  box-sizing: border-box;
+.cal-cell-top ng-star-inserted{
+  background-color: #1f262d;
 }
 
-*:before {
-  box-sizing: border-box;
-}
 
-*:after {
-  box-sizing: border-box;
-}
 
-$min-width: 320px;
-$number-of-columns: 7;
-$column-width: percentage(1/$number-of-columns);
+  
 
-.container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 1em;
-}
-
-.row:before {
-  display: table;
-  content: " ";
-}
-
-.grid-calendar {
-  min-width: $min-width;
-  .row {
-    margin: 0;
+//   @media screen and (max-width: 1024px) {
+//     .calendar-week-header{
+//       font-size: 17;
+//       font-weight: bold;
+//     }
     
-  }
+//     }
+    
+//     @media screen and (max-width: 950px) {
+//       .calendar-week-header{
+//         font-size: 13px;
+//         font-weight: bold;
+//       }
+    
+//     }
+    
+    
+//     @media screen and (max-width: 650px) {
+//       .calendar-week-header{
+//         font-size: 11px;
+//         font-weight: bold;
+//       }
+    
+    
+//     }
+    
+//     @media screen and (max-width: 480px) {
+//       .calendar-week-header{
+//         font-size: 8px;
+//         font-weight: bold;
+//       }
+    
+//     }
   
-  .calendar-week .grid-cell {
-    background-color: #f6f6f6;
-    border: 1px solid #fff;
-    text-align: center; 
-  }
-  .calendar-week-header .grid-cell{
-    background-color: white;
-    border: 1px solid #fff;
-    text-align: center; 
-    font-weight: bold;
-  }
 
-  .calendar-week-header .grid-cell > div > div {
-    padding-bottom: 10px;
-    height: auto;
-  }
+// .btngroupLeft{
+//   margin-left: 5px;
+// }
+
+// .btngroupRight{
+//   float: right;
+//   margin-right: 5px;
+// }
+// h1{
+//   text-align: center;
+// }
+
+// h2{
+//   text-align: right;
+// }
+
+// .days{
+//   height: 100px;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// .container-fluid {   
+//   background:rgba(255, 255, 255, 0.1);
+//   padding:40px;
+//   border-radius: 10px;
+// }
+
+// .TextColor{
+//   color: black;
+// }
+
+
+
+// * {
+//   box-sizing: border-box;
+// }
+
+// *:before {
+//   box-sizing: border-box;
+// }
+
+// *:after {
+//   box-sizing: border-box;
+// }
+
+// $min-width: 320px;
+// $number-of-columns: 7;
+// $column-width: percentage(1/$number-of-columns);
+
+// .container {
+//   max-width: 100%;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-bottom: 1em;
+// }
+
+// .row:before {
+//   display: table;
+//   content: " ";
+// }
+
+// .grid-calendar {
+//   min-width: $min-width;
+//   .row {
+//     margin: 0;
+    
+//   }
   
-  .grid-cell {
-    display: inline-block;
+//   .calendar-week .grid-cell {
+//     background-color: #f6f6f6;
+//     border: 1px solid #fff;
+//     text-align: center; 
+//   }
+//   .calendar-week-header .grid-cell{
+//     background-color: white;
+//     border: 1px solid #fff;
+//     text-align: center; 
+//     font-weight: bold;
+//   }
+
+//   .calendar-week-header .grid-cell > div > div {
+//     padding-bottom: 10px;
+//     height: auto;
+//   }
   
-    min-height: 1px;
-    padding: 0;
-    position: relative;
-    width: $column-width;
+//   .grid-cell {
+//     display: inline-block;
+  
+//     min-height: 1px;
+//     padding: 0;
+//     position: relative;
+//     width: $column-width;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // &.previous-month {
     //   color: #a6a6a6;
@@ -147,8 +195,8 @@ $column-width: percentage(1/$number-of-columns);
     //     padding: 50% 0;
     //   }
     // }
-  }
-}
+//   }
+// }
 
 
 
