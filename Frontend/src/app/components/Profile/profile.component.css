@@ -30,3 +30,7 @@ p{
 .userDataStyle{
     color: #B58240;
 }
+
+#userDivBody{
+    background-color: rgba(0, 0, 0, 0.2);
+}
