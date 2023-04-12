@@ -3,25 +3,61 @@
 $bg-dark-primary: #1f262d;
 $bg-dark-secondary: #394046;
 $bg-active: #2c343a;
-$text-color: #d5d6d7;
+$text-color: #d5d6d7 !important;
 $border-color: rgba(0, 0, 0, 0.6);
 
 @include cal-theme(
     (
       bg-primary: $bg-dark-primary,
       bg-secondary: $bg-dark-secondary,
-      weekend-color: indianred,
+      weekend-color: red,
       bg-active: $bg-active,
       border-color: $border-color,
       gray: $bg-dark-secondary,
       today-bg: $bg-dark-secondary,
-      event-color-primary: $bg-dark-secondary
+      event-color-primary: $bg-dark-secondary,
+      color: $text-color
     )
 );
 
 .cal-month-view .cal-cell .cal-event {
   pointer-events: all !important;
   background-color: green;
+}
+
+.cal-month-view .cal-day-number {
+  font-size: 1.2em;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-top: 15px;
+  margin-right: 15px;
+  float: right;
+  margin-bottom: 10px;
+  color: white;
+}
+
+
+.cal-month-view .cal-header .cal-cell {
+  padding: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  color: white;
+}
+
+.cal-week-view * {
+  box-sizing: border-box;
+  color: white;
+}
+
+.cal-week-view * {
+  box-sizing: border-box;
+  color: white
+}
+
+.cal-event-title{
+  color: black;
 }
 
 // .cal-cell-top, mwl-calendar-month-cell{
