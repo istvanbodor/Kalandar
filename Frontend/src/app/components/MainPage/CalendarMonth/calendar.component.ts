@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { start } from '@popperjs/core';
+import { CalendarEventAction } from 'angular-calendar';
 import { CalendarEvent, EventColor } from 'calendar-utils';
-import { getDay, parseISO } from 'date-fns';
-import { Observable, map, tap } from 'rxjs';
+import { addDays, getDay, isSameDay, isSameMonth, parseISO } from 'date-fns';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
+import { EventsModalComponent } from '../Modals/EventsModal/eventsModal.component';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -30,6 +33,8 @@ const colors: Record<string, EventColor> = {
 
 export class CalendarMonthComponent implements OnInit{
 
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
+
 
   view: string = 'month';
 
@@ -37,25 +42,18 @@ export class CalendarMonthComponent implements OnInit{
 
   events$: any;
 
+  modalData: {
+    action: string;
+    event: CalendarEvent;
+  } | undefined;
 
-
- 
-  events: Observable<CalendarEvent[]> =this.authService.getUserEvents(String(localStorage.getItem('userId')))
-  .pipe(
-    map((result: any) => result.map((event: any) => ({
-      title: event.event,
-      start: parseISO(event.startTime),
-      end: parseISO(event.endTime),
-      fullday: parseISO(event.fullDay),
-      allDay: event.fullDay,
-    })))
-   
-  )
-
-  constructor(private authService: AuthService){}
-
+  constructor(private authService: AuthService, private modal: NgbModal, private eventsModal: EventsModalComponent){}
 
   ngOnInit(): void { 
+    this.authService.getProfile().subscribe((user) =>{
+      this.events$ = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
+      }))
+    })
   //   this.authService.getProfile()
   //   .subscribe({
   //     next: (result) => {
@@ -66,5 +64,83 @@ export class CalendarMonthComponent implements OnInit{
   //     }
   //   })
   }
+
+  handleEvent(action: string, event: CalendarEvent): void {
+    this.modal.open(this.modalContent);
+  }
+
+  refresh = new Subject<void>();
+ 
+  events: Observable<CalendarEvent[]> =this.authService.getUserEvents(String(localStorage.getItem('userId')))
+  .pipe(
+    map((result: any) => result.map((event: any) => ({
+      title: event.event,
+      start: parseISO(event.startTime),
+      end: parseISO(event.endTime),
+      fullday: parseISO(event.fullDay),
+      allDay: event.fullDay,
+      
+      draggable: true
+    })))
+   
+  )
+  
+  // [
+  //   {
+  //     title: 'asd',
+  //     start: new Date(),
+  //     end: addDays(new Date(), 3),
+  //     actions: this.actions,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true,
+  //     },
+  //     draggable: true,
+  //   }
+  // ]
+
+  activeDayIsOpen: boolean = true;
+
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+      }
+      this.viewDate = date;
+    }
+  }
+  
+
+  DeleteEvent(id: string) {
+    this.authService.deleteEvent(id)
+      .subscribe({
+        next: () => {
+          this.authService.getProfile()
+            .subscribe({
+              next: (user) => {
+                this.events$ = this.authService
+                  .getUserEvents(String(user.id)).pipe()
+              },
+              error: (error) => {
+                console.log('user events error => ', error)
+              }
+            })
+        }
+      })
+  }
+
+  storeEventId(id: string){
+    return localStorage.setItem('eventId',id)
+  }
+
+
+  
+
+
 
 }
