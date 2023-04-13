@@ -44,9 +44,8 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
      await axios.post(BaseUrl+'/api/auth/login', {email: user.email, password: user.password})
      .then(async (response)=>{
-      setToken(response.data.token)
-      console.log(token)
-      console.log(response.data)
+      setToken({token: response.data.token})
+      console.log('received token: '+response.data.token)
       ToastAndroid.showWithGravity('Logged in!', 2000, ToastAndroid.CENTER)
       await AsyncStorage.setItem('token', response.data.token).catch((e)=>{console.log(e)});
      })
