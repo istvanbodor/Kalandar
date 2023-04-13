@@ -40,7 +40,7 @@
 		<button type="button" class="btn-close" aria-label="Close"
 			(click)="modal.dismiss('Cross click')"></button>
 	</div>
-	<div class="container mb-3 modalBodyStyle" *ngFor="let itemLocal of events$">
+	<div class="container mb-3 modalBodyStyle"> <!--  *ngFor="let itemLocal of events$" -->
 			<div class="modal-body" *ngFor="let item of eventsApi | async;"> 
 				 <div>  <!-- *ngIf="item.id === itemLocal.id" -->
 				<div>
