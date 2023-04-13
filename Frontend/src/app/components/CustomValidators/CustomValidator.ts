@@ -12,17 +12,17 @@ export class CustomValidators {
         : null;
     };
   }
-  static IsBiggerDateValidator(source: string, target: string): ValidatorFn{
-    return(control: AbstractControl): ValidationErrors | null => {
+  static IsBiggerDateValidator(source: string, target: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
       const startCtrl = control.get(source);
       const endCtrl = control.get(target);
 
       if (startCtrl && endCtrl) {
         const startDate = new Date(startCtrl.value);
         const endDate = new Date(endCtrl.value);
-  
+
         return startDate > endDate ? { badVal: true } : null;
-      }      
+      }
       return null;
     };
   }
@@ -33,4 +33,4 @@ export class CustomValidators {
   //     }
   //     return  {validator: false}
   //   }
-  }
+}

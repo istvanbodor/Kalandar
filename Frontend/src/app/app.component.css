@@ -1,32 +1,29 @@
-.nav-item{
-    padding:2px;
+.nav-item {
+    padding: 2px;
     margin-right: 10px;
 }
 
-a{
+a {
     color: white;
 }
 
-html {  
+html {
     height: 100%;
 }
 
-.day-mode{
-    background: rgb(65,88,208);
-    background: linear-gradient(45deg, rgba(65,88,208,1) 25%, rgba(200,80,192,1) 80%);
+.day-mode {
+    background: rgb(65, 88, 208);
+    background: linear-gradient(45deg, rgba(65, 88, 208, 1) 25%, rgba(200, 80, 192, 1) 80%);
     height: 100%;
     margin: 0;
 
     background-attachment: fixed;
 }
 
-.night-mode{
+.night-mode {
     background: linear-gradient(45deg, rgb(69, 69, 69) 25%, rgb(0, 0, 0) 80%);
     height: 100%;
     margin: 0;
-    background-attachment: fixed; 
-    color: white; 
+    background-attachment: fixed;
+    color: white;
 }
-
-
-

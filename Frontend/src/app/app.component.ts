@@ -10,7 +10,7 @@ import { CommunicationService } from './Service/communication.service';
 export class AppComponent implements OnInit, OnDestroy {
   isNightMode = false;
 
-  constructor(public communicationService: CommunicationService) {}
+  constructor(public communicationService: CommunicationService) { }
 
   ngOnInit(): void {
     this.communicationService.toggleBackgroundEventEmitter.subscribe((toggle) => this.isNightMode = toggle)

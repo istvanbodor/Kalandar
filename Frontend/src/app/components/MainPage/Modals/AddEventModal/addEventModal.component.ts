@@ -44,8 +44,8 @@ export class addEventModalComponent implements OnInit {
     fullDay: new FormControl(''),
     category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     address: new FormGroup({
-      city: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
-      country: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+      city: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
+      country: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
       zip: new FormControl(''),
       street: new FormControl(''),
       houseNumber: new FormControl(''),
@@ -130,7 +130,7 @@ export class addEventModalComponent implements OnInit {
           console.warn("Event data =>", this.eventForm.value)
           this.alert = true;
           this.eventForm.reset({})
-           location.reload()
+          location.reload()
         },
         error: (error) => console.log('Error =>', error)
       })

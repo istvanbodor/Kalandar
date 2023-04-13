@@ -23,14 +23,14 @@ label {
     color: red;
 }
 
-p{
+p {
     font-weight: bold;
 }
 
-.userDataStyle{
+.userDataStyle {
     color: #B58240;
 }
 
-#userDivBody{
+#userDivBody {
     background-color: rgba(0, 0, 0, 0.2);
 }
