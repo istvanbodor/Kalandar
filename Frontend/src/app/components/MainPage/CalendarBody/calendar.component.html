@@ -48,6 +48,7 @@
 						alt="kalandar_Icon_Image" style="width: 30%; height: 30%;">
 				</div>
 				<div>
+					<p><span class="eventTextStyle">{{item.fullDay | IsFullDay}}</span></p>
 					<p class="TextStyle">Event title: <span class="eventTextStyle">{{item.event}}</span></p>
                     <p class="TextStyle">Category: <span class="eventTextStyle">{{item.category}}</span></p>
                     <p><span class="eventTextStyle">{{item.startTime | date}}</span> - <span class="eventTextStyle">{{item.endTime | date}}</span></p>
@@ -56,7 +57,6 @@
                     <p class="TextStyle"><span>{{item.address.zip === '' ? '': 'zip: '}}</span> <span class="eventTextStyle">{{item.address.zip}}</span></p>
                     <p class="TextStyle"><span>{{item.address.street === '' ? '': 'street: '}}</span> <span class="eventTextStyle">{{item.address.street}}</span></p>
                     <p class="TextStyle"><span>{{item.address.houseNumber === '' ? '': 'House number: '}}</span> <span class="eventTextStyle">{{item.address.houseNumber}}</span></p>
-                    <p><span class="eventTextStyle">{{item.fullDay | IsFullDay}}</span></p>
                     <button class="btn btn-danger btn-sm" (click)="DeleteEvent(item.id)"
                         style="float: right; margin-left: 5px;">Remove</button>
                     <app-updateEventsModal style="float:  right;"
