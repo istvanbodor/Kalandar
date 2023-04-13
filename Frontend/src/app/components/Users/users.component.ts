@@ -18,7 +18,15 @@ export class UsersComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user))
+    this.authService.getProfile().subscribe({
+      next: (result: any[]) => {
+        this.user = result;
+      },
+      error: (error: any[]) => {
+        console.error('Error getting user profile =>', error);
+      }
+    });
+    this.users$ = this.authService.getUsersData().pipe(tap((user) => this.users = user )) 
   }
 
   ngOnDestroy(): void {
@@ -48,7 +56,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       });
   }
 
-  ChangeRole(id: string, body: any) {
+  ChangeRole(id: string, body: any) {  
     this.authService.updateRole(id, body)
       .subscribe({
         next: () => {
@@ -59,6 +67,6 @@ export class UsersComponent implements OnInit, OnDestroy {
         error: (error) => {
           console.log('Error! =>', error)
         }
-      });
+      });  
   }
 }
