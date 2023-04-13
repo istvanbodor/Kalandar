@@ -40,12 +40,12 @@
 		<button type="button" class="btn-close" aria-label="Close"
 			(click)="modal.dismiss('Cross click')"></button>
 	</div>
-	<div class="container mb-3 modalBodyStyle">
-			<div class="modal-body" *ngFor="let item of events$ | async;"> 
-				<div *ngIf="(item.startTime | date : 'd') === (item.startTime | date : 'd')"> <!-- -->
+	<div class="container mb-3 modalBodyStyle" *ngFor="let itemLocal of events$">
+			<div class="modal-body" *ngFor="let item of eventsApi | async;"> 
+				 <div>  <!-- *ngIf="item.id === itemLocal.id" -->
 				<div>
 					<img class="img-fluid " src="../../../../assets/kalandar.png"
-						alt="kalandar_Icon_Image" style="padding-top: 10%; width: 30%; height: 30%;">
+						alt="kalandar_Icon_Image" style="width: 30%; height: 30%;">
 				</div>
 				<div>
 					<!-- <span>{{modalData?.event |json}}</span> -->

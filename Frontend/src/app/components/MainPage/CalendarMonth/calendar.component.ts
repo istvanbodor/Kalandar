@@ -4,7 +4,7 @@ import { start } from '@popperjs/core';
 import { CalendarEventAction } from 'angular-calendar';
 import { CalendarEvent, EventColor } from 'calendar-utils';
 import { addDays, getDay, isSameDay, isSameMonth, parseISO } from 'date-fns';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Observable, Subject, map, pipe, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
 import { EventsModalComponent } from '../Modals/EventsModal/eventsModal.component';
 
@@ -40,6 +40,8 @@ export class CalendarMonthComponent implements OnInit{
 
   viewDate: Date = new Date();
 
+  eventsApi: any;
+
   events$: any;
 
   modalData: {
@@ -47,25 +49,11 @@ export class CalendarMonthComponent implements OnInit{
     event: CalendarEvent;
   } | undefined;
 
-  constructor(private authService: AuthService, private modal: NgbModal, private eventsModal: EventsModalComponent){}
+  constructor(private authService: AuthService, private modal: NgbModal){}
 
-  ngOnInit(): void { 
-    this.authService.getProfile().subscribe((user) =>{
-      this.events$ = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
-      }))
-    })
-  //   this.authService.getProfile()
-  //   .subscribe({
-  //     next: (result) => {
-
-  //     },
-  //     error: (error) => {
-  //       console.log('user events error => ', error)
-  //     }
-  //   })
-  }
 
   handleEvent(action: string, event: CalendarEvent): void {
+    this.modalData = { event, action };
     this.modal.open(this.modalContent);
   }
 
@@ -74,31 +62,28 @@ export class CalendarMonthComponent implements OnInit{
   events: Observable<CalendarEvent[]> =this.authService.getUserEvents(String(localStorage.getItem('userId')))
   .pipe(
     map((result: any) => result.map((event: any) => ({
+      id: event.id,
       title: event.event,
       start: parseISO(event.startTime),
       end: parseISO(event.endTime),
-      fullday: parseISO(event.fullDay),
-      allDay: event.fullDay,
-      
-      draggable: true
-    })))
-   
+      fullDay: event.fullDay,
+    }))) 
   )
-  
-  // [
-  //   {
-  //     title: 'asd',
-  //     start: new Date(),
-  //     end: addDays(new Date(), 3),
-  //     actions: this.actions,
-  //     resizable: {
-  //       beforeStart: true,
-  //       afterEnd: true,
-  //     },
-  //     draggable: true,
-  //   }
-  // ]
 
+  ngOnInit(): void { 
+    this.authService.getProfile().subscribe((user) =>{
+      this.eventsApi = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
+      }))
+
+      this.events.subscribe(result => {
+        this.events$ = result
+        console.log(this.events$)
+      })
+    })
+  }
+
+
+  
   activeDayIsOpen: boolean = true;
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -123,7 +108,7 @@ export class CalendarMonthComponent implements OnInit{
           this.authService.getProfile()
             .subscribe({
               next: (user) => {
-                this.events$ = this.authService
+                this.eventsApi = this.authService
                   .getUserEvents(String(user.id)).pipe()
               },
               error: (error) => {
