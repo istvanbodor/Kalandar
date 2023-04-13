@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, EventColor } from 'calendar-utils';
 import { isSameDay, isSameMonth, parseISO } from 'date-fns';
 import { Observable, Subject, map, pipe, tap } from 'rxjs';
@@ -104,13 +104,16 @@ export class CalendarBodyComponent implements OnInit {
               next: (user) => {
                 this.eventsApi = this.authService
                   .getUserEvents(String(user.id)).pipe()
-              },
+                  location.reload()
+                       },
               error: (error) => {
                 console.log('user events error => ', error)
               }
             })
         }
       })
+
+        
   }
 
   storeEventId(id: string) {
