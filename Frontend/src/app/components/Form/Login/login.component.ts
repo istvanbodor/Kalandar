@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit{
               location.reload()
             })
             // console.log(result)
-            this.router.navigate(['/calendar/month']);
+            this.router.navigate(['/calendar']);
           },
           error:(err : HttpErrorResponse) => {
             this.loginForm.reset({})
