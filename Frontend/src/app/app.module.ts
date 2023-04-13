@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './Service/users.component';
 import { IsAdminPipe, IsFullDay } from './components/CustomPipe/CustomPipe';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarMonthComponent } from './components/MainPage/CalendarBody/calendar.component';
+import { CalendarBodyComponent } from './components/MainPage/CalendarBody/calendar.component';
 import { EventsComponent } from './components/Events/events.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,7 +37,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     RegisterComponent,
     UsersComponent,
     addEventModalComponent,
-    CalendarMonthComponent,
+    CalendarBodyComponent,
     IsAdminPipe,
     IsFullDay,
     EventsComponent,

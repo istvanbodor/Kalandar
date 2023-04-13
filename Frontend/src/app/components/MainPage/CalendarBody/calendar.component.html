@@ -1,0 +1,73 @@
+<br>
+
+<app-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</app-calendar-header>
+
+<app-addEventModal></app-addEventModal>
+
+
+<div [ngSwitch]="view" class="calendarStlye"  *ngIf="events | async as events"> 
+	<!-- *ngIf="events | async as events" -->
+	<mwl-calendar-month-view
+	  *ngSwitchCase="'month'"
+	  [viewDate]="viewDate"
+	  [events]="events"
+	  [activeDayIsOpen]="true"
+	  [refresh]="refresh"
+	[activeDayIsOpen]="activeDayIsOpen"
+	(dayClicked)="dayClicked($event.day)"
+	(eventClicked)="handleEvent('Clicked', $event.event)"
+
+	>
+	</mwl-calendar-month-view>
+	<mwl-calendar-week-view
+	  *ngSwitchCase="'week'"
+	  [viewDate]="viewDate"
+	  [events]="events"
+	>
+	</mwl-calendar-week-view>
+	<mwl-calendar-day-view
+	  *ngSwitchCase="'day'"
+	  [viewDate]="viewDate"
+	  [events]="events"
+	>
+	</mwl-calendar-day-view>
+  </div>
+
+  <ng-template #modalContent let-modal $modal-lg: 80px !default;>
+	<div class="modal-header">
+		<h4 class="modal-title" id="eventModal">Events</h4>
+		<button type="button" class="btn-close" aria-label="Close"
+			(click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="container mb-3 modalBodyStyle"> <!--  *ngFor="let itemLocal of events$" -->
+			<div class="modal-body" *ngFor="let item of eventsApi | async;"> 
+				 <div>  <!-- *ngIf="item.id === itemLocal.id" -->
+				<div>
+					<img class="img-fluid " src="../../../../assets/kalandar.png"
+						alt="kalandar_Icon_Image" style="width: 30%; height: 30%;">
+				</div>
+				<div>
+					<!-- <span>{{modalData?.event |json}}</span> -->
+					<p class="TextStyle">Event title: <span class="eventTextStyle">{{item.event}}</span></p>
+                    <p class="TextStyle">Category: <span class="eventTextStyle">{{item.category}}</span></p>
+                    <p><span class="eventTextStyle">{{item.startTime | date}}</span> - <span class="eventTextStyle">{{item.endTime | date}}</span></p>
+                    <p class="TextStyle"><span class="eventTextStyle">{{item.address.city}}</span></p>
+                    <p class="TextStyle"><span class="eventTextStyle">{{item.address.country}}</span></p>
+                    <p class="TextStyle"><span class="eventTextStyle">{{item.address.zip}}</span></p>
+                    <p class="TextStyle"><span class="eventTextStyle">{{item.address.street}}</span></p>
+                    <p class="TextStyle"><span class="eventTextStyle">{{item.address.houseNumber}}</span></p>
+                    <p><span class="eventTextStyle">{{item.fullDay | IsFullDay}}</span></p>
+                    <button class="btn btn-danger btn-sm" (click)="DeleteEvent(item.id)"
+                        style="float: right; margin-left: 5px;">Remove</button>
+                    <app-updateEventsModal style="float:  right;"
+                        (click)="storeEventId(item.id)"></app-updateEventsModal>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-template>
+
+<div>&nbsp;</div>
+
+<!-- <app-events-modal></app-events-modal> -->
