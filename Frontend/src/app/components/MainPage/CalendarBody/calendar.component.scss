@@ -3,7 +3,7 @@
 $bg-dark-primary: #1f262d;
 $bg-dark-secondary: #394046;
 $bg-active: #2c343a;
-$text-color: #d5d6d7 !important;
+$text-color: #d5d6d7 ;
 $border-color: rgba(0, 0, 0, 0.6);
 
 @include cal-theme(
@@ -22,7 +22,7 @@ $border-color: rgba(0, 0, 0, 0.6);
 
 .cal-month-view .cal-cell .cal-event {
   pointer-events: all !important;
-  background-color: green;
+  background-color: #B58240;
 }
 
 .cal-month-view .cal-day-number {
@@ -59,6 +59,22 @@ $border-color: rgba(0, 0, 0, 0.6);
 .cal-event-title{
   color: gray;
 }
+
+.TextColor{
+  color: white;
+}
+
+.modalBodyStyle{
+  border: 1px solid black;
+  background-color: #212529;
+  color:  white;
+}
+
+.eventTextStyle {
+  color: #B58240;
+  font-weight: bolder;
+}
+
 
 // .cal-cell-top, mwl-calendar-month-cell{
 //   background-color: #1f262d;
