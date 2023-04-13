@@ -5,7 +5,8 @@ import {LoginComponent} from './components/Form/Login/login.component'
 import { RegisterComponent } from './components/Form/Register/register.component';
 import { CalendarBodyComponent } from './components/MainPage/CalendarBody/calendar.component';
 import { ProfileComponent } from './components/Profile/profile.component';
-import { UsersComponent } from './Service/users.component';
+import { UsersComponent } from './components/Users/users.component';
+
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},

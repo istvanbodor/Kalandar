@@ -8,7 +8,7 @@ import { LayoutComponent } from './components/Link_layout/layout.component';
 import { RegisterComponent } from './components/Form/Register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersComponent } from './Service/users.component';
+import { UsersComponent } from './components/Users/users.component';
 import { IsAdminPipe, IsFullDay } from './components/CustomPipe/CustomPipe';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarBodyComponent } from './components/MainPage/CalendarBody/calendar.component';
@@ -27,6 +27,7 @@ import { CalendarHeaderComponent } from './components/MainPage/CalendarHeader/ca
 import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEventModal/updateEventModal.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 
 
 @NgModule({

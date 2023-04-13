@@ -1,7 +1,7 @@
 import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
-import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Service/auth.service';
 
 
 @Component({
