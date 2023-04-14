@@ -1,100 +1,100 @@
-<button class="btn btn-primary btn-sm" (click)="open(content)">Modify</button>
-    <ng-template #content let-modal $modal-lg: 80px !default;>
-      <div class="modal-header">
-        <h4 class="modal-title" id="eventModal">Modify event</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+<button class="btn btn-primary btn-sm" (click)="openModal(content, selectedValue)">Modify</button>
+<ng-template #content let-modal $modal-lg: 80px !default; >
+  <div class="modal-header" >
+    <h4 class="modal-title" id="eventModal">Modify event</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" class="modalBodyStyle">
+    <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
+      <div class="form-group mb-3" style="float: right;">
+        <label>Fullday: </label>
+        <input type="checkbox" class="form-check-input" formControlName="fullDay" style="margin-left: 5px;">
       </div>
-      <div class="modal-body">
-        <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
-          <div class="form-group mb-3" style="float: right;">
-            <label>Fullday: </label>
-            <input type="checkbox" class="form-check-input" formControlName="fullDay" style="margin-left: 5px;">
-          </div>
+      <div class="mb-3">
+        <label for="eventNameLabel">Event Name</label>
+        <input type="text" class="form-control" id="eventNameLabel" placeholder="Event name" formControlName="event">
+        <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is
+          not
+          valid!</strong>
+      </div>
+      <div class="mb-3">
+        <label>Start time</label>
+        <input type="datetime-local" class="form-control" formControlName="startTime">
+        <strong class="errorMessage"
+          *ngIf="startTime && startTime.invalid && startTime.touched && startTime.errors">This date is not
+          valid!</strong>
+      </div>
+      <div class="mb-3">
+        <label>End time</label>
+        <input type="datetime-local" class="form-control" formControlName="endTime">
+        <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This
+          date
+          is not valid!</strong>
+        <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
+      </div>
+      <div class="mb-3">
+        <label>Categories</label>
+        <select class="form-control" formControlName="category">
+          <option value="Sport">Sport</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Hobby">Hobby</option>
+          <option value="Work">Work</option>
+        </select>
+      </div>
+      <div class="mb-3" formGroupName="address">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Address
+            </mat-panel-title>
+            <mat-panel-description>
+              Please add the address for the event
+            </mat-panel-description>
+          </mat-expansion-panel-header>
           <div class="mb-3">
-            <label for="eventNameLabel">Event Name</label>
-            <input type="text" class="form-control" id="eventNameLabel" placeholder="Event name" formControlName="event">
-            <strong class="errorMessage" *ngIf="event && event.invalid && event.touched && event.errors">This title is
-              not
-              valid!</strong>
-          </div>
-          <div class="mb-3">
-            <label>Start time</label>
-            <input type="datetime-local" class="form-control" formControlName="startTime">
-            <strong class="errorMessage"
-              *ngIf="startTime && startTime.invalid && startTime.touched && startTime.errors">This date is not
-              valid!</strong>
-          </div>
-          <div class="mb-3">
-            <label>End time</label>
-            <input type="datetime-local" class="form-control" formControlName="endTime">
-            <strong class="errorMessage" *ngIf="endTime && endTime.invalid && endTime.touched && endTime.errors">This
-              date
+            <label>City: </label>
+            <input type="text" class="form-control" formControlName="city">
+            <strong class="errorMessage" *ngIf="city && city.invalid && city.touched && city.errors">This city name
               is not valid!</strong>
-            <strong class="errorMessage" *ngIf="dateValueError">Start date ends earlier than the end date!</strong>
           </div>
           <div class="mb-3">
-            <label>Categories</label>
-            <select class="form-control" formControlName="category">
-              <option value="Sport">Sport</option>
-              <option value="Groceries">Groceries</option>
-              <option value="Hobby">Hobby</option>
-              <option value="Work">Work</option>
-            </select>
+            <label>Country: </label>
+            <input type="text" class="form-control" formControlName="country">
+            <strong class="errorMessage" *ngIf="country && country.invalid && country.touched && country.errors">This
+              country name
+              is not valid!</strong>
           </div>
-          <div class="mb-3" formGroupName="address">
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Address
-                </mat-panel-title>
-                <mat-panel-description>
-                  Please add the address for the event
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="mb-3">
-                <label>City: </label>
-                <input type="text" class="form-control" formControlName="city">
-                <strong class="errorMessage" *ngIf="city && city.invalid && city.touched && city.errors">This city name
-                  is not valid!</strong>
-              </div>
-              <div class="mb-3">
-                <label>Country: </label>
-                <input type="text" class="form-control" formControlName="country">
-                <strong class="errorMessage" *ngIf="country && country.invalid && country.touched && country.errors">This
-                  country name
-                  is not valid!</strong>
-              </div>
-              <div class="mb-3">
-                <label>Zip: </label>
-                <input type="text" class="form-control" formControlName="zip">
-                <strong class="errorMessage" *ngIf="zip && zip.invalid && zip.touched && zip.errors">This
-                  zip
-                  is not valid!</strong>
-              </div>
-              <div class="mb-3">
-                <label>street: </label>
-                <input type="text" class="form-control" formControlName="street">
-                <strong class="errorMessage" *ngIf="street && street.invalid && street.touched && street.errors">This
-                  street name
-                  is not valid!</strong>
-              </div>
-              <div class="mb-3">
-                <label>House number: </label>
-                <input type="text" class="form-control" formControlName="houseNumber">
-                <strong class="errorMessage"
-                  *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
-                  house number
-                  is not valid!</strong>
-              </div>
-            </mat-expansion-panel>
+          <div class="mb-3">
+            <label>Zip: </label>
+            <input type="text" class="form-control" formControlName="zip">
+            <strong class="errorMessage" *ngIf="zip && zip.invalid && zip.touched && zip.errors">This
+              zip
+              is not valid!</strong>
           </div>
-          <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary"
-            (click)="modal.close('Save click') " style="float: right; margin-bottom: 5px;">Save</button>
-        </form>
-        <div class="modal-footer">
-        </div>
+          <div class="mb-3">
+            <label>street: </label>
+            <input type="text" class="form-control" formControlName="street">
+            <strong class="errorMessage" *ngIf="street && street.invalid && street.touched && street.errors">This
+              street name
+              is not valid!</strong>
+          </div>
+          <div class="mb-3">
+            <label>House number: </label>
+            <input type="text" class="form-control" formControlName="houseNumber">
+            <strong class="errorMessage"
+              *ngIf="houseNumber && houseNumber.invalid && houseNumber.touched && houseNumber.errors">This
+              house number
+              is not valid!</strong>
+          </div>
+        </mat-expansion-panel>
       </div>
-    </ng-template>
+      <div class="modal-footer" style="background-color: white;">
+        <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary"
+        (click)="modal.close('Save click') " style="float: right;">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
 
-  
-  <pre>{{ closeResult }}</pre>
+
+<pre>{{ closeResult }}</pre>
