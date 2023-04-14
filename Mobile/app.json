@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/kalandar_icon.png",
         "backgroundColor": "#121212"
-      }
+      },
+      "package": "wv.kalandar.mobile"
     },
     "web": {
       "favicon": "./assets/kalandar_icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "faa7b5e0-46a5-4240-b27e-b1fddd13a0f4"
+      }
     }
   }
 }

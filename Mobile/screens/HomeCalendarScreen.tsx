@@ -10,7 +10,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import { AddEventDto } from '../interfaces/AddEventDto';
 import { Picker } from '@react-native-picker/picker';
 import CheckBox from 'react-native-check-box'
-import { event, set } from 'react-native-reanimated';
 
 
 export default function HomeCalendarScreen() {
@@ -21,11 +20,26 @@ export default function HomeCalendarScreen() {
   const [toMarkDates, setToMarkDates] = useState<string[]>([])
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   const [addModalVisible, setAddModalVisible] = useState<boolean>(false)
+  const [editId, setEditId] = useState<string>()
   const [markedDates, setMarkedDates] = useState<MarkedDates>({
     [selectedDay]: {
       selected: true,
       selectedColor: '#FFD700',
     },
+  })
+  const [editEvent, setEditEvent] = useState<AddEventDto>({
+    event: '',
+    category: 'Testcategory',
+    startTime: '',
+    endTime: '',
+    fullDay: false,
+    address: {
+      country: '',
+      city: '',
+      street: '',
+      houseNumber: '',
+      zip: ''
+    }
   })
   const defdata = {
     event: '',
@@ -154,21 +168,21 @@ export default function HomeCalendarScreen() {
 
   const handleEventForm = async () => {
     if (
-      !(eventFormData.address.city.length>0&&eventFormData.address.country.length>0&&eventFormData.address.houseNumber.length>0&&eventFormData.address.street.length>0&&eventFormData.address.zip.length>0)
+      !(eventFormData.address.city.length > 0 && eventFormData.address.country.length > 0 && eventFormData.address.houseNumber.length > 0 && eventFormData.address.street.length > 0 && eventFormData.address.zip.length > 0)
     ) {
 
       setEventFormData({
         ...eventFormData,
         address: {
-        country: '',
-        city: '',
-        street: '',
-        houseNumber: '',
-        zip: ''
+          country: '',
+          city: '',
+          street: '',
+          houseNumber: '',
+          zip: ''
         }
       })
     }
-    
+
     const testTimes: RegExp = /^\d{2}:\d{2}$/
     if (eventFormData.fullDay && eventFormData.event.length > 0 && !testTimes.test(eventFormData.startTime)) {
       await axios.post(BaseUrl + "/api/events/user", {
@@ -198,9 +212,9 @@ export default function HomeCalendarScreen() {
       })
         .catch((e) => console.log(e))
 
-        setEventFormData(defdata)
+      setEventFormData(defdata)
     }
-    else if (eventFormData.fullDay && eventFormData.event.length > 0 && testTimes.test(eventFormData.startTime) && eventFormData.endTime.length==0) {
+    else if (eventFormData.fullDay && eventFormData.event.length > 0 && testTimes.test(eventFormData.startTime) && eventFormData.endTime.length == 0) {
       await axios.post(BaseUrl + "/api/events/user", {
         ...eventFormData,
         startTime: selectedDay + 'T' + eventFormData.startTime,
@@ -210,12 +224,12 @@ export default function HomeCalendarScreen() {
       })
         .catch((e) => console.log(e))
 
-        setEventFormData(defdata)
+      setEventFormData(defdata)
     }
-    else{
+    else {
       ToastAndroid.showWithGravity('Not a valid event', 2000, ToastAndroid.CENTER)
     }
-   
+
 
 
 
@@ -225,10 +239,13 @@ export default function HomeCalendarScreen() {
 
   }
 
-  const editPress = ()=>{
-        setEditing(true)
-        setAddModalVisible(true);
-        
+  const editPress = (item: AddEventDto, id: string) => {
+    setEditing(true)
+    setEventFormData(item)
+    setEditId(id)
+    console.log(item)
+    setAddModalVisible(true);
+
   }
 
 
@@ -239,6 +256,17 @@ export default function HomeCalendarScreen() {
     setEditing(false)
   }
 
+  const handleEditEvent = async () => {
+
+    await axios.put(BaseUrl + "/api/events/" + editId, eventFormData, config).then(() => {
+      ToastAndroid.showWithGravity("Updated", 2000, ToastAndroid.CENTER)
+      setEventFormData(defdata)
+    })
+      .catch((e) => { console.log(e), ToastAndroid.showWithGravity("Failed to update", 2000, ToastAndroid.CENTER) })
+    await fetchEvents()
+
+
+  }
 
   return (
     <>
@@ -302,10 +330,16 @@ export default function HomeCalendarScreen() {
                 </View>
 
               </View>
-              <TouchableOpacity onPress={() => handleEventForm()} activeOpacity={0.7} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Add event</Text>
+              {
+                editing ? <TouchableOpacity onPress={() => handleEditEvent()} activeOpacity={0.7} style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>Edit event</Text>
+                </TouchableOpacity> :
+                  <TouchableOpacity onPress={() => handleEventForm()} activeOpacity={0.7} style={styles.buttonContainer}>
+                    <Text style={styles.buttonText}>Add event</Text>
+                  </TouchableOpacity>
 
-              </TouchableOpacity>
+              }
+
             </View>
           </View>
 
@@ -331,8 +365,8 @@ export default function HomeCalendarScreen() {
                     return (
                       <View key={i} style={styles.item}>
                         <View style={styles.itemleft}>
-                          {item.fullDay&&item.startTime.slice(11,16)=='00:00' ? <Text style={styles.clockText}><Feather name='clock' /> All day!</Text> :
-                            <Text style={styles.clockText}><Feather size={15} name='clock' /> {item.startTime.slice(11, 16)} - {item.endTime?item.endTime.slice(11, 16):''}</Text>
+                          {item.fullDay && item.startTime.slice(11, 16) == '00:00' ? <Text style={styles.clockText}><Feather name='clock' /> All day!</Text> :
+                            <Text style={styles.clockText}><Feather size={15} name='clock' /> {item.startTime.slice(11, 16)} - {item.endTime ? item.endTime.slice(11, 16) : ''}</Text>
 
                           }
                           <View>
@@ -348,14 +382,27 @@ export default function HomeCalendarScreen() {
                         <View style={styles.itemright}>
                           <View>
                             {
-                              item.address ? <Text style={{ fontSize: 10, fontWeight: 'bold' }}><Feather color={'black'} size={20} name='map-pin' />{item.address.city} {item.address.street} {item.address.houseNumber} {item.address.country}</Text> :
+                              item.address ? <Text style={{ fontSize: 10, fontWeight: 'bold' }}><Feather color={'black'} size={20} name='map-pin' />{item.address.city} {item.address.zip} {item.address.street} {item.address.houseNumber} {item.address.country}</Text> :
                                 <Text><Feather color={'black'} size={20} name='map-pin' /></Text>
                             }
 
                           </View>
 
                           <View style={{ flexDirection: 'row' }}>
-                            <TouchableOpacity onPress={()=>editPress()}>
+                            <TouchableOpacity onPress={() => editPress({
+                              event: item.event,
+                              startTime: item.startTime,
+                              endTime: item.endTime,
+                              category: item.category,
+                              fullDay: JSON.parse(item.fullDay),
+                              address: item.address ? item.address : {
+                                country: '',
+                                city: '',
+                                street: '',
+                                houseNumber: '',
+                                zip: ''
+                              }
+                            }, item.id)}>
                               <Feather color={'blue'} size={20} name='edit' />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => handleDeleteEvent(item.id)} style={{ paddingRight: 5, paddingLeft: 15 }}>
