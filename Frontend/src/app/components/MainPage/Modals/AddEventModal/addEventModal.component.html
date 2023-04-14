@@ -4,7 +4,7 @@
       <h4 class="modal-title" id="eventModal">Add new event</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body modalBodyStyle">
       <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
         <div class="form-group mb-3" style="float: right;">
           <label>Fullday: </label>
@@ -88,11 +88,11 @@
             </div>
           </mat-expansion-panel>
         </div>
+        <div class="modal-footer">
         <button [disabled]="eventForm.invalid" type="submit" class="btn btn-outline-primary"
-          (click)="modal.close('Save click')" style="float: right; margin-bottom: 5px;">Save</button>
+        (click)="modal.close('Save click')" style="float: right; margin-bottom: 5px;">Save</button>
+        </div>
       </form>
-      <div class="modal-footer">
-      </div>
     </div>
   </ng-template>
 </div>
