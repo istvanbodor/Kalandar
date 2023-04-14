@@ -14,16 +14,7 @@ export class AuthService {
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-
-  auth_token = localStorage.getItem('token')
-
-  headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth_token}`
-    });
-
-  requestOptions = { headers: this.headers };
-
+  expired = false;
 
   user: any
   admin:boolean = true
@@ -46,21 +37,40 @@ export class AuthService {
         })
       )
   }
-  
   getUsersData() {
-    return this.http.get(this.url + `api/admin/users`, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.get(this.url + `api/admin/users`, { headers: headers })
   }
 
   getProfile(): Observable<any> {
-    return this.http.get<any>(this.url + `api/user/profile`, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.get<any>(this.url + `api/user/profile`, { headers: headers })
   }
 
    getUserEvents(id: string){
-    return this.http.get(this.url + `api/events/user/${id}`, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.get(this.url + `api/events/user/${id}`, { headers: headers })
   }
 
   getAllEvents(){
-    return this.http.get(this.url + `api/events`, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.get(this.url + `api/events`, { headers: headers })
   }
 
 
@@ -76,28 +86,53 @@ export class AuthService {
   }
 
   registerEvent(data: any) {
-    return this.http.post<any>(this.url + `api/events`, data, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.post<any>(this.url + `api/events`, data, { headers: headers })
   }
 
   deleteEvent(id: string){
-    return this.http.delete(this.url + `api/events/${id}`, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.http.delete(this.url + `api/events/${id}`, { headers: headers })
   }
 
   async updateEvent(id : string, body: any){
-    const requestOptions = {headers: {authorization: `Bearer ${this.auth_token}`}}
-    axios.put(this.url + `api/events/${id}`, body, requestOptions)
+    const auth_token = localStorage.getItem('token')
+    axios.put(this.url + `api/events/${id}`, body, {headers: {authorization: `Bearer ${auth_token}`}})
   }
 
   deleteUser(id: string) {
-    return this.http.delete(this.url + `api/admin/user/${id}`, this.requestOptions);
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.delete(this.url + `api/admin/user/${id}`, { headers: headers });
   }
 
   updateRole(id: string, body: any) {
-    return this.http.put(this.url + `api/admin/role/user/${id}`, body, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.put(this.url + `api/admin/role/user/${id}`, body, { headers: headers })
   }
 
   changePassword(password: string) {
-    return this.http.put(this.url + `api/user/password`, { password }, this.requestOptions)
+    const auth_token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.http.put(this.url + `api/user/password`, { password }, { headers: headers })
   }
 
 }
