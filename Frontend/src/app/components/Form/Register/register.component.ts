@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
 import { UsersApiService } from 'src/app/Service/users.service';
@@ -13,22 +13,22 @@ export class RegisterComponent implements OnInit {
   alert: boolean = false;
 
 
-  constructor(private userApiService:UsersApiService) {}
+  constructor(private userApiService: UsersApiService) { }
 
   ngOnInit(): void {
-  
+
   }
 
   registerForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
-    lastName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.pattern('[a-zA-Z]+$')]),
-    username: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    password: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    confirmPassword: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    email: new FormControl('', [Validators.required,Validators.email]),
+    firstName: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern('[a-zA-Z]+$')]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern('[a-zA-Z]+$')]),
+    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
 
   },
-  [CustomValidators.MatchValidator('password', 'confirmPassword')])
+    [CustomValidators.MatchValidator('password', 'confirmPassword')])
 
   get firstName() {
     return this.registerForm.get('firstName')
@@ -62,17 +62,16 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  userData(){
+  userData() {
     console.warn(this.registerForm.value)
     this.userApiService.registerUser(this.registerForm.value)
-    .subscribe((result) => {
-      console.warn("User data",result)
-      this.alert = true
-      this.registerForm.reset({})
-    }) 
+      .subscribe((result) => {
+        this.alert = true
+        this.registerForm.reset({})
+      })
   }
-  
-  closeAlert(){
+
+  closeAlert() {
     this.alert = false
   }
 }
