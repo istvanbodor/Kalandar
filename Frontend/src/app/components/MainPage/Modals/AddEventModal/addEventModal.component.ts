@@ -40,7 +40,7 @@ export class addEventModalComponent implements OnInit {
   eventForm = new FormGroup({
     event: new FormControl('', [Validators.required, Validators.minLength(3)]),
     startTime: new FormControl('', Validators.required),
-    endTime: new FormControl(''),
+    endTime: new FormControl('', Validators.required), 
     fullDay: new FormControl(''),
     category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     address: new FormGroup({
