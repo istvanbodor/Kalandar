@@ -4,21 +4,7 @@ import { CalendarEvent, EventColor } from 'calendar-utils';
 import { isSameDay, isSameMonth, parseISO } from 'date-fns';
 import { Observable, Subject, map, pipe, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
-
-const colors: Record<string, EventColor> = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+import { colors } from './colors';
 
 @Component({
   selector: 'app-calendar-month',
@@ -56,14 +42,21 @@ export class CalendarBodyComponent implements OnInit {
 
   refresh = new Subject<void>();
 
+  
   events: Observable<CalendarEvent[]> = this.authService.getUserEvents(String(localStorage.getItem('userId')))
     .pipe(
-      map((result: any) => result.map((event: any) => ({
+      map((result: any) => result.map((event: any, index: number) => ({
         id: event.id,
         title: event.event,
         start: parseISO(event.startTime),
         end: parseISO(event.endTime),
         fullDay: event.fullDay,
+        category: event.category,
+        color: event.category === 'Groceries' ? colors.green :
+        event.category === 'Sport' ? colors.yellow :
+        event.category === 'Hobby'? colors.red :
+        event.category === 'Work' ? colors.blue :
+        {primary: '#B58240', secondary: '#B58240'}
       })))
     )
 
@@ -74,12 +67,12 @@ export class CalendarBodyComponent implements OnInit {
 
       this.events.subscribe(result => {
         this.events$ = result
-        console.log(this.events$)
+        
       })
     })
   }
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

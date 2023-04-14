@@ -7,7 +7,6 @@
 
 
 <div [ngSwitch]="view" class="calendarStlye"  *ngIf="events | async as events"> 
-	<!-- *ngIf="events | async as events" -->
 	<mwl-calendar-month-view
 	  *ngSwitchCase="'month'"
 	  [viewDate]="viewDate"
