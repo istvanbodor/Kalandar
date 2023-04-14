@@ -56,11 +56,13 @@ export default function ProfileScreen() {
     else {
       const config = {
         headers: {
-          Authorization: 'Bearer '+token
+          Authorization: 'Bearer '+token?.token
         }
       }
       await axios.put(BaseUrl+'/api/user/password', {password: password}, config).then(()=>{
         ToastAndroid.showWithGravity('Password changed!', 2000, ToastAndroid.CENTER)
+        setPassword('')
+        setPassword2('')
       })
       .catch(e=>{
         console.log(e);
