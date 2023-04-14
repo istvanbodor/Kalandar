@@ -7,7 +7,6 @@ mat-expansion-panel,
 mat-expansion-panel,
 mat-panel-description,
 mat-panel-title {
-
   background-color: #212529;
   color: #B58240;;
 }
@@ -22,4 +21,8 @@ mat-panel-title {
 input {
   color: #B58240;
   font-weight: bolder;
+}
+
+select{
+  color: #B58240;;
 }
