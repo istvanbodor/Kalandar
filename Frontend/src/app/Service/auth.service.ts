@@ -37,6 +37,7 @@ export class AuthService {
         })
       )
   }
+
   getUsersData() {
     const auth_token = localStorage.getItem('token')
     const headers = new HttpHeaders({
@@ -61,6 +62,8 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
+
+
     return this.http.get(this.url + `api/events/user/${id}`, { headers: headers })
   }
 
@@ -91,6 +94,8 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
+
+
     return this.http.post<any>(this.url + `api/events`, data, { headers: headers })
   }
 

@@ -29,7 +29,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +44,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ProfileComponent,
     EventsModalComponent,
     CalendarHeaderComponent,
-    UpdateEventModalComponent
+    UpdateEventModalComponent,
   ],
   imports: [
     BrowserModule,
