@@ -5,6 +5,7 @@ import { isSameDay, isSameMonth, parseISO } from 'date-fns';
 import { Observable, Subject, map, pipe, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
 import { colors } from './colors';
+import { CalendarEventTimesChangedEvent } from 'angular-calendar';
 
 @Component({
   selector: 'app-calendar-month',
@@ -39,9 +40,6 @@ export class CalendarBodyComponent implements OnInit {
     this.modalData = { event, action };
     this.modal.open(this.modalContent);
   }
-
-  refresh = new Subject<void>();
-
   
   events: Observable<CalendarEvent[]> = this.authService.getUserEvents(String(localStorage.getItem('userId')))
     .pipe(
@@ -52,6 +50,7 @@ export class CalendarBodyComponent implements OnInit {
         end: parseISO(event.endTime),
         fullDay: event.fullDay,
         category: event.category,
+        draggable: true,
         color: event.category === 'Groceries' ? colors.green :
         event.category === 'Sport' ? colors.yellow :
         event.category === 'Hobby'? colors.red :
@@ -60,14 +59,29 @@ export class CalendarBodyComponent implements OnInit {
       })))
     )
 
+    refresh = new Subject<void>();
+
+    eventTimesChanged({
+      event,
+      newStart,
+      newEnd,
+    }: CalendarEventTimesChangedEvent): void {
+      event.start = newStart;
+      event.end = newEnd;
+
+      const eventId = event.id;
+      const startTime = newStart;
+      const endTime = newEnd;
+      this.authService.updateEvent(String(eventId), {startTime, endTime})
+        this.refresh.next()
+    }
+    
   ngOnInit(): void {
     this.authService.getProfile().subscribe((user) => {
       this.eventsApi = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
       }))
-
       this.events.subscribe(result => {
         this.events$ = result
-        
       })
     })
   }
@@ -104,9 +118,7 @@ export class CalendarBodyComponent implements OnInit {
               }
             })
         }
-      })
-
-        
+      })       
   }
 
   storeEventId(id: string) {
