@@ -12,10 +12,10 @@ import { AuthService } from "src/app/Service/auth.service";
     styleUrls: ['./updateEventModal.component.css']
 })
 
-export class UpdateEventModalComponent{
+export class UpdateEventModalComponent implements OnInit {
 
     closeResult = '';
-    events$: any
+    event$: any
     user: any
 
     date: string;
@@ -32,25 +32,30 @@ export class UpdateEventModalComponent{
     constructor(private modalService: NgbModal, private authService: AuthService, private location: Location) {
         this.date = new Date().toISOString().slice(0, 16);
     }
+
     eventForm = new FormGroup({
         event: new FormControl('', Validators.minLength(3)),
         startTime: new FormControl(''),
         endTime: new FormControl(''),
         fullDay: new FormControl(''),
-        category: new FormControl('', [ Validators.pattern('[a-zA-Z]+$')]),
+        category: new FormControl('', [Validators.pattern('[a-zA-Z]+$')]),
         address: new FormGroup({
-          city: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
-          country: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
-          zip: new FormControl(''),
-          street: new FormControl(''),
-          houseNumber: new FormControl(''),
+            city: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
+            country: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
+            zip: new FormControl(''),
+            street: new FormControl(''),
+            houseNumber: new FormControl(''),
         }),
         user: new FormGroup({
-          id: new FormControl(localStorage.getItem('userId'))
+            id: new FormControl(localStorage.getItem('userId'))
         })
-      },
+    },
         [CustomValidators.IsBiggerDateValidator('startTime', 'endTime')],
-      )
+    )
+
+    ngOnInit(): void {
+
+    }
 
     get event() {
         return this.eventForm.get('event')
@@ -97,12 +102,14 @@ export class UpdateEventModalComponent{
         return this.eventForm.get('houseNumber')
     }
 
-    open(content: any) {
+    openModal(content: any) {
+
         this.modalService.open(content, { ariaLabelledBy: 'eventModal' }).result.then(
-            (result) => {
+
+            (result: any) => {
                 console.log(`closed with: ${result}`);
             },
-            (reason) => {
+            (reason: any) => {
                 console.log(`Dismissed ${this.getDismissReason(reason)}`);
             }
         );
@@ -122,29 +129,8 @@ export class UpdateEventModalComponent{
     }
 
     submitEvent() {
-        this.authService.updateEvent(String(localStorage.getItem('eventId')) , this.eventForm.value)
+        this.authService.updateEvent(String(localStorage.getItem('eventId')), this.eventForm.value)
         localStorage.removeItem('eventId')
         location.reload()
-        // .subscribe({
-        //     next: (user: any) => {
-        //       this.events$ = this.authService
-        //         .getUserEvents(String(user.id)).pipe(tap((result) => {
-        //           // this.events = result
-        //           // console.log(this.events)
-        //         }))
-        //     },
-        //     error: (error: any) => {
-        //       console.log('user events error => ', error)
-        //     }
-        //   })
-
-            // .subscribe({
-            //     next: () => {
-            //         console.warn("Update event data =>", this.eventForm.value)
-            //         this.eventForm.reset({})
-            //         localStorage.removeItem('eventId')
-            //     },
-            //     error: (error) => console.log('Error =>', error)
-            // })
     }
 }
