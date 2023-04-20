@@ -1,25 +1,27 @@
 <form class="container" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <h1>{{title}}</h1>
   <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
-  <div *ngIf="alert"  class="alert alert alert-danger alert-dismissible fade show" role="alert" style="text-align: center;">
+  <div *ngIf="alert" class="alert alert alert-danger alert-dismissible fade show" role="alert"
+    style="text-align: center;">
     <strong>Invaid username or password</strong>
     <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
-    <strong aria-hidden="true">&times;</strong>
-    </button>   
-    </div>
-    <div class="form-group mb-3">
-      <label for="EmailLabel">Email</label>
-      <input type="email" class="form-control" id="EmailLabel" placeholder="Email" formControlName="email">
-      <strong class="errorMessage" *ngIf="email && email.invalid && email.touched && email.errors">This email is not valid!</strong>
-    </div>
-    <div class="form-group mb-3">
-      <label for="passwordLabel" >Password</label>
-      <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password" autocomplete="on">
-      <strong class="errorMessage" *ngIf="password && password.invalid && password.touched && password.errors">This Password is not valid!</strong>
-    </div>
-    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
+      <strong aria-hidden="true">&times;</strong>
+    </button>
+  </div>
+  <div class="form-group mb-3">
+    <label for="EmailLabel">Email</label>
+    <input type="email" class="form-control" id="EmailLabel" placeholder="Email" formControlName="email">
+    <strong class="errorMessage" *ngIf="email && email.invalid && email.touched && email.errors">This email is not
+      valid!</strong>
+  </div>
+  <div class="form-group mb-3">
+    <label for="passwordLabel">Password</label>
+    <input type="password" class="form-control" id="passwordLabel" placeholder="Password" formControlName="password"
+      autocomplete="on">
+    <strong class="errorMessage" *ngIf="password && password.invalid && password.touched && password.errors">This
+      Password is not valid!</strong>
+  </div>
+  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
 
-    <span class="formTexts">Dont have an account yet?<a routerLink="/register"> Register</a></span>
-  </form>
-
-
+  <span class="formTexts">Dont have an account yet?<a routerLink="/register"> Register</a></span>
+</form>

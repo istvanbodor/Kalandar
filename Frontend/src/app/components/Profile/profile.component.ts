@@ -25,8 +25,6 @@ export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) {
   }
 
-
-
   passwordChangeForm = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)])
