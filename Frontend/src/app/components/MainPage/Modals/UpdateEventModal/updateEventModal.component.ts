@@ -43,8 +43,8 @@ export class UpdateEventModalComponent implements OnInit {
             city: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
             country: new FormControl('', Validators.pattern('[a-zA-Z]+$')),
             zip: new FormControl(''),
-            street: new FormControl(''),
-            houseNumber: new FormControl(''),
+            street: new FormControl('',Validators.pattern('[a-zA-Z]+$')),
+            houseNumber: new FormControl('',Validators.pattern('^[0-9]*$'))
         }),
         user: new FormGroup({
             id: new FormControl(localStorage.getItem('userId'))
