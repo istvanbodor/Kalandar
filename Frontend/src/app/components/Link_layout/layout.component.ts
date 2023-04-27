@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CommunicationService } from 'src/app/Service/communication.service';
 
@@ -13,14 +13,12 @@ export class LayoutComponent {
   activePath: string = '';
   activeClassName: string = '';
 
+  constructor(public _authService: AuthService, private router: Router, public communicationService: CommunicationService) {}
+
   isNightMode = false;
 
   toggleBackground() {
     this.isNightMode = !this.isNightMode;
     this.communicationService.toggleBackground(this.isNightMode);
-  }
-
-  constructor(public _authService: AuthService, private router: Router, public communicationService: CommunicationService) {
-
-  }
+  } 
 }

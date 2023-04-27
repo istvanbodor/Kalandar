@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
 import { UsersApiService } from 'src/app/Service/users.service';
 import { AuthService } from 'src/app/Service/auth.service';
-import { tap } from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
