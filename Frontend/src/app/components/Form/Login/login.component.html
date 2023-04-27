@@ -2,7 +2,7 @@
   <h1>{{title}}</h1>
   <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
   <div *ngIf="alert" class="alert alert alert-danger alert-dismissible fade show" role="alert"
-    style="text-align: center;">
+    id="alertPanel">
     <strong>Invaid username or password</strong>
     <button (click)="closeAlert()" type="button" class="btn" data-dismiss="alert" aria-label="Close">
       <strong aria-hidden="true">&times;</strong>

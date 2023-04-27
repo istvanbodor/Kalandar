@@ -33,9 +33,9 @@
                             class="eventTextStyle">{{item.address.street}}</span></p>
                     <p class="TextStyle"><span>{{item.address.houseNumber === '' ? '': 'House number: '}}</span> <span
                             class="eventTextStyle">{{item.address.houseNumber}}</span></p>
-                    <button class="btn btn-danger btn-sm" (click)="DeleteEvent(item.id)"
+                    <button class="btn btn-danger btn-sm" (click)="deleteEvent(item.id)"
                         id="deleteButton">Remove</button>
-                    <app-updateEventsModal id="updateModal" (click)="EventId(item.id)"></app-updateEventsModal>
+                    <app-updateEventsModal id="updateModal" (click)="eventId(item.id)"></app-updateEventsModal>
                 </div>
             </div>
         </div>

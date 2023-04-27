@@ -36,15 +36,9 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin() {
-
-    console.warn(this.loginForm.value)
-
-    if (this.loginForm.invalid) {
-      this.alert = true;
-    } else {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
-
+      
       if (email && password) {
         this.authService
           .login(email, password)
@@ -56,7 +50,6 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('userRole', this.user.role)
                 location.reload()
               })
-              // console.log(result)
               this.router.navigate(['/calendar']);
             },
             error: (err: HttpErrorResponse) => {
@@ -67,13 +60,9 @@ export class LoginComponent implements OnInit {
           });
       }
     }
-  }
 
   closeAlert() {
     this.alert = false;
   }
-
-
-
 }
 
