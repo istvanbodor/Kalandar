@@ -1,8 +1,8 @@
-<form class="container" [formGroup]="registerForm" (ngSubmit)="userData()" style="margin-top: 40px;">
+<form class="container" [formGroup]="registerForm" (ngSubmit)="submitRegistration()" style="margin-top: 40px;">
   <h1>{{title}}</h1>
   <img class="img-fluid kalandarImage" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image">
   <div *ngIf="alert" class="alert alert alert-success alert-dismissible fade show" role="alert"
-    style="text-align: center;">
+    id="alertPanel">
     <strong>Success !</strong>
     <br>
     <span>Congratulations, your account has been successfully created.</span>

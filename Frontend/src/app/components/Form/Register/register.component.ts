@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../CustomValidators/CustomValidator';
 import { UsersApiService } from 'src/app/Service/users.service';
+import { AuthService } from 'src/app/Service/auth.service';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,9 +13,10 @@ export class RegisterComponent implements OnInit {
 
   title = "Register";
   alert: boolean = false;
+  users$: any
 
 
-  constructor(private userApiService: UsersApiService) { }
+  constructor(private userApiService: UsersApiService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -61,14 +64,18 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email')
   }
 
-
-  userData() {
-    console.warn(this.registerForm.value)
+  submitRegistration() {
     this.userApiService.registerUser(this.registerForm.value)
-      .subscribe((result) => {
+      .subscribe({
+        next: (result) => {
         this.alert = true
         this.registerForm.reset({})
-      })
+      },
+      error: (err) => {
+        console.log('register error =>', err) 
+        this.registerForm.reset({})  
+      }
+    })
   }
 
   closeAlert() {
