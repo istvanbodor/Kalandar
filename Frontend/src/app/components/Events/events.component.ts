@@ -30,7 +30,7 @@ export class EventsComponent implements OnInit {
       })
   }
 
-  DeleteEvent(id: string) {
+  deleteEvent(id: string) {
     this.authService.deleteEvent(id)
       .subscribe({
         next: () => {
@@ -48,7 +48,7 @@ export class EventsComponent implements OnInit {
       })
   }
 
-  EventId(id: string){
+  eventId(id: string){
     return localStorage.setItem('eventId',id)
   }
 }
