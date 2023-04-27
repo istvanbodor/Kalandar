@@ -21,10 +21,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProfileComponent } from './components/Profile/profile.component';
-import { EventsModalComponent } from './components/MainPage/Modals/EventsModal/eventsModal.component';
-import { addEventModalComponent } from './components/MainPage/Modals/AddEventModal/addEventModal.component';
+import { addEventModalComponent } from './components/Modals/AddEventModal/addEventModal.component';
 import { CalendarHeaderComponent } from './components/MainPage/CalendarHeader/calendarHeader.component';
-import { UpdateEventModalComponent } from './components/MainPage/Modals/UpdateEventModal/updateEventModal.component';
+import { UpdateEventModalComponent } from './components/Modals/UpdateEventModal/updateEventModal.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -42,7 +41,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     IsFullDay,
     EventsComponent,
     ProfileComponent,
-    EventsModalComponent,
     CalendarHeaderComponent,
     UpdateEventModalComponent,
   ],

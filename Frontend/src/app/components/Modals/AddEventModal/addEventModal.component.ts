@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from 'src/app/components/Profile/profile.component';
 import { AuthService } from 'src/app/Service/auth.service';
-import { CustomValidators } from '../../../CustomValidators/CustomValidator';
+import { CustomValidators } from '../../CustomValidators/CustomValidator';
 @Component({
   selector: 'app-addEventModal',
   templateUrl: './addEventModal.component.html',

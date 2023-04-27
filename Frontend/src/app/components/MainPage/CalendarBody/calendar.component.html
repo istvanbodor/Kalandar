@@ -5,7 +5,6 @@
 
 <app-addEventModal></app-addEventModal>
 
-
 <div [ngSwitch]="view" class="calendarStlye"  *ngIf="events | async as events"> 
 	<mwl-calendar-month-view
 	  *ngSwitchCase="'month'"
@@ -44,16 +43,15 @@
 		<button type="button" class="btn-close" aria-label="Close"
 			(click)="modal.dismiss('Cross click')"></button>
 	</div>
-	<div class="container mb-3 modalBodyStyle"> <!--  *ngFor="let itemLocal of events$" -->
+	<div class="container mb-3 modalBodyStyle">
 			<div class="modal-body" *ngFor="let item of eventsApi | async;"> 
-				 <div>  <!-- *ngIf="item.id === itemLocal.id" -->
+				 <div>
 				<div>
 					<img class="img-fluid " src="../../../../assets/kalandar.png"
 						alt="kalandar_Icon_Image" style="width: 30%; height: 30%;">
 				</div>
 				<br>
 				<div>
-					<!-- <pre>{{modalData?.event | json}}</pre> -->
 					<p><span class="eventTextStyle">{{item.fullDay | IsFullDay}}</span></p>
 					<p class="TextStyle">Event title: <span class="eventTextStyle">{{item.event}}</span></p>
                     <p class="TextStyle">Category: <span class="eventTextStyle">{{item.category}}</span></p>
