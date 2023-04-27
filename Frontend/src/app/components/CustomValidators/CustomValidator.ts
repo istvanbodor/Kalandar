@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class CustomValidators {
 
@@ -12,6 +12,7 @@ export class CustomValidators {
         : null;
     };
   }
+  
   static IsBiggerDateValidator(source: string, target: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const startCtrl = control.get(source);
@@ -26,11 +27,4 @@ export class CustomValidators {
       return null;
     };
   }
-
-  // static IsCustomCategoryEmpty(firstValue: string, secondValue: string) {
-  //     if (secondValue.length > 0 && firstValue !== null) {
-  //       return {validator: true}
-  //     }
-  //     return  {validator: false}
-  //   }
 }
