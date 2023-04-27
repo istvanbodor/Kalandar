@@ -4,7 +4,7 @@
     <div class="container mb-3 eventOuterBodyStyle">
         <div class="row" style="margin-top: 15px;">
             <div class="col-9">
-                <h2  style="margin-left: 5px;">User events</h2>
+                <h2 style="margin-left: 5px;">User events</h2>
             </div>
             <div class="col-3">
                 <app-addEventModal></app-addEventModal>
@@ -13,8 +13,8 @@
         <div class="container-fluid mb-3 eventInnerBodyStyle" *ngFor="let item of events$ | async;">
             <div class="row">
                 <div class="col-4">
-                    <img class="img-fluid " src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image"
-                        style="padding-top: 10%;">
+                    <img class="img-fluid" src="../../../../assets/kalandar.png" alt="kalandar_Icon_Image"
+                        id="kalandarImage">
                 </div>
                 <div class="col-7">
                     <p><span class="eventTextStyle">{{item.fullDay | IsFullDay}}</span></p>
@@ -22,17 +22,20 @@
                     <p class="TextStyle">Category: <span class="eventTextStyle">{{item.category}}</span></p>
                     <p><span class="eventTextStyle">{{item.startTime | date }}</span> - <span
                             class="eventTextStyle">{{item.endTime | date }}</span></p>
-                    
-                    <!-- <h6><span>{{item.address.value !== null ? 'Address' : ''}}</span></h6> --> 
-                    <p class="TextStyle"><span>{{item.address.city === '' ? '': 'City: '}}</span> <span class="eventTextStyle">{{item.address.city}}</span></p>
-                    <p class="TextStyle"><span>{{item.address.country === '' ? '': 'Country: '}}</span> <span class="eventTextStyle">{{item.address.country}}</span></p>
-                    <p class="TextStyle"><span>{{item.address.zip === '' ? '': 'zip: '}}</span> <span class="eventTextStyle">{{item.address.zip}}</span></p>
-                    <p class="TextStyle"><span>{{item.address.street === '' ? '': 'street: '}}</span> <span class="eventTextStyle">{{item.address.street}}</span></p>
-                    <p class="TextStyle"><span>{{item.address.houseNumber === '' ? '': 'House number: '}}</span> <span class="eventTextStyle">{{item.address.houseNumber}}</span></p>
+
+                    <p class="TextStyle"><span>{{item.address.city === '' ? '': 'City: '}}</span> <span
+                            class="eventTextStyle">{{item.address.city}}</span></p>
+                    <p class="TextStyle"><span>{{item.address.country === '' ? '': 'Country: '}}</span> <span
+                            class="eventTextStyle">{{item.address.country}}</span></p>
+                    <p class="TextStyle"><span>{{item.address.zip === '' ? '': 'zip: '}}</span> <span
+                            class="eventTextStyle">{{item.address.zip}}</span></p>
+                    <p class="TextStyle"><span>{{item.address.street === '' ? '': 'street: '}}</span> <span
+                            class="eventTextStyle">{{item.address.street}}</span></p>
+                    <p class="TextStyle"><span>{{item.address.houseNumber === '' ? '': 'House number: '}}</span> <span
+                            class="eventTextStyle">{{item.address.houseNumber}}</span></p>
                     <button class="btn btn-danger btn-sm" (click)="DeleteEvent(item.id)"
-                        style="float: right; margin-left: 5px;">Remove</button>
-                    <app-updateEventsModal style="float:  right;"
-                        (click)="storeEventId(item.id)"></app-updateEventsModal>
+                        id="deleteButton">Remove</button>
+                    <app-updateEventsModal id="updateModal" (click)="EventId(item.id)"></app-updateEventsModal>
                 </div>
             </div>
         </div>

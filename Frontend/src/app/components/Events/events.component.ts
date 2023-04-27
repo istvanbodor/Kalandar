@@ -16,20 +16,12 @@ export class EventsComponent implements OnInit {
   constructor(private authService: AuthService, private profileComponent: ProfileComponent) { }
 
   ngOnInit(): void {
-    //All events
-
-    // this.events$ = this.authService.getAllEvents().pipe(tap((result) => {
-    //   this.events = result
-    //   console.log(this.events)
-    // } ))
-
     this.authService.getProfile()
       .subscribe({
         next: (user) => {
           this.events$ = this.authService
             .getUserEvents(String(user.id)).pipe(tap((result) => {
-              // this.events = result
-              // console.log(this.events)
+
             }))
         },
         error: (error) => {
@@ -49,14 +41,14 @@ export class EventsComponent implements OnInit {
                   .getUserEvents(String(user.id)).pipe()
               },
               error: (error) => {
-                console.log('user events error => ', error)
+                console.log('delete user event error => ', error)
               }
             })
         }
       })
   }
 
-  storeEventId(id: string){
+  EventId(id: string){
     return localStorage.setItem('eventId',id)
   }
 }

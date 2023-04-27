@@ -1,7 +1,5 @@
-.kalandarImage {
-    width: 10px;
-    height: 10px;
-
+#kalandarImage {
+    padding-top: 10%
 }
 
 .eventTextStyle {
@@ -22,4 +20,13 @@
 .eventInnerBodyStyle {
     border: 1px solid black;
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+#deleteButton{
+    float: right; 
+    margin-left: 5px;
+}
+
+#updateModal{
+    float:  right;
 }
