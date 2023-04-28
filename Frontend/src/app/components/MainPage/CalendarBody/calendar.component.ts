@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarEvent, EventColor } from 'calendar-utils';
+import { CalendarEvent } from 'calendar-utils';
 import { isSameDay, isSameMonth, parseISO } from 'date-fns';
-import { Observable, Subject, map, pipe, tap } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service';
 import { colors } from './colors';
 import { CalendarEventTimesChangedEvent } from 'angular-calendar';
@@ -36,11 +36,16 @@ export class CalendarBodyComponent implements OnInit {
   constructor(private authService: AuthService, private modal: NgbModal) { }
 
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent);
+  ngOnInit(): void {
+    this.authService.getProfile().subscribe((user) => {
+      this.eventsApi = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
+      }))
+      this.events.subscribe(result => {
+        this.events$ = result
+      })
+    })
   }
-  
+
   events: Observable<CalendarEvent[]> = this.authService.getUserEvents(String(localStorage.getItem('userId')))
     .pipe(
       map((result: any) => result.map((event: any, index: number) => ({
@@ -59,6 +64,10 @@ export class CalendarBodyComponent implements OnInit {
       })))
     )
 
+    handleEvent(): void {
+      this.modal.open(this.modalContent);
+    }
+
     refresh = new Subject<void>();
 
     eventTimesChanged({
@@ -75,16 +84,6 @@ export class CalendarBodyComponent implements OnInit {
       this.authService.updateEvent(String(eventId), {startTime, endTime})
         this.refresh.next()
     }
-    
-  ngOnInit(): void {
-    this.authService.getProfile().subscribe((user) => {
-      this.eventsApi = this.authService.getUserEvents(String(user.id)).pipe(tap((result) => {
-      }))
-      this.events.subscribe(result => {
-        this.events$ = result
-      })
-    })
-  }
 
   activeDayIsOpen: boolean = false;
 
@@ -102,7 +101,7 @@ export class CalendarBodyComponent implements OnInit {
     }
   }
 
-  DeleteEvent(id: string) {
+  deleteEvent(id: string) {
     this.authService.deleteEvent(id)
       .subscribe({
         next: () => {
@@ -121,7 +120,7 @@ export class CalendarBodyComponent implements OnInit {
       })       
   }
 
-  storeEventId(id: string) {
+  eventId(id: string) {
     return localStorage.setItem('eventId', id)
   }
 }

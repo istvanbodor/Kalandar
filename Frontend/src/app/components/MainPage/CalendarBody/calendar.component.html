@@ -13,7 +13,7 @@
 	  [refresh]="refresh"
 	[activeDayIsOpen]="activeDayIsOpen"
 	(dayClicked)="dayClicked($event.day)"
-	(eventClicked)="handleEvent('Clicked', $event.event)"
+	(eventClicked)="handleEvent()"
 	(eventTimesChanged)="eventTimesChanged($event)"
 	>
 	</mwl-calendar-month-view>
@@ -22,7 +22,7 @@
 	  [viewDate]="viewDate"
 	  [events]="events"
 	  [refresh]="refresh"
-	  (eventClicked)="handleEvent('Clicked', $event.event)"
+	  (eventClicked)="handleEvent()"
 	  (eventTimesChanged)="eventTimesChanged($event)"
 	>
 	</mwl-calendar-week-view>
@@ -31,7 +31,7 @@
 	  [viewDate]="viewDate"
 	  [events]="events"
 	  [refresh]="refresh"
-	  (eventClicked)="handleEvent('Clicked', $event.event)"
+	  (eventClicked)="handleEvent()"
 	  (eventTimesChanged)="eventTimesChanged($event)"
 	>
 	</mwl-calendar-day-view>
@@ -61,10 +61,10 @@
                     <p class="TextStyle"><span>{{item.address.zip === '' ? '': 'zip: '}}</span> <span class="eventTextStyle">{{item.address.zip}}</span></p>
                     <p class="TextStyle"><span>{{item.address.street === '' ? '': 'street: '}}</span> <span class="eventTextStyle">{{item.address.street}}</span></p>
                     <p class="TextStyle"><span>{{item.address.houseNumber === '' ? '': 'House number: '}}</span> <span class="eventTextStyle">{{item.address.houseNumber}}</span></p>
-                    <button class="btn btn-danger btn-sm" (click)="DeleteEvent(item.id)"
+                    <button class="btn btn-danger btn-sm" (click)="deleteEvent(item.id)"
                         style="float: right; margin-left: 5px;">Remove</button>
                     <app-updateEventsModal style="float:  right;"
-                        (click)="storeEventId(item.id)"></app-updateEventsModal>
+                        (click)="eventId(item.id)"></app-updateEventsModal>
 				</div>
 			</div>
 		</div>
@@ -72,5 +72,3 @@
 </ng-template>
 
 <div>&nbsp;</div>
-
-<!-- <app-events-modal></app-events-modal> -->

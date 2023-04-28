@@ -5,7 +5,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body modalBodyStyle">
-    <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
+    <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
       <div class="form-group mb-3" style="float: right;">
         <label>Fullday: </label>
         <input type="checkbox" class="form-check-input" formControlName="fullDay" style="margin-left: 5px;">
